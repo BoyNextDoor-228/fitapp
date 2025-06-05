@@ -6,7 +6,7 @@ part of 'user.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
+_User _$UserFromJson(Map<String, dynamic> json) => _User(
       id: const UuidValueConverter().fromJson(json['id'] as String),
       weight: (json['weight'] as num).toDouble(),
       trainings: (json['trainings'] as List<dynamic>)
@@ -20,8 +20,7 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
           .toList(),
     );
 
-Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$UserToJson(_User instance) => <String, dynamic>{
       'id': const UuidValueConverter().toJson(instance.id),
       'weight': instance.weight,
       'trainings': instance.trainings.map((e) => e.toJson()).toList(),

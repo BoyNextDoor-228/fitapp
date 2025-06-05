@@ -10,7 +10,7 @@ part 'meal.freezed.dart';
 part 'meal.g.dart';
 
 @freezed
-class Meal with _$Meal {
+abstract class Meal with _$Meal {
   const factory Meal.__({
     @UuidValueConverter() required UuidValue id,
     required String title,

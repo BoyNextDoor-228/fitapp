@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,108 +10,60 @@ part of 'exercise.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Exercise _$ExerciseFromJson(Map<String, dynamic> json) {
-  return _Exercise.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Exercise {
   @UuidValueConverter()
-  UuidValue get id => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
-  String? get description => throw _privateConstructorUsedError;
-  int get sets => throw _privateConstructorUsedError;
+  UuidValue get id;
+  String get title;
+  String? get description;
+  int get sets;
   @ExerciseLoadConverter()
-  ExerciseLoad get load => throw _privateConstructorUsedError;
-  List<ExerciseStatistic> get statistics => throw _privateConstructorUsedError;
-
-  /// Serializes this Exercise to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  ExerciseLoad get load;
+  List<ExerciseStatistic> get statistics;
 
   /// Create a copy of Exercise
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ExerciseCopyWith<Exercise> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $ExerciseCopyWith<$Res> {
-  factory $ExerciseCopyWith(Exercise value, $Res Function(Exercise) then) =
-      _$ExerciseCopyWithImpl<$Res, Exercise>;
-  @useResult
-  $Res call(
-      {@UuidValueConverter() UuidValue id,
-      String title,
-      String? description,
-      int sets,
-      @ExerciseLoadConverter() ExerciseLoad load,
-      List<ExerciseStatistic> statistics});
-}
-
-/// @nodoc
-class _$ExerciseCopyWithImpl<$Res, $Val extends Exercise>
-    implements $ExerciseCopyWith<$Res> {
-  _$ExerciseCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Exercise
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $ExerciseCopyWith<Exercise> get copyWith =>
+      _$ExerciseCopyWithImpl<Exercise>(this as Exercise, _$identity);
+
+  /// Serializes this Exercise to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? id = null,
-    Object? title = null,
-    Object? description = freezed,
-    Object? sets = null,
-    Object? load = null,
-    Object? statistics = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as UuidValue,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      description: freezed == description
-          ? _value.description
-          : description // ignore: cast_nullable_to_non_nullable
-              as String?,
-      sets: null == sets
-          ? _value.sets
-          : sets // ignore: cast_nullable_to_non_nullable
-              as int,
-      load: null == load
-          ? _value.load
-          : load // ignore: cast_nullable_to_non_nullable
-              as ExerciseLoad,
-      statistics: null == statistics
-          ? _value.statistics
-          : statistics // ignore: cast_nullable_to_non_nullable
-              as List<ExerciseStatistic>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Exercise &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.sets, sets) || other.sets == sets) &&
+            (identical(other.load, load) || other.load == load) &&
+            const DeepCollectionEquality()
+                .equals(other.statistics, statistics));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, title, description, sets,
+      load, const DeepCollectionEquality().hash(statistics));
+
+  @override
+  String toString() {
+    return 'Exercise(id: $id, title: $title, description: $description, sets: $sets, load: $load, statistics: $statistics)';
   }
 }
 
 /// @nodoc
-abstract class _$$ExerciseImplCopyWith<$Res>
-    implements $ExerciseCopyWith<$Res> {
-  factory _$$ExerciseImplCopyWith(
-          _$ExerciseImpl value, $Res Function(_$ExerciseImpl) then) =
-      __$$ExerciseImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $ExerciseCopyWith<$Res> {
+  factory $ExerciseCopyWith(Exercise value, $Res Function(Exercise) _then) =
+      _$ExerciseCopyWithImpl;
   @useResult
   $Res call(
       {@UuidValueConverter() UuidValue id,
@@ -122,12 +75,11 @@ abstract class _$$ExerciseImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ExerciseImplCopyWithImpl<$Res>
-    extends _$ExerciseCopyWithImpl<$Res, _$ExerciseImpl>
-    implements _$$ExerciseImplCopyWith<$Res> {
-  __$$ExerciseImplCopyWithImpl(
-      _$ExerciseImpl _value, $Res Function(_$ExerciseImpl) _then)
-      : super(_value, _then);
+class _$ExerciseCopyWithImpl<$Res> implements $ExerciseCopyWith<$Res> {
+  _$ExerciseCopyWithImpl(this._self, this._then);
+
+  final Exercise _self;
+  final $Res Function(Exercise) _then;
 
   /// Create a copy of Exercise
   /// with the given fields replaced by the non-null parameter values.
@@ -141,29 +93,29 @@ class __$$ExerciseImplCopyWithImpl<$Res>
     Object? load = null,
     Object? statistics = null,
   }) {
-    return _then(_$ExerciseImpl(
+    return _then(_self.copyWith(
       id: null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as UuidValue,
       title: null == title
-          ? _value.title
+          ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
       description: freezed == description
-          ? _value.description
+          ? _self.description
           : description // ignore: cast_nullable_to_non_nullable
               as String?,
       sets: null == sets
-          ? _value.sets
+          ? _self.sets
           : sets // ignore: cast_nullable_to_non_nullable
               as int,
       load: null == load
-          ? _value.load
+          ? _self.load
           : load // ignore: cast_nullable_to_non_nullable
               as ExerciseLoad,
       statistics: null == statistics
-          ? _value._statistics
+          ? _self.statistics
           : statistics // ignore: cast_nullable_to_non_nullable
               as List<ExerciseStatistic>,
     ));
@@ -172,8 +124,8 @@ class __$$ExerciseImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$ExerciseImpl implements _Exercise {
-  const _$ExerciseImpl(
+class _Exercise implements Exercise {
+  const _Exercise(
       {@UuidValueConverter() required this.id,
       required this.title,
       required this.description,
@@ -181,9 +133,8 @@ class _$ExerciseImpl implements _Exercise {
       @ExerciseLoadConverter() required this.load,
       required final List<ExerciseStatistic> statistics})
       : _statistics = statistics;
-
-  factory _$ExerciseImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ExerciseImplFromJson(json);
+  factory _Exercise.fromJson(Map<String, dynamic> json) =>
+      _$ExerciseFromJson(json);
 
   @override
   @UuidValueConverter()
@@ -205,16 +156,26 @@ class _$ExerciseImpl implements _Exercise {
     return EqualUnmodifiableListView(_statistics);
   }
 
+  /// Create a copy of Exercise
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'Exercise._(id: $id, title: $title, description: $description, sets: $sets, load: $load, statistics: $statistics)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ExerciseCopyWith<_Exercise> get copyWith =>
+      __$ExerciseCopyWithImpl<_Exercise>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ExerciseToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ExerciseImpl &&
+            other is _Exercise &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
@@ -230,53 +191,74 @@ class _$ExerciseImpl implements _Exercise {
   int get hashCode => Object.hash(runtimeType, id, title, description, sets,
       load, const DeepCollectionEquality().hash(_statistics));
 
-  /// Create a copy of Exercise
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ExerciseImplCopyWith<_$ExerciseImpl> get copyWith =>
-      __$$ExerciseImplCopyWithImpl<_$ExerciseImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ExerciseImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Exercise._(id: $id, title: $title, description: $description, sets: $sets, load: $load, statistics: $statistics)';
   }
 }
 
-abstract class _Exercise implements Exercise {
-  const factory _Exercise(
-      {@UuidValueConverter() required final UuidValue id,
-      required final String title,
-      required final String? description,
-      required final int sets,
-      @ExerciseLoadConverter() required final ExerciseLoad load,
-      required final List<ExerciseStatistic> statistics}) = _$ExerciseImpl;
+/// @nodoc
+abstract mixin class _$ExerciseCopyWith<$Res>
+    implements $ExerciseCopyWith<$Res> {
+  factory _$ExerciseCopyWith(_Exercise value, $Res Function(_Exercise) _then) =
+      __$ExerciseCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@UuidValueConverter() UuidValue id,
+      String title,
+      String? description,
+      int sets,
+      @ExerciseLoadConverter() ExerciseLoad load,
+      List<ExerciseStatistic> statistics});
+}
 
-  factory _Exercise.fromJson(Map<String, dynamic> json) =
-      _$ExerciseImpl.fromJson;
+/// @nodoc
+class __$ExerciseCopyWithImpl<$Res> implements _$ExerciseCopyWith<$Res> {
+  __$ExerciseCopyWithImpl(this._self, this._then);
 
-  @override
-  @UuidValueConverter()
-  UuidValue get id;
-  @override
-  String get title;
-  @override
-  String? get description;
-  @override
-  int get sets;
-  @override
-  @ExerciseLoadConverter()
-  ExerciseLoad get load;
-  @override
-  List<ExerciseStatistic> get statistics;
+  final _Exercise _self;
+  final $Res Function(_Exercise) _then;
 
   /// Create a copy of Exercise
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ExerciseImplCopyWith<_$ExerciseImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? title = null,
+    Object? description = freezed,
+    Object? sets = null,
+    Object? load = null,
+    Object? statistics = null,
+  }) {
+    return _then(_Exercise(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as UuidValue,
+      title: null == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      description: freezed == description
+          ? _self.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sets: null == sets
+          ? _self.sets
+          : sets // ignore: cast_nullable_to_non_nullable
+              as int,
+      load: null == load
+          ? _self.load
+          : load // ignore: cast_nullable_to_non_nullable
+              as ExerciseLoad,
+      statistics: null == statistics
+          ? _self._statistics
+          : statistics // ignore: cast_nullable_to_non_nullable
+              as List<ExerciseStatistic>,
+    ));
+  }
 }
+
+// dart format on

@@ -6,7 +6,7 @@ part 'repetition.g.dart';
 part 'repetition.freezed.dart';
 
 @freezed
-class Repetition extends ExerciseLoad with _$Repetition {
+abstract class Repetition extends ExerciseLoad with _$Repetition {
   const factory Repetition({required int repsAmount}) = _Repetition;
 
   factory Repetition.empty() => const Repetition(repsAmount: 0);

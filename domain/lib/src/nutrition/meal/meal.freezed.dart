@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,91 +10,54 @@ part of 'meal.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Meal _$MealFromJson(Map<String, dynamic> json) {
-  return _Meal.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Meal {
   @UuidValueConverter()
-  UuidValue get id => throw _privateConstructorUsedError;
-  String get title => throw _privateConstructorUsedError;
-  List<Ingredient> get ingredients => throw _privateConstructorUsedError;
-  String? get recipe => throw _privateConstructorUsedError;
-
-  /// Serializes this Meal to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  UuidValue get id;
+  String get title;
+  List<Ingredient> get ingredients;
+  String? get recipe;
 
   /// Create a copy of Meal
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $MealCopyWith<Meal> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $MealCopyWith<$Res> {
-  factory $MealCopyWith(Meal value, $Res Function(Meal) then) =
-      _$MealCopyWithImpl<$Res, Meal>;
-  @useResult
-  $Res call(
-      {@UuidValueConverter() UuidValue id,
-      String title,
-      List<Ingredient> ingredients,
-      String? recipe});
-}
-
-/// @nodoc
-class _$MealCopyWithImpl<$Res, $Val extends Meal>
-    implements $MealCopyWith<$Res> {
-  _$MealCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Meal
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $MealCopyWith<Meal> get copyWith =>
+      _$MealCopyWithImpl<Meal>(this as Meal, _$identity);
+
+  /// Serializes this Meal to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? id = null,
-    Object? title = null,
-    Object? ingredients = null,
-    Object? recipe = freezed,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as UuidValue,
-      title: null == title
-          ? _value.title
-          : title // ignore: cast_nullable_to_non_nullable
-              as String,
-      ingredients: null == ingredients
-          ? _value.ingredients
-          : ingredients // ignore: cast_nullable_to_non_nullable
-              as List<Ingredient>,
-      recipe: freezed == recipe
-          ? _value.recipe
-          : recipe // ignore: cast_nullable_to_non_nullable
-              as String?,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Meal &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.title, title) || other.title == title) &&
+            const DeepCollectionEquality()
+                .equals(other.ingredients, ingredients) &&
+            (identical(other.recipe, recipe) || other.recipe == recipe));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, title,
+      const DeepCollectionEquality().hash(ingredients), recipe);
+
+  @override
+  String toString() {
+    return 'Meal(id: $id, title: $title, ingredients: $ingredients, recipe: $recipe)';
   }
 }
 
 /// @nodoc
-abstract class _$$MealImplCopyWith<$Res> implements $MealCopyWith<$Res> {
-  factory _$$MealImplCopyWith(
-          _$MealImpl value, $Res Function(_$MealImpl) then) =
-      __$$MealImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $MealCopyWith<$Res> {
+  factory $MealCopyWith(Meal value, $Res Function(Meal) _then) =
+      _$MealCopyWithImpl;
   @useResult
   $Res call(
       {@UuidValueConverter() UuidValue id,
@@ -103,11 +67,11 @@ abstract class _$$MealImplCopyWith<$Res> implements $MealCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$MealImplCopyWithImpl<$Res>
-    extends _$MealCopyWithImpl<$Res, _$MealImpl>
-    implements _$$MealImplCopyWith<$Res> {
-  __$$MealImplCopyWithImpl(_$MealImpl _value, $Res Function(_$MealImpl) _then)
-      : super(_value, _then);
+class _$MealCopyWithImpl<$Res> implements $MealCopyWith<$Res> {
+  _$MealCopyWithImpl(this._self, this._then);
+
+  final Meal _self;
+  final $Res Function(Meal) _then;
 
   /// Create a copy of Meal
   /// with the given fields replaced by the non-null parameter values.
@@ -119,21 +83,21 @@ class __$$MealImplCopyWithImpl<$Res>
     Object? ingredients = null,
     Object? recipe = freezed,
   }) {
-    return _then(_$MealImpl(
+    return _then(_self.copyWith(
       id: null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as UuidValue,
       title: null == title
-          ? _value.title
+          ? _self.title
           : title // ignore: cast_nullable_to_non_nullable
               as String,
       ingredients: null == ingredients
-          ? _value._ingredients
+          ? _self.ingredients
           : ingredients // ignore: cast_nullable_to_non_nullable
               as List<Ingredient>,
       recipe: freezed == recipe
-          ? _value.recipe
+          ? _self.recipe
           : recipe // ignore: cast_nullable_to_non_nullable
               as String?,
     ));
@@ -142,17 +106,15 @@ class __$$MealImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$MealImpl extends _Meal {
-  const _$MealImpl(
+class _Meal extends Meal {
+  const _Meal(
       {@UuidValueConverter() required this.id,
       required this.title,
       required final List<Ingredient> ingredients,
       required this.recipe})
       : _ingredients = ingredients,
         super._();
-
-  factory _$MealImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MealImplFromJson(json);
+  factory _Meal.fromJson(Map<String, dynamic> json) => _$MealFromJson(json);
 
   @override
   @UuidValueConverter()
@@ -170,16 +132,26 @@ class _$MealImpl extends _Meal {
   @override
   final String? recipe;
 
+  /// Create a copy of Meal
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'Meal.__(id: $id, title: $title, ingredients: $ingredients, recipe: $recipe)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$MealCopyWith<_Meal> get copyWith =>
+      __$MealCopyWithImpl<_Meal>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$MealToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$MealImpl &&
+            other is _Meal &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             const DeepCollectionEquality()
@@ -192,46 +164,61 @@ class _$MealImpl extends _Meal {
   int get hashCode => Object.hash(runtimeType, id, title,
       const DeepCollectionEquality().hash(_ingredients), recipe);
 
-  /// Create a copy of Meal
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$MealImplCopyWith<_$MealImpl> get copyWith =>
-      __$$MealImplCopyWithImpl<_$MealImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$MealImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Meal.__(id: $id, title: $title, ingredients: $ingredients, recipe: $recipe)';
   }
 }
 
-abstract class _Meal extends Meal {
-  const factory _Meal(
-      {@UuidValueConverter() required final UuidValue id,
-      required final String title,
-      required final List<Ingredient> ingredients,
-      required final String? recipe}) = _$MealImpl;
-  const _Meal._() : super._();
+/// @nodoc
+abstract mixin class _$MealCopyWith<$Res> implements $MealCopyWith<$Res> {
+  factory _$MealCopyWith(_Meal value, $Res Function(_Meal) _then) =
+      __$MealCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@UuidValueConverter() UuidValue id,
+      String title,
+      List<Ingredient> ingredients,
+      String? recipe});
+}
 
-  factory _Meal.fromJson(Map<String, dynamic> json) = _$MealImpl.fromJson;
+/// @nodoc
+class __$MealCopyWithImpl<$Res> implements _$MealCopyWith<$Res> {
+  __$MealCopyWithImpl(this._self, this._then);
 
-  @override
-  @UuidValueConverter()
-  UuidValue get id;
-  @override
-  String get title;
-  @override
-  List<Ingredient> get ingredients;
-  @override
-  String? get recipe;
+  final _Meal _self;
+  final $Res Function(_Meal) _then;
 
   /// Create a copy of Meal
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$MealImplCopyWith<_$MealImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? title = null,
+    Object? ingredients = null,
+    Object? recipe = freezed,
+  }) {
+    return _then(_Meal(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as UuidValue,
+      title: null == title
+          ? _self.title
+          : title // ignore: cast_nullable_to_non_nullable
+              as String,
+      ingredients: null == ingredients
+          ? _self._ingredients
+          : ingredients // ignore: cast_nullable_to_non_nullable
+              as List<Ingredient>,
+      recipe: freezed == recipe
+          ? _self.recipe
+          : recipe // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
 }
+
+// dart format on

@@ -4,7 +4,7 @@ part 'nutrition_facts.g.dart';
 part 'nutrition_facts.freezed.dart';
 
 @freezed
-class NutritionFacts with _$NutritionFacts {
+abstract class NutritionFacts with _$NutritionFacts {
   const factory NutritionFacts({
     required double proteins,
     required double fats,

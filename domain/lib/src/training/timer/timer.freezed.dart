@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,117 +10,28 @@ part of 'timer.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Timer _$TimerFromJson(Map<String, dynamic> json) {
-  return _Timer.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Timer {
-  Duration get duration => throw _privateConstructorUsedError;
-
-  /// Serializes this Timer to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  Duration get duration;
 
   /// Create a copy of Timer
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $TimerCopyWith<Timer> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $TimerCopyWith<$Res> {
-  factory $TimerCopyWith(Timer value, $Res Function(Timer) then) =
-      _$TimerCopyWithImpl<$Res, Timer>;
-  @useResult
-  $Res call({Duration duration});
-}
-
-/// @nodoc
-class _$TimerCopyWithImpl<$Res, $Val extends Timer>
-    implements $TimerCopyWith<$Res> {
-  _$TimerCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of Timer
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? duration = null,
-  }) {
-    return _then(_value.copyWith(
-      duration: null == duration
-          ? _value.duration
-          : duration // ignore: cast_nullable_to_non_nullable
-              as Duration,
-    ) as $Val);
-  }
-}
+  $TimerCopyWith<Timer> get copyWith =>
+      _$TimerCopyWithImpl<Timer>(this as Timer, _$identity);
 
-/// @nodoc
-abstract class _$$TimerImplCopyWith<$Res> implements $TimerCopyWith<$Res> {
-  factory _$$TimerImplCopyWith(
-          _$TimerImpl value, $Res Function(_$TimerImpl) then) =
-      __$$TimerImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({Duration duration});
-}
-
-/// @nodoc
-class __$$TimerImplCopyWithImpl<$Res>
-    extends _$TimerCopyWithImpl<$Res, _$TimerImpl>
-    implements _$$TimerImplCopyWith<$Res> {
-  __$$TimerImplCopyWithImpl(
-      _$TimerImpl _value, $Res Function(_$TimerImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Timer
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? duration = null,
-  }) {
-    return _then(_$TimerImpl(
-      duration: null == duration
-          ? _value.duration
-          : duration // ignore: cast_nullable_to_non_nullable
-              as Duration,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$TimerImpl extends _Timer {
-  const _$TimerImpl({required this.duration}) : super._();
-
-  factory _$TimerImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TimerImplFromJson(json);
-
-  @override
-  final Duration duration;
-
-  @override
-  String toString() {
-    return 'Timer(duration: $duration)';
-  }
+  /// Serializes this Timer to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$TimerImpl &&
+            other is Timer &&
             (identical(other.duration, duration) ||
                 other.duration == duration));
   }
@@ -128,35 +40,116 @@ class _$TimerImpl extends _Timer {
   @override
   int get hashCode => Object.hash(runtimeType, duration);
 
-  /// Create a copy of Timer
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$TimerImplCopyWith<_$TimerImpl> get copyWith =>
-      __$$TimerImplCopyWithImpl<_$TimerImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$TimerImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Timer(duration: $duration)';
   }
 }
 
-abstract class _Timer extends Timer {
-  const factory _Timer({required final Duration duration}) = _$TimerImpl;
-  const _Timer._() : super._();
+/// @nodoc
+abstract mixin class $TimerCopyWith<$Res> {
+  factory $TimerCopyWith(Timer value, $Res Function(Timer) _then) =
+      _$TimerCopyWithImpl;
+  @useResult
+  $Res call({Duration duration});
+}
 
-  factory _Timer.fromJson(Map<String, dynamic> json) = _$TimerImpl.fromJson;
+/// @nodoc
+class _$TimerCopyWithImpl<$Res> implements $TimerCopyWith<$Res> {
+  _$TimerCopyWithImpl(this._self, this._then);
+
+  final Timer _self;
+  final $Res Function(Timer) _then;
+
+  /// Create a copy of Timer
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? duration = null,
+  }) {
+    return _then(_self.copyWith(
+      duration: null == duration
+          ? _self.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as Duration,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _Timer extends Timer {
+  const _Timer({required this.duration}) : super._();
+  factory _Timer.fromJson(Map<String, dynamic> json) => _$TimerFromJson(json);
 
   @override
-  Duration get duration;
+  final Duration duration;
 
   /// Create a copy of Timer
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$TimerImplCopyWith<_$TimerImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$TimerCopyWith<_Timer> get copyWith =>
+      __$TimerCopyWithImpl<_Timer>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$TimerToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _Timer &&
+            (identical(other.duration, duration) ||
+                other.duration == duration));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, duration);
+
+  @override
+  String toString() {
+    return 'Timer(duration: $duration)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$TimerCopyWith<$Res> implements $TimerCopyWith<$Res> {
+  factory _$TimerCopyWith(_Timer value, $Res Function(_Timer) _then) =
+      __$TimerCopyWithImpl;
+  @override
+  @useResult
+  $Res call({Duration duration});
+}
+
+/// @nodoc
+class __$TimerCopyWithImpl<$Res> implements _$TimerCopyWith<$Res> {
+  __$TimerCopyWithImpl(this._self, this._then);
+
+  final _Timer _self;
+  final $Res Function(_Timer) _then;
+
+  /// Create a copy of Timer
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? duration = null,
+  }) {
+    return _then(_Timer(
+      duration: null == duration
+          ? _self.duration
+          : duration // ignore: cast_nullable_to_non_nullable
+              as Duration,
+    ));
+  }
+}
+
+// dart format on

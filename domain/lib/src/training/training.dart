@@ -1,4 +1,3 @@
-export 'abstract_exercise/abstract_exercise.dart';
 export 'exercise/exercise.dart';
 export 'exercise_load/exercise_load.dart';
 export 'repetition/repetition.dart';

@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,137 +10,31 @@ part of 'exercise_statistic.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-ExerciseStatistic _$ExerciseStatisticFromJson(Map<String, dynamic> json) {
-  return _ExerciseStatistic.fromJson(json);
-}
 
 /// @nodoc
 mixin _$ExerciseStatistic {
   @ExerciseLoadConverter()
-  ExerciseLoad get load => throw _privateConstructorUsedError;
-  DateTime get date => throw _privateConstructorUsedError;
-
-  /// Serializes this ExerciseStatistic to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  ExerciseLoad get load;
+  DateTime get date;
 
   /// Create a copy of ExerciseStatistic
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
   $ExerciseStatisticCopyWith<ExerciseStatistic> get copyWith =>
-      throw _privateConstructorUsedError;
-}
+      _$ExerciseStatisticCopyWithImpl<ExerciseStatistic>(
+          this as ExerciseStatistic, _$identity);
 
-/// @nodoc
-abstract class $ExerciseStatisticCopyWith<$Res> {
-  factory $ExerciseStatisticCopyWith(
-          ExerciseStatistic value, $Res Function(ExerciseStatistic) then) =
-      _$ExerciseStatisticCopyWithImpl<$Res, ExerciseStatistic>;
-  @useResult
-  $Res call({@ExerciseLoadConverter() ExerciseLoad load, DateTime date});
-}
-
-/// @nodoc
-class _$ExerciseStatisticCopyWithImpl<$Res, $Val extends ExerciseStatistic>
-    implements $ExerciseStatisticCopyWith<$Res> {
-  _$ExerciseStatisticCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of ExerciseStatistic
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? load = null,
-    Object? date = null,
-  }) {
-    return _then(_value.copyWith(
-      load: null == load
-          ? _value.load
-          : load // ignore: cast_nullable_to_non_nullable
-              as ExerciseLoad,
-      date: null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$ExerciseStatisticImplCopyWith<$Res>
-    implements $ExerciseStatisticCopyWith<$Res> {
-  factory _$$ExerciseStatisticImplCopyWith(_$ExerciseStatisticImpl value,
-          $Res Function(_$ExerciseStatisticImpl) then) =
-      __$$ExerciseStatisticImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({@ExerciseLoadConverter() ExerciseLoad load, DateTime date});
-}
-
-/// @nodoc
-class __$$ExerciseStatisticImplCopyWithImpl<$Res>
-    extends _$ExerciseStatisticCopyWithImpl<$Res, _$ExerciseStatisticImpl>
-    implements _$$ExerciseStatisticImplCopyWith<$Res> {
-  __$$ExerciseStatisticImplCopyWithImpl(_$ExerciseStatisticImpl _value,
-      $Res Function(_$ExerciseStatisticImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of ExerciseStatistic
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? load = null,
-    Object? date = null,
-  }) {
-    return _then(_$ExerciseStatisticImpl(
-      load: null == load
-          ? _value.load
-          : load // ignore: cast_nullable_to_non_nullable
-              as ExerciseLoad,
-      date: null == date
-          ? _value.date
-          : date // ignore: cast_nullable_to_non_nullable
-              as DateTime,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$ExerciseStatisticImpl extends _ExerciseStatistic {
-  const _$ExerciseStatisticImpl(
-      {@ExerciseLoadConverter() required this.load, required this.date})
-      : super._();
-
-  factory _$ExerciseStatisticImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ExerciseStatisticImplFromJson(json);
-
-  @override
-  @ExerciseLoadConverter()
-  final ExerciseLoad load;
-  @override
-  final DateTime date;
-
-  @override
-  String toString() {
-    return 'ExerciseStatistic(load: $load, date: $date)';
-  }
+  /// Serializes this ExerciseStatistic to a JSON map.
+  Map<String, dynamic> toJson();
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ExerciseStatisticImpl &&
+            other is ExerciseStatistic &&
             (identical(other.load, load) || other.load == load) &&
             (identical(other.date, date) || other.date == date));
   }
@@ -148,42 +43,137 @@ class _$ExerciseStatisticImpl extends _ExerciseStatistic {
   @override
   int get hashCode => Object.hash(runtimeType, load, date);
 
-  /// Create a copy of ExerciseStatistic
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$ExerciseStatisticImplCopyWith<_$ExerciseStatisticImpl> get copyWith =>
-      __$$ExerciseStatisticImplCopyWithImpl<_$ExerciseStatisticImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$ExerciseStatisticImplToJson(
-      this,
-    );
+  String toString() {
+    return 'ExerciseStatistic(load: $load, date: $date)';
   }
 }
 
-abstract class _ExerciseStatistic extends ExerciseStatistic {
-  const factory _ExerciseStatistic(
-      {@ExerciseLoadConverter() required final ExerciseLoad load,
-      required final DateTime date}) = _$ExerciseStatisticImpl;
-  const _ExerciseStatistic._() : super._();
+/// @nodoc
+abstract mixin class $ExerciseStatisticCopyWith<$Res> {
+  factory $ExerciseStatisticCopyWith(
+          ExerciseStatistic value, $Res Function(ExerciseStatistic) _then) =
+      _$ExerciseStatisticCopyWithImpl;
+  @useResult
+  $Res call({@ExerciseLoadConverter() ExerciseLoad load, DateTime date});
+}
 
-  factory _ExerciseStatistic.fromJson(Map<String, dynamic> json) =
-      _$ExerciseStatisticImpl.fromJson;
+/// @nodoc
+class _$ExerciseStatisticCopyWithImpl<$Res>
+    implements $ExerciseStatisticCopyWith<$Res> {
+  _$ExerciseStatisticCopyWithImpl(this._self, this._then);
+
+  final ExerciseStatistic _self;
+  final $Res Function(ExerciseStatistic) _then;
+
+  /// Create a copy of ExerciseStatistic
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? load = null,
+    Object? date = null,
+  }) {
+    return _then(_self.copyWith(
+      load: null == load
+          ? _self.load
+          : load // ignore: cast_nullable_to_non_nullable
+              as ExerciseLoad,
+      date: null == date
+          ? _self.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _ExerciseStatistic extends ExerciseStatistic {
+  const _ExerciseStatistic(
+      {@ExerciseLoadConverter() required this.load, required this.date})
+      : super._();
+  factory _ExerciseStatistic.fromJson(Map<String, dynamic> json) =>
+      _$ExerciseStatisticFromJson(json);
 
   @override
   @ExerciseLoadConverter()
-  ExerciseLoad get load;
+  final ExerciseLoad load;
   @override
-  DateTime get date;
+  final DateTime date;
 
   /// Create a copy of ExerciseStatistic
   /// with the given fields replaced by the non-null parameter values.
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ExerciseStatisticImplCopyWith<_$ExerciseStatisticImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  _$ExerciseStatisticCopyWith<_ExerciseStatistic> get copyWith =>
+      __$ExerciseStatisticCopyWithImpl<_ExerciseStatistic>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ExerciseStatisticToJson(
+      this,
+    );
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _ExerciseStatistic &&
+            (identical(other.load, load) || other.load == load) &&
+            (identical(other.date, date) || other.date == date));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(runtimeType, load, date);
+
+  @override
+  String toString() {
+    return 'ExerciseStatistic(load: $load, date: $date)';
+  }
 }
+
+/// @nodoc
+abstract mixin class _$ExerciseStatisticCopyWith<$Res>
+    implements $ExerciseStatisticCopyWith<$Res> {
+  factory _$ExerciseStatisticCopyWith(
+          _ExerciseStatistic value, $Res Function(_ExerciseStatistic) _then) =
+      __$ExerciseStatisticCopyWithImpl;
+  @override
+  @useResult
+  $Res call({@ExerciseLoadConverter() ExerciseLoad load, DateTime date});
+}
+
+/// @nodoc
+class __$ExerciseStatisticCopyWithImpl<$Res>
+    implements _$ExerciseStatisticCopyWith<$Res> {
+  __$ExerciseStatisticCopyWithImpl(this._self, this._then);
+
+  final _ExerciseStatistic _self;
+  final $Res Function(_ExerciseStatistic) _then;
+
+  /// Create a copy of ExerciseStatistic
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? load = null,
+    Object? date = null,
+  }) {
+    return _then(_ExerciseStatistic(
+      load: null == load
+          ? _self.load
+          : load // ignore: cast_nullable_to_non_nullable
+              as ExerciseLoad,
+      date: null == date
+          ? _self.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+    ));
+  }
+}
+
+// dart format on

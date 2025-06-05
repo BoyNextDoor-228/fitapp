@@ -23,6 +23,7 @@ const meal2Json = '''
       "product": {
         "id": "a1a629eb-0775-4f36-8ba7-8e32d229261a",
         "name": "Product 1",
+        "measurementUnit": "grams",
         "nutritionFacts": {
           "proteins": 10,
           "fats": 15,
@@ -30,13 +31,13 @@ const meal2Json = '''
           "kilocalories": 300
         }
       },
-      "amount": 200,
-      "measurement": "grams"
+      "amount": 200
     },
     {
       "product": {
         "id": "2aa629eb-0775-4f36-8ba7-8e32d22926a2",
         "name": "Product 2",
+        "measurementUnit": "milliliters",
         "nutritionFacts": {
           "proteins": 11,
           "fats": 12,
@@ -44,8 +45,7 @@ const meal2Json = '''
           "kilocalories": 250
         }
       },
-      "amount": 100,
-      "measurement": "milliliters"
+      "amount": 100
     }
   ] 
 }
@@ -96,6 +96,7 @@ void main() {
 
       final product1 = Product.create(
         name: 'Product 1',
+        measurementUnit: MeasurementUnit.grams,
         nutritionFacts: nutritionFacts1,
       ).copyWith(
         id: UuidValue.fromString('a1a629eb-0775-4f36-8ba7-8e32d229261a'),
@@ -103,6 +104,7 @@ void main() {
 
       final product2 = Product.create(
         name: 'Product 2',
+        measurementUnit: MeasurementUnit.milliliters,
         nutritionFacts: nutritionFacts2,
       ).copyWith(
         id: UuidValue.fromString('2aa629eb-0775-4f36-8ba7-8e32d22926a2'),
@@ -111,13 +113,11 @@ void main() {
       final ingredient1 = Ingredient(
         product: product1,
         amount: 200,
-        measurement: MeasurementUnit.grams,
       );
 
       final ingredient2 = Ingredient(
         product: product2,
         amount: 100,
-        measurement: MeasurementUnit.milliliters,
       );
 
       meal = meal.copyWith(

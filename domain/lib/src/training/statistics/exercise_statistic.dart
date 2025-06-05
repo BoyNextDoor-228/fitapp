@@ -7,7 +7,7 @@ part 'exercise_statistic.g.dart';
 part 'exercise_statistic.freezed.dart';
 
 @freezed
-class ExerciseStatistic with _$ExerciseStatistic {
+abstract class ExerciseStatistic with _$ExerciseStatistic {
   const factory ExerciseStatistic({
     @ExerciseLoadConverter() required ExerciseLoad load,
     required DateTime date,

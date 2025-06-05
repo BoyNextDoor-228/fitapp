@@ -204,6 +204,7 @@ const user2Json = '''
           "product": {
             "id": "a1a629eb-0775-4f36-8ba7-8e32d229261a",
             "name": "Product 1",
+            "measurementUnit": "grams",
             "nutritionFacts": {
               "proteins": 10,
               "fats": 15,
@@ -211,13 +212,13 @@ const user2Json = '''
               "kilocalories": 300
             }
           },
-          "amount": 200,
-          "measurement": "grams"
+          "amount": 200
         },
         {
           "product": {
             "id": "2aa629eb-0775-4f36-8ba7-8e32d22926a2",
             "name": "Product 2",
+            "measurementUnit": "milliliters",
             "nutritionFacts": {
               "proteins": 11,
               "fats": 12,
@@ -225,8 +226,7 @@ const user2Json = '''
               "kilocalories": 250
             }
           },
-          "amount": 100,
-          "measurement": "milliliters"
+          "amount": 100
         }
       ] 
     }
@@ -235,6 +235,7 @@ const user2Json = '''
     {
       "id": "a1a629eb-0775-4f36-8ba7-8e32d229261a",
       "name": "Product 1",
+      "measurementUnit": "grams",
       "nutritionFacts": 
         {
           "proteins": 10,
@@ -246,6 +247,7 @@ const user2Json = '''
     {
       "id": "2aa629eb-0775-4f36-8ba7-8e32d22926a2",
       "name": "Product 2",
+      "measurementUnit": "milliliters",
       "nutritionFacts": 
         {
           "proteins": 11,
@@ -274,6 +276,7 @@ const nutritionFacts2 = NutritionFacts(
 
 final product1 = Product.create(
   name: 'Product 1',
+  measurementUnit: MeasurementUnit.grams,
   nutritionFacts: nutritionFacts1,
 ).copyWith(
   id: UuidValue.fromString('a1a629eb-0775-4f36-8ba7-8e32d229261a'),
@@ -281,6 +284,7 @@ final product1 = Product.create(
 
 final product2 = Product.create(
   name: 'Product 2',
+  measurementUnit: MeasurementUnit.milliliters,
   nutritionFacts: nutritionFacts2,
 ).copyWith(
   id: UuidValue.fromString('2aa629eb-0775-4f36-8ba7-8e32d22926a2'),
@@ -406,13 +410,11 @@ List<Meal> getMeals() {
   final ingredient1 = Ingredient(
     product: product1,
     amount: 200,
-    measurement: MeasurementUnit.grams,
   );
 
   final ingredient2 = Ingredient(
     product: product2,
     amount: 100,
-    measurement: MeasurementUnit.milliliters,
   );
 
   meal1 = meal1.copyWith(
@@ -428,33 +430,30 @@ List<Meal> getMeals() {
 }
 
 List<Exercise> getExercises() => [
-      Exercise.fromAbstractWithReps(
-        setsAmount: 3,
-        repsAmount: 15,
-        abstractExercise: AbstractExercise.withReps(
-          title: 'exercise1omg',
-          description: 'super description omg',
-        ),
+      Exercise(
+        title: 'exercise1omg',
+        description: 'super description omg',
+        sets: 3,
+        load: const Repetition(repsAmount: 15),
+        statistics: [],
       ).copyWith(
         id: UuidValue.fromString('4da629eb-0775-4f36-8ba7-8e32d229265b'),
       ),
-      Exercise.fromAbstractWithTimer(
-        setsAmount: 3,
-        duration: const Duration(seconds: 20),
-        abstractExercise: AbstractExercise.withTimer(
-          title: 'exercise2omg',
-          description: null,
-        ),
+      Exercise(
+        title: 'exercise2omg',
+        description: null,
+        sets: 3,
+        load: const Timer(duration: Duration(seconds: 20)),
+        statistics: [],
       ).copyWith(
         id: UuidValue.fromString('2da629eb-0775-4f36-8ba7-8e32d229264a'),
       ),
-      Exercise.fromAbstractWithTimer(
-        setsAmount: 2,
-        duration: const Duration(seconds: 25),
-        abstractExercise: AbstractExercise.withTimer(
-          title: 'exercise3omg',
-          description: 'super description',
-        ),
+      Exercise(
+        title: 'exercise3omg',
+        description: 'super description',
+        sets: 2,
+        load: const Timer(duration: Duration(seconds: 25)),
+        statistics: [],
       ).copyWith(
         id: UuidValue.fromString('2da629eb-0775-4f36-8ba7-8e32d229264a'),
       ),

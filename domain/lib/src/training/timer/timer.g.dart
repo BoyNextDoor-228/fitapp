@@ -6,12 +6,11 @@ part of 'timer.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$TimerImpl _$$TimerImplFromJson(Map<String, dynamic> json) => _$TimerImpl(
+_Timer _$TimerFromJson(Map<String, dynamic> json) => _Timer(
       duration: Duration(microseconds: (json['duration'] as num).toInt()),
     );
 
-Map<String, dynamic> _$$TimerImplToJson(_$TimerImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$TimerToJson(_Timer instance) => <String, dynamic>{
       'type': _$ExerciseLoadTypeEnumMap[instance.type]!,
       'duration': instance.duration.inMicroseconds,
     };

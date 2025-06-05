@@ -9,6 +9,7 @@ const ingredient1Json = '''
   "product": {
     "id": "5ca629eb-0775-4f36-8ba7-8e32d22926be",
     "name": "Product 1",
+    "measurementUnit": "grams",
     "nutritionFacts": {
       "proteins": 10,
       "fats": 15,
@@ -16,8 +17,7 @@ const ingredient1Json = '''
       "kilocalories": 300
     }
   },
-  "amount": 200,
-  "measurement": "grams"
+  "amount": 200
 }
 ''';
 
@@ -26,6 +26,7 @@ const ingredient2Json = '''
   "product": {
     "id": "72a629eb-0775-4f36-8ba7-8e32d2292621",
     "name": "Product 2",
+    "measurementUnit": "milliliters",
     "nutritionFacts": {
       "proteins": 9,
       "fats": 11,
@@ -33,8 +34,7 @@ const ingredient2Json = '''
       "kilocalories": 230
     }
   },
-  "amount": 300,
-  "measurement": "milliliters"
+  "amount": 300
 }
 ''';
 
@@ -52,6 +52,7 @@ void main() {
 
       var product = Product.create(
         name: 'Product 1',
+        measurementUnit: MeasurementUnit.grams,
         nutritionFacts: nutritionFacts,
       );
 
@@ -62,7 +63,6 @@ void main() {
       ingredient = Ingredient(
         product: product,
         amount: 200,
-        measurement: MeasurementUnit.grams,
       );
     });
 
@@ -90,6 +90,7 @@ void main() {
 
       var product = Product.create(
         name: 'Product 2',
+        measurementUnit: MeasurementUnit.milliliters,
         nutritionFacts: nutritionFacts,
       );
 
@@ -100,7 +101,6 @@ void main() {
       ingredient = Ingredient(
         product: product,
         amount: 300,
-        measurement: MeasurementUnit.milliliters,
       );
     });
 

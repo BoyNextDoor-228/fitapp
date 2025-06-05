@@ -6,7 +6,7 @@ part 'timer.g.dart';
 part 'timer.freezed.dart';
 
 @freezed
-class Timer extends ExerciseLoad with _$Timer {
+abstract class Timer extends ExerciseLoad with _$Timer {
   const factory Timer({required Duration duration}) = _Timer;
 
   factory Timer.fromJson(Map<String, dynamic> json) => _$TimerFromJson(json);
