@@ -31,22 +31,34 @@ class IngredientList extends StatelessWidget {
   final bool _isEditable;
 
   @override
-  Widget build(BuildContext context) => ingredients.isEmpty
-      ? Center(child: Text(ingredientAbsenceTitle))
-      : ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: ingredients.length,
-          itemBuilder: (_, index) => _isEditable
-              ? IngredientListItem.editable(
-                  ingredient: ingredients[index],
-                  onDeletePressed: () =>
-                      onDeletePressed!(ingredients[index].product.id),
-                  onEditPressed: onEdited,
-                  itemDimension: itemDimension,
-                )
-              : IngredientListItem(
-                  ingredient: ingredients[index],
-                  itemDimension: itemDimension,
-                ),
-        );
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return ingredients.isEmpty
+        ? Center(
+            child: Text(
+              ingredientAbsenceTitle,
+              textAlign: TextAlign.center,
+              style: textTheme.headlineSmall,
+              maxLines: 4,
+              overflow: TextOverflow.ellipsis,
+            ),
+          )
+        : ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: ingredients.length,
+            itemBuilder: (_, index) => _isEditable
+                ? IngredientListItem.editable(
+                    ingredient: ingredients[index],
+                    onDeletePressed: () =>
+                        onDeletePressed!(ingredients[index].product.id),
+                    onEditPressed: onEdited,
+                    itemDimension: itemDimension,
+                  )
+                : IngredientListItem(
+                    ingredient: ingredients[index],
+                    itemDimension: itemDimension,
+                  ),
+          );
+  }
 }

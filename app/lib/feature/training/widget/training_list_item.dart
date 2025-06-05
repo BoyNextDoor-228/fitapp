@@ -45,7 +45,7 @@ class TrainingListItem extends StatelessWidget {
                 flex: 3,
                 child: _Content(
                   training: training,
-                  exerciseCardDimension: height / 2,
+                  exerciseCardDimension: height * 0.2,
                 ),
               ),
             ],

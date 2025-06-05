@@ -75,6 +75,7 @@ class _Content extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     final text = S.of(context);
 
     return Column(
@@ -95,7 +96,7 @@ class _Content extends StatelessWidget {
               turnExerciseLoadToText(exercise.sets, exercise.load, text),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
-              style: Theme.of(context).textTheme.titleLarge,
+              style: textTheme.titleLarge,
             ),
           ),
         ),
@@ -119,31 +120,30 @@ class _Header extends StatelessWidget {
   final void Function(Exercise newExercise)? onEditPressed;
 
   @override
-  Widget build(BuildContext context) => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          Expanded(
-            flex: 8,
-            child: Text(
-              exercise.title * 100,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineSmall
-                  ?.copyWith(fontWeight: FontWeight.bold),
-            ),
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Expanded(
+          child: Text(
+            exercise.title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style:
+                textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold),
           ),
-          if (isEditable)
-            Expanded(
-              child: _CardMenuButtons(
-                exercise: exercise,
-                onDeletePressed: onDeletePressed!,
-                onEditPressed: onEditPressed!,
-              ),
-            ),
-        ],
-      );
+        ),
+        if (isEditable)
+          _CardMenuButtons(
+            exercise: exercise,
+            onDeletePressed: onDeletePressed!,
+            onEditPressed: onEditPressed!,
+          ),
+      ],
+    );
+  }
 }
 
 class _CardMenuButtons extends StatelessWidget {

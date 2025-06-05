@@ -28,10 +28,9 @@ class S {
   static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name =
-        (locale.countryCode?.isEmpty ?? false)
-            ? locale.languageCode
-            : locale.toString();
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
     final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
@@ -325,10 +324,10 @@ class S {
     );
   }
 
-  /// `No ingredients yet`
+  /// `No ingredients yet.\nPress 'Add ingredient' button to create one.`
   String get noIngredientsYet {
     return Intl.message(
-      'No ingredients yet',
+      'No ingredients yet.\nPress \'Add ingredient\' button to create one.',
       name: 'noIngredientsYet',
       desc: '',
       args: [],
@@ -705,10 +704,10 @@ class S {
     );
   }
 
-  /// `No exercises yet`
+  /// `No exercises yet.\nPress 'Add exercise' button to create one.`
   String get noExercisesYet {
     return Intl.message(
-      'No exercises yet',
+      'No exercises yet.\nPress \'Add exercise\' button to create one.',
       name: 'noExercisesYet',
       desc: '',
       args: [],
@@ -970,20 +969,20 @@ class S {
     );
   }
 
-  /// `No products yet.\n Press 'Plus' button to create a new product`
+  /// `No products yet.\n Tap 'Plus' button to create a new product`
   String get noProductsYetnPressPlusButtonToCreateANew {
     return Intl.message(
-      'No products yet.\n Press \'Plus\' button to create a new product',
+      'No products yet.\n Tap \'Plus\' button to create a new product',
       name: 'noProductsYetnPressPlusButtonToCreateANew',
       desc: '',
       args: [],
     );
   }
 
-  /// `No meals yet.\n Press 'Plus' button to create a new meal`
+  /// `No meals yet.\n Tap 'Plus' button to create a new meal`
   String get noMealsYetnPressPlusButtonToCreateANew {
     return Intl.message(
-      'No meals yet.\n Press \'Plus\' button to create a new meal',
+      'No meals yet.\n Tap \'Plus\' button to create a new meal',
       name: 'noMealsYetnPressPlusButtonToCreateANew',
       desc: '',
       args: [],
@@ -1040,6 +1039,61 @@ class S {
     return Intl.message(
       'An error occurred',
       name: 'anErrorOccurred',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exercise added`
+  String get exerciseAdded {
+    return Intl.message(
+      'Exercise added',
+      name: 'exerciseAdded',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create training`
+  String get createTraining {
+    return Intl.message(
+      'Create training',
+      name: 'createTraining',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Create meal`
+  String get createMeal {
+    return Intl.message('Create meal', name: 'createMeal', desc: '', args: []);
+  }
+
+  /// `No products!\nCreate a product first to add it as an ingredient.`
+  String get noProductsncreateAProductFirstToAddItAsAn {
+    return Intl.message(
+      'No products!\nCreate a product first to add it as an ingredient.',
+      name: 'noProductsncreateAProductFirstToAddItAsAn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Go to products`
+  String get goToProducts {
+    return Intl.message(
+      'Go to products',
+      name: 'goToProducts',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Measurement unit:`
+  String get measurementUnit {
+    return Intl.message(
+      'Measurement unit:',
+      name: 'measurementUnit',
       desc: '',
       args: [],
     );

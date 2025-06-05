@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../../generated/l10n.dart';
 import '../../../../tool/bottom_sheet_provider.dart';
 import '../../../../util/assets.dart';
+import '../../../app/widget/shared/flag_image.dart';
 import '../../../settings/domain/settings_values.dart';
 
 class LanguageSelectionSubpage extends StatelessWidget {
@@ -14,6 +16,8 @@ class LanguageSelectionSubpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final text = S.of(context);
+
     final textTheme = Theme.of(context).textTheme;
     final iconColor = Theme.of(context).colorScheme.tertiaryContainer;
 
@@ -29,7 +33,7 @@ class LanguageSelectionSubpage extends StatelessWidget {
           ),
         ),
         Text(
-          'Select language',
+          text.selectLanguage,
           style: textTheme.headlineMedium,
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
@@ -61,7 +65,7 @@ class _LanguageFlag extends StatelessWidget {
       onTap: onSelected,
       child: Column(
         children: [
-          _FlagImage(
+          FlagImage(
             imagePath: imagePath,
             imageSize: width * 0.3,
           ),
@@ -104,13 +108,13 @@ class _LanguageSelectionButton extends StatelessWidget {
                   flex: 2,
                   child: Stack(
                     children: [
-                      _FlagImage(
+                      FlagImage(
                         imagePath: FitAppAssets.englishFlagImagePath,
                         imageSize: 50,
                       ),
                       Positioned(
                         left: 20,
-                        child: _FlagImage(
+                        child: FlagImage(
                           imagePath: FitAppAssets.russianFlagImagePath,
                           imageSize: 50,
                         ),
@@ -140,10 +144,13 @@ class _LanguageSelectionButton extends StatelessWidget {
   }
 
   Future<void> _openLanguageSelectionMenu(BuildContext context) async {
+    final text = S.of(context);
+    final height = MediaQuery.sizeOf(context).height;
+
     final selectedLanguage = await showBottomSheetWithResultOf<FitAppLanguages>(
       context: context,
-      headerText: 'Select language',
-      height: MediaQuery.sizeOf(context).height * 0.5,
+      headerText: text.selectLanguage,
+      height: height * 0.5,
       content: GridView.count(
         crossAxisCount: 2,
         children: [
@@ -173,21 +180,21 @@ class _LanguageSelectionButton extends StatelessWidget {
   }
 }
 
-class _FlagImage extends StatelessWidget {
-  const _FlagImage({
-    required this.imagePath,
-    required this.imageSize,
-  });
-
-  final String imagePath;
-  final double imageSize;
-
-  @override
-  Widget build(BuildContext context) => ClipRRect(
-        borderRadius: const BorderRadius.all(Radius.circular(5)),
-        child: SizedBox(
-          width: imageSize,
-          child: Image.asset(imagePath),
-        ),
-      );
-}
+// class _FlagImage extends StatelessWidget {
+//   const _FlagImage({
+//     required this.imagePath,
+//     required this.imageSize,
+//   });
+//
+//   final String imagePath;
+//   final double imageSize;
+//
+//   @override
+//   Widget build(BuildContext context) => ClipRRect(
+//         borderRadius: const BorderRadius.all(Radius.circular(5)),
+//         child: SizedBox(
+//           width: imageSize,
+//           child: Image.asset(imagePath),
+//         ),
+//       );
+// }

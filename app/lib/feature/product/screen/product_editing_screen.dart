@@ -7,6 +7,7 @@ import '../../../generated/l10n.dart';
 import '../../app/widget/fitapp_appbar.dart';
 import '../../app/widget/fitapp_drawer.dart';
 import '../../app/widget/fitapp_scaffold.dart';
+import '../../app/widget/shared/scrollable_content_wrapper.dart';
 import '../../user/bloc/user_bloc.dart';
 import '../widget/form/product_form.dart';
 
@@ -41,33 +42,34 @@ class ProductEditingScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final text = S.of(context);
+
     void editProductCallback(Product product) =>
         context.read<UserBloc>().add(ProductEdited(editedProduct: product));
 
-    final text = S.of(context);
-
     return FitAppScaffold(
-      resizeToAvoidBottomInset: false,
       drawer: const FitAppDrawer(),
       appBar: FitappAppbar.innerPage(title: text.editProduct),
       body: BlocListener<UserBloc, UserState>(
         listenWhen: _listenWhenCallback,
         listener: _listenerCallback,
-        child: Column(
-          children: [
-            Text(
-              text.fillTheFormToEditTheProduct,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-            Expanded(
-              child: ProductForm(
-                initialProduct: product,
-                onFormApply: editProductCallback,
-                actionButtonText: text.saveChanges,
+        child: ScrollableContentWrapper(
+          child: Column(
+            children: [
+              Text(
+                text.fillTheFormToEditTheProduct,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
-            ),
-          ],
+              Expanded(
+                child: ProductForm(
+                  initialProduct: product,
+                  onFormApply: editProductCallback,
+                  actionButtonText: text.saveChanges,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

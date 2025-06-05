@@ -15,7 +15,7 @@ class IngredientAmount extends StatelessWidget {
   Widget build(BuildContext context) {
     final text = S.of(context);
 
-    if (ingredient.measurement == MeasurementUnit.milliliters) {
+    if (ingredient.product.measurementUnit == MeasurementUnit.milliliters) {
       return Text(text.ingredientamountMl(ingredient.amount));
     }
 

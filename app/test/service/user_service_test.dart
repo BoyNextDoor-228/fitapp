@@ -153,13 +153,8 @@ Future<void> main() async {
       await userService.createUser(userWeight: testUserInitialWeight);
       await userService.addTraining(newTraining: testTraining);
 
-      final newExercise = Exercise.fromAbstractWithReps(
-        abstractExercise: mockAbstractExercises.first,
-        setsAmount: 2,
-        repsAmount: 10,
-      ).copyWith(
+      final newExercise = mockExercises.first.copyWith(
         id: testExerciseUuidValue,
-        statistics: mockExerciseStatistics,
       );
 
       expectedUser = User.create(weight: 100).copyWith(
@@ -417,6 +412,7 @@ Future<void> main() async {
       final newIngredient = mockIngredients.last.copyWith(
         product: Product.create(
           name: 'New ingredient',
+          measurementUnit: MeasurementUnit.grams,
           nutritionFacts: testNutritionFacts,
         ),
       );

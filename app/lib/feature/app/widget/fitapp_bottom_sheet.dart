@@ -24,7 +24,7 @@ class FitAppBottomSheet extends StatelessWidget {
                 headerText: headerText,
               ),
               Expanded(
-                flex: 9,
+                //flex: 9,
                 child: content,
               ),
             ],
@@ -45,6 +45,7 @@ class _Header extends StatelessWidget {
             child: Center(
               child: Text(
                 headerText,
+                style: Theme.of(context).textTheme.titleMedium,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
               ),

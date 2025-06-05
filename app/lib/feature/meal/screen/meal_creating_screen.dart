@@ -7,6 +7,7 @@ import '../../../generated/l10n.dart';
 import '../../app/widget/fitapp_appbar.dart';
 import '../../app/widget/fitapp_drawer.dart';
 import '../../app/widget/fitapp_scaffold.dart';
+import '../../app/widget/shared/scrollable_content_wrapper.dart';
 import '../../user/bloc/user_bloc.dart';
 import '../widget/form/meal_form.dart';
 
@@ -25,17 +26,19 @@ class MealCreatingScreen extends StatelessWidget {
       body: BlocListener<UserBloc, UserState>(
         listenWhen: _listenWhenCallback,
         listener: _listenerCallback,
-        child: Column(
-          children: [
-            Text(
-              text.fillTheFormToCreateANewMeal,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-            const Expanded(
-              child: _MealCreatingForm(),
-            ),
-          ],
+        child: ScrollableContentWrapper(
+          child: Column(
+            children: [
+              Text(
+                text.fillTheFormToCreateANewMeal,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const Expanded(
+                child: _MealCreatingForm(),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -74,15 +77,11 @@ class _MealCreatingForm extends StatelessWidget {
     final text = S.of(context);
 
     void addMeal(Meal meal) {
-      context.read<UserBloc>().add(
-            MealAdded(
-              newMeal: meal,
-            ),
-          );
+      context.read<UserBloc>().add(MealAdded(newMeal: meal));
     }
 
     return MealForm(
-      actionButtonText: text.create,
+      actionButtonText: text.createMeal,
       onFormApply: addMeal,
     );
   }

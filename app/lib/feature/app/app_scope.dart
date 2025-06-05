@@ -1,5 +1,8 @@
 import 'package:fitapp_domain/domain.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
+import '../../generated/l10n.dart';
 import '../../repository/settings_hive_storage_repository.dart';
 import '../../repository/settings_repository.dart';
 import '../../repository/user_hive_storage_repository.dart';
@@ -33,6 +36,18 @@ class AppScope implements IAppScope {
 
   @override
   AppRouter get router => _router;
+
+  @override
+  List<LocalizationsDelegate> get localizationsDelegates =>
+      const <LocalizationsDelegate<dynamic>>[
+        S.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ];
+
+  @override
+  List<Locale> get supportedLocales => S.delegate.supportedLocales;
 
   @override
   Future<void> init() async {
@@ -87,6 +102,10 @@ abstract class IAppScope {
   String get applicationName;
 
   AppRouter get router;
+
+  List<LocalizationsDelegate<dynamic>> get localizationsDelegates;
+
+  List<Locale> get supportedLocales;
 
   Future<void> init();
 }

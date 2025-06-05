@@ -7,6 +7,7 @@ import '../../../generated/l10n.dart';
 import '../../app/widget/fitapp_appbar.dart';
 import '../../app/widget/fitapp_drawer.dart';
 import '../../app/widget/fitapp_scaffold.dart';
+import '../../app/widget/shared/scrollable_content_wrapper.dart';
 import '../../user/bloc/user_bloc.dart';
 import '../widget/form/product_form.dart';
 
@@ -14,7 +15,7 @@ import '../widget/form/product_form.dart';
 class ProductCreatingScreen extends StatelessWidget {
   const ProductCreatingScreen({super.key});
 
-  bool _listenWhenCallback(
+  bool _haveProductsUpdated(
     UserState previousState,
     UserState currentState,
   ) =>
@@ -47,26 +48,27 @@ class ProductCreatingScreen extends StatelessWidget {
     }
 
     return FitAppScaffold(
-      resizeToAvoidBottomInset: false,
       drawer: const FitAppDrawer(),
       appBar: FitappAppbar.innerPage(title: text.newProduct),
       body: BlocListener<UserBloc, UserState>(
-        listenWhen: _listenWhenCallback,
+        listenWhen: _haveProductsUpdated,
         listener: _listenerCallback,
-        child: Column(
-          children: [
-            Text(
-              text.fillTheFormToCreateANewProduct,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-            Expanded(
-              child: ProductForm(
-                onFormApply: addProduct,
-                actionButtonText: text.create,
+        child: ScrollableContentWrapper(
+          child: Column(
+            children: [
+              Text(
+                text.fillTheFormToCreateANewProduct,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
-            ),
-          ],
+              Expanded(
+                child: ProductForm(
+                  onFormApply: addProduct,
+                  actionButtonText: text.createProduct,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

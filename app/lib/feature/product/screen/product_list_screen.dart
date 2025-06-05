@@ -20,7 +20,7 @@ class ProductListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final userBloc = context.read<UserBloc>();
     final router = context.router;
-    final height = MediaQuery.sizeOf(context).height;
+    final height = MediaQuery.sizeOf(context).longestSide;
     final text = S.of(context);
 
     return FitAppScaffold(

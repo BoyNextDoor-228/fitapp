@@ -7,6 +7,7 @@ import '../../../generated/l10n.dart';
 import '../../app/widget/fitapp_appbar.dart';
 import '../../app/widget/fitapp_drawer.dart';
 import '../../app/widget/fitapp_scaffold.dart';
+import '../../app/widget/shared/scrollable_content_wrapper.dart';
 import '../../user/bloc/user_bloc.dart';
 import '../widget/form/training_form.dart';
 
@@ -25,25 +26,26 @@ class TrainingEditingScreen extends StatelessWidget {
     final text = S.of(context);
 
     return FitAppScaffold(
-      resizeToAvoidBottomInset: false,
       drawer: const FitAppDrawer(),
       appBar: FitappAppbar.innerPage(title: text.editTraining),
       body: BlocListener<UserBloc, UserState>(
         listenWhen: _listenWhenCallback,
         listener: _listenerCallback,
-        child: Column(
-          children: [
-            Text(
-              text.fillTheFormToEditTraining,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-            Expanded(
-              child: _TrainingEditingForm(
-                oldTraining: training,
+        child: ScrollableContentWrapper(
+          child: Column(
+            children: [
+              Text(
+                text.fillTheFormToEditTraining,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
-            ),
-          ],
+              Expanded(
+                child: _TrainingEditingForm(
+                  oldTraining: training,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

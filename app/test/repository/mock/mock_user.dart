@@ -25,7 +25,6 @@ final mockIngredients = List.generate(
   (int index) => Ingredient(
     product: mockProducts[index],
     amount: 200,
-    measurement: MeasurementUnit.grams,
   ),
 );
 
@@ -41,26 +40,16 @@ final mockTrainings = List.generate(
   ),
 );
 
-final mockAbstractExercises = [
-  AbstractExercise.withReps(
-    title: 'Exercise 1 title',
-    description: null,
-  ),
-  AbstractExercise.withReps(
-    title: 'Exercise 2 title',
-    description: 'Exercise 2 description',
-  ),
-];
-
 final mockExercises = List.generate(
   2,
-  (int index) => Exercise.fromAbstractWithReps(
-    abstractExercise: mockAbstractExercises[index],
-    setsAmount: 2,
-    repsAmount: 10,
+  (int index) => Exercise(
+    title: 'Exercise 1 title',
+    description: null,
+    sets: 2,
+    load: const Repetition(repsAmount: 10),
+    statistics: mockExerciseStatistics,
   ).copyWith(
     id: UuidValue.fromString('33b3518-ede2-11ef-8300-a3504b8d5aa$index'),
-    statistics: mockExerciseStatistics,
   ),
 );
 

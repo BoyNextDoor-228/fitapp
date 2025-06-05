@@ -3,13 +3,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'feature/app/app_scope.dart';
 import 'feature/app/page/fallback_app.dart';
 import 'feature/settings/bloc/settings_cubit.dart';
 import 'feature/user/bloc/user_bloc.dart';
-import 'generated/l10n.dart';
 import 'util/theme.dart';
 
 class FitApp extends StatefulWidget {
@@ -22,15 +20,6 @@ class FitApp extends StatefulWidget {
 class _FitAppState extends State<FitApp> {
   late IAppScope _appScope;
   late Future<void> _scopeFuture;
-
-  final _localizationsDelegates = const <LocalizationsDelegate<dynamic>>[
-    S.delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-  ];
-
-  final _supportedLocales = S.delegate.supportedLocales;
 
   @override
   void initState() {
@@ -66,8 +55,9 @@ class _FitAppState extends State<FitApp> {
             ],
             child: BlocBuilder<SettingsCubit, SettingsState>(
               builder: (BuildContext context, state) => MaterialApp.router(
-                localizationsDelegates: _localizationsDelegates,
-                supportedLocales: _supportedLocales,
+                localizationsDelegates: _appScope.localizationsDelegates,
+                supportedLocales: _appScope.supportedLocales,
+                // If no language was selected in settings, system language is set.
                 locale: state.settings.language == null
                     ? null
                     : Locale(state.settings.language!.language),
@@ -86,5 +76,3 @@ class _FitAppState extends State<FitApp> {
     _scopeFuture = _appScope.init();
   }
 }
-
-typedef RebuildAppCallback = void Function({Future<void> update});

@@ -7,6 +7,7 @@ import '../../../generated/l10n.dart';
 import '../../app/widget/fitapp_appbar.dart';
 import '../../app/widget/fitapp_drawer.dart';
 import '../../app/widget/fitapp_scaffold.dart';
+import '../../app/widget/shared/scrollable_content_wrapper.dart';
 import '../../user/bloc/user_bloc.dart';
 import '../widget/form/training_form.dart';
 
@@ -24,18 +25,16 @@ class TrainingCreatingScreen extends StatelessWidget {
       body: BlocListener<UserBloc, UserState>(
         listenWhen: _listenWhenCallback,
         listener: _listenerCallback,
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Text(
-                  text.fillTheFormToCreateANewTraining,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const _TrainingCreatingForm(),
-              ],
-            ),
+        child: ScrollableContentWrapper(
+          child: Column(
+            children: [
+              Text(
+                text.fillTheFormToCreateANewTraining,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const Expanded(child: _TrainingCreatingForm()),
+            ],
           ),
         ),
       ),
@@ -84,7 +83,7 @@ class _TrainingCreatingForm extends StatelessWidget {
     }
 
     return TrainingForm(
-      actionButtonText: text.create,
+      actionButtonText: text.createTraining,
       onFormApply: addTraining,
     );
   }

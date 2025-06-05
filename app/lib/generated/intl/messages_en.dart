@@ -38,202 +38,233 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
-    "addExercise": MessageLookupByLibrary.simpleMessage("Add exercise"),
-    "addIngredient": MessageLookupByLibrary.simpleMessage("Add ingredient"),
-    "addSomeExercisesToStartThisTraining": MessageLookupByLibrary.simpleMessage(
-      "Add some exercises to start this training",
-    ),
-    "anErrorOccurred": MessageLookupByLibrary.simpleMessage(
-      "An error occurred",
-    ),
-    "apply": MessageLookupByLibrary.simpleMessage("Apply"),
-    "areYouSureYouWantToDeleteThisObject": m0,
-    "carbohydrates": MessageLookupByLibrary.simpleMessage("Carbohydrates"),
-    "carbohydratesAmount": MessageLookupByLibrary.simpleMessage(
-      "Carbohydrates amount",
-    ),
-    "changeWeight": MessageLookupByLibrary.simpleMessage("Change weight"),
-    "create": MessageLookupByLibrary.simpleMessage("Create"),
-    "createANewExercise": MessageLookupByLibrary.simpleMessage(
-      "Create a new exercise",
-    ),
-    "createANewIngredient": MessageLookupByLibrary.simpleMessage(
-      "Create a new ingredient",
-    ),
-    "createProduct": MessageLookupByLibrary.simpleMessage("Create product"),
-    "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
-    "date": MessageLookupByLibrary.simpleMessage("Date"),
-    "delete": MessageLookupByLibrary.simpleMessage("Delete"),
-    "deletion": MessageLookupByLibrary.simpleMessage("Deletion"),
-    "edit": MessageLookupByLibrary.simpleMessage("Edit"),
-    "editMeal": MessageLookupByLibrary.simpleMessage("Edit Meal"),
-    "editProduct": MessageLookupByLibrary.simpleMessage("Edit Product"),
-    "editTraining": MessageLookupByLibrary.simpleMessage("Edit Training"),
-    "editWeight": MessageLookupByLibrary.simpleMessage("Edit weight"),
-    "enterAmount": MessageLookupByLibrary.simpleMessage("Enter amount"),
-    "enterIngredientAmount": MessageLookupByLibrary.simpleMessage(
-      "Enter ingredient amount",
-    ),
-    "enterIntegerNumber": MessageLookupByLibrary.simpleMessage(
-      "Enter integer number",
-    ),
-    "enterRepsCount": MessageLookupByLibrary.simpleMessage("Enter reps count"),
-    "enterSetsCount": MessageLookupByLibrary.simpleMessage("Enter sets count"),
-    "enterTitle": MessageLookupByLibrary.simpleMessage("Enter title"),
-    "enterValidIntegerNumber": MessageLookupByLibrary.simpleMessage(
-      "Enter valid integer number",
-    ),
-    "enterValidNumber": MessageLookupByLibrary.simpleMessage(
-      "Enter valid number",
-    ),
-    "enterYourWeight": MessageLookupByLibrary.simpleMessage(
-      "Enter your weight",
-    ),
-    "exerciseEditing": MessageLookupByLibrary.simpleMessage("Exercise editing"),
-    "exercisesAreAbsent": MessageLookupByLibrary.simpleMessage(
-      "Exercises are absent",
-    ),
-    "exercisesStatistics": MessageLookupByLibrary.simpleMessage(
-      "Exercises statistics",
-    ),
-    "exit": MessageLookupByLibrary.simpleMessage("Exit"),
-    "fats": MessageLookupByLibrary.simpleMessage("Fats"),
-    "fatsAmount": MessageLookupByLibrary.simpleMessage("Fats amount"),
-    "fillTheFormToCreateANewMeal": MessageLookupByLibrary.simpleMessage(
-      "Fill the form to create a new meal",
-    ),
-    "fillTheFormToCreateANewProduct": MessageLookupByLibrary.simpleMessage(
-      "Fill the form to create a new product",
-    ),
-    "fillTheFormToCreateANewTraining": MessageLookupByLibrary.simpleMessage(
-      "Fill the form to create a new training",
-    ),
-    "fillTheFormToEditMeal": MessageLookupByLibrary.simpleMessage(
-      "Fill the form to edit meal",
-    ),
-    "fillTheFormToEditTheProduct": MessageLookupByLibrary.simpleMessage(
-      "Fill the form to edit the product",
-    ),
-    "fillTheFormToEditTraining": MessageLookupByLibrary.simpleMessage(
-      "Fill the form to edit training",
-    ),
-    "finish": MessageLookupByLibrary.simpleMessage("Finish"),
-    "finishTraining": MessageLookupByLibrary.simpleMessage("Finish training"),
-    "grams": MessageLookupByLibrary.simpleMessage("Grams"),
-    "hereYouCanChangeYourCurrentWeight": MessageLookupByLibrary.simpleMessage(
-      "Here you can change your current weight",
-    ),
-    "high": MessageLookupByLibrary.simpleMessage("High"),
-    "home": MessageLookupByLibrary.simpleMessage("Home"),
-    "ingredientEditing": MessageLookupByLibrary.simpleMessage(
-      "Ingredient editing",
-    ),
-    "ingredientamountGr": m1,
-    "ingredientamountMl": m2,
-    "interfaceContrastLevel": MessageLookupByLibrary.simpleMessage(
-      "Interface contrast level",
-    ),
-    "interfaceLanguage": MessageLookupByLibrary.simpleMessage(
-      "Interface language",
-    ),
-    "interfaceMainColor": MessageLookupByLibrary.simpleMessage(
-      "Interface main color",
-    ),
-    "kilocalories": MessageLookupByLibrary.simpleMessage("Kilocalories"),
-    "kilocaloriesAmount": MessageLookupByLibrary.simpleMessage(
-      "Kilocalories amount",
-    ),
-    "low": MessageLookupByLibrary.simpleMessage("Low"),
-    "makeSureFractionalNumberIsCorrect": MessageLookupByLibrary.simpleMessage(
-      "Make sure fractional number is correct",
-    ),
-    "mealAdded": MessageLookupByLibrary.simpleMessage("Meal added!"),
-    "mealEdited": MessageLookupByLibrary.simpleMessage("Meal edited!"),
-    "mealInformation": MessageLookupByLibrary.simpleMessage("Meal information"),
-    "meals": MessageLookupByLibrary.simpleMessage("Meals"),
-    "mealsList": MessageLookupByLibrary.simpleMessage("Meals list"),
-    "medium": MessageLookupByLibrary.simpleMessage("Medium"),
-    "milliliters": MessageLookupByLibrary.simpleMessage("Milliliters"),
-    "newExerciseDescriptionOptional": MessageLookupByLibrary.simpleMessage(
-      "New exercise description (optional)",
-    ),
-    "newExerciseTitle": MessageLookupByLibrary.simpleMessage(
-      "New exercise title",
-    ),
-    "newMeal": MessageLookupByLibrary.simpleMessage("New Meal"),
-    "newMealRecipeOptional": MessageLookupByLibrary.simpleMessage(
-      "New meal recipe (optional)",
-    ),
-    "newMealTitle": MessageLookupByLibrary.simpleMessage("New meal title"),
-    "newProduct": MessageLookupByLibrary.simpleMessage("New product"),
-    "newProductName": MessageLookupByLibrary.simpleMessage("New product name"),
-    "newTraining": MessageLookupByLibrary.simpleMessage("New Training"),
-    "newTrainingDescriptionOptional": MessageLookupByLibrary.simpleMessage(
-      "New training description (optional)",
-    ),
-    "newTrainingTitle": MessageLookupByLibrary.simpleMessage(
-      "New training title",
-    ),
-    "no": MessageLookupByLibrary.simpleMessage("No"),
-    "noDescription": MessageLookupByLibrary.simpleMessage("No description"),
-    "noExercisesYet": MessageLookupByLibrary.simpleMessage("No exercises yet"),
-    "noIngredientsYet": MessageLookupByLibrary.simpleMessage(
-      "No ingredients yet",
-    ),
-    "noMeals": MessageLookupByLibrary.simpleMessage("No meals"),
-    "noMealsYetnPressPlusButtonToCreateANew":
-        MessageLookupByLibrary.simpleMessage(
-          "No meals yet.\n Press \'Plus\' button to create a new meal",
+        "addExercise": MessageLookupByLibrary.simpleMessage("Add exercise"),
+        "addIngredient": MessageLookupByLibrary.simpleMessage("Add ingredient"),
+        "addSomeExercisesToStartThisTraining":
+            MessageLookupByLibrary.simpleMessage(
+          "Add some exercises to start this training",
         ),
-    "noProducts": MessageLookupByLibrary.simpleMessage("No products"),
-    "noProductsYetnPressPlusButtonToCreateANew":
-        MessageLookupByLibrary.simpleMessage(
-          "No products yet.\n Press \'Plus\' button to create a new product",
+        "anErrorOccurred": MessageLookupByLibrary.simpleMessage(
+          "An error occurred",
         ),
-    "noRecipe": MessageLookupByLibrary.simpleMessage("No recipe"),
-    "noStatisticsForThisExerciseYetntoMakeStatisticsOfThis":
-        MessageLookupByLibrary.simpleMessage(
+        "apply": MessageLookupByLibrary.simpleMessage("Apply"),
+        "areYouSureYouWantToDeleteThisObject": m0,
+        "carbohydrates": MessageLookupByLibrary.simpleMessage("Carbohydrates"),
+        "carbohydratesAmount": MessageLookupByLibrary.simpleMessage(
+          "Carbohydrates amount",
+        ),
+        "changeWeight": MessageLookupByLibrary.simpleMessage("Change weight"),
+        "create": MessageLookupByLibrary.simpleMessage("Create"),
+        "createANewExercise": MessageLookupByLibrary.simpleMessage(
+          "Create a new exercise",
+        ),
+        "createANewIngredient": MessageLookupByLibrary.simpleMessage(
+          "Create a new ingredient",
+        ),
+        "createMeal": MessageLookupByLibrary.simpleMessage("Create meal"),
+        "createProduct": MessageLookupByLibrary.simpleMessage("Create product"),
+        "createTraining":
+            MessageLookupByLibrary.simpleMessage("Create training"),
+        "darkMode": MessageLookupByLibrary.simpleMessage("Dark Mode"),
+        "date": MessageLookupByLibrary.simpleMessage("Date"),
+        "delete": MessageLookupByLibrary.simpleMessage("Delete"),
+        "deletion": MessageLookupByLibrary.simpleMessage("Deletion"),
+        "edit": MessageLookupByLibrary.simpleMessage("Edit"),
+        "editMeal": MessageLookupByLibrary.simpleMessage("Edit Meal"),
+        "editProduct": MessageLookupByLibrary.simpleMessage("Edit Product"),
+        "editTraining": MessageLookupByLibrary.simpleMessage("Edit Training"),
+        "editWeight": MessageLookupByLibrary.simpleMessage("Edit weight"),
+        "enterAmount": MessageLookupByLibrary.simpleMessage("Enter amount"),
+        "enterIngredientAmount": MessageLookupByLibrary.simpleMessage(
+          "Enter ingredient amount",
+        ),
+        "enterIntegerNumber": MessageLookupByLibrary.simpleMessage(
+          "Enter integer number",
+        ),
+        "enterRepsCount":
+            MessageLookupByLibrary.simpleMessage("Enter reps count"),
+        "enterSetsCount":
+            MessageLookupByLibrary.simpleMessage("Enter sets count"),
+        "enterTitle": MessageLookupByLibrary.simpleMessage("Enter title"),
+        "enterValidIntegerNumber": MessageLookupByLibrary.simpleMessage(
+          "Enter valid integer number",
+        ),
+        "enterValidNumber": MessageLookupByLibrary.simpleMessage(
+          "Enter valid number",
+        ),
+        "enterYourWeight": MessageLookupByLibrary.simpleMessage(
+          "Enter your weight",
+        ),
+        "exerciseAdded": MessageLookupByLibrary.simpleMessage("Exercise added"),
+        "exerciseEditing":
+            MessageLookupByLibrary.simpleMessage("Exercise editing"),
+        "exercisesAreAbsent": MessageLookupByLibrary.simpleMessage(
+          "Exercises are absent",
+        ),
+        "exercisesStatistics": MessageLookupByLibrary.simpleMessage(
+          "Exercises statistics",
+        ),
+        "exit": MessageLookupByLibrary.simpleMessage("Exit"),
+        "fats": MessageLookupByLibrary.simpleMessage("Fats"),
+        "fatsAmount": MessageLookupByLibrary.simpleMessage("Fats amount"),
+        "fillTheFormToCreateANewMeal": MessageLookupByLibrary.simpleMessage(
+          "Fill the form to create a new meal",
+        ),
+        "fillTheFormToCreateANewProduct": MessageLookupByLibrary.simpleMessage(
+          "Fill the form to create a new product",
+        ),
+        "fillTheFormToCreateANewTraining": MessageLookupByLibrary.simpleMessage(
+          "Fill the form to create a new training",
+        ),
+        "fillTheFormToEditMeal": MessageLookupByLibrary.simpleMessage(
+          "Fill the form to edit meal",
+        ),
+        "fillTheFormToEditTheProduct": MessageLookupByLibrary.simpleMessage(
+          "Fill the form to edit the product",
+        ),
+        "fillTheFormToEditTraining": MessageLookupByLibrary.simpleMessage(
+          "Fill the form to edit training",
+        ),
+        "finish": MessageLookupByLibrary.simpleMessage("Finish"),
+        "finishTraining":
+            MessageLookupByLibrary.simpleMessage("Finish training"),
+        "goToProducts": MessageLookupByLibrary.simpleMessage("Go to products"),
+        "grams": MessageLookupByLibrary.simpleMessage("Grams"),
+        "hereYouCanChangeYourCurrentWeight":
+            MessageLookupByLibrary.simpleMessage(
+          "Here you can change your current weight",
+        ),
+        "high": MessageLookupByLibrary.simpleMessage("High"),
+        "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "ingredientEditing": MessageLookupByLibrary.simpleMessage(
+          "Ingredient editing",
+        ),
+        "ingredientamountGr": m1,
+        "ingredientamountMl": m2,
+        "interfaceContrastLevel": MessageLookupByLibrary.simpleMessage(
+          "Interface contrast level",
+        ),
+        "interfaceLanguage": MessageLookupByLibrary.simpleMessage(
+          "Interface language",
+        ),
+        "interfaceMainColor": MessageLookupByLibrary.simpleMessage(
+          "Interface main color",
+        ),
+        "kilocalories": MessageLookupByLibrary.simpleMessage("Kilocalories"),
+        "kilocaloriesAmount": MessageLookupByLibrary.simpleMessage(
+          "Kilocalories amount",
+        ),
+        "low": MessageLookupByLibrary.simpleMessage("Low"),
+        "makeSureFractionalNumberIsCorrect":
+            MessageLookupByLibrary.simpleMessage(
+          "Make sure fractional number is correct",
+        ),
+        "mealAdded": MessageLookupByLibrary.simpleMessage("Meal added!"),
+        "mealEdited": MessageLookupByLibrary.simpleMessage("Meal edited!"),
+        "mealInformation":
+            MessageLookupByLibrary.simpleMessage("Meal information"),
+        "meals": MessageLookupByLibrary.simpleMessage("Meals"),
+        "mealsList": MessageLookupByLibrary.simpleMessage("Meals list"),
+        "measurementUnit": MessageLookupByLibrary.simpleMessage(
+          "Measurement unit:",
+        ),
+        "medium": MessageLookupByLibrary.simpleMessage("Medium"),
+        "milliliters": MessageLookupByLibrary.simpleMessage("Milliliters"),
+        "newExerciseDescriptionOptional": MessageLookupByLibrary.simpleMessage(
+          "New exercise description (optional)",
+        ),
+        "newExerciseTitle": MessageLookupByLibrary.simpleMessage(
+          "New exercise title",
+        ),
+        "newMeal": MessageLookupByLibrary.simpleMessage("New Meal"),
+        "newMealRecipeOptional": MessageLookupByLibrary.simpleMessage(
+          "New meal recipe (optional)",
+        ),
+        "newMealTitle": MessageLookupByLibrary.simpleMessage("New meal title"),
+        "newProduct": MessageLookupByLibrary.simpleMessage("New product"),
+        "newProductName":
+            MessageLookupByLibrary.simpleMessage("New product name"),
+        "newTraining": MessageLookupByLibrary.simpleMessage("New Training"),
+        "newTrainingDescriptionOptional": MessageLookupByLibrary.simpleMessage(
+          "New training description (optional)",
+        ),
+        "newTrainingTitle": MessageLookupByLibrary.simpleMessage(
+          "New training title",
+        ),
+        "no": MessageLookupByLibrary.simpleMessage("No"),
+        "noDescription": MessageLookupByLibrary.simpleMessage("No description"),
+        "noExercisesYet": MessageLookupByLibrary.simpleMessage(
+          "No exercises yet.\nPress \'Add exercise\' button to create one.",
+        ),
+        "noIngredientsYet": MessageLookupByLibrary.simpleMessage(
+          "No ingredients yet.\nPress \'Add ingredient\' button to create one.",
+        ),
+        "noMeals": MessageLookupByLibrary.simpleMessage("No meals"),
+        "noMealsYetnPressPlusButtonToCreateANew":
+            MessageLookupByLibrary.simpleMessage(
+          "No meals yet.\n Tap \'Plus\' button to create a new meal",
+        ),
+        "noProducts": MessageLookupByLibrary.simpleMessage("No products"),
+        "noProductsYetnPressPlusButtonToCreateANew":
+            MessageLookupByLibrary.simpleMessage(
+          "No products yet.\n Tap \'Plus\' button to create a new product",
+        ),
+        "noProductsncreateAProductFirstToAddItAsAn":
+            MessageLookupByLibrary.simpleMessage(
+          "No products!\nCreate a product first to add it as an ingredient.",
+        ),
+        "noRecipe": MessageLookupByLibrary.simpleMessage("No recipe"),
+        "noStatisticsForThisExerciseYetntoMakeStatisticsOfThis":
+            MessageLookupByLibrary.simpleMessage(
           "No Statistics for this exercise yet.\nTo get it\'s statistics, complete a training this exercise is a part of.",
         ),
-    "noTrainings": MessageLookupByLibrary.simpleMessage("No trainings"),
-    "noTrainingsYetNTapPlusIconToCreateA": MessageLookupByLibrary.simpleMessage(
-      "No trainings yet. \n Tap \'Plus\' icon to create a new training",
-    ),
-    "numberMustBeNonnegative": MessageLookupByLibrary.simpleMessage(
-      "Number must be non-negative",
-    ),
-    "productAdded": MessageLookupByLibrary.simpleMessage("Product added!"),
-    "productEdited": MessageLookupByLibrary.simpleMessage("Product edited!"),
-    "products": MessageLookupByLibrary.simpleMessage("Products"),
-    "productsList": MessageLookupByLibrary.simpleMessage("Products list"),
-    "proteins": MessageLookupByLibrary.simpleMessage("Proteins"),
-    "proteinsAmount": MessageLookupByLibrary.simpleMessage("Proteins amount"),
-    "reps": MessageLookupByLibrary.simpleMessage("Reps"),
-    "saveChanges": MessageLookupByLibrary.simpleMessage("Save changes"),
-    "selectColor": MessageLookupByLibrary.simpleMessage("Select color"),
-    "selectLanguage": MessageLookupByLibrary.simpleMessage("Select language"),
-    "selectProduct": MessageLookupByLibrary.simpleMessage("Select product"),
-    "setsSetsOfDuration": m3,
-    "setsSetsOfNReps": m4,
-    "settings": MessageLookupByLibrary.simpleMessage("Settings"),
-    "startTraining": MessageLookupByLibrary.simpleMessage("Start training"),
-    "statisticsOfExercisetitle": m5,
-    "timer": MessageLookupByLibrary.simpleMessage("Timer"),
-    "totalIngredientsN": m6,
-    "training": MessageLookupByLibrary.simpleMessage("Training"),
-    "trainingAdded": MessageLookupByLibrary.simpleMessage("Training added!"),
-    "trainingEdited": MessageLookupByLibrary.simpleMessage("Training edited!"),
-    "trainingInformation": MessageLookupByLibrary.simpleMessage(
-      "Training information",
-    ),
-    "trainings": MessageLookupByLibrary.simpleMessage("Trainings"),
-    "trainingsList": MessageLookupByLibrary.simpleMessage("Trainings list"),
-    "watchStatistics": MessageLookupByLibrary.simpleMessage("Watch Statistics"),
-    "weightUpdated": MessageLookupByLibrary.simpleMessage("Weight updated!"),
-    "yes": MessageLookupByLibrary.simpleMessage("Yes"),
-    "yourCurrentWeightIs": MessageLookupByLibrary.simpleMessage(
-      "Your current weight is:",
-    ),
-    "yourCurrentWeightN": m7,
-  };
+        "noTrainings": MessageLookupByLibrary.simpleMessage("No trainings"),
+        "noTrainingsYetNTapPlusIconToCreateA":
+            MessageLookupByLibrary.simpleMessage(
+          "No trainings yet. \n Tap \'Plus\' icon to create a new training",
+        ),
+        "numberMustBeNonnegative": MessageLookupByLibrary.simpleMessage(
+          "Number must be non-negative",
+        ),
+        "productAdded": MessageLookupByLibrary.simpleMessage("Product added!"),
+        "productEdited":
+            MessageLookupByLibrary.simpleMessage("Product edited!"),
+        "products": MessageLookupByLibrary.simpleMessage("Products"),
+        "productsList": MessageLookupByLibrary.simpleMessage("Products list"),
+        "proteins": MessageLookupByLibrary.simpleMessage("Proteins"),
+        "proteinsAmount":
+            MessageLookupByLibrary.simpleMessage("Proteins amount"),
+        "reps": MessageLookupByLibrary.simpleMessage("Reps"),
+        "saveChanges": MessageLookupByLibrary.simpleMessage("Save changes"),
+        "selectColor": MessageLookupByLibrary.simpleMessage("Select color"),
+        "selectLanguage":
+            MessageLookupByLibrary.simpleMessage("Select language"),
+        "selectProduct": MessageLookupByLibrary.simpleMessage("Select product"),
+        "setsSetsOfDuration": m3,
+        "setsSetsOfNReps": m4,
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
+        "startTraining": MessageLookupByLibrary.simpleMessage("Start training"),
+        "statisticsOfExercisetitle": m5,
+        "timer": MessageLookupByLibrary.simpleMessage("Timer"),
+        "totalIngredientsN": m6,
+        "training": MessageLookupByLibrary.simpleMessage("Training"),
+        "trainingAdded":
+            MessageLookupByLibrary.simpleMessage("Training added!"),
+        "trainingEdited":
+            MessageLookupByLibrary.simpleMessage("Training edited!"),
+        "trainingInformation": MessageLookupByLibrary.simpleMessage(
+          "Training information",
+        ),
+        "trainings": MessageLookupByLibrary.simpleMessage("Trainings"),
+        "trainingsList": MessageLookupByLibrary.simpleMessage("Trainings list"),
+        "watchStatistics":
+            MessageLookupByLibrary.simpleMessage("Watch Statistics"),
+        "weightUpdated":
+            MessageLookupByLibrary.simpleMessage("Weight updated!"),
+        "yes": MessageLookupByLibrary.simpleMessage("Yes"),
+        "yourCurrentWeightIs": MessageLookupByLibrary.simpleMessage(
+          "Your current weight is:",
+        ),
+        "yourCurrentWeightN": m7,
+      };
 }

@@ -16,7 +16,7 @@ class MealFullInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
 
-    final ingredientsListHeight = MediaQuery.sizeOf(context).height * 0.4;
+    final ingredientsListHeight = MediaQuery.sizeOf(context).longestSide * 0.4;
 
     final text = S.of(context);
 

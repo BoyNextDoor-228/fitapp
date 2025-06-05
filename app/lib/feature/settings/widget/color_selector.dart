@@ -20,27 +20,30 @@ class ColorSelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Padding(
         padding: const EdgeInsets.all(20),
-        child: GestureDetector(
+        child: _ColorIndicator(
+          color: initialColor,
           onTap: () async => _openColorSelectionMenu(context),
-          child: ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(5)),
-            child: ColoredBox(
-              color: initialColor,
-              child: const SizedBox.expand(),
-            ),
-          ),
         ),
       );
 
   Future<void> _openColorSelectionMenu(BuildContext context) async {
-    final colorSamples =
-        colors.map((color) => _ColorIndicator(color: color)).toList();
+    final colorSamples = colors
+        .map(
+          (colorCode) => _ColorIndicator(
+            color: Color(colorCode),
+            onTap: () => context.pop<int>(colorCode),
+          ),
+        )
+        .toList();
 
     final color = await showBottomSheetWithResultOf<int>(
       context: context,
       headerText: captionText,
       content: GridView.count(
         crossAxisCount: 2,
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+        childAspectRatio: 2,
         children: colorSamples,
       ),
     );
@@ -54,19 +57,27 @@ class ColorSelector extends StatelessWidget {
 class _ColorIndicator extends StatelessWidget {
   const _ColorIndicator({
     required this.color,
+    required this.onTap,
   });
 
-  final int color;
+  final Color color;
+  final VoidCallback onTap;
 
   @override
-  Widget build(BuildContext context) => Padding(
-        padding: const EdgeInsets.all(10),
-        child: GestureDetector(
-          onTap: () => context.pop<int>(color),
-          child: ColoredBox(
-            color: Color(color),
-            child: const SizedBox.expand(),
+  Widget build(BuildContext context) => InkWell(
+        onTap: onTap,
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(Radius.circular(5)),
+            color: color,
+            border: Border.all(
+              color: Theme.of(context)
+                  .colorScheme
+                  .secondary
+                  .withValues(alpha: 0.5),
+            ),
           ),
+          child: const SizedBox.expand(),
         ),
       );
 }

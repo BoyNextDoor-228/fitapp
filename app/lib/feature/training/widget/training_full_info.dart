@@ -16,7 +16,9 @@ class TrainingFullInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final exerciseListHeight = MediaQuery.sizeOf(context).height * 0.4;
+    final exerciseListHeight = MediaQuery.sizeOf(context).shortestSide;
+    final textTheme = Theme.of(context).textTheme;
+
     final text = S.of(context);
 
     Future<void> goToTrainingProcessScreen() async {
@@ -42,19 +44,19 @@ class TrainingFullInfo extends StatelessWidget {
             training.title,
             overflow: TextOverflow.ellipsis,
             maxLines: 3,
-            style: Theme.of(context).textTheme.titleLarge,
+            style: textTheme.titleLarge,
           ),
           Text(
             training.description ?? text.noDescription,
-            style: Theme.of(context).textTheme.titleMedium,
+            style: textTheme.titleMedium,
           ),
           SizedBox(
-            height: exerciseListHeight,
+            height: exerciseListHeight * 0.8,
             width: double.infinity,
             child: ExerciseList(
               exercises: training.exercises,
               exercisesAbsenceTitle: text.noExercisesYet,
-              itemDimension: exerciseListHeight * 0.8,
+              itemDimension: exerciseListHeight * 0.5,
             ),
           ),
           if (training.exercises.isEmpty)
