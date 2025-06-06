@@ -21,10 +21,14 @@ class _FitAppState extends State<FitApp> {
   late IAppScope _appScope;
   late Future<void> _scopeFuture;
 
+  void _initScope() {
+    _appScope = AppScope();
+    _scopeFuture = _appScope.init();
+  }
+
   @override
   void initState() {
     super.initState();
-
     _initScope();
   }
 
@@ -38,41 +42,45 @@ class _FitAppState extends State<FitApp> {
             );
           }
 
+          final providers = [
+            BlocProvider(
+              lazy: false,
+              create: (_) => UserBloc(
+                userService: _appScope.userService,
+              )..add(UserInitializationRequested()),
+            ),
+            BlocProvider(
+              lazy: false,
+              create: (_) => SettingsCubit(
+                settingsService: _appScope.settingsService,
+              ),
+            ),
+          ];
+
           return MultiBlocProvider(
-            providers: [
-              BlocProvider(
-                lazy: false,
-                create: (_) => UserBloc(
-                  userService: _appScope.userService,
-                )..add(UserInitializationRequested()),
-              ),
-              BlocProvider(
-                lazy: false,
-                create: (_) => SettingsCubit(
-                  settingsService: _appScope.settingsService,
-                ),
-              ),
-            ],
+            providers: providers,
             child: BlocBuilder<SettingsCubit, SettingsState>(
-              builder: (BuildContext context, state) => MaterialApp.router(
-                localizationsDelegates: _appScope.localizationsDelegates,
-                supportedLocales: _appScope.supportedLocales,
+              builder: (_, state) {
                 // If no language was selected in settings, system language is set.
-                locale: state.settings.language == null
+                final locale = state.settings.language == null
                     ? null
-                    : Locale(state.settings.language!.language),
-                title: _appScope.applicationName,
-                theme: FitAppTheme(themeSettings: state.settings.themeSettings)
-                    .getThemeData(),
-                routerConfig: _appScope.router.config(),
-              ),
+                    : Locale(state.settings.language!.languageCode);
+
+                final theme =
+                    FitAppTheme(themeSettings: state.settings.themeSettings)
+                        .getThemeData();
+
+                return MaterialApp.router(
+                  localizationsDelegates: _appScope.localizationsDelegates,
+                  supportedLocales: _appScope.supportedLocales,
+                  locale: locale,
+                  title: _appScope.applicationName,
+                  theme: theme,
+                  routerConfig: _appScope.router.config(),
+                );
+              },
             ),
           );
         },
       );
-
-  void _initScope() {
-    _appScope = AppScope();
-    _scopeFuture = _appScope.init();
-  }
 }
