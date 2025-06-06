@@ -56,7 +56,8 @@ class AppScope implements IAppScope {
     await _initServices();
 
     _router = AppRouter(
-      userPresenceGuard: UserPresenceGuard(userService: _userService),
+      userPresenceGuard:
+          UserPresenceGuard(isUserPresented: _userService.user != null),
     );
   }
 

@@ -20,7 +20,6 @@ import '../training/screen/training_process_screen.dart';
 import '../user/screen/changing_weight_screen.dart';
 import '../user/screen/home_screen.dart';
 import '../user/screen/introduction_screen.dart';
-import '../user/screen/weight_registration_screen.dart';
 import './../root/page/root_page.dart';
 import 'route_guard/user_presence_guard.dart';
 import 'route_path.dart';
@@ -38,10 +37,6 @@ class AppRouter extends RootStackRouter {
         AutoRoute(
           path: RoutePath.introduction,
           page: IntroductionRoute.page,
-        ),
-        AutoRoute(
-          path: RoutePath.weightRegistration,
-          page: WeightRegistrationRoute.page,
         ),
         AutoRoute(
           path: RoutePath.root,
