@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,98 +10,60 @@ part of 'user.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-User _$UserFromJson(Map<String, dynamic> json) {
-  return _User.fromJson(json);
-}
 
 /// @nodoc
 mixin _$User {
   @UuidValueConverter()
-  UuidValue get id => throw _privateConstructorUsedError;
-  double get weight => throw _privateConstructorUsedError;
-  List<Training> get trainings => throw _privateConstructorUsedError;
-  List<Meal> get meals => throw _privateConstructorUsedError;
-  List<Product> get products => throw _privateConstructorUsedError;
-
-  /// Serializes this User to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  UuidValue get id;
+  double get weight;
+  List<Training> get trainings;
+  List<Meal> get meals;
+  List<Product> get products;
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $UserCopyWith<User> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $UserCopyWith<$Res> {
-  factory $UserCopyWith(User value, $Res Function(User) then) =
-      _$UserCopyWithImpl<$Res, User>;
-  @useResult
-  $Res call(
-      {@UuidValueConverter() UuidValue id,
-      double weight,
-      List<Training> trainings,
-      List<Meal> meals,
-      List<Product> products});
-}
-
-/// @nodoc
-class _$UserCopyWithImpl<$Res, $Val extends User>
-    implements $UserCopyWith<$Res> {
-  _$UserCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  /// Create a copy of User
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
+  $UserCopyWith<User> get copyWith =>
+      _$UserCopyWithImpl<User>(this as User, _$identity);
+
+  /// Serializes this User to a JSON map.
+  Map<String, dynamic> toJson();
+
   @override
-  $Res call({
-    Object? id = null,
-    Object? weight = null,
-    Object? trainings = null,
-    Object? meals = null,
-    Object? products = null,
-  }) {
-    return _then(_value.copyWith(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as UuidValue,
-      weight: null == weight
-          ? _value.weight
-          : weight // ignore: cast_nullable_to_non_nullable
-              as double,
-      trainings: null == trainings
-          ? _value.trainings
-          : trainings // ignore: cast_nullable_to_non_nullable
-              as List<Training>,
-      meals: null == meals
-          ? _value.meals
-          : meals // ignore: cast_nullable_to_non_nullable
-              as List<Meal>,
-      products: null == products
-          ? _value.products
-          : products // ignore: cast_nullable_to_non_nullable
-              as List<Product>,
-    ) as $Val);
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is User &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.weight, weight) || other.weight == weight) &&
+            const DeepCollectionEquality().equals(other.trainings, trainings) &&
+            const DeepCollectionEquality().equals(other.meals, meals) &&
+            const DeepCollectionEquality().equals(other.products, products));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      weight,
+      const DeepCollectionEquality().hash(trainings),
+      const DeepCollectionEquality().hash(meals),
+      const DeepCollectionEquality().hash(products));
+
+  @override
+  String toString() {
+    return 'User(id: $id, weight: $weight, trainings: $trainings, meals: $meals, products: $products)';
   }
 }
 
 /// @nodoc
-abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
-  factory _$$UserImplCopyWith(
-          _$UserImpl value, $Res Function(_$UserImpl) then) =
-      __$$UserImplCopyWithImpl<$Res>;
-  @override
+abstract mixin class $UserCopyWith<$Res> {
+  factory $UserCopyWith(User value, $Res Function(User) _then) =
+      _$UserCopyWithImpl;
   @useResult
   $Res call(
       {@UuidValueConverter() UuidValue id,
@@ -111,11 +74,11 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$UserImplCopyWithImpl<$Res>
-    extends _$UserCopyWithImpl<$Res, _$UserImpl>
-    implements _$$UserImplCopyWith<$Res> {
-  __$$UserImplCopyWithImpl(_$UserImpl _value, $Res Function(_$UserImpl) _then)
-      : super(_value, _then);
+class _$UserCopyWithImpl<$Res> implements $UserCopyWith<$Res> {
+  _$UserCopyWithImpl(this._self, this._then);
+
+  final User _self;
+  final $Res Function(User) _then;
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
@@ -128,25 +91,25 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? meals = null,
     Object? products = null,
   }) {
-    return _then(_$UserImpl(
+    return _then(_self.copyWith(
       id: null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as UuidValue,
       weight: null == weight
-          ? _value.weight
+          ? _self.weight
           : weight // ignore: cast_nullable_to_non_nullable
               as double,
       trainings: null == trainings
-          ? _value._trainings
+          ? _self.trainings
           : trainings // ignore: cast_nullable_to_non_nullable
               as List<Training>,
       meals: null == meals
-          ? _value._meals
+          ? _self.meals
           : meals // ignore: cast_nullable_to_non_nullable
               as List<Meal>,
       products: null == products
-          ? _value._products
+          ? _self.products
           : products // ignore: cast_nullable_to_non_nullable
               as List<Product>,
     ));
@@ -155,8 +118,8 @@ class __$$UserImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$UserImpl implements _User {
-  const _$UserImpl(
+class _User implements User {
+  const _User(
       {@UuidValueConverter() required this.id,
       required this.weight,
       required final List<Training> trainings,
@@ -165,9 +128,7 @@ class _$UserImpl implements _User {
       : _trainings = trainings,
         _meals = meals,
         _products = products;
-
-  factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
-      _$$UserImplFromJson(json);
+  factory _User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
   @override
   @UuidValueConverter()
@@ -198,16 +159,26 @@ class _$UserImpl implements _User {
     return EqualUnmodifiableListView(_products);
   }
 
+  /// Create a copy of User
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'User._(id: $id, weight: $weight, trainings: $trainings, meals: $meals, products: $products)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$UserCopyWith<_User> get copyWith =>
+      __$UserCopyWithImpl<_User>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$UserToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$UserImpl &&
+            other is _User &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.weight, weight) || other.weight == weight) &&
             const DeepCollectionEquality()
@@ -226,48 +197,67 @@ class _$UserImpl implements _User {
       const DeepCollectionEquality().hash(_meals),
       const DeepCollectionEquality().hash(_products));
 
-  /// Create a copy of User
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  @pragma('vm:prefer-inline')
-  _$$UserImplCopyWith<_$UserImpl> get copyWith =>
-      __$$UserImplCopyWithImpl<_$UserImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$UserImplToJson(
-      this,
-    );
+  String toString() {
+    return 'User._(id: $id, weight: $weight, trainings: $trainings, meals: $meals, products: $products)';
   }
 }
 
-abstract class _User implements User {
-  const factory _User(
-      {@UuidValueConverter() required final UuidValue id,
-      required final double weight,
-      required final List<Training> trainings,
-      required final List<Meal> meals,
-      required final List<Product> products}) = _$UserImpl;
+/// @nodoc
+abstract mixin class _$UserCopyWith<$Res> implements $UserCopyWith<$Res> {
+  factory _$UserCopyWith(_User value, $Res Function(_User) _then) =
+      __$UserCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@UuidValueConverter() UuidValue id,
+      double weight,
+      List<Training> trainings,
+      List<Meal> meals,
+      List<Product> products});
+}
 
-  factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
+/// @nodoc
+class __$UserCopyWithImpl<$Res> implements _$UserCopyWith<$Res> {
+  __$UserCopyWithImpl(this._self, this._then);
 
-  @override
-  @UuidValueConverter()
-  UuidValue get id;
-  @override
-  double get weight;
-  @override
-  List<Training> get trainings;
-  @override
-  List<Meal> get meals;
-  @override
-  List<Product> get products;
+  final _User _self;
+  final $Res Function(_User) _then;
 
   /// Create a copy of User
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$UserImplCopyWith<_$UserImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? weight = null,
+    Object? trainings = null,
+    Object? meals = null,
+    Object? products = null,
+  }) {
+    return _then(_User(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as UuidValue,
+      weight: null == weight
+          ? _self.weight
+          : weight // ignore: cast_nullable_to_non_nullable
+              as double,
+      trainings: null == trainings
+          ? _self._trainings
+          : trainings // ignore: cast_nullable_to_non_nullable
+              as List<Training>,
+      meals: null == meals
+          ? _self._meals
+          : meals // ignore: cast_nullable_to_non_nullable
+              as List<Meal>,
+      products: null == products
+          ? _self._products
+          : products // ignore: cast_nullable_to_non_nullable
+              as List<Product>,
+    ));
+  }
 }
+
+// dart format on

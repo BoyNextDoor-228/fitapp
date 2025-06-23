@@ -13,6 +13,8 @@ final mockProducts = List<Product>.generate(
   productsAmount,
   (int index) => Product.create(
     name: 'Product №$index',
+    measurementUnit:
+        index.isEven ? MeasurementUnit.milliliters : MeasurementUnit.grams,
     nutritionFacts: NutritionFacts(
       proteins: lowMultiplier * index,
       fats: lowMultiplier * index,

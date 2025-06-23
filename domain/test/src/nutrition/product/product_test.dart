@@ -8,6 +8,7 @@ const productJson = '''
 {
   "id": "5ca629eb-0775-4f36-8ba7-8e32d22926be",
   "name": "Test product",
+  "measurementUnit": "grams",
   "nutritionFacts": {
     "proteins": 10,
     "fats": 15,
@@ -32,6 +33,7 @@ void main() {
       product = Product.create(
         name: 'Test product',
         nutritionFacts: nutritionFacts,
+        measurementUnit: MeasurementUnit.grams,
       );
 
       product = product.copyWith(

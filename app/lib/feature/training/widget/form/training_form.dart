@@ -40,8 +40,13 @@ class _TrainingFormState extends State<TrainingForm> {
 
   @override
   Widget build(BuildContext context) {
-    final exerciseListHeight = MediaQuery.sizeOf(context).longestSide / 2;
+    final exerciseListHeight = MediaQuery.sizeOf(context).shortestSide;
     final text = S.of(context);
+    final exerciseListContainerDecoration = BoxDecoration(
+      color: Theme.of(context).primaryColor.withValues(alpha: 0.3),
+    );
+
+    const buttonsPadding = EdgeInsets.symmetric(horizontal: 5);
 
     return Form(
       key: _formKey,
@@ -50,51 +55,68 @@ class _TrainingFormState extends State<TrainingForm> {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: TextFormField(
-              initialValue: _newTraining.title,
-              onSaved: _saveTitleField,
-              validator: InputValidator(s: text).titleValidator,
-              decoration: InputDecoration(
-                labelText: text.newTrainingTitle,
+            child: Column(
+              children: [
+                TextFormField(
+                  initialValue: _newTraining.title,
+                  onSaved: _saveTitleField,
+                  validator: InputValidator(s: text).titleValidator,
+                  decoration: InputDecoration(
+                    labelText: text.newTrainingTitle,
+                  ),
+                ),
+                TextFormField(
+                  keyboardType: TextInputType.multiline,
+                  maxLines: null,
+                  initialValue: _newTraining.description,
+                  onSaved: _saveDescriptionField,
+                  decoration: InputDecoration(
+                    labelText: text.newTrainingDescriptionOptional,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Container(
+              margin: const EdgeInsets.symmetric(vertical: 10),
+              width: double.infinity,
+              height: exerciseListHeight,
+              decoration: exerciseListContainerDecoration,
+              child: ExerciseList.editable(
+                exercises: _newTraining.exercises,
+                onDeletePressed: _deleteExerciseFromList,
+                onEdited: _editExercise,
+                exercisesAbsenceTitle: text.noExercisesYetPress,
+                itemDimension: exerciseListHeight * 0.8,
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: TextFormField(
-              keyboardType: TextInputType.multiline,
-              maxLines: null,
-              initialValue: _newTraining.description,
-              onSaved: _saveDescriptionField,
-              decoration: InputDecoration(
-                labelText: text.newTrainingDescriptionOptional,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: buttonsPadding,
+                  child: OutlinedButton(
+                    onPressed: () async => _openExerciseCreationModal(),
+                    child: Text(
+                      text.addExercise,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ),
               ),
-            ),
-          ),
-          SizedBox(
-            width: double.infinity,
-            height: exerciseListHeight,
-            child: ExerciseList.editable(
-              exercises: _newTraining.exercises,
-              onDeletePressed: _deleteExerciseFromList,
-              onEdited: _editExercise,
-              exercisesAbsenceTitle: text.noExercisesYet,
-              itemDimension: exerciseListHeight * 0.7,
-            ),
-          ),
-          OutlinedButton(
-            onPressed: () async {
-              final newExercise = await _openExerciseCreationModal(context);
-              if (newExercise == null) {
-                return;
-              }
-
-              _addExercise(newExercise);
-            },
-            child: Text(text.addExercise),
-          ),
-          BlocBuilder<UserBloc, UserState>(
-            builder: _applyButtonBuilder,
+              Expanded(
+                child: Padding(
+                  padding: buttonsPadding,
+                  child: BlocBuilder<UserBloc, UserState>(
+                    builder: _applyButtonBuilder,
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -114,10 +136,10 @@ class _TrainingFormState extends State<TrainingForm> {
     }
   }
 
-  Future<Exercise?> _openExerciseCreationModal(BuildContext context) async {
+  Future<void> _openExerciseCreationModal() async {
     final text = S.of(context);
 
-    return showBottomSheetWithResultOf<Exercise>(
+    await showVoidModalBottomSheet(
       context: context,
       headerText: text.createANewExercise,
       content: ExerciseForm(
@@ -130,10 +152,14 @@ class _TrainingFormState extends State<TrainingForm> {
   void _addExercise(Exercise newExercise) {
     setState(() {
       _newTraining = _newTraining.copyWith(
-        exercises: [..._newTraining.exercises, newExercise],
+        exercises: [newExercise, ..._newTraining.exercises],
       );
     });
+
+    _closeExerciseCreationModal();
   }
+
+  void _closeExerciseCreationModal() => Navigator.pop(context);
 
   void _saveTitleField(String? input) {
     _newTraining = _newTraining.copyWith(title: input!.trim());
@@ -155,6 +181,8 @@ class _TrainingFormState extends State<TrainingForm> {
     setState(() {
       _newTraining = _newTraining.copyWith(exercises: editedExercises);
     });
+
+    _closeExerciseCreationModal();
   }
 
   void _deleteExerciseFromList(UuidValue exerciseId) {
@@ -174,7 +202,11 @@ class _TrainingFormState extends State<TrainingForm> {
     }
     return OutlinedButton(
       onPressed: _applyChanges,
-      child: Text(widget.actionButtonText),
+      child: Text(
+        widget.actionButtonText,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
     );
   }
 }

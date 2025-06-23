@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../generated/l10n.dart';
+import '../../../tool/route_provider.dart';
+import '../../../tool/user_state_listener.dart';
 import '../../app/widget/fitapp_appbar.dart';
 import '../../app/widget/fitapp_drawer.dart';
 import '../../app/widget/fitapp_scaffold.dart';
@@ -20,7 +22,7 @@ class MealListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.sizeOf(context).height;
+    final height = MediaQuery.sizeOf(context).longestSide;
 
     final userBloc = context.read<UserBloc>();
     final router = context.router;
@@ -32,7 +34,8 @@ class MealListScreen extends StatelessWidget {
       ),
       drawer: const FitAppDrawer(),
       appBar: FitappAppbar.regularPage(title: text.mealsList),
-      body: BlocBuilder<UserBloc, UserState>(
+      body: BlocConsumer<UserBloc, UserState>(
+        listener: userStateListener,
         bloc: userBloc,
         builder: (_, state) {
           if (state.status == UserStatus.loading) {
@@ -54,6 +57,7 @@ class MealListScreen extends StatelessWidget {
             );
           }
           return ListView.builder(
+            physics: const BouncingScrollPhysics(),
             itemCount: meals.length,
             itemBuilder: (_, index) => FullInfoDisplayableListItem(
               listItem: MealListItem(
@@ -62,8 +66,9 @@ class MealListScreen extends StatelessWidget {
                 itemDimension: height * 0.3,
                 onDeletePressed: () =>
                     userBloc.add(MealDeleted(mealId: meals[index].id)),
-                onEditPressed: () async => router.navigate(
-                  MealEditingRoute(meal: meals[index]),
+                onEditPressed: () async => goToRoute(
+                  router: router,
+                  route: MealEditingRoute(meal: meals[index]),
                 ),
               ),
               headerText: text.mealInformation,

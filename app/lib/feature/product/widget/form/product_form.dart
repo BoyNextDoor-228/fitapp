@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../tool/input_validator.dart';
+import '../../../meal/widget/form/measurement_unit_selector_form_field/measurement_unit_selector_form_field.dart';
 import '../../../user/bloc/user_bloc.dart';
 
 class ProductForm extends StatefulWidget {
@@ -93,12 +94,16 @@ class _ProductFormState extends State<ProductForm> {
                 labelText: text.kilocaloriesAmount,
               ),
             ),
-            Expanded(
-              child: Center(
-                child: BlocBuilder<UserBloc, UserState>(
-                  builder: _applyButtonBuilder,
-                ),
-              ),
+            MeasurementUnitSelectorFormField(
+              initialMeasurementUnit: _newProduct.measurementUnit,
+              onChanged: (unit) {
+                setState(() {
+                  _newProduct = _newProduct.copyWith(measurementUnit: unit);
+                });
+              },
+            ),
+            BlocBuilder<UserBloc, UserState>(
+              builder: _applyButtonBuilder,
             ),
           ],
         ),

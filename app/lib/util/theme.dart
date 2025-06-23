@@ -15,7 +15,7 @@ class FitAppTheme {
       seedColor: Color(_themeSettings.color),
       contrastLevel: _themeSettings.contrastLevel,
       dynamicSchemeVariant: DynamicSchemeVariant.fidelity,
-    );
+    ).copyWith(error: Colors.red);
 
     final outlinedBorderShape = RoundedRectangleBorder(
       side: BorderSide(
@@ -101,58 +101,3 @@ class FitAppTheme {
     }
   }
 }
-
-// import 'package:flutter/material.dart';
-//
-// import '../feature/settings/domain/settings_values.dart';
-// import '../feature/settings/domain/theme_settings/theme_settings.dart';
-//
-// class FitAppTheme {
-//   FitAppTheme({required this.themeSettings}) {
-//     _colorScheme = ColorScheme.fromSeed(
-//       brightness: _brightness,
-//       seedColor: Color(themeSettings.color),
-//       contrastLevel: themeSettings.contrastLevel,
-//       dynamicSchemeVariant: DynamicSchemeVariant.fidelity,
-//     );
-//
-//     _lightTheme = ThemeData.light(useMaterial3: true).copyWith(
-//       brightness: Brightness.light,
-//       colorScheme: _colorScheme,
-//       cardTheme: _cardTheme,
-//     );
-//
-//     _darkTheme = ThemeData.dark(useMaterial3: true).copyWith(
-//       brightness: Brightness.dark,
-//       colorScheme: _colorScheme,
-//       cardTheme: _cardTheme,
-//     );
-//   }
-//
-//   final ThemeSettings themeSettings;
-//
-//   late final ColorScheme _colorScheme;
-//
-//   late final ThemeData _lightTheme;
-//   late final ThemeData _darkTheme;
-//
-//   Brightness get _brightness =>
-//       themeSettings.brightness == ThemeBrightness.light
-//           ? Brightness.light
-//           : Brightness.dark;
-//
-//   ThemeData getThemeData() {
-//     switch (themeSettings.brightness) {
-//       case ThemeBrightness.light:
-//         return _lightTheme;
-//
-//       case ThemeBrightness.dark:
-//         return _darkTheme;
-//     }
-//   }
-//
-//   static const _cardTheme = CardTheme(
-//     margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-//    // color: ,
-//   );
-// }

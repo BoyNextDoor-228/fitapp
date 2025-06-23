@@ -6,12 +6,11 @@ part of 'repetition.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$RepetitionImpl _$$RepetitionImplFromJson(Map<String, dynamic> json) =>
-    _$RepetitionImpl(
+_Repetition _$RepetitionFromJson(Map<String, dynamic> json) => _Repetition(
       repsAmount: (json['repsAmount'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$RepetitionImplToJson(_$RepetitionImpl instance) =>
+Map<String, dynamic> _$RepetitionToJson(_Repetition instance) =>
     <String, dynamic>{
       'type': _$ExerciseLoadTypeEnumMap[instance.type]!,
       'repsAmount': instance.repsAmount,

@@ -11,7 +11,7 @@ part 'theme_settings.g.dart';
 @freezed
 abstract class ThemeSettings with _$ThemeSettings {
   @Assert(
-    'contrastLevel >= -1 || contrastLevel <= 1',
+    'contrastLevel >= -1 && contrastLevel <= 1',
     'contrastLevel value must be in range [-1:1]',
   )
   const factory ThemeSettings({

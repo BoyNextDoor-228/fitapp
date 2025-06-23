@@ -136,33 +136,30 @@ void main() {
       );
 
       final exercises = [
-        Exercise.fromAbstractWithReps(
-          setsAmount: 3,
-          repsAmount: 15,
-          abstractExercise: AbstractExercise.withReps(
-            title: 'exercise3omg',
-            description: 'super description omg',
-          ),
+        Exercise(
+          title: 'exercise3omg',
+          description: 'super description omg',
+          sets: 3,
+          load: const Repetition(repsAmount: 15),
+          statistics: [],
         ).copyWith(
           id: UuidValue.fromString('4da629eb-0775-4f36-8ba7-8e32d229265b'),
         ),
-        Exercise.fromAbstractWithTimer(
-          setsAmount: 3,
-          duration: const Duration(seconds: 20),
-          abstractExercise: AbstractExercise.withTimer(
-            title: 'exercise1omg',
-            description: null,
-          ),
+        Exercise(
+          title: 'exercise1omg',
+          description: null,
+          sets: 3,
+          load: const Timer(duration: Duration(seconds: 20)),
+          statistics: [],
         ).copyWith(
           id: UuidValue.fromString('2da629eb-0775-4f36-8ba7-8e32d229264a'),
         ),
-        Exercise.fromAbstractWithTimer(
-          setsAmount: 2,
-          duration: const Duration(seconds: 25),
-          abstractExercise: AbstractExercise.withTimer(
-            title: 'exercise2omg',
-            description: 'super description',
-          ),
+        Exercise(
+          title: 'exercise2omg',
+          description: 'super description',
+          sets: 2,
+          load: const Timer(duration: Duration(seconds: 25)),
+          statistics: [],
         ).copyWith(
           id: UuidValue.fromString('2da629eb-0775-4f36-8ba7-8e32d229264a'),
         ),

@@ -8,7 +8,7 @@ part 'training.freezed.dart';
 part 'training.g.dart';
 
 @freezed
-class Training with _$Training {
+abstract class Training with _$Training {
   const factory Training._({
     @UuidValueConverter() required UuidValue id,
     required String title,

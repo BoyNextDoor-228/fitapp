@@ -1,11 +1,14 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:fitapp_domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../tool/input_validator.dart';
+import '../../../../tool/route_provider.dart';
+import '../../../app/widget/shared/empty_list_label.dart';
+import '../../../navigation/app_router.dart';
 import '../../../user/bloc/user_bloc.dart';
-import 'measurement_unit_selector_form_field/measurement_unit_selector_form_field.dart';
 
 class IngredientForm extends StatefulWidget {
   const IngredientForm({
@@ -48,7 +51,34 @@ class _IngredientFormState extends State<IngredientForm> {
 
   @override
   Widget build(BuildContext context) {
+    final router = context.router;
     final text = S.of(context);
+
+    Future<void> redirectToProductCreatingForm() async => goToRoute(
+          router: router,
+          route: const ProductRootRoute(),
+        );
+
+    if (_productsEntries.isEmpty) {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        spacing: 20,
+        children: [
+          EmptyListLabel(
+            icon: const Icon(Icons.no_food, size: 100),
+            elementsAbsenceText: text.noProductsncreateAProductFirstToAddItAsAn,
+          ),
+          OutlinedButton(
+            onPressed: redirectToProductCreatingForm,
+            child: Text(
+              text.goToProducts,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+        ],
+      );
+    }
 
     return Form(
       key: _formKey,
@@ -62,14 +92,6 @@ class _IngredientFormState extends State<IngredientForm> {
             onSelected: (product) {
               setState(() {
                 _newIngredient = _newIngredient.copyWith(product: product!);
-              });
-            },
-          ),
-          MeasurementUnitSelectorFormField(
-            initialMeasurementUnit: _newIngredient.measurement,
-            onChanged: (unit) {
-              setState(() {
-                _newIngredient = _newIngredient.copyWith(measurement: unit);
               });
             },
           ),
@@ -106,25 +128,4 @@ class _IngredientFormState extends State<IngredientForm> {
   void _saveAmountField(String? input) {
     _newIngredient = _newIngredient.copyWith(amount: double.parse(input!));
   }
-
-  // String? _amountValidator(String? input) {
-  //   if (input == null || input.trim().isEmpty) {
-  //     return 'Enter amount';
-  //   }
-  //
-  //   if (input.split('').first == '.' || input.split('').last == '.') {
-  //     return 'Make sure fractional number is correct';
-  //   }
-  //
-  //   final number = double.tryParse(input);
-  //
-  //   if (number == null) {
-  //     return 'Enter valid number';
-  //   }
-  //
-  //   if (number.isNegative) {
-  //     return 'Number must be non-negative';
-  //   }
-  //   return null;
-  // }
 }

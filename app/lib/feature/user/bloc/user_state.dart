@@ -3,8 +3,12 @@ part of 'user_bloc.dart';
 class UserState extends Equatable {
   factory UserState.initial() => const UserState._(
         status: UserStatus.initial,
-        presence: UserPresence.absent,
         user: null,
+      );
+
+  factory UserState.calm({required User? user}) => UserState._(
+        status: UserStatus.calm,
+        user: user,
       );
 
   factory UserState.loading({
@@ -12,23 +16,25 @@ class UserState extends Equatable {
   }) =>
       UserState._(
         status: UserStatus.loading,
-        presence: user == null ? UserPresence.absent : UserPresence.present,
         user: user,
       );
 
-  factory UserState.success({required User? user}) => UserState._(
+  factory UserState.success({
+    required User? user,
+    required UserSuccess successMessage,
+  }) =>
+      UserState._(
         status: UserStatus.success,
-        presence: user == null ? UserPresence.absent : UserPresence.present,
         user: user,
+        successMessage: successMessage,
       );
 
   factory UserState.error({
     required User? user,
-    required String errorMessage,
+    required UserError errorMessage,
   }) =>
       UserState._(
         status: UserStatus.error,
-        presence: user == null ? UserPresence.absent : UserPresence.present,
         user: user,
         errorMessage: errorMessage,
       );
@@ -36,19 +42,53 @@ class UserState extends Equatable {
   const UserState._({
     required this.status,
     required this.user,
-    required this.presence,
     this.errorMessage,
+    this.successMessage,
   });
 
   final UserStatus status;
   final User? user;
-  final String? errorMessage;
-  final UserPresence presence;
+  final UserError? errorMessage;
+  final UserSuccess? successMessage;
 
   @override
-  List<Object?> get props => [user, status, presence];
+  List<Object?> get props => [user, status, errorMessage, successMessage];
 }
 
-enum UserStatus { initial, loading, success, error }
+enum UserStatus { initial, loading, success, error, calm }
 
-enum UserPresence { absent, present }
+enum UserSuccess {
+  mealAdded,
+  mealEdited,
+  mealDeleted,
+  productAdded,
+  productEdited,
+  productDeleted,
+  trainingAdded,
+  trainingEdited,
+  trainingDeleted,
+  trainingFinished,
+  weightUpdated,
+}
+
+enum UserError {
+  cantInitUser,
+  cantCreateUser,
+  cantUpdateUserWeight,
+  cantCreateTraining,
+  cantDeleteTraining,
+  cantEditTraining,
+  cantAddExerciseInTraining,
+  cantEditExerciseInTraining,
+  cantDeleteExerciseFromTraining,
+  cantCompleteTraining,
+  cantCreateMeal,
+  cantDeleteMeal,
+  cantEditMeal,
+  cantAddIngredientInMeal,
+  cantEditIngredientInMeal,
+  cantDeleteIngredientFromMeal,
+  cantCreateProduct,
+  cantEditProduct,
+  cantDeleteProduct
+}

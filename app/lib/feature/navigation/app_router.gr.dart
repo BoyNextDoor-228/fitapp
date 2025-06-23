@@ -62,6 +62,22 @@ class ExerciseStatisticsRouteArgs {
 }
 
 /// generated route for
+/// [HomeRootPage]
+class HomeRootRoute extends PageRouteInfo<void> {
+  const HomeRootRoute({List<PageRouteInfo>? children})
+      : super(HomeRootRoute.name, initialChildren: children);
+
+  static const String name = 'HomeRootRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const HomeRootPage();
+    },
+  );
+}
+
+/// generated route for
 /// [HomeScreen]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -294,6 +310,22 @@ class RootRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
+/// [SettingsRootPage]
+class SettingsRootRoute extends PageRouteInfo<void> {
+  const SettingsRootRoute({List<PageRouteInfo>? children})
+      : super(SettingsRootRoute.name, initialChildren: children);
+
+  static const String name = 'SettingsRootRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SettingsRootPage();
+    },
+  );
+}
+
+/// generated route for
 /// [SettingsScreen]
 class SettingsRoute extends PageRouteInfo<void> {
   const SettingsRoute({List<PageRouteInfo>? children})
@@ -423,48 +455,4 @@ class TrainingRootRoute extends PageRouteInfo<void> {
       return const TrainingRootPage();
     },
   );
-}
-
-/// generated route for
-/// [WeightRegistrationScreen]
-class WeightRegistrationRoute
-    extends PageRouteInfo<WeightRegistrationRouteArgs> {
-  WeightRegistrationRoute({
-    required VoidCallback onUserAppears,
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
-          WeightRegistrationRoute.name,
-          args: WeightRegistrationRouteArgs(
-            onUserAppears: onUserAppears,
-            key: key,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'WeightRegistrationRoute';
-
-  static PageInfo page = PageInfo(
-    name,
-    builder: (data) {
-      final args = data.argsAs<WeightRegistrationRouteArgs>();
-      return WeightRegistrationScreen(
-        onUserAppears: args.onUserAppears,
-        key: args.key,
-      );
-    },
-  );
-}
-
-class WeightRegistrationRouteArgs {
-  const WeightRegistrationRouteArgs({required this.onUserAppears, this.key});
-
-  final VoidCallback onUserAppears;
-
-  final Key? key;
-
-  @override
-  String toString() {
-    return 'WeightRegistrationRouteArgs{onUserAppears: $onUserAppears, key: $key}';
-  }
 }

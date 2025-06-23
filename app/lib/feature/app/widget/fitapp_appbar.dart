@@ -1,13 +1,15 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'appbar_back_button.dart';
 import 'appbar_burger_menu_button.dart';
 
 class FitappAppbar extends StatelessWidget implements PreferredSizeWidget {
-  const FitappAppbar.innerPage({
+  FitappAppbar.innerPage({
     required String title,
+    required PageRouteInfo backRoute,
     super.key,
   })  : _title = title,
-        _leading = const AppbarBackButton();
+        _leading = AppbarBackButton(route: backRoute);
 
   const FitappAppbar.regularPage({
     required String title,

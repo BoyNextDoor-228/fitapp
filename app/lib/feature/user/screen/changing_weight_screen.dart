@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../generated/l10n.dart';
+import '../../../tool/user_state_listener.dart';
 import '../../app/widget/fitapp_appbar.dart';
 import '../../app/widget/fitapp_drawer.dart';
 import '../../app/widget/fitapp_scaffold.dart';
@@ -17,13 +18,20 @@ class ChangingWeightScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final text = S.of(context);
+    final userBloc = context.read<UserBloc>();
+    final textTheme = Theme.of(context).textTheme;
+
+    void updateWeight(double newWeight) =>
+        userBloc.add(UserWeightUpdated(newWeight: newWeight));
 
     return FitAppScaffold(
-      appBar: FitappAppbar.regularPage(title: text.editWeight),
+      appBar: FitappAppbar.innerPage(
+        title: text.editWeight,
+        backRoute: const HomeRoute(),
+      ),
       drawer: const FitAppDrawer(),
       body: BlocListener<UserBloc, UserState>(
-        listener: _listenerCallback,
-        listenWhen: _listenWhenCallback,
+        listener: userStateListener,
         child: Center(
           child: SingleChildScrollView(
             child: Column(
@@ -33,42 +41,14 @@ class ChangingWeightScreen extends StatelessWidget {
                   text.hereYouCanChangeYourCurrentWeight,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: Theme.of(context).textTheme.titleMedium,
+                  style: textTheme.titleMedium,
                 ),
-                WeightForm(
-                  onFormSaved: (newWeight) => context
-                      .read<UserBloc>()
-                      .add(UserWeightUpdated(newWeight: newWeight)),
-                ),
+                WeightForm(onFormSaved: updateWeight),
               ],
             ),
           ),
         ),
       ),
     );
-  }
-
-  bool _listenWhenCallback(
-    UserState previousState,
-    UserState currentState,
-  ) =>
-      previousState.user!.weight != currentState.user!.weight;
-
-  Future<void> _listenerCallback(BuildContext context, UserState state) async {
-    final showSnackBar = ScaffoldMessenger.of(context).showSnackBar;
-    final text = S.of(context);
-
-    if (state.status == UserStatus.error) {
-      showSnackBar(
-        SnackBar(content: Text(state.errorMessage!)),
-      );
-    }
-
-    if (state.status == UserStatus.success) {
-      showSnackBar(
-        SnackBar(content: Text(text.weightUpdated)),
-      );
-      await context.router.popAndPush(const HomeRoute());
-    }
   }
 }

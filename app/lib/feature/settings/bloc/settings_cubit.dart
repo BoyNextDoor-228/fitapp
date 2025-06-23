@@ -57,7 +57,9 @@ class SettingsCubit extends Cubit<SettingsState> {
 
   Future<void> setThemeContrastLevel({required double contrastLevel}) async {
     try {
-      await _settingsService.editThemeContrastLevel(contrastLevel: contrastLevel);
+      await _settingsService.editThemeContrastLevel(
+        contrastLevel: contrastLevel,
+      );
       emit(
         SettingsState(
           settings: _settingsService.settings.copyWith(

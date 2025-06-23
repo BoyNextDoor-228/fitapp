@@ -35,27 +35,30 @@ class IngredientListItem extends StatelessWidget {
   final double itemDimension;
 
   @override
-  Widget build(BuildContext context) => Card(
-        child: Padding(
-          padding: const EdgeInsets.all(5),
-          child: SizedBox.square(
-            dimension: itemDimension,
-            child: Column(
-              spacing: 5,
-              children: [
-                Expanded(
-                  child: _Header(
-                    ingredient: ingredient,
-                    isEditable: _isEditable,
-                    onDeletePressed: onDeletePressed,
-                    onEditPressed: onEditPressed,
+  Widget build(BuildContext context) => Center(
+        child: Card(
+          shadowColor: Theme.of(context).colorScheme.inversePrimary,
+          child: Padding(
+            padding: const EdgeInsets.all(10),
+            child: SizedBox.square(
+              dimension: itemDimension,
+              child: Column(
+                spacing: 5,
+                children: [
+                  Expanded(
+                    child: _Header(
+                      ingredient: ingredient,
+                      isEditable: _isEditable,
+                      onDeletePressed: onDeletePressed,
+                      onEditPressed: onEditPressed,
+                    ),
                   ),
-                ),
-                Expanded(
-                  flex: 3,
-                  child: _Content(ingredient: ingredient),
-                ),
-              ],
+                  Expanded(
+                    flex: 3,
+                    child: _Content(ingredient: ingredient),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
@@ -93,12 +96,10 @@ class _Header extends StatelessWidget {
             ),
           ),
           if (isEditable)
-            Expanded(
-              child: _CardMenuButtons(
-                ingredient: ingredient,
-                onDeletePressed: onDeletePressed!,
-                onEditPressed: onEditPressed!,
-              ),
+            _CardMenuButtons(
+              ingredient: ingredient,
+              onDeletePressed: onDeletePressed!,
+              onEditPressed: onEditPressed!,
             ),
         ],
       );

@@ -32,7 +32,7 @@ abstract class Settings with _$Settings {
 
     if (systemLanguage
         .toLowerCase()
-        .startsWith(FitAppLanguages.russian.language)) {
+        .startsWith(FitAppLanguages.russian.languageCode)) {
       return FitAppLanguages.russian;
     }
 

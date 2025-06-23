@@ -416,13 +416,16 @@ Ingredient with '${newIngredient.product.name}' is already presented in ingredie
     }
   }
 
-  /// Returns a [Product] created based on passed [name] and [nutritionFacts].
+  /// Returns a [Product] created based on passed [name], [measurementUnit]
+  /// and [nutritionFacts].
   Product createProduct({
     required String name,
     required NutritionFacts nutritionFacts,
+    required MeasurementUnit measurementUnit,
   }) =>
       Product.create(
         name: name,
+        measurementUnit: measurementUnit,
         nutritionFacts: nutritionFacts,
       );
 

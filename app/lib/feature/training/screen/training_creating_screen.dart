@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../generated/l10n.dart';
+import '../../../tool/user_state_listener.dart';
 import '../../app/widget/fitapp_appbar.dart';
 import '../../app/widget/fitapp_drawer.dart';
 import '../../app/widget/fitapp_scaffold.dart';
+import '../../app/widget/shared/scrollable_content_wrapper.dart';
+import '../../navigation/app_router.dart';
 import '../../user/bloc/user_bloc.dart';
 import '../widget/form/training_form.dart';
 
@@ -20,51 +23,26 @@ class TrainingCreatingScreen extends StatelessWidget {
 
     return FitAppScaffold(
       drawer: const FitAppDrawer(),
-      appBar: FitappAppbar.innerPage(title: text.newTraining),
+      appBar: FitappAppbar.innerPage(
+        title: text.newTraining,
+        backRoute: const TrainingListRoute(),
+      ),
       body: BlocListener<UserBloc, UserState>(
-        listenWhen: _listenWhenCallback,
-        listener: _listenerCallback,
-        child: Center(
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                Text(
-                  text.fillTheFormToCreateANewTraining,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                const _TrainingCreatingForm(),
-              ],
-            ),
+        listener: userStateListener,
+        child: ScrollableContentWrapper(
+          child: Column(
+            children: [
+              Text(
+                text.fillTheFormToCreateANewTraining,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+              const Expanded(child: _TrainingCreatingForm()),
+            ],
           ),
         ),
       ),
     );
-  }
-
-  bool _listenWhenCallback(
-    UserState previousState,
-    UserState currentState,
-  ) =>
-      previousState.user!.trainings.length <
-      currentState.user!.trainings.length;
-
-  void _listenerCallback(BuildContext context, UserState state) {
-    final showSnackBar = ScaffoldMessenger.of(context).showSnackBar;
-    final text = S.of(context);
-
-    if (state.status == UserStatus.error) {
-      showSnackBar(
-        SnackBar(content: Text(state.errorMessage!)),
-      );
-    }
-
-    if (state.status == UserStatus.success) {
-      showSnackBar(
-        SnackBar(content: Text(text.trainingAdded)),
-      );
-      context.router.pop();
-    }
   }
 }
 
@@ -84,7 +62,7 @@ class _TrainingCreatingForm extends StatelessWidget {
     }
 
     return TrainingForm(
-      actionButtonText: text.create,
+      actionButtonText: text.createTraining,
       onFormApply: addTraining,
     );
   }

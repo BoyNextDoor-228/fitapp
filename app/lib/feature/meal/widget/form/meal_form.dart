@@ -40,8 +40,13 @@ class _MealFormState extends State<MealForm> {
 
   @override
   Widget build(BuildContext context) {
-    final exerciseListHeight = MediaQuery.sizeOf(context).height / 3;
+    final ingredientListHeight = MediaQuery.sizeOf(context).shortestSide;
+    final ingredientListContainerDecoration = BoxDecoration(
+      color: Theme.of(context).primaryColor.withValues(alpha: 0.3),
+    );
     final text = S.of(context);
+
+    const buttonsPadding = EdgeInsets.symmetric(horizontal: 5);
 
     return Form(
       key: _formKey,
@@ -50,49 +55,76 @@ class _MealFormState extends State<MealForm> {
         children: [
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: TextFormField(
-              initialValue: _newMeal.title,
-              onSaved: _saveTitleField,
-              validator: InputValidator(s: text).titleValidator,
-              decoration: InputDecoration(
-                labelText: text.newMealTitle,
+            child: Column(
+              children: [
+                TextFormField(
+                  initialValue: _newMeal.title,
+                  onSaved: _saveTitleField,
+                  validator: InputValidator(s: text).titleValidator,
+                  decoration: InputDecoration(
+                    labelText: text.newMealTitle,
+                  ),
+                ),
+                TextFormField(
+                  keyboardType: TextInputType.multiline,
+                  maxLines: null,
+                  initialValue: _newMeal.recipe,
+                  onSaved: _saveRecipeField,
+                  decoration: InputDecoration(
+                    labelText: text.newMealRecipeOptional,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Container(
+              width: double.infinity,
+              height: ingredientListHeight,
+              margin: const EdgeInsets.symmetric(vertical: 10),
+              decoration: ingredientListContainerDecoration,
+              child: IngredientList.editable(
+                ingredients: _newMeal.ingredients,
+                onDeletePressed: _deleteIngredientFromList,
+                onEdited: _editIngredient,
+                ingredientAbsenceTitle: text.noIngredientsYet,
+                itemDimension: ingredientListHeight * 0.8,
               ),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: TextFormField(
-              initialValue: _newMeal.recipe,
-              onSaved: _saveRecipeField,
-              decoration: InputDecoration(
-                labelText: text.newMealRecipeOptional,
-              ),
-            ),
-          ),
-          SizedBox(
-            width: double.infinity,
-            height: exerciseListHeight,
-            child: IngredientList.editable(
-              ingredients: _newMeal.ingredients,
-              onDeletePressed: _deleteIngredientFromList,
-              onEdited: _editIngredient,
-              ingredientAbsenceTitle: text.noIngredientsYet,
-              itemDimension: exerciseListHeight,
-            ),
-          ),
-          OutlinedButton(
-            onPressed: () async {
-              final newIngredient = await _openIngredientCreationModal(context);
-              if (newIngredient == null) {
-                return;
-              }
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: buttonsPadding,
+                  child: OutlinedButton(
+                    onPressed: () async {
+                      final newIngredient =
+                          await _openIngredientCreationModal(context);
+                      if (newIngredient == null) {
+                        return;
+                      }
 
-              _addIngredient(newIngredient);
-            },
-            child: Text(text.addIngredient),
-          ),
-          BlocBuilder<UserBloc, UserState>(
-            builder: _applyButtonBuilder,
+                      _addIngredient(newIngredient);
+                    },
+                    child: Text(
+                      text.addIngredient,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: buttonsPadding,
+                  child: BlocBuilder<UserBloc, UserState>(
+                    builder: _applyButtonBuilder,
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -112,6 +144,8 @@ class _MealFormState extends State<MealForm> {
     }
   }
 
+  void _closeIngredientCreationModal() => Navigator.pop(context);
+
   Future<Ingredient?> _openIngredientCreationModal(
     BuildContext modalContext,
   ) async {
@@ -130,9 +164,11 @@ class _MealFormState extends State<MealForm> {
   void _addIngredient(Ingredient newIngredient) {
     setState(() {
       _newMeal = _newMeal.copyWith(
-        ingredients: [..._newMeal.ingredients, newIngredient],
+        ingredients: [newIngredient, ..._newMeal.ingredients],
       );
     });
+
+    _closeIngredientCreationModal();
   }
 
   void _saveTitleField(String? input) {
@@ -157,6 +193,8 @@ class _MealFormState extends State<MealForm> {
     setState(() {
       _newMeal = _newMeal.copyWith(ingredients: editedIngredients);
     });
+
+    _closeIngredientCreationModal();
   }
 
   void _deleteIngredientFromList(UuidValue productId) {
@@ -176,7 +214,11 @@ class _MealFormState extends State<MealForm> {
     }
     return OutlinedButton(
       onPressed: _applyChanges,
-      child: Text(widget.actionButtonText),
+      child: Text(
+        widget.actionButtonText,
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
     );
   }
 }

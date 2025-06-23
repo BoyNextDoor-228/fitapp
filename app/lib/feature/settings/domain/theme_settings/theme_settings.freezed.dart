@@ -103,7 +103,7 @@ class _ThemeSettings extends ThemeSettings {
       {required this.brightness,
       required this.color,
       required this.contrastLevel})
-      : assert(contrastLevel >= -1 || contrastLevel <= 1,
+      : assert(contrastLevel >= -1 && contrastLevel <= 1,
             'contrastLevel value must be in range [-1:1]'),
         super._();
   factory _ThemeSettings.fromJson(Map<String, dynamic> json) =>

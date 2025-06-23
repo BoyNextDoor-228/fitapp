@@ -1,6 +1,4 @@
 abstract class RoutePath {
-  static const String initial = '/initial';
-  static const String weightRegistration = '/weight_registration';
   static const String introduction = '/introduction';
   static const String root = '/';
 

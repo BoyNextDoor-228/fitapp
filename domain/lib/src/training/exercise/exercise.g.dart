@@ -6,8 +6,7 @@ part of 'exercise.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$ExerciseImpl _$$ExerciseImplFromJson(Map<String, dynamic> json) =>
-    _$ExerciseImpl(
+_Exercise _$ExerciseFromJson(Map<String, dynamic> json) => _Exercise(
       id: const UuidValueConverter().fromJson(json['id'] as String),
       title: json['title'] as String,
       description: json['description'] as String?,
@@ -19,8 +18,7 @@ _$ExerciseImpl _$$ExerciseImplFromJson(Map<String, dynamic> json) =>
           .toList(),
     );
 
-Map<String, dynamic> _$$ExerciseImplToJson(_$ExerciseImpl instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ExerciseToJson(_Exercise instance) => <String, dynamic>{
       'id': const UuidValueConverter().toJson(instance.id),
       'title': instance.title,
       'description': instance.description,

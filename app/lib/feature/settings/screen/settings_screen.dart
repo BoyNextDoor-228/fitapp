@@ -20,13 +20,13 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final text = S.of(context);
-    final snackbarTextColor = Theme.of(context).colorScheme.onPrimary;
+    final snackBarTextColor = Theme.of(context).colorScheme.onPrimary;
 
     final settings = context.watch<SettingsCubit>().state.settings;
     final settingsCubit = context.read<SettingsCubit>();
 
     // ignore: avoid_positional_boolean_parameters
-    Future<void> setThemeBrightness(bool value) async {
+    Future<void> setIsThemeDark(bool value) async {
       await settingsCubit.setThemeBrightness(
         brightness: value ? ThemeBrightness.dark : ThemeBrightness.light,
       );
@@ -41,7 +41,7 @@ class SettingsScreen extends StatelessWidget {
     Future<void> setAppLanguage(FitAppLanguages language) async =>
         settingsCubit.setAppLanguage(language: language);
 
-    void onErrorOccurs(BuildContext context, SettingsState state) {
+    void settingsErrorListener(BuildContext context, SettingsState state) {
       if (state.errorOccurred) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
@@ -50,7 +50,7 @@ class SettingsScreen extends StatelessWidget {
               children: [
                 Icon(
                   Icons.error,
-                  color: snackbarTextColor,
+                  color: snackBarTextColor,
                 ),
                 Text(text.anErrorOccurred),
               ],
@@ -65,14 +65,15 @@ class SettingsScreen extends StatelessWidget {
       drawer: const FitAppDrawer(),
       body: BlocListener<SettingsCubit, SettingsState>(
         bloc: settingsCubit,
-        listener: onErrorOccurs,
+        listener: settingsErrorListener,
         child: ListView(
+          physics: const BouncingScrollPhysics(),
           children: [
             SettingsListItem(
               description: text.darkMode,
               handler: Switch(
                 value: settings.themeSettings.isDarkTheme,
-                onChanged: setThemeBrightness,
+                onChanged: setIsThemeDark,
               ),
             ),
             SettingsListItem(

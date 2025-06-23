@@ -1,3 +1,4 @@
+// dart format width=80
 // coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: type=lint
@@ -9,53 +10,71 @@ part of 'product.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
-Product _$ProductFromJson(Map<String, dynamic> json) {
-  return _Product.fromJson(json);
-}
 
 /// @nodoc
 mixin _$Product {
   @UuidValueConverter()
-  UuidValue get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  NutritionFacts get nutritionFacts => throw _privateConstructorUsedError;
-
-  /// Serializes this Product to a JSON map.
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  UuidValue get id;
+  String get name;
+  MeasurementUnit get measurementUnit;
+  NutritionFacts get nutritionFacts;
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
   @JsonKey(includeFromJson: false, includeToJson: false)
-  $ProductCopyWith<Product> get copyWith => throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $ProductCopyWith<Product> get copyWith =>
+      _$ProductCopyWithImpl<Product>(this as Product, _$identity);
+
+  /// Serializes this Product to a JSON map.
+  Map<String, dynamic> toJson();
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is Product &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.measurementUnit, measurementUnit) ||
+                other.measurementUnit == measurementUnit) &&
+            (identical(other.nutritionFacts, nutritionFacts) ||
+                other.nutritionFacts == nutritionFacts));
+  }
+
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, measurementUnit, nutritionFacts);
+
+  @override
+  String toString() {
+    return 'Product(id: $id, name: $name, measurementUnit: $measurementUnit, nutritionFacts: $nutritionFacts)';
+  }
 }
 
 /// @nodoc
-abstract class $ProductCopyWith<$Res> {
-  factory $ProductCopyWith(Product value, $Res Function(Product) then) =
-      _$ProductCopyWithImpl<$Res, Product>;
+abstract mixin class $ProductCopyWith<$Res> {
+  factory $ProductCopyWith(Product value, $Res Function(Product) _then) =
+      _$ProductCopyWithImpl;
   @useResult
   $Res call(
       {@UuidValueConverter() UuidValue id,
       String name,
+      MeasurementUnit measurementUnit,
       NutritionFacts nutritionFacts});
 
   $NutritionFactsCopyWith<$Res> get nutritionFacts;
 }
 
 /// @nodoc
-class _$ProductCopyWithImpl<$Res, $Val extends Product>
-    implements $ProductCopyWith<$Res> {
-  _$ProductCopyWithImpl(this._value, this._then);
+class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
+  _$ProductCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final Product _self;
+  final $Res Function(Product) _then;
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
@@ -64,22 +83,27 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   $Res call({
     Object? id = null,
     Object? name = null,
+    Object? measurementUnit = null,
     Object? nutritionFacts = null,
   }) {
-    return _then(_value.copyWith(
+    return _then(_self.copyWith(
       id: null == id
-          ? _value.id
+          ? _self.id
           : id // ignore: cast_nullable_to_non_nullable
               as UuidValue,
       name: null == name
-          ? _value.name
+          ? _self.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      measurementUnit: null == measurementUnit
+          ? _self.measurementUnit
+          : measurementUnit // ignore: cast_nullable_to_non_nullable
+              as MeasurementUnit,
       nutritionFacts: null == nutritionFacts
-          ? _value.nutritionFacts
+          ? _self.nutritionFacts
           : nutritionFacts // ignore: cast_nullable_to_non_nullable
               as NutritionFacts,
-    ) as $Val);
+    ));
   }
 
   /// Create a copy of Product
@@ -87,72 +111,22 @@ class _$ProductCopyWithImpl<$Res, $Val extends Product>
   @override
   @pragma('vm:prefer-inline')
   $NutritionFactsCopyWith<$Res> get nutritionFacts {
-    return $NutritionFactsCopyWith<$Res>(_value.nutritionFacts, (value) {
-      return _then(_value.copyWith(nutritionFacts: value) as $Val);
+    return $NutritionFactsCopyWith<$Res>(_self.nutritionFacts, (value) {
+      return _then(_self.copyWith(nutritionFacts: value));
     });
   }
 }
 
 /// @nodoc
-abstract class _$$ProductImplCopyWith<$Res> implements $ProductCopyWith<$Res> {
-  factory _$$ProductImplCopyWith(
-          _$ProductImpl value, $Res Function(_$ProductImpl) then) =
-      __$$ProductImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@UuidValueConverter() UuidValue id,
-      String name,
-      NutritionFacts nutritionFacts});
-
-  @override
-  $NutritionFactsCopyWith<$Res> get nutritionFacts;
-}
-
-/// @nodoc
-class __$$ProductImplCopyWithImpl<$Res>
-    extends _$ProductCopyWithImpl<$Res, _$ProductImpl>
-    implements _$$ProductImplCopyWith<$Res> {
-  __$$ProductImplCopyWithImpl(
-      _$ProductImpl _value, $Res Function(_$ProductImpl) _then)
-      : super(_value, _then);
-
-  /// Create a copy of Product
-  /// with the given fields replaced by the non-null parameter values.
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? id = null,
-    Object? name = null,
-    Object? nutritionFacts = null,
-  }) {
-    return _then(_$ProductImpl(
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as UuidValue,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      nutritionFacts: null == nutritionFacts
-          ? _value.nutritionFacts
-          : nutritionFacts // ignore: cast_nullable_to_non_nullable
-              as NutritionFacts,
-    ));
-  }
-}
-
-/// @nodoc
 @JsonSerializable()
-class _$ProductImpl implements _Product {
-  const _$ProductImpl(
+class _Product implements Product {
+  const _Product(
       {@UuidValueConverter() required this.id,
       required this.name,
+      required this.measurementUnit,
       required this.nutritionFacts});
-
-  factory _$ProductImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ProductImplFromJson(json);
+  factory _Product.fromJson(Map<String, dynamic> json) =>
+      _$ProductFromJson(json);
 
   @override
   @UuidValueConverter()
@@ -160,64 +134,111 @@ class _$ProductImpl implements _Product {
   @override
   final String name;
   @override
+  final MeasurementUnit measurementUnit;
+  @override
   final NutritionFacts nutritionFacts;
 
+  /// Create a copy of Product
+  /// with the given fields replaced by the non-null parameter values.
   @override
-  String toString() {
-    return 'Product._(id: $id, name: $name, nutritionFacts: $nutritionFacts)';
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @pragma('vm:prefer-inline')
+  _$ProductCopyWith<_Product> get copyWith =>
+      __$ProductCopyWithImpl<_Product>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$ProductToJson(
+      this,
+    );
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ProductImpl &&
+            other is _Product &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.measurementUnit, measurementUnit) ||
+                other.measurementUnit == measurementUnit) &&
             (identical(other.nutritionFacts, nutritionFacts) ||
                 other.nutritionFacts == nutritionFacts));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, nutritionFacts);
-
-  /// Create a copy of Product
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
-      __$$ProductImplCopyWithImpl<_$ProductImpl>(this, _$identity);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, measurementUnit, nutritionFacts);
 
   @override
-  Map<String, dynamic> toJson() {
-    return _$$ProductImplToJson(
-      this,
-    );
+  String toString() {
+    return 'Product._(id: $id, name: $name, measurementUnit: $measurementUnit, nutritionFacts: $nutritionFacts)';
   }
 }
 
-abstract class _Product implements Product {
-  const factory _Product(
-      {@UuidValueConverter() required final UuidValue id,
-      required final String name,
-      required final NutritionFacts nutritionFacts}) = _$ProductImpl;
+/// @nodoc
+abstract mixin class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
+  factory _$ProductCopyWith(_Product value, $Res Function(_Product) _then) =
+      __$ProductCopyWithImpl;
+  @override
+  @useResult
+  $Res call(
+      {@UuidValueConverter() UuidValue id,
+      String name,
+      MeasurementUnit measurementUnit,
+      NutritionFacts nutritionFacts});
 
-  factory _Product.fromJson(Map<String, dynamic> json) = _$ProductImpl.fromJson;
+  @override
+  $NutritionFactsCopyWith<$Res> get nutritionFacts;
+}
 
-  @override
-  @UuidValueConverter()
-  UuidValue get id;
-  @override
-  String get name;
-  @override
-  NutritionFacts get nutritionFacts;
+/// @nodoc
+class __$ProductCopyWithImpl<$Res> implements _$ProductCopyWith<$Res> {
+  __$ProductCopyWithImpl(this._self, this._then);
+
+  final _Product _self;
+  final $Res Function(_Product) _then;
 
   /// Create a copy of Product
   /// with the given fields replaced by the non-null parameter values.
   @override
-  @JsonKey(includeFromJson: false, includeToJson: false)
-  _$$ProductImplCopyWith<_$ProductImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  @pragma('vm:prefer-inline')
+  $Res call({
+    Object? id = null,
+    Object? name = null,
+    Object? measurementUnit = null,
+    Object? nutritionFacts = null,
+  }) {
+    return _then(_Product(
+      id: null == id
+          ? _self.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as UuidValue,
+      name: null == name
+          ? _self.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      measurementUnit: null == measurementUnit
+          ? _self.measurementUnit
+          : measurementUnit // ignore: cast_nullable_to_non_nullable
+              as MeasurementUnit,
+      nutritionFacts: null == nutritionFacts
+          ? _self.nutritionFacts
+          : nutritionFacts // ignore: cast_nullable_to_non_nullable
+              as NutritionFacts,
+    ));
+  }
+
+  /// Create a copy of Product
+  /// with the given fields replaced by the non-null parameter values.
+  @override
+  @pragma('vm:prefer-inline')
+  $NutritionFactsCopyWith<$Res> get nutritionFacts {
+    return $NutritionFactsCopyWith<$Res>(_self.nutritionFacts, (value) {
+      return _then(_self.copyWith(nutritionFacts: value));
+    });
+  }
 }
+
+// dart format on

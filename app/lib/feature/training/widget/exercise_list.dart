@@ -31,21 +31,34 @@ class ExerciseList extends StatelessWidget {
   final double itemDimension;
 
   @override
-  Widget build(BuildContext context) => exercises.isEmpty
-      ? Center(child: Text(exercisesAbsenceTitle))
-      : ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: exercises.length,
-          itemBuilder: (context, index) => _isEditable
-              ? ExerciseListItem.editable(
-                  exercise: exercises[index],
-                  onDeletePressed: () => onDeletePressed!(exercises[index].id),
-                  onEditPressed: onEdited,
-                  itemDimension: itemDimension,
-                )
-              : ExerciseListItem(
-                  exercise: exercises[index],
-                  itemDimension: itemDimension,
-                ),
-        );
+  Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
+
+    return exercises.isEmpty
+        ? Center(
+            child: Text(
+              exercisesAbsenceTitle,
+              textAlign: TextAlign.center,
+              style: textTheme.headlineSmall,
+              maxLines: 4,
+              overflow: TextOverflow.ellipsis,
+            ),
+          )
+        : ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: exercises.length,
+            itemBuilder: (context, index) => _isEditable
+                ? ExerciseListItem.editable(
+                    exercise: exercises[index],
+                    onDeletePressed: () =>
+                        onDeletePressed!(exercises[index].id),
+                    onEditPressed: onEdited,
+                    itemDimension: itemDimension,
+                  )
+                : ExerciseListItem(
+                    exercise: exercises[index],
+                    itemDimension: itemDimension,
+                  ),
+          );
+  }
 }

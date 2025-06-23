@@ -1,18 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 
-import '../../../service/user_service.dart';
 import '../app_router.dart';
 
 class UserPresenceGuard extends AutoRouteGuard {
-  const UserPresenceGuard({required UserService userService})
-      : _userService = userService;
+  const UserPresenceGuard({required this.isUserPresented});
 
-  final UserService _userService;
+  final bool isUserPresented;
 
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
-    final isUserPresented = _userService.user != null;
-
     if (isUserPresented) {
       resolver.next();
     } else {
@@ -24,12 +20,6 @@ class UserPresenceGuard extends AutoRouteGuard {
             router.removeLast();
           },
         ),
-        // WeightRegistrationRoute(
-        //   onUserAppears: () {
-        //     resolver.next();
-        //     router.removeLast();
-        //   },
-        // ),
       );
     }
   }

@@ -16,11 +16,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final userWeight = context.read<UserBloc>().state.user!.weight;
     final text = S.of(context);
+    final router = context.router;
+    final userWeight = context.read<UserBloc>().state.user!.weight;
 
-    Future<void> goToChangeWeightScreen() async =>
-        context.router.popAndPush(const ChangingWeightRoute());
+    Future<void> goToChangeWeightScreen() async {
+      router.popUntilRoot();
+      await router.replace(const ChangingWeightRoute());
+    }
 
     return FitAppScaffold(
       drawer: const FitAppDrawer(),

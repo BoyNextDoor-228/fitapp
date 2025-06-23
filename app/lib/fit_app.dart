@@ -3,13 +3,11 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'feature/app/app_scope.dart';
 import 'feature/app/page/fallback_app.dart';
 import 'feature/settings/bloc/settings_cubit.dart';
 import 'feature/user/bloc/user_bloc.dart';
-import 'generated/l10n.dart';
 import 'util/theme.dart';
 
 class FitApp extends StatefulWidget {
@@ -23,19 +21,14 @@ class _FitAppState extends State<FitApp> {
   late IAppScope _appScope;
   late Future<void> _scopeFuture;
 
-  final _localizationsDelegates = const <LocalizationsDelegate<dynamic>>[
-    S.delegate,
-    GlobalMaterialLocalizations.delegate,
-    GlobalWidgetsLocalizations.delegate,
-    GlobalCupertinoLocalizations.delegate,
-  ];
-
-  final _supportedLocales = S.delegate.supportedLocales;
+  void _initScope() {
+    _appScope = AppScope();
+    _scopeFuture = _appScope.init();
+  }
 
   @override
   void initState() {
     super.initState();
-
     _initScope();
   }
 
@@ -49,42 +42,45 @@ class _FitAppState extends State<FitApp> {
             );
           }
 
+          final providers = [
+            BlocProvider(
+              lazy: false,
+              create: (_) => UserBloc(
+                userService: _appScope.userService,
+              )..add(UserInitializationRequested()),
+            ),
+            BlocProvider(
+              lazy: false,
+              create: (_) => SettingsCubit(
+                settingsService: _appScope.settingsService,
+              ),
+            ),
+          ];
+
           return MultiBlocProvider(
-            providers: [
-              BlocProvider(
-                lazy: false,
-                create: (_) => UserBloc(
-                  userService: _appScope.userService,
-                )..add(UserInitializationRequested()),
-              ),
-              BlocProvider(
-                lazy: false,
-                create: (_) => SettingsCubit(
-                  settingsService: _appScope.settingsService,
-                ),
-              ),
-            ],
+            providers: providers,
             child: BlocBuilder<SettingsCubit, SettingsState>(
-              builder: (BuildContext context, state) => MaterialApp.router(
-                localizationsDelegates: _localizationsDelegates,
-                supportedLocales: _supportedLocales,
-                locale: state.settings.language == null
+              builder: (_, state) {
+                // If no language was selected in settings, system language is set.
+                final locale = state.settings.language == null
                     ? null
-                    : Locale(state.settings.language!.language),
-                title: _appScope.applicationName,
-                theme: FitAppTheme(themeSettings: state.settings.themeSettings)
-                    .getThemeData(),
-                routerConfig: _appScope.router.config(),
-              ),
+                    : Locale(state.settings.language!.languageCode);
+
+                final theme =
+                    FitAppTheme(themeSettings: state.settings.themeSettings)
+                        .getThemeData();
+
+                return MaterialApp.router(
+                  localizationsDelegates: _appScope.localizationsDelegates,
+                  supportedLocales: _appScope.supportedLocales,
+                  locale: locale,
+                  title: _appScope.applicationName,
+                  theme: theme,
+                  routerConfig: _appScope.router.config(),
+                );
+              },
             ),
           );
         },
       );
-
-  void _initScope() {
-    _appScope = AppScope();
-    _scopeFuture = _appScope.init();
-  }
 }
-
-typedef RebuildAppCallback = void Function({Future<void> update});

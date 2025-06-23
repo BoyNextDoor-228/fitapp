@@ -20,7 +20,8 @@ enum FitAppColors {
   brightGreen(0xFF00FF00),
   brightRed(0xFFFF0000),
 
-  black(0xFF000000);
+  black(0xFF000000),
+  white(0xFFFFFFFF);
 
   const FitAppColors(this.color);
   final int color;
@@ -30,7 +31,7 @@ enum FitAppLanguages {
   russian('ru', 'Русский'),
   english('en', 'English');
 
-  const FitAppLanguages(this.language, this.nativeCaption);
-  final String language;
+  const FitAppLanguages(this.languageCode, this.nativeCaption);
+  final String languageCode;
   final String nativeCaption;
 }

@@ -1,13 +1,16 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:fitapp_domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../generated/l10n.dart';
 import '../../../tool/bottom_sheet_provider.dart';
+import '../../../tool/user_state_listener.dart';
 import '../../app/widget/fitapp_appbar.dart';
 import '../../app/widget/fitapp_drawer.dart';
 import '../../app/widget/fitapp_scaffold.dart';
+import '../../navigation/app_router.dart';
 import '../../timer/countdown_timer.dart';
 import '../../user/bloc/user_bloc.dart';
 import '../bloc/training_process/training_process_bloc.dart';
@@ -49,7 +52,10 @@ class TrainingProcessScreen extends StatelessWidget {
     final text = S.of(context);
 
     return FitAppScaffold(
-      appBar: FitappAppbar.innerPage(title: text.training),
+      appBar: FitappAppbar.innerPage(
+        title: text.training,
+        backRoute: const TrainingListRoute(),
+      ),
       drawer: const FitAppDrawer(),
       body: BlocProvider.value(
         value: _trainingProcessBloc,
@@ -216,28 +222,31 @@ class _TrainingProcessInProgress extends StatelessWidget {
   Widget build(BuildContext context) {
     final text = S.of(context);
 
-    return Column(
-      children: [
-        Expanded(
-          flex: 9,
-          child: ListView.separated(
-            itemCount: exercisesProcess.length,
-            separatorBuilder: (_, __) => const Divider(),
-            itemBuilder: (_, index) => _ExercisesProgressListItem(
-              index: index + 1,
-              exercise: exercisesProcess.keys.toList()[index],
-              isCompleted: exercisesProcess.values.toList()[index],
-              onToggle: _onCompletionToggled,
+    return BlocListener<UserBloc, UserState>(
+      listener: userStateListener,
+      child: Column(
+        children: [
+          Expanded(
+            flex: 9,
+            child: ListView.separated(
+              itemCount: exercisesProcess.length,
+              separatorBuilder: (_, __) => const Divider(),
+              itemBuilder: (_, index) => _ExercisesProgressListItem(
+                index: index + 1,
+                exercise: exercisesProcess.keys.toList()[index],
+                isCompleted: exercisesProcess.values.toList()[index],
+                onToggle: _onCompletionToggled,
+              ),
             ),
           ),
-        ),
-        Expanded(
-          child: TextButton(
-            onPressed: canFinishTraining ? finishTraining : null,
-            child: Text(text.finishTraining),
+          Expanded(
+            child: TextButton(
+              onPressed: canFinishTraining ? finishTraining : null,
+              child: Text(text.finishTraining),
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

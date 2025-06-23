@@ -23,6 +23,9 @@ class EmptyListLabel extends StatelessWidget {
           Text(
             elementsAbsenceText,
             textAlign: TextAlign.center,
+            maxLines: 4,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(context).textTheme.titleLarge,
           ),
         ],
       );

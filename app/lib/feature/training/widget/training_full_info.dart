@@ -3,6 +3,7 @@ import 'package:fitapp_domain/domain.dart';
 import 'package:flutter/material.dart';
 
 import '../../../generated/l10n.dart';
+import '../../../tool/route_provider.dart';
 import '../../navigation/app_router.dart';
 import 'exercise_list.dart';
 
@@ -16,22 +17,21 @@ class TrainingFullInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final exerciseListHeight = MediaQuery.sizeOf(context).height * 0.4;
+    final exerciseListHeight = MediaQuery.sizeOf(context).shortestSide;
+    final textTheme = Theme.of(context).textTheme;
+    final router = context.router;
+
     final text = S.of(context);
 
-    Future<void> goToTrainingProcessScreen() async {
-      context.router.pop();
-      await context.router.navigate(
-        TrainingProcessRoute(training: training),
-      );
-    }
+    Future<void> goToTrainingProcessScreen() async => goToRoute(
+          router: router,
+          route: TrainingProcessRoute(training: training),
+        );
 
-    Future<void> goToExerciseStatisticsScreen() async {
-      context.router.pop();
-      await context.router.navigate(
-        ExerciseStatisticsRoute(exercises: training.exercises),
-      );
-    }
+    Future<void> goToExerciseStatisticsScreen() async => goToRoute(
+          router: router,
+          route: ExerciseStatisticsRoute(exercises: training.exercises),
+        );
 
     return SingleChildScrollView(
       child: Column(
@@ -42,19 +42,19 @@ class TrainingFullInfo extends StatelessWidget {
             training.title,
             overflow: TextOverflow.ellipsis,
             maxLines: 3,
-            style: Theme.of(context).textTheme.titleLarge,
+            style: textTheme.titleLarge,
           ),
           Text(
             training.description ?? text.noDescription,
-            style: Theme.of(context).textTheme.titleMedium,
+            style: textTheme.titleMedium,
           ),
           SizedBox(
-            height: exerciseListHeight,
+            height: exerciseListHeight * 0.8,
             width: double.infinity,
             child: ExerciseList(
               exercises: training.exercises,
               exercisesAbsenceTitle: text.noExercisesYet,
-              itemDimension: exerciseListHeight * 0.8,
+              itemDimension: exerciseListHeight * 0.5,
             ),
           ),
           if (training.exercises.isEmpty)

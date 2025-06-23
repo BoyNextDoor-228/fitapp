@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import '../../../app/extension/duration_to_hhmmss_string.dart';
 
 class PlaneGraph extends StatefulWidget {
-  const PlaneGraph({
+  PlaneGraph({
     required this.xValues,
     required this.yValues,
     required this.xLabel,
@@ -28,6 +28,10 @@ class PlaneGraph extends StatefulWidget {
     this.scaleLineWidth = 1,
     super.key,
   })  : assert(
+          xValues.isNotEmpty && yValues.isNotEmpty,
+          'xValues and yValues lists must be not empty.',
+        ),
+        assert(
           xValues.length == yValues.length,
           "Length of xValues (${xValues.length}) doesn't match length of yValues list (${yValues.length})",
         ),
@@ -142,22 +146,7 @@ class _PlaneGraphPainter extends CustomPainter {
     _canvasWidth = width;
     _canvasHeight = height;
 
-    _dotsCoordinates = List.generate(
-      xValues.length,
-      (index) => Offset(
-        _canvasWidth / xValues.length * index * 0.9 + _canvasWidth * 0.1,
-        (_canvasHeight -
-                yValues[index] / yValues.reduce(max) * _canvasHeight * 0.8) -
-            _canvasHeight * 0.1,
-      ),
-    )..replaceRange(0, 1, [
-        Offset(
-          yScaleOffset,
-          (_canvasHeight -
-                  yValues[0] / yValues.reduce(max) * _canvasHeight * 0.8) -
-              _canvasHeight * 0.1,
-        ),
-      ]);
+    _dotsCoordinates = _computeDotsCoordinates();
   }
 
   final List<String> xValues;
@@ -192,10 +181,47 @@ class _PlaneGraphPainter extends CustomPainter {
 
   late final List<Offset> _dotsCoordinates;
 
+  List<Offset> _computeDotsCoordinates() {
+    // This value must be not 0.
+    final yMaxValue = yValues.reduce(max) == 0 ? 1 : yValues.reduce(max);
+
+    return List.generate(
+      xValues.length,
+      (index) => Offset(
+        _canvasWidth / xValues.length * index,
+        (_canvasHeight - yValues[index] / yMaxValue * _canvasHeight * 0.8) -
+            _canvasHeight * 0.1,
+      ),
+    )..replaceRange(0, 1, [
+        Offset(
+          yScaleOffset,
+          (_canvasHeight - yValues[0] / yMaxValue * _canvasHeight * 0.8) -
+              _canvasHeight * 0.1,
+        ),
+      ]);
+
+    // return List.generate(
+    //   xValues.length,
+    //       (index) => Offset(
+    //     _canvasWidth / xValues.length * 0.9 * index + _canvasWidth * 0.1,
+    //     (_canvasHeight -
+    //         yValues[index] / yMaxValue * _canvasHeight * 0.8) -
+    //         _canvasHeight * 0.1,
+    //   ),
+    // )..replaceRange(0, 1, [
+    //   Offset(
+    //     yScaleOffset,
+    //     (_canvasHeight -
+    //         yValues[0] / yMaxValue * _canvasHeight * 0.8) -
+    //         _canvasHeight * 0.1,
+    //   ),
+    // ]);
+  }
+
   @override
   void paint(Canvas canvas, Size size) {
     _drawBackground(canvas);
-    _drawGrid(canvas, size);
+    //_drawGrid(canvas, size);
     _drawScales(canvas);
     _drawXScaleValues(canvas);
     _drawYScaleValues(canvas);

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../tool/bottom_sheet_provider.dart';
 import '../../../util/assets.dart';
+import '../../app/widget/shared/language_flag.dart';
 import '../domain/settings/settings.dart';
 import '../domain/settings_values.dart';
 
@@ -41,11 +42,15 @@ class LanguageSelector extends StatelessWidget {
       );
 
   Future<void> _openLanguageSelectionMenu(BuildContext context) async {
+    final screenHeight = MediaQuery.sizeOf(context).height;
+
     final languageFlagsWidgets = languageFlags.entries
         .map<Widget>(
-          (entry) => _LanguageFlag(
+          (entry) => LanguageFlag(
             imagePath: entry.value,
             language: entry.key,
+            onSelected: () =>
+                Navigator.pop<FitAppLanguages>(context, entry.key),
           ),
         )
         .toList();
@@ -53,9 +58,9 @@ class LanguageSelector extends StatelessWidget {
     final language = await showBottomSheetWithResultOf<FitAppLanguages>(
       context: context,
       headerText: captionText,
+      height: screenHeight * 0.5,
       content: GridView.count(
         crossAxisCount: 2,
-        childAspectRatio: 1.5,
         children: languageFlagsWidgets,
       ),
     );
@@ -63,36 +68,5 @@ class LanguageSelector extends StatelessWidget {
     if (language != null) {
       await onLanguageSelected(language);
     }
-  }
-}
-
-class _LanguageFlag extends StatelessWidget {
-  const _LanguageFlag({
-    required this.imagePath,
-    required this.language,
-  });
-
-  final String imagePath;
-  final FitAppLanguages language;
-
-  @override
-  Widget build(BuildContext context) {
-    final borderColor = Theme.of(context).colorScheme.primary;
-
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: GestureDetector(
-        onTap: () => Navigator.pop<FitAppLanguages>(context, language),
-        child: DecoratedBox(
-          decoration: BoxDecoration(
-            border: Border.all(color: borderColor),
-            image: DecorationImage(
-              image: AssetImage(imagePath),
-              fit: BoxFit.cover,
-            ),
-          ),
-        ),
-      ),
-    );
   }
 }
