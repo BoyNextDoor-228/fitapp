@@ -6,7 +6,6 @@ class UserPresenceGuard extends AutoRouteGuard {
   const UserPresenceGuard({required this.isUserPresented});
 
   final bool isUserPresented;
-  //final User? _user;
 
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {

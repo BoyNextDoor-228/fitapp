@@ -87,7 +87,7 @@ class _TrainingFormState extends State<TrainingForm> {
                 exercises: _newTraining.exercises,
                 onDeletePressed: _deleteExerciseFromList,
                 onEdited: _editExercise,
-                exercisesAbsenceTitle: text.noExercisesYet,
+                exercisesAbsenceTitle: text.noExercisesYetPress,
                 itemDimension: exerciseListHeight * 0.8,
               ),
             ),

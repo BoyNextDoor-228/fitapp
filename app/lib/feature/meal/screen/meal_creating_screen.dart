@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../generated/l10n.dart';
+import '../../../tool/user_state_listener.dart';
 import '../../app/widget/fitapp_appbar.dart';
 import '../../app/widget/fitapp_drawer.dart';
 import '../../app/widget/fitapp_scaffold.dart';
 import '../../app/widget/shared/scrollable_content_wrapper.dart';
+import '../../navigation/app_router.dart';
 import '../../user/bloc/user_bloc.dart';
 import '../widget/form/meal_form.dart';
 
@@ -20,12 +22,13 @@ class MealCreatingScreen extends StatelessWidget {
     final text = S.of(context);
 
     return FitAppScaffold(
-      resizeToAvoidBottomInset: false,
       drawer: const FitAppDrawer(),
-      appBar: FitappAppbar.innerPage(title: text.newMeal),
+      appBar: FitappAppbar.innerPage(
+        title: text.newMeal,
+        backRoute: const MealListRoute(),
+      ),
       body: BlocListener<UserBloc, UserState>(
-        listenWhen: _listenWhenCallback,
-        listener: _listenerCallback,
+        listener: userStateListener,
         child: ScrollableContentWrapper(
           child: Column(
             children: [
@@ -42,30 +45,6 @@ class MealCreatingScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  bool _listenWhenCallback(
-    UserState previousState,
-    UserState currentState,
-  ) =>
-      previousState.user!.meals.length < currentState.user!.meals.length;
-
-  void _listenerCallback(BuildContext context, UserState state) {
-    final showSnackBar = ScaffoldMessenger.of(context).showSnackBar;
-    final text = S.of(context);
-
-    if (state.status == UserStatus.error) {
-      showSnackBar(
-        SnackBar(content: Text(state.errorMessage!)),
-      );
-    }
-
-    if (state.status == UserStatus.success) {
-      showSnackBar(
-        SnackBar(content: Text(text.mealAdded)),
-      );
-      context.router.pop();
-    }
   }
 }
 

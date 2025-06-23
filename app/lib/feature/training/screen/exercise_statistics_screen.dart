@@ -6,6 +6,7 @@ import '../../../generated/l10n.dart';
 import '../../app/widget/fitapp_appbar.dart';
 import '../../app/widget/fitapp_drawer.dart';
 import '../../app/widget/fitapp_scaffold.dart';
+import '../../navigation/app_router.dart';
 import '../widget/exercise_statistics_list_item.dart';
 
 @RoutePage()
@@ -21,7 +22,10 @@ class ExerciseStatisticsScreen extends StatelessWidget {
     final text = S.of(context);
 
     return FitAppScaffold(
-      appBar: FitappAppbar.innerPage(title: text.exercisesStatistics),
+      appBar: FitappAppbar.innerPage(
+        title: text.exercisesStatistics,
+        backRoute: const TrainingListRoute(),
+      ),
       drawer: const FitAppDrawer(),
       body: exercises.isEmpty
           ? Center(

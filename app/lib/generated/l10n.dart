@@ -705,9 +705,19 @@ class S {
   }
 
   /// `No exercises yet.\nPress 'Add exercise' button to create one.`
-  String get noExercisesYet {
+  String get noExercisesYetPress {
     return Intl.message(
       'No exercises yet.\nPress \'Add exercise\' button to create one.',
+      name: 'noExercisesYetPress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No exercises yet.`
+  String get noExercisesYet {
+    return Intl.message(
+      'No exercises yet.',
       name: 'noExercisesYet',
       desc: '',
       args: [],
@@ -1094,6 +1104,236 @@ class S {
     return Intl.message(
       'Measurement unit:',
       name: 'measurementUnit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not load user data.`
+  String get couldNotLoadUserData {
+    return Intl.message(
+      'Could not load user data.',
+      name: 'couldNotLoadUserData',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not create user.`
+  String get couldNotCreateUser {
+    return Intl.message(
+      'Could not create user.',
+      name: 'couldNotCreateUser',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not update user weight.`
+  String get couldNotUpdateUserWeight {
+    return Intl.message(
+      'Could not update user weight.',
+      name: 'couldNotUpdateUserWeight',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not create a new training.`
+  String get couldNotCreateANewTraining {
+    return Intl.message(
+      'Could not create a new training.',
+      name: 'couldNotCreateANewTraining',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not delete training.`
+  String get couldNotDeleteTraining {
+    return Intl.message(
+      'Could not delete training.',
+      name: 'couldNotDeleteTraining',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not edit training.`
+  String get couldNotEditTraining {
+    return Intl.message(
+      'Could not edit training.',
+      name: 'couldNotEditTraining',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not add exercise in training.`
+  String get couldNotAddExerciseInTraining {
+    return Intl.message(
+      'Could not add exercise in training.',
+      name: 'couldNotAddExerciseInTraining',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not edit exercise in training.`
+  String get couldNotEditExerciseInTraining {
+    return Intl.message(
+      'Could not edit exercise in training.',
+      name: 'couldNotEditExerciseInTraining',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not delete exercise from training.`
+  String get couldNotDeleteExerciseFromTraining {
+    return Intl.message(
+      'Could not delete exercise from training.',
+      name: 'couldNotDeleteExerciseFromTraining',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not update training data.`
+  String get couldNotCompleteTraining {
+    return Intl.message(
+      'Could not update training data.',
+      name: 'couldNotCompleteTraining',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not create a new meal`
+  String get couldNotCreateANewMeal {
+    return Intl.message(
+      'Could not create a new meal',
+      name: 'couldNotCreateANewMeal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not delete meal.`
+  String get couldNotDeleteMeal {
+    return Intl.message(
+      'Could not delete meal.',
+      name: 'couldNotDeleteMeal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not edit meal.`
+  String get couldNotEditMeal {
+    return Intl.message(
+      'Could not edit meal.',
+      name: 'couldNotEditMeal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not add ingredient in meal.`
+  String get couldNotAddIngredientInMeal {
+    return Intl.message(
+      'Could not add ingredient in meal.',
+      name: 'couldNotAddIngredientInMeal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not edit ingredient in meal.`
+  String get couldNotEditIngredientInMeal {
+    return Intl.message(
+      'Could not edit ingredient in meal.',
+      name: 'couldNotEditIngredientInMeal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not delete ingredient from meal.`
+  String get couldNotDeleteIngredientFromMeal {
+    return Intl.message(
+      'Could not delete ingredient from meal.',
+      name: 'couldNotDeleteIngredientFromMeal',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not create a new product.`
+  String get couldNotCreateANewProduct {
+    return Intl.message(
+      'Could not create a new product.',
+      name: 'couldNotCreateANewProduct',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not edit product`
+  String get couldNotEditProduct {
+    return Intl.message(
+      'Could not edit product',
+      name: 'couldNotEditProduct',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Could not delete product.`
+  String get couldNotDeleteProduct {
+    return Intl.message(
+      'Could not delete product.',
+      name: 'couldNotDeleteProduct',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Training deleted.`
+  String get trainingDeleted {
+    return Intl.message(
+      'Training deleted.',
+      name: 'trainingDeleted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Training finished.`
+  String get trainingFinished {
+    return Intl.message(
+      'Training finished.',
+      name: 'trainingFinished',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Meal deleted.`
+  String get mealDeleted {
+    return Intl.message(
+      'Meal deleted.',
+      name: 'mealDeleted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Product deleted.`
+  String get productDeleted {
+    return Intl.message(
+      'Product deleted.',
+      name: 'productDeleted',
       desc: '',
       args: [],
     );

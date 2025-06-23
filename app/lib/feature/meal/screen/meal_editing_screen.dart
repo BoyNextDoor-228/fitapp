@@ -4,9 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../generated/l10n.dart';
+import '../../../tool/user_state_listener.dart';
 import '../../app/widget/fitapp_appbar.dart';
 import '../../app/widget/fitapp_drawer.dart';
 import '../../app/widget/fitapp_scaffold.dart';
+import '../../app/widget/shared/scrollable_content_wrapper.dart';
+import '../../navigation/app_router.dart';
 import '../../user/bloc/user_bloc.dart';
 import '../widget/form/meal_form.dart';
 
@@ -23,49 +26,29 @@ class MealEditingScreen extends StatelessWidget {
     final text = S.of(context);
 
     return FitAppScaffold(
-      resizeToAvoidBottomInset: false,
       drawer: const FitAppDrawer(),
-      appBar: FitappAppbar.innerPage(title: text.editMeal),
+      appBar: FitappAppbar.innerPage(
+        title: text.editMeal,
+        backRoute: const MealListRoute(),
+      ),
       body: BlocListener<UserBloc, UserState>(
-        listenWhen: _listenWhenCallback,
-        listener: _listenerCallback,
-        child: Column(
-          children: [
-            Text(
-              text.fillTheFormToEditMeal,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-            Expanded(
-              child: _MealEditingForm(
-                oldMeal: meal,
+        listener: userStateListener,
+        child: ScrollableContentWrapper(
+          child: Column(
+            children: [
+              Text(
+                text.fillTheFormToEditMeal,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
               ),
-            ),
-          ],
+              Expanded(
+                child: _MealEditingForm(oldMeal: meal),
+              ),
+            ],
+          ),
         ),
       ),
     );
-  }
-
-  bool _listenWhenCallback(_, UserState currentState) =>
-      !currentState.user!.meals.contains(meal);
-
-  void _listenerCallback(BuildContext context, UserState state) {
-    final messenger = ScaffoldMessenger.of(context);
-    final text = S.of(context);
-
-    if (state.status == UserStatus.error) {
-      messenger.showSnackBar(
-        SnackBar(content: Text(state.errorMessage!)),
-      );
-    }
-
-    if (state.status == UserStatus.success) {
-      messenger.showSnackBar(
-        SnackBar(content: Text(text.mealEdited)),
-      );
-      context.router.pop();
-    }
   }
 }
 

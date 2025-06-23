@@ -9,15 +9,6 @@ final class UserInitializationRequested extends UserEvent {
   List<Object?> get props => [];
 }
 
-final class UserLoadingRequested extends UserEvent {
-  UserLoadingRequested({required this.user});
-
-  final User? user;
-
-  @override
-  List<Object?> get props => [];
-}
-
 final class UserCreated extends UserEvent {
   UserCreated({required this.userWeight});
   final double userWeight;
@@ -58,42 +49,6 @@ final class TrainingEdited extends UserEvent {
   List<Object?> get props => [editedTraining];
 }
 
-final class InTrainingExerciseAdded extends UserEvent {
-  InTrainingExerciseAdded({
-    required this.trainingId,
-    required this.newExercise,
-  });
-  final UuidValue trainingId;
-  final Exercise newExercise;
-
-  @override
-  List<Object?> get props => [trainingId, newExercise];
-}
-
-final class InTrainingExerciseDeleted extends UserEvent {
-  InTrainingExerciseDeleted({
-    required this.trainingId,
-    required this.exerciseId,
-  });
-  final UuidValue trainingId;
-  final UuidValue exerciseId;
-
-  @override
-  List<Object?> get props => [trainingId, exerciseId];
-}
-
-final class InTrainingExerciseEdited extends UserEvent {
-  InTrainingExerciseEdited({
-    required this.trainingId,
-    required this.editedExercise,
-  });
-  final UuidValue trainingId;
-  final Exercise editedExercise;
-
-  @override
-  List<Object?> get props => [trainingId, editedExercise];
-}
-
 final class TrainingCompleted extends UserEvent {
   TrainingCompleted({required this.trainingId});
   final UuidValue trainingId;
@@ -124,42 +79,6 @@ final class MealEdited extends UserEvent {
 
   @override
   List<Object?> get props => [editedMeal];
-}
-
-final class InMealIngredientAdded extends UserEvent {
-  InMealIngredientAdded({
-    required this.mealId,
-    required this.newIngredient,
-  });
-  final UuidValue mealId;
-  final Ingredient newIngredient;
-
-  @override
-  List<Object?> get props => [mealId, newIngredient];
-}
-
-final class InMealIngredientDeleted extends UserEvent {
-  InMealIngredientDeleted({
-    required this.mealId,
-    required this.ingredientToDelete,
-  });
-  final UuidValue mealId;
-  final Ingredient ingredientToDelete;
-
-  @override
-  List<Object?> get props => [mealId, ingredientToDelete];
-}
-
-final class InMealIngredientEdited extends UserEvent {
-  InMealIngredientEdited({
-    required this.mealId,
-    required this.editedIngredient,
-  });
-  final UuidValue mealId;
-  final Ingredient editedIngredient;
-
-  @override
-  List<Object?> get props => [mealId, editedIngredient];
 }
 
 final class ProductAdded extends UserEvent {

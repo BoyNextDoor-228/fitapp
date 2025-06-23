@@ -56,6 +56,65 @@ class MessageLookup extends MessageLookupByLibrary {
           "Количество углеводов",
         ),
         "changeWeight": MessageLookupByLibrary.simpleMessage("Изменить вес"),
+        "couldNotAddExerciseInTraining": MessageLookupByLibrary.simpleMessage(
+          "Не удалось добавить упражнение в тренировку.",
+        ),
+        "couldNotAddIngredientInMeal": MessageLookupByLibrary.simpleMessage(
+          "Не удалось добавить ингредиент в блюдо.",
+        ),
+        "couldNotCompleteTraining": MessageLookupByLibrary.simpleMessage(
+          "Не удалось обновить данные тренировки.",
+        ),
+        "couldNotCreateANewMeal": MessageLookupByLibrary.simpleMessage(
+          "Не удалось создать новое бюлдо.",
+        ),
+        "couldNotCreateANewProduct": MessageLookupByLibrary.simpleMessage(
+          "Не удалось создать новый продукт.",
+        ),
+        "couldNotCreateANewTraining": MessageLookupByLibrary.simpleMessage(
+          "Не удалось создать новую тренировку.",
+        ),
+        "couldNotCreateUser": MessageLookupByLibrary.simpleMessage(
+          "Не удалось создать пользователя.",
+        ),
+        "couldNotDeleteExerciseFromTraining":
+            MessageLookupByLibrary.simpleMessage(
+          "Не удалось удалить упражнение из тренировки.",
+        ),
+        "couldNotDeleteIngredientFromMeal":
+            MessageLookupByLibrary.simpleMessage(
+          "Не удалось удалить ингредиент из блюда.",
+        ),
+        "couldNotDeleteMeal": MessageLookupByLibrary.simpleMessage(
+          "Не удалось удалить блюдо.",
+        ),
+        "couldNotDeleteProduct": MessageLookupByLibrary.simpleMessage(
+          "Не удалось удалить продукт.",
+        ),
+        "couldNotDeleteTraining": MessageLookupByLibrary.simpleMessage(
+          "Не удалось удалить тренировку.",
+        ),
+        "couldNotEditExerciseInTraining": MessageLookupByLibrary.simpleMessage(
+          "Не удалось измениить упражнение в тренировке.",
+        ),
+        "couldNotEditIngredientInMeal": MessageLookupByLibrary.simpleMessage(
+          "Не удалось изменить ингредиент в блюде.",
+        ),
+        "couldNotEditMeal": MessageLookupByLibrary.simpleMessage(
+          "Не удалось изменить блюдо.",
+        ),
+        "couldNotEditProduct": MessageLookupByLibrary.simpleMessage(
+          "Не удалось изменить продукт.",
+        ),
+        "couldNotEditTraining": MessageLookupByLibrary.simpleMessage(
+          "Не удалось изменить тренировку.",
+        ),
+        "couldNotLoadUserData": MessageLookupByLibrary.simpleMessage(
+          "Не удалось загрузить данные пользователя.",
+        ),
+        "couldNotUpdateUserWeight": MessageLookupByLibrary.simpleMessage(
+          "Не удалось изменить вес пользователя.",
+        ),
         "create": MessageLookupByLibrary.simpleMessage("Создать"),
         "createANewExercise": MessageLookupByLibrary.simpleMessage(
           "Создать новое упражнение",
@@ -171,6 +230,7 @@ class MessageLookup extends MessageLookupByLibrary {
           "Убедитесь, что дробь написана правильно",
         ),
         "mealAdded": MessageLookupByLibrary.simpleMessage("Блюдо добавлено!"),
+        "mealDeleted": MessageLookupByLibrary.simpleMessage("Блюдо удалено."),
         "mealEdited": MessageLookupByLibrary.simpleMessage("Блюдо изменено!"),
         "mealInformation": MessageLookupByLibrary.simpleMessage(
           "Инофрмация о блюде",
@@ -211,6 +271,9 @@ class MessageLookup extends MessageLookupByLibrary {
           "Описание отсутствует",
         ),
         "noExercisesYet": MessageLookupByLibrary.simpleMessage(
+          "Ещё нет упражнений.",
+        ),
+        "noExercisesYetPress": MessageLookupByLibrary.simpleMessage(
           "Ещё нет упражнений.\nНажмите кнопку \'Добавить упражнение\' для добавления",
         ),
         "noIngredientsYet": MessageLookupByLibrary.simpleMessage(
@@ -245,6 +308,8 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
         "productAdded":
             MessageLookupByLibrary.simpleMessage("Продукт добавлен!"),
+        "productDeleted":
+            MessageLookupByLibrary.simpleMessage("Продукт удалён."),
         "productEdited":
             MessageLookupByLibrary.simpleMessage("Продукт изменён!"),
         "products": MessageLookupByLibrary.simpleMessage("Продукты"),
@@ -272,8 +337,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "trainingAdded": MessageLookupByLibrary.simpleMessage(
           "Тренировка добавлена!",
         ),
+        "trainingDeleted": MessageLookupByLibrary.simpleMessage(
+          "Тренировка удалена.",
+        ),
         "trainingEdited": MessageLookupByLibrary.simpleMessage(
           "Тренировка изменена!",
+        ),
+        "trainingFinished": MessageLookupByLibrary.simpleMessage(
+          "Тренировка завершена.",
         ),
         "trainingInformation": MessageLookupByLibrary.simpleMessage(
           "Инофрмация о тренировке",

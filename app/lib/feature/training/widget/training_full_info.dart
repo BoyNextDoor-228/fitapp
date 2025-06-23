@@ -3,6 +3,7 @@ import 'package:fitapp_domain/domain.dart';
 import 'package:flutter/material.dart';
 
 import '../../../generated/l10n.dart';
+import '../../../tool/route_provider.dart';
 import '../../navigation/app_router.dart';
 import 'exercise_list.dart';
 
@@ -18,22 +19,19 @@ class TrainingFullInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     final exerciseListHeight = MediaQuery.sizeOf(context).shortestSide;
     final textTheme = Theme.of(context).textTheme;
+    final router = context.router;
 
     final text = S.of(context);
 
-    Future<void> goToTrainingProcessScreen() async {
-      context.router.pop();
-      await context.router.navigate(
-        TrainingProcessRoute(training: training),
-      );
-    }
+    Future<void> goToTrainingProcessScreen() async => goToRoute(
+          router: router,
+          route: TrainingProcessRoute(training: training),
+        );
 
-    Future<void> goToExerciseStatisticsScreen() async {
-      context.router.pop();
-      await context.router.navigate(
-        ExerciseStatisticsRoute(exercises: training.exercises),
-      );
-    }
+    Future<void> goToExerciseStatisticsScreen() async => goToRoute(
+          router: router,
+          route: ExerciseStatisticsRoute(exercises: training.exercises),
+        );
 
     return SingleChildScrollView(
       child: Column(

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../generated/l10n.dart';
+import '../../../tool/route_provider.dart';
+import '../../../tool/user_state_listener.dart';
 import '../../app/widget/fitapp_appbar.dart';
 import '../../app/widget/fitapp_drawer.dart';
 import '../../app/widget/fitapp_scaffold.dart';
@@ -20,6 +22,7 @@ class TrainingListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final router = context.router;
     final text = S.of(context);
 
     return FitAppScaffold(
@@ -28,7 +31,8 @@ class TrainingListScreen extends StatelessWidget {
       ),
       drawer: const FitAppDrawer(),
       appBar: FitappAppbar.regularPage(title: text.trainingsList),
-      body: BlocBuilder<UserBloc, UserState>(
+      body: BlocConsumer<UserBloc, UserState>(
+        listener: userStateListener,
         builder: (context, state) {
           if (state.status == UserStatus.loading) {
             return const Center(child: CircularProgressIndicator());
@@ -44,6 +48,7 @@ class TrainingListScreen extends StatelessWidget {
             );
           }
           return ListView.builder(
+            physics: const BouncingScrollPhysics(),
             itemCount: trainings.length,
             itemBuilder: (context, index) => FullInfoDisplayableListItem(
               listItem: TrainingListItem(
@@ -52,8 +57,9 @@ class TrainingListScreen extends StatelessWidget {
                 onDeletePressed: () => context.read<UserBloc>().add(
                       TrainingDeleted(trainingId: trainings[index].id),
                     ),
-                onEditPressed: () async => context.router.navigate(
-                  TrainingEditingRoute(training: trainings[index]),
+                onEditPressed: () async => goToRoute(
+                  router: router,
+                  route: TrainingEditingRoute(training: trainings[index]),
                 ),
               ),
               headerText: text.trainingInformation,

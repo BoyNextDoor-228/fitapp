@@ -10,6 +10,7 @@ import '../product/page/product_root_page.dart';
 import '../product/screen/product_creating_screen.dart';
 import '../product/screen/product_editing_screen.dart';
 import '../product/screen/product_list_screen.dart';
+import '../settings/page/settings_root_page.dart';
 import '../settings/screen/settings_screen.dart';
 import '../training/page/training_root_page.dart';
 import '../training/screen/exercise_statistics_screen.dart';
@@ -17,6 +18,7 @@ import '../training/screen/training_creating_screen.dart';
 import '../training/screen/training_editing_screen.dart';
 import '../training/screen/training_list_screen.dart';
 import '../training/screen/training_process_screen.dart';
+import '../user/page/home_root_page.dart';
 import '../user/screen/changing_weight_screen.dart';
 import '../user/screen/home_screen.dart';
 import '../user/screen/introduction_screen.dart';
@@ -49,15 +51,35 @@ class AppRouter extends RootStackRouter {
             ),
             AutoRoute(
               path: RoutePath.home,
-              page: HomeRoute.page,
-            ),
-            AutoRoute(
-              path: RoutePath.changeWeight,
-              page: ChangingWeightRoute.page,
+              page: HomeRootRoute.page,
+              children: [
+                RedirectRoute(
+                  path: '',
+                  redirectTo: RoutePath.home,
+                ),
+                AutoRoute(
+                  path: RoutePath.home,
+                  page: HomeRoute.page,
+                ),
+                AutoRoute(
+                  path: RoutePath.changeWeight,
+                  page: ChangingWeightRoute.page,
+                ),
+              ],
             ),
             AutoRoute(
               path: RoutePath.settings,
-              page: SettingsRoute.page,
+              page: SettingsRootRoute.page,
+              children: [
+                RedirectRoute(
+                  path: '',
+                  redirectTo: RoutePath.settings,
+                ),
+                AutoRoute(
+                  path: RoutePath.settings,
+                  page: SettingsRoute.page,
+                ),
+              ],
             ),
             AutoRoute(
               path: RoutePath.product,

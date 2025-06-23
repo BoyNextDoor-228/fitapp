@@ -54,6 +54,65 @@ class MessageLookup extends MessageLookupByLibrary {
           "Carbohydrates amount",
         ),
         "changeWeight": MessageLookupByLibrary.simpleMessage("Change weight"),
+        "couldNotAddExerciseInTraining": MessageLookupByLibrary.simpleMessage(
+          "Could not add exercise in training.",
+        ),
+        "couldNotAddIngredientInMeal": MessageLookupByLibrary.simpleMessage(
+          "Could not add ingredient in meal.",
+        ),
+        "couldNotCompleteTraining": MessageLookupByLibrary.simpleMessage(
+          "Could not update training data.",
+        ),
+        "couldNotCreateANewMeal": MessageLookupByLibrary.simpleMessage(
+          "Could not create a new meal",
+        ),
+        "couldNotCreateANewProduct": MessageLookupByLibrary.simpleMessage(
+          "Could not create a new product.",
+        ),
+        "couldNotCreateANewTraining": MessageLookupByLibrary.simpleMessage(
+          "Could not create a new training.",
+        ),
+        "couldNotCreateUser": MessageLookupByLibrary.simpleMessage(
+          "Could not create user.",
+        ),
+        "couldNotDeleteExerciseFromTraining":
+            MessageLookupByLibrary.simpleMessage(
+          "Could not delete exercise from training.",
+        ),
+        "couldNotDeleteIngredientFromMeal":
+            MessageLookupByLibrary.simpleMessage(
+          "Could not delete ingredient from meal.",
+        ),
+        "couldNotDeleteMeal": MessageLookupByLibrary.simpleMessage(
+          "Could not delete meal.",
+        ),
+        "couldNotDeleteProduct": MessageLookupByLibrary.simpleMessage(
+          "Could not delete product.",
+        ),
+        "couldNotDeleteTraining": MessageLookupByLibrary.simpleMessage(
+          "Could not delete training.",
+        ),
+        "couldNotEditExerciseInTraining": MessageLookupByLibrary.simpleMessage(
+          "Could not edit exercise in training.",
+        ),
+        "couldNotEditIngredientInMeal": MessageLookupByLibrary.simpleMessage(
+          "Could not edit ingredient in meal.",
+        ),
+        "couldNotEditMeal": MessageLookupByLibrary.simpleMessage(
+          "Could not edit meal.",
+        ),
+        "couldNotEditProduct": MessageLookupByLibrary.simpleMessage(
+          "Could not edit product",
+        ),
+        "couldNotEditTraining": MessageLookupByLibrary.simpleMessage(
+          "Could not edit training.",
+        ),
+        "couldNotLoadUserData": MessageLookupByLibrary.simpleMessage(
+          "Could not load user data.",
+        ),
+        "couldNotUpdateUserWeight": MessageLookupByLibrary.simpleMessage(
+          "Could not update user weight.",
+        ),
         "create": MessageLookupByLibrary.simpleMessage("Create"),
         "createANewExercise": MessageLookupByLibrary.simpleMessage(
           "Create a new exercise",
@@ -160,6 +219,7 @@ class MessageLookup extends MessageLookupByLibrary {
           "Make sure fractional number is correct",
         ),
         "mealAdded": MessageLookupByLibrary.simpleMessage("Meal added!"),
+        "mealDeleted": MessageLookupByLibrary.simpleMessage("Meal deleted."),
         "mealEdited": MessageLookupByLibrary.simpleMessage("Meal edited!"),
         "mealInformation":
             MessageLookupByLibrary.simpleMessage("Meal information"),
@@ -193,7 +253,9 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "noDescription": MessageLookupByLibrary.simpleMessage("No description"),
-        "noExercisesYet": MessageLookupByLibrary.simpleMessage(
+        "noExercisesYet":
+            MessageLookupByLibrary.simpleMessage("No exercises yet."),
+        "noExercisesYetPress": MessageLookupByLibrary.simpleMessage(
           "No exercises yet.\nPress \'Add exercise\' button to create one.",
         ),
         "noIngredientsYet": MessageLookupByLibrary.simpleMessage(
@@ -227,6 +289,8 @@ class MessageLookup extends MessageLookupByLibrary {
           "Number must be non-negative",
         ),
         "productAdded": MessageLookupByLibrary.simpleMessage("Product added!"),
+        "productDeleted":
+            MessageLookupByLibrary.simpleMessage("Product deleted."),
         "productEdited":
             MessageLookupByLibrary.simpleMessage("Product edited!"),
         "products": MessageLookupByLibrary.simpleMessage("Products"),
@@ -250,8 +314,14 @@ class MessageLookup extends MessageLookupByLibrary {
         "training": MessageLookupByLibrary.simpleMessage("Training"),
         "trainingAdded":
             MessageLookupByLibrary.simpleMessage("Training added!"),
+        "trainingDeleted": MessageLookupByLibrary.simpleMessage(
+          "Training deleted.",
+        ),
         "trainingEdited":
             MessageLookupByLibrary.simpleMessage("Training edited!"),
+        "trainingFinished": MessageLookupByLibrary.simpleMessage(
+          "Training finished.",
+        ),
         "trainingInformation": MessageLookupByLibrary.simpleMessage(
           "Training information",
         ),

@@ -27,6 +27,8 @@ class ColorSelector extends StatelessWidget {
       );
 
   Future<void> _openColorSelectionMenu(BuildContext context) async {
+    final screenHeight = MediaQuery.sizeOf(context).height;
+
     final colorSamples = colors
         .map(
           (colorCode) => _ColorIndicator(
@@ -38,6 +40,7 @@ class ColorSelector extends StatelessWidget {
 
     final color = await showBottomSheetWithResultOf<int>(
       context: context,
+      height: screenHeight * 0.6,
       headerText: captionText,
       content: GridView.count(
         crossAxisCount: 2,

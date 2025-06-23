@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../generated/l10n.dart';
+import '../../../tool/route_provider.dart';
+import '../../../tool/user_state_listener.dart';
 import '../../app/widget/fitapp_appbar.dart';
 import '../../app/widget/fitapp_drawer.dart';
 import '../../app/widget/fitapp_scaffold.dart';
@@ -29,7 +31,8 @@ class ProductListScreen extends StatelessWidget {
       ),
       drawer: const FitAppDrawer(),
       appBar: FitappAppbar.regularPage(title: text.productsList),
-      body: BlocBuilder<UserBloc, UserState>(
+      body: BlocConsumer<UserBloc, UserState>(
+        listener: userStateListener,
         bloc: userBloc,
         builder: (_, state) {
           if (state.status == UserStatus.loading) {
@@ -57,8 +60,9 @@ class ProductListScreen extends StatelessWidget {
               index: index + 1,
               onDeletePressed: () =>
                   userBloc.add(ProductDeleted(productId: products[index].id)),
-              onEditPressed: () async => router.navigate(
-                ProductEditingRoute(product: products[index]),
+              onEditPressed: () async => goToRoute(
+                router: router,
+                route: ProductEditingRoute(product: products[index]),
               ),
               itemDimension: height / 4,
             ),

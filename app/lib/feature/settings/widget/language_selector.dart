@@ -42,6 +42,8 @@ class LanguageSelector extends StatelessWidget {
       );
 
   Future<void> _openLanguageSelectionMenu(BuildContext context) async {
+    final screenHeight = MediaQuery.sizeOf(context).height;
+
     final languageFlagsWidgets = languageFlags.entries
         .map<Widget>(
           (entry) => LanguageFlag(
@@ -56,6 +58,7 @@ class LanguageSelector extends StatelessWidget {
     final language = await showBottomSheetWithResultOf<FitAppLanguages>(
       context: context,
       headerText: captionText,
+      height: screenHeight * 0.5,
       content: GridView.count(
         crossAxisCount: 2,
         children: languageFlagsWidgets,
@@ -67,26 +70,3 @@ class LanguageSelector extends StatelessWidget {
     }
   }
 }
-
-// class _LanguageFlag extends StatelessWidget {
-//   const _LanguageFlag({
-//     required this.imagePath,
-//     required this.language,
-//   });
-//
-//   final String imagePath;
-//   final FitAppLanguages language;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     final borderColor = Theme.of(context).colorScheme.primary;
-//
-//     return Padding(
-//       padding: const EdgeInsets.all(10),
-//       child: GestureDetector(
-//         onTap: () => Navigator.pop<FitAppLanguages>(context, language),
-//         child: FlagImage(imagePath: imagePath, imageSize: 50),
-//       ),
-//     );
-//   }
-// }

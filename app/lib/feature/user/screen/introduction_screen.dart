@@ -2,9 +2,12 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../generated/l10n.dart';
+import '../../../tool/user_status_to_string.dart';
 import '../../app/widget/fitapp_scaffold.dart';
 import '../../settings/bloc/settings_cubit.dart';
 import '../../settings/domain/settings_values.dart';
+import '../bloc/user_bloc.dart';
 import '../widget/introduction_subpage/language_selection_subpage.dart';
 import '../widget/introduction_subpage/weight_registration_subpage.dart';
 
@@ -46,18 +49,20 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
     await _goToNextPage();
   }
 
-  void _onPageChanged(int newIndex) => setState(() {
+  void _setPageCurrentIndex(int newIndex) => setState(() {
         _currentPageIndex = newIndex;
       });
 
   @override
   void didChangeDependencies() {
-    _settingsCubit = context.read<SettingsCubit>();
     super.didChangeDependencies();
+    _settingsCubit = context.read<SettingsCubit>();
   }
 
   @override
   Widget build(BuildContext context) {
+    final text = S.of(context);
+
     final subpages = [
       LanguageSelectionSubpage(
         onLanguageSelected: _onLanguageSelected,
@@ -65,39 +70,52 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
       WeightRegistrationSubpage(onUserAppears: widget._onUserAppears),
     ];
 
+    void userErrorListener(BuildContext context, UserState state) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content:
+          Text(userErrorToLocalizedText(text, state.errorMessage!)),
+        ),
+      );
+    }
+
     return FitAppScaffold(
-      body: Column(
-        children: [
-          Expanded(
-            child: PageView(
-              physics: const NeverScrollableScrollPhysics(),
-              controller: _pageViewController,
-              onPageChanged: _onPageChanged,
-              children: subpages,
+      body: BlocListener<UserBloc, UserState>(
+        listenWhen: (_, newState) => newState.errorMessage != null,
+        listener: userErrorListener,
+        child: Column(
+          children: [
+            Expanded(
+              child: PageView(
+                physics: const NeverScrollableScrollPhysics(),
+                controller: _pageViewController,
+                onPageChanged: _setPageCurrentIndex,
+                children: subpages,
+              ),
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              _PageViewControlButton(
-                icon: const Icon(
-                  Icons.arrow_back,
-                  size: 40,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _PageViewControlButton(
+                  icon: const Icon(
+                    Icons.arrow_back,
+                    size: 40,
+                  ),
+                  onTap: () async => _goToPreviousPage(),
+                  isActive: _currentPageIndex != 0,
                 ),
-                onTap: () async => _goToPreviousPage(),
-                isActive: _currentPageIndex != 0,
-              ),
-              _PageViewControlButton(
-                icon: const Icon(
-                  Icons.arrow_forward,
-                  size: 40,
+                _PageViewControlButton(
+                  icon: const Icon(
+                    Icons.arrow_forward,
+                    size: 40,
+                  ),
+                  onTap: () async => _goToNextPage(),
+                  isActive: _currentPageIndex != subpages.length - 1,
                 ),
-                onTap: () async => _goToNextPage(),
-                isActive: _currentPageIndex != subpages.length - 1,
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

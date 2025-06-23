@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../generated/l10n.dart';
+import '../../../tool/user_state_listener.dart';
 import '../../app/widget/fitapp_appbar.dart';
 import '../../app/widget/fitapp_drawer.dart';
 import '../../app/widget/fitapp_scaffold.dart';
 import '../../app/widget/shared/scrollable_content_wrapper.dart';
+import '../../navigation/app_router.dart';
 import '../../user/bloc/user_bloc.dart';
 import '../widget/form/training_form.dart';
 
@@ -27,10 +29,12 @@ class TrainingEditingScreen extends StatelessWidget {
 
     return FitAppScaffold(
       drawer: const FitAppDrawer(),
-      appBar: FitappAppbar.innerPage(title: text.editTraining),
+      appBar: FitappAppbar.innerPage(
+        title: text.editTraining,
+        backRoute: const TrainingListRoute(),
+      ),
       body: BlocListener<UserBloc, UserState>(
-        listenWhen: _listenWhenCallback,
-        listener: _listenerCallback,
+        listener: userStateListener,
         child: ScrollableContentWrapper(
           child: Column(
             children: [
@@ -49,27 +53,6 @@ class TrainingEditingScreen extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  bool _listenWhenCallback(_, UserState currentState) =>
-      !currentState.user!.trainings.contains(training);
-
-  void _listenerCallback(BuildContext context, UserState state) {
-    final messenger = ScaffoldMessenger.of(context);
-    final text = S.of(context);
-
-    if (state.status == UserStatus.error) {
-      messenger.showSnackBar(
-        SnackBar(content: Text(state.errorMessage!)),
-      );
-    }
-
-    if (state.status == UserStatus.success) {
-      messenger.showSnackBar(
-        SnackBar(content: Text(text.trainingEdited)),
-      );
-      context.router.pop();
-    }
   }
 }
 

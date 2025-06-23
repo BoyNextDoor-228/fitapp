@@ -62,6 +62,22 @@ class ExerciseStatisticsRouteArgs {
 }
 
 /// generated route for
+/// [HomeRootPage]
+class HomeRootRoute extends PageRouteInfo<void> {
+  const HomeRootRoute({List<PageRouteInfo>? children})
+      : super(HomeRootRoute.name, initialChildren: children);
+
+  static const String name = 'HomeRootRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const HomeRootPage();
+    },
+  );
+}
+
+/// generated route for
 /// [HomeScreen]
 class HomeRoute extends PageRouteInfo<void> {
   const HomeRoute({List<PageRouteInfo>? children})
@@ -289,6 +305,22 @@ class RootRoute extends PageRouteInfo<void> {
     name,
     builder: (data) {
       return const RootPage();
+    },
+  );
+}
+
+/// generated route for
+/// [SettingsRootPage]
+class SettingsRootRoute extends PageRouteInfo<void> {
+  const SettingsRootRoute({List<PageRouteInfo>? children})
+      : super(SettingsRootRoute.name, initialChildren: children);
+
+  static const String name = 'SettingsRootRoute';
+
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const SettingsRootPage();
     },
   );
 }

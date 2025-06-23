@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../tool/input_validator.dart';
+import '../../../../tool/route_provider.dart';
 import '../../../app/widget/shared/empty_list_label.dart';
 import '../../../navigation/app_router.dart';
 import '../../../user/bloc/user_bloc.dart';
@@ -50,10 +51,13 @@ class _IngredientFormState extends State<IngredientForm> {
 
   @override
   Widget build(BuildContext context) {
+    final router = context.router;
     final text = S.of(context);
 
-    Future<void> redirectToProductCreatingForm() async =>
-        context.router.navigate(const ProductRootRoute());
+    Future<void> redirectToProductCreatingForm() async => goToRoute(
+          router: router,
+          route: const ProductRootRoute(),
+        );
 
     if (_productsEntries.isEmpty) {
       return Column(

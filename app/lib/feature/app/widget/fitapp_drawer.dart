@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../generated/l10n.dart';
+import '../../../tool/route_provider.dart';
 import '../../navigation/app_router.dart';
 import '../../user/bloc/user_bloc.dart';
 
@@ -18,7 +19,7 @@ class FitAppDrawer extends StatelessWidget {
       DrawerNavigationItemInfo(
         itemName: text.home,
         itemImage: const Icon(Icons.home),
-        itemRoute: const HomeRoute(),
+        itemRoute: const HomeRootRoute(),
       ),
       DrawerNavigationItemInfo(
         itemName: text.trainings,
@@ -38,7 +39,7 @@ class FitAppDrawer extends StatelessWidget {
       DrawerNavigationItemInfo(
         itemName: text.settings,
         itemImage: const Icon(Icons.settings),
-        itemRoute: const SettingsRoute(),
+        itemRoute: const SettingsRootRoute(),
       ),
     ];
   }
@@ -48,60 +49,57 @@ class FitAppDrawer extends StatelessWidget {
     final userWeight = context.read<UserBloc>().state.user!.weight;
     final text = S.of(context);
 
-    return Stack(
-      children: [
-        Drawer(
-          child: Stack(
+    return Drawer(
+      child: Stack(
+        children: [
+          BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+            child: const SizedBox.expand(),
+          ),
+          Column(
             children: [
-              BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
-                child: const SizedBox.expand(),
+              DrawerHeader(
+                margin: EdgeInsets.zero,
+                padding: EdgeInsets.zero,
+                child: Stack(
+                  children: [
+                    const Positioned(
+                      left: 25,
+                      top: 25,
+                      child: Icon(Icons.ac_unit_sharp),
+                    ),
+                    Positioned.directional(
+                      bottom: 25,
+                      end: 25,
+                      textDirection: TextDirection.ltr,
+                      child: Text(text.yourCurrentWeightN(userWeight)),
+                    ),
+                  ],
+                ),
               ),
-              Column(
-                children: [
-                  DrawerHeader(
-                    margin: EdgeInsets.zero,
-                    padding: EdgeInsets.zero,
-                    child: Stack(
-                      children: [
-                        const Positioned(
-                          left: 25,
-                          top: 25,
-                          child: Icon(Icons.ac_unit_sharp),
-                        ),
-                        Positioned.directional(
-                          bottom: 25,
-                          end: 25,
-                          textDirection: TextDirection.ltr,
-                          child: Text(text.yourCurrentWeightN(userWeight)),
-                        ),
-                      ],
-                    ),
+              Expanded(
+                child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: _drawerNavigationItems(context).length,
+                  itemBuilder: (context, index) => DrawerNavigationItem(
+                    info: _drawerNavigationItems(context)[index],
+                    isSelected: context.router.current.parent?.name ==
+                        _drawerNavigationItems(context)[index]
+                            .itemRoute
+                            .routeName,
                   ),
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: _drawerNavigationItems(context).length,
-                      itemBuilder: (context, index) => DrawerNavigationItem(
-                        info: _drawerNavigationItems(context)[index],
-                        isSelected: context.router.current.parent?.name ==
-                            _drawerNavigationItems(context)[index]
-                                .itemRoute
-                                .routeName,
-                      ),
-                    ),
-                  ),
-                  const Divider(),
-                  ListTile(
-                    title: Text(text.exit),
-                    leading: const Icon(Icons.close),
-                    onTap: () {},
-                  ),
-                ],
+                ),
+              ),
+              const Divider(),
+              ListTile(
+                title: Text(text.exit),
+                leading: const Icon(Icons.close),
+                onTap: () {},
               ),
             ],
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -140,13 +138,14 @@ class DrawerNavigationItem extends StatelessWidget {
   final bool isSelected;
 
   @override
-  Widget build(BuildContext context) => ListTile(
-        selected: isSelected,
-        title: Text(info.itemName),
-        leading: info.itemImage,
-        onTap: () async {
-          context.router.pop();
-          await context.router.push(info.itemRoute);
-        },
-      );
+  Widget build(BuildContext context) {
+    final router = context.router;
+
+    return ListTile(
+      selected: isSelected,
+      title: Text(info.itemName),
+      leading: info.itemImage,
+      onTap: () async => goToRoute(router: router, route: info.itemRoute),
+    );
+  }
 }
