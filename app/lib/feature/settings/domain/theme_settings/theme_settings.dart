@@ -11,13 +11,13 @@ part 'theme_settings.g.dart';
 @freezed
 abstract class ThemeSettings with _$ThemeSettings {
   @Assert(
-    'contrastLevel >= -1 && contrastLevel <= 1',
-    'contrastLevel value must be in range [-1:1]',
+    'contrastLevel.level >= -1 && contrastLevel.level <= 1',
+    'contrastLevel.level value must be in range [-1:1]',
   )
-  const factory ThemeSettings({
+  factory ThemeSettings({
     required ThemeBrightness brightness,
     required int color,
-    required double contrastLevel,
+    required ContrastLevels contrastLevel,
   }) = _ThemeSettings;
 
   factory ThemeSettings.byDefault() {
@@ -34,7 +34,7 @@ abstract class ThemeSettings with _$ThemeSettings {
     return ThemeSettings(
       brightness: defaultBrightness,
       color: FitAppColors.deepOrange.color,
-      contrastLevel: 0.5,
+      contrastLevel: ContrastLevels.medium,
     );
   }
 

@@ -27,6 +27,15 @@ enum FitAppColors {
   final int color;
 }
 
+enum ContrastLevels {
+  low(0),
+  medium(0.5),
+  high(1);
+
+  const ContrastLevels(this.level);
+  final double level;
+}
+
 enum FitAppLanguages {
   russian('ru', 'Русский'),
   english('en', 'English');

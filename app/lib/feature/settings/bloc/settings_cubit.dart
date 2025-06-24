@@ -25,12 +25,7 @@ class SettingsCubit extends Cubit<SettingsState> {
         ),
       );
     } on Exception {
-      emit(
-        SettingsState(
-          settings: _settingsService.settings,
-          errorOccurred: true,
-        ),
-      );
+      _handleSettingsError();
     }
   }
 
@@ -46,16 +41,13 @@ class SettingsCubit extends Cubit<SettingsState> {
         ),
       );
     } on Exception {
-      emit(
-        SettingsState(
-          settings: _settingsService.settings,
-          errorOccurred: true,
-        ),
-      );
+      _handleSettingsError();
     }
   }
 
-  Future<void> setThemeContrastLevel({required double contrastLevel}) async {
+  Future<void> setThemeContrastLevel({
+    required ContrastLevels contrastLevel,
+  }) async {
     try {
       await _settingsService.editThemeContrastLevel(
         contrastLevel: contrastLevel,
@@ -69,12 +61,7 @@ class SettingsCubit extends Cubit<SettingsState> {
         ),
       );
     } on Exception {
-      emit(
-        SettingsState(
-          settings: _settingsService.settings,
-          errorOccurred: true,
-        ),
-      );
+      _handleSettingsError();
     }
   }
 
@@ -83,12 +70,16 @@ class SettingsCubit extends Cubit<SettingsState> {
       await _settingsService.editAppLanguage(language: language);
       emit(SettingsState(settings: _settingsService.settings));
     } on Exception {
-      emit(
-        SettingsState(
-          settings: _settingsService.settings,
-          errorOccurred: true,
-        ),
-      );
+      _handleSettingsError();
     }
+  }
+
+  void _handleSettingsError() {
+    emit(
+      SettingsState(
+        settings: _settingsService.settings,
+        errorOccurred: true,
+      ),
+    );
   }
 }

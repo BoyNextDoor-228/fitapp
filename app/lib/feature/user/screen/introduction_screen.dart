@@ -54,8 +54,8 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
       });
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+  void initState() {
+    super.initState();
     _settingsCubit = context.read<SettingsCubit>();
   }
 
@@ -73,8 +73,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
     void userErrorListener(BuildContext context, UserState state) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content:
-          Text(userErrorToLocalizedText(text, state.errorMessage!)),
+          content: Text(userErrorToLocalizedText(text, state.errorMessage!)),
         ),
       );
     }

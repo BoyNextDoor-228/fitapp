@@ -17,7 +17,7 @@ T _$identity<T>(T value) => value;
 mixin _$ThemeSettings {
   ThemeBrightness get brightness;
   int get color;
-  double get contrastLevel;
+  ContrastLevels get contrastLevel;
 
   /// Create a copy of ThemeSettings
   /// with the given fields replaced by the non-null parameter values.
@@ -59,7 +59,8 @@ abstract mixin class $ThemeSettingsCopyWith<$Res> {
           ThemeSettings value, $Res Function(ThemeSettings) _then) =
       _$ThemeSettingsCopyWithImpl;
   @useResult
-  $Res call({ThemeBrightness brightness, int color, double contrastLevel});
+  $Res call(
+      {ThemeBrightness brightness, int color, ContrastLevels contrastLevel});
 }
 
 /// @nodoc
@@ -91,7 +92,7 @@ class _$ThemeSettingsCopyWithImpl<$Res>
       contrastLevel: null == contrastLevel
           ? _self.contrastLevel
           : contrastLevel // ignore: cast_nullable_to_non_nullable
-              as double,
+              as ContrastLevels,
     ));
   }
 }
@@ -99,12 +100,12 @@ class _$ThemeSettingsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _ThemeSettings extends ThemeSettings {
-  const _ThemeSettings(
+  _ThemeSettings(
       {required this.brightness,
       required this.color,
       required this.contrastLevel})
-      : assert(contrastLevel >= -1 && contrastLevel <= 1,
-            'contrastLevel value must be in range [-1:1]'),
+      : assert(contrastLevel.level >= -1 && contrastLevel.level <= 1,
+            'contrastLevel.level value must be in range [-1:1]'),
         super._();
   factory _ThemeSettings.fromJson(Map<String, dynamic> json) =>
       _$ThemeSettingsFromJson(json);
@@ -114,7 +115,7 @@ class _ThemeSettings extends ThemeSettings {
   @override
   final int color;
   @override
-  final double contrastLevel;
+  final ContrastLevels contrastLevel;
 
   /// Create a copy of ThemeSettings
   /// with the given fields replaced by the non-null parameter values.
@@ -162,7 +163,8 @@ abstract mixin class _$ThemeSettingsCopyWith<$Res>
       __$ThemeSettingsCopyWithImpl;
   @override
   @useResult
-  $Res call({ThemeBrightness brightness, int color, double contrastLevel});
+  $Res call(
+      {ThemeBrightness brightness, int color, ContrastLevels contrastLevel});
 }
 
 /// @nodoc
@@ -194,7 +196,7 @@ class __$ThemeSettingsCopyWithImpl<$Res>
       contrastLevel: null == contrastLevel
           ? _self.contrastLevel
           : contrastLevel // ignore: cast_nullable_to_non_nullable
-              as double,
+              as ContrastLevels,
     ));
   }
 }

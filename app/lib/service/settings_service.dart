@@ -65,7 +65,9 @@ class SettingsService {
   }
 
   /// Edits theme contrast level in settings and saves updates in a storage.
-  Future<void> editThemeContrastLevel({required double contrastLevel}) async {
+  Future<void> editThemeContrastLevel({
+    required ContrastLevels contrastLevel,
+  }) async {
     try {
       _updateSettings(
         updatedSettings: _settings.copyWith(

@@ -10,6 +10,7 @@ import '../../app/widget/fitapp_scaffold.dart';
 import '../bloc/settings_cubit.dart';
 import '../domain/settings_values.dart';
 import '../widget/color_selector.dart';
+import '../widget/contrast_level_selector.dart';
 import '../widget/language_selector.dart';
 import '../widget/settings_list_item.dart';
 
@@ -35,7 +36,7 @@ class SettingsScreen extends StatelessWidget {
     Future<void> setThemeColor(int color) async =>
         settingsCubit.setThemeColor(color: color);
 
-    Future<void> setThemeContrastLevel(double value) async =>
+    Future<void> setThemeContrastLevel(ContrastLevels value) async =>
         settingsCubit.setThemeContrastLevel(contrastLevel: value);
 
     Future<void> setAppLanguage(FitAppLanguages language) async =>
@@ -89,9 +90,8 @@ class SettingsScreen extends StatelessWidget {
             SettingsListItem(
               description: text.interfaceContrastLevel,
               descriptionFlex: 1,
-              handler: DropdownMenu<double>(
-                dropdownMenuEntries: _contrastLevels(text),
-                initialSelection: settings.themeSettings.contrastLevel,
+              handler: ContrastLevelSelector(
+                initialContrastLevel: settings.themeSettings.contrastLevel,
                 onSelected: (value) async => setThemeContrastLevel(value!),
               ),
             ),
@@ -108,10 +108,4 @@ class SettingsScreen extends StatelessWidget {
       ),
     );
   }
-
-  List<DropdownMenuEntry<double>> _contrastLevels(S text) => [
-        DropdownMenuEntry(value: 0, label: text.low),
-        DropdownMenuEntry(value: 0.5, label: text.medium),
-        DropdownMenuEntry(value: 1, label: text.high),
-      ];
 }

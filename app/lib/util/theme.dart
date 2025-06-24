@@ -13,7 +13,7 @@ class FitAppTheme {
     _colorScheme = ColorScheme.fromSeed(
       brightness: _brightness,
       seedColor: Color(_themeSettings.color),
-      contrastLevel: _themeSettings.contrastLevel,
+      contrastLevel: _themeSettings.contrastLevel.level,
       dynamicSchemeVariant: DynamicSchemeVariant.fidelity,
     ).copyWith(error: Colors.red);
 
