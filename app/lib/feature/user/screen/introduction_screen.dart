@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../generated/l10n.dart';
 import '../../../tool/user_status_to_string.dart';
+import '../../app/widget/fit_app_snackbar_content.dart';
 import '../../app/widget/fitapp_scaffold.dart';
 import '../../settings/bloc/settings_cubit.dart';
 import '../../settings/domain/settings_values.dart';
@@ -73,7 +74,10 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
     void userErrorListener(BuildContext context, UserState state) {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text(userErrorToLocalizedText(text, state.errorMessage!)),
+          content: FitAppSnackBarContent(
+            snackBarText: userErrorToLocalizedText(text, state.errorMessage!),
+            messageType: SnackBarMessageType.error,
+          ),
         ),
       );
     }

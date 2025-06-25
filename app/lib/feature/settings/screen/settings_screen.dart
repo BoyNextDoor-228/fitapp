@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../generated/l10n.dart';
+import '../../app/widget/fit_app_snackbar_content.dart';
 import '../../app/widget/fitapp_appbar.dart';
 import '../../app/widget/fitapp_drawer.dart';
 import '../../app/widget/fitapp_scaffold.dart';
@@ -21,7 +22,6 @@ class SettingsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final text = S.of(context);
-    final snackBarTextColor = Theme.of(context).colorScheme.onPrimary;
 
     final settings = context.watch<SettingsCubit>().state.settings;
     final settingsCubit = context.read<SettingsCubit>();
@@ -46,15 +46,9 @@ class SettingsScreen extends StatelessWidget {
       if (state.errorOccurred) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Row(
-              spacing: 20,
-              children: [
-                Icon(
-                  Icons.error,
-                  color: snackBarTextColor,
-                ),
-                Text(text.anErrorOccurred),
-              ],
+            content: FitAppSnackBarContent(
+              snackBarText: text.anErrorOccurred,
+              messageType: SnackBarMessageType.error,
             ),
           ),
         );
