@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 
 import '../../../generated/l10n.dart';
 
-// TODO(BoyNextDoor-228): Remake to FormField.
 class CountPicker extends StatefulWidget {
   const CountPicker({
     required this.initialValue,

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../../exception/unknown_exercise_load_type_exception.dart';
 import '../../../../generated/l10n.dart';
 import '../../../../tool/input_validator.dart';
-import '../../../app/widget/form/exercise_load_type_selector_form_field/exercise_load_type_selector_form_field.dart';
+import '../../../app/widget/shared/exercise_load_type_selector.dart';
 import '../count_picker.dart';
 import '../duration_picker.dart';
 
@@ -47,7 +47,7 @@ class _ExerciseFormState extends State<ExerciseForm> {
           child: Column(
             spacing: 10,
             children: [
-              ExerciseLoadTypeSelectorFormField(
+              ExerciseLoadTypeSelector(
                 initialLoadType: _newExercise.load.type,
                 onChanged: (loadType) {
                   setState(() {

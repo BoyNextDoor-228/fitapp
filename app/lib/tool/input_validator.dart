@@ -21,7 +21,7 @@ class InputValidator {
       return _enterAmount;
     }
 
-    if (input.split('').first == '.' || input.split('').last == '.') {
+    if (input.startsWith('.') || input.endsWith('.')) {
       return _makeSureFractionalNumberIsCorrect;
     }
 

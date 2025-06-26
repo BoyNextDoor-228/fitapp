@@ -1,7 +1,7 @@
 import 'package:fitapp_domain/domain.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../../generated/l10n.dart';
+import '../../../../generated/l10n.dart';
 
 class ExerciseLoadTypeSelector extends StatefulWidget {
   const ExerciseLoadTypeSelector({
