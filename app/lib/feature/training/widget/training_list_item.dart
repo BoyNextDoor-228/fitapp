@@ -4,6 +4,7 @@ import 'package:fitapp_domain/domain.dart';
 import 'package:flutter/material.dart';
 
 import '../../../generated/l10n.dart';
+import '../../../tool/show_deletion_dialog.dart';
 import 'exercise_icon.dart';
 
 class TrainingListItem extends StatelessWidget {
@@ -224,31 +225,11 @@ class _CardMenuButtons extends StatelessWidget {
         ),
         PopupMenuItem(
           child: Text(text.delete),
-          // TODO(BoyNextDoor-228): Implement as extension.
-          onTap: () async {
-            await showDialog(
-              context: context,
-              builder: (BuildContext context) => AlertDialog(
-                title: Text(text.deletion),
-                content: Text(
-                  text.areYouSureYouWantToDeleteThisObject('training'),
-                ),
-                actions: [
-                  TextButton(
-                    onPressed: () {
-                      onDeletePressed();
-                      Navigator.pop(context);
-                    },
-                    child: Text(text.yes),
-                  ),
-                  TextButton(
-                    onPressed: () => Navigator.pop(context),
-                    child: Text(text.no),
-                  ),
-                ],
-              ),
-            );
-          },
+          onTap: () async => showDeletionDialog(
+            context: context,
+            onConfirmed: onDeletePressed,
+            deleteWhat: text.training,
+          ),
         ),
       ],
     );

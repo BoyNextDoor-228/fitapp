@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../../../generated/l10n.dart';
 import '../../../tool/bottom_sheet_provider.dart';
 import '../../../tool/exercise_load_to_text.dart';
+import '../../../tool/show_deletion_dialog.dart';
 import 'exercise_icon.dart';
 import 'form/exercise_form.dart';
 
@@ -172,31 +173,11 @@ class _CardMenuButtons extends StatelessWidget {
         ),
         PopupMenuItem(
           child: Text(text.delete),
-          // TODO(BoyNextDoor-228): Implement as extension.
-          onTap: () async {
-            await showDialog(
-              context: context,
-              builder: (BuildContext context) => AlertDialog(
-                title: Text(text.deletion),
-                content: Text(
-                  text.areYouSureYouWantToDeleteThisObject('exercise'),
-                ),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(context),
-                    child: Text(text.no),
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      onDeletePressed();
-                      Navigator.pop(context);
-                    },
-                    child: Text(text.yes),
-                  ),
-                ],
-              ),
-            );
-          },
+          onTap: () async => showDeletionDialog(
+            context: context,
+            onConfirmed: onDeletePressed,
+            deleteWhat: S.of(context).exercise,
+          ),
         ),
       ],
     );

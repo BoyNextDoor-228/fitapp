@@ -154,6 +154,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "enterYourWeight": MessageLookupByLibrary.simpleMessage(
           "Enter your weight",
         ),
+        "exercise": MessageLookupByLibrary.simpleMessage("exercise"),
         "exerciseAdded": MessageLookupByLibrary.simpleMessage("Exercise added"),
         "exerciseEditing":
             MessageLookupByLibrary.simpleMessage("Exercise editing"),
@@ -195,6 +196,7 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
         "high": MessageLookupByLibrary.simpleMessage("High"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "ingredient": MessageLookupByLibrary.simpleMessage("ingredient"),
         "ingredientEditing": MessageLookupByLibrary.simpleMessage(
           "Ingredient editing",
         ),
@@ -218,6 +220,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
           "Make sure fractional number is correct",
         ),
+        "meal": MessageLookupByLibrary.simpleMessage("meal"),
         "mealAdded": MessageLookupByLibrary.simpleMessage("Meal added!"),
         "mealDeleted": MessageLookupByLibrary.simpleMessage("Meal deleted."),
         "mealEdited": MessageLookupByLibrary.simpleMessage("Meal edited!"),
@@ -288,6 +291,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "numberMustBeNonnegative": MessageLookupByLibrary.simpleMessage(
           "Number must be non-negative",
         ),
+        "product": MessageLookupByLibrary.simpleMessage("product"),
         "productAdded": MessageLookupByLibrary.simpleMessage("Product added!"),
         "productDeleted":
             MessageLookupByLibrary.simpleMessage("Product deleted."),

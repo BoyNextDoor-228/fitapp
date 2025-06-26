@@ -160,6 +160,7 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
         "enterYourWeight":
             MessageLookupByLibrary.simpleMessage("Введите ваш вес"),
+        "exercise": MessageLookupByLibrary.simpleMessage("упражнение"),
         "exerciseAdded": MessageLookupByLibrary.simpleMessage(
           "Упражнение добавлено",
         ),
@@ -206,6 +207,7 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
         "high": MessageLookupByLibrary.simpleMessage("Высокий"),
         "home": MessageLookupByLibrary.simpleMessage("Домой"),
+        "ingredient": MessageLookupByLibrary.simpleMessage("ингредиент"),
         "ingredientEditing": MessageLookupByLibrary.simpleMessage(
           "Изменение ингредиента",
         ),
@@ -229,6 +231,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage(
           "Убедитесь, что дробь написана правильно",
         ),
+        "meal": MessageLookupByLibrary.simpleMessage("блюдо"),
         "mealAdded": MessageLookupByLibrary.simpleMessage("Блюдо добавлено!"),
         "mealDeleted": MessageLookupByLibrary.simpleMessage("Блюдо удалено."),
         "mealEdited": MessageLookupByLibrary.simpleMessage("Блюдо изменено!"),
@@ -306,6 +309,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "numberMustBeNonnegative": MessageLookupByLibrary.simpleMessage(
           "Число должно быть неотрицательным",
         ),
+        "product": MessageLookupByLibrary.simpleMessage("продукт"),
         "productAdded":
             MessageLookupByLibrary.simpleMessage("Продукт добавлен!"),
         "productDeleted":

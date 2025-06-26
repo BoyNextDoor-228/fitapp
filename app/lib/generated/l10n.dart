@@ -1338,6 +1338,26 @@ class S {
       args: [],
     );
   }
+
+  /// `ingredient`
+  String get ingredient {
+    return Intl.message('ingredient', name: 'ingredient', desc: '', args: []);
+  }
+
+  /// `meal`
+  String get meal {
+    return Intl.message('meal', name: 'meal', desc: '', args: []);
+  }
+
+  /// `product`
+  String get product {
+    return Intl.message('product', name: 'product', desc: '', args: []);
+  }
+
+  /// `exercise`
+  String get exercise {
+    return Intl.message('exercise', name: 'exercise', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
