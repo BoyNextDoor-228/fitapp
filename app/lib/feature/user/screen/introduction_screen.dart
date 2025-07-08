@@ -6,6 +6,7 @@ import '../../../generated/l10n.dart';
 import '../../../tool/user_status_to_string.dart';
 import '../../app/widget/fit_app_snackbar_content.dart';
 import '../../app/widget/fitapp_scaffold.dart';
+import '../../app/widget/page_view_control_button.dart';
 import '../../settings/bloc/settings_cubit.dart';
 import '../../settings/domain/settings_values.dart';
 import '../bloc/user_bloc.dart';
@@ -99,7 +100,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _PageViewControlButton(
+                PageViewControlButton(
                   icon: const Icon(
                     Icons.arrow_back,
                     size: 40,
@@ -107,7 +108,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                   onTap: () async => _goToPreviousPage(),
                   isActive: _currentPageIndex != 0,
                 ),
-                _PageViewControlButton(
+                PageViewControlButton(
                   icon: const Icon(
                     Icons.arrow_forward,
                     size: 40,
@@ -122,22 +123,4 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
       ),
     );
   }
-}
-
-class _PageViewControlButton extends StatelessWidget {
-  const _PageViewControlButton({
-    required this.icon,
-    required this.onTap,
-    required this.isActive,
-  });
-
-  final Icon icon;
-  final Future<void> Function() onTap;
-  final bool isActive;
-
-  @override
-  Widget build(BuildContext context) => IconButton(
-        icon: icon,
-        onPressed: isActive ? () async => onTap() : null,
-      );
 }

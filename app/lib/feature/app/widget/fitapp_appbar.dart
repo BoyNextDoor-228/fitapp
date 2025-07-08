@@ -7,21 +7,28 @@ class FitappAppbar extends StatelessWidget implements PreferredSizeWidget {
   FitappAppbar.innerPage({
     required String title,
     required PageRouteInfo backRoute,
+    Widget? trailing,
     super.key,
   })  : _title = title,
-        _leading = AppbarBackButton(route: backRoute);
+        _leading = AppbarBackButton(route: backRoute),
+        _trailing = trailing;
 
   const FitappAppbar.regularPage({
     required String title,
+    Widget? trailing,
     super.key,
   })  : _title = title,
-        _leading = const AppbarBurgerMenuButton();
+        _leading = const AppbarBurgerMenuButton(),
+        _trailing = trailing;
 
   /// Title, which will be displayed in Appbar.
   final String _title;
 
   /// Widget, which will be displayed as leading widget in Appbar.
   final Widget _leading;
+
+  /// Widget, which will be displayed as trailing widget in Appbar.
+  final Widget? _trailing;
 
   @override
   Widget build(BuildContext context) => AppBar(
@@ -31,6 +38,7 @@ class FitappAppbar extends StatelessWidget implements PreferredSizeWidget {
           overflow: TextOverflow.ellipsis,
         ),
         leading: _leading,
+        actions: _trailing == null ? null : [_trailing!],
       );
 
   @override

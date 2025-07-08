@@ -86,6 +86,7 @@ class _Content extends StatelessWidget {
             exercise.description ?? text.noDescription,
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
+            style: textTheme.titleMedium,
           ),
         ),
         Expanded(

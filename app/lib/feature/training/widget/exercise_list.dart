@@ -9,6 +9,7 @@ class ExerciseList extends StatelessWidget {
     required this.exercises,
     required this.exercisesAbsenceTitle,
     required this.itemDimension,
+    this.scrollDirection = Axis.horizontal,
     super.key,
   })  : _isEditable = false,
         onEdited = null,
@@ -20,9 +21,11 @@ class ExerciseList extends StatelessWidget {
     required this.onEdited,
     required this.exercisesAbsenceTitle,
     required this.itemDimension,
+    this.scrollDirection = Axis.horizontal,
     super.key,
   }) : _isEditable = true;
 
+  final Axis scrollDirection;
   final List<Exercise> exercises;
   final void Function(UuidValue exerciseId)? onDeletePressed;
   final void Function(Exercise newExercise)? onEdited;
@@ -45,7 +48,8 @@ class ExerciseList extends StatelessWidget {
             ),
           )
         : ListView.builder(
-            scrollDirection: Axis.horizontal,
+            physics: const BouncingScrollPhysics(),
+            scrollDirection: scrollDirection,
             itemCount: exercises.length,
             itemBuilder: (context, index) => _isEditable
                 ? ExerciseListItem.editable(

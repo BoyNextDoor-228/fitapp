@@ -150,5 +150,10 @@
   "ingredient": "ингредиент",
   "meal": "блюдо",
   "product": "продукт",
-  "exercise": "упражнение"
+  "exercise": "упражнение",
+  "tapToOpenTimer": "Нажмите, чтобы открыть таймер",
+  "markAsCompleted": "Отметить как выполненное",
+  "exerciseInformation": "Информация об упражнении",
+  "goodWorknYourTrainingProgressHasBeenUpdated": "Хорошая работа!\nВаш тренировочный прогресс был обновлён!",
+  "checkStatistics": "Перейти к статистике"
 }

@@ -56,6 +56,9 @@ class MessageLookup extends MessageLookupByLibrary {
           "Количество углеводов",
         ),
         "changeWeight": MessageLookupByLibrary.simpleMessage("Изменить вес"),
+        "checkStatistics": MessageLookupByLibrary.simpleMessage(
+          "Перейти к статистике",
+        ),
         "couldNotAddExerciseInTraining": MessageLookupByLibrary.simpleMessage(
           "Не удалось добавить упражнение в тренировку.",
         ),
@@ -167,6 +170,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "exerciseEditing": MessageLookupByLibrary.simpleMessage(
           "Изменение упражнения",
         ),
+        "exerciseInformation": MessageLookupByLibrary.simpleMessage(
+          "Информация об упражнении",
+        ),
         "exercisesAreAbsent": MessageLookupByLibrary.simpleMessage(
           "Упражнения отсутствуют",
         ),
@@ -200,6 +206,10 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
         "goToProducts":
             MessageLookupByLibrary.simpleMessage("Перейти к продуктам"),
+        "goodWorknYourTrainingProgressHasBeenUpdated":
+            MessageLookupByLibrary.simpleMessage(
+          "Хорошая работа!\nВаш тренировочный прогресс был обновлён!",
+        ),
         "grams": MessageLookupByLibrary.simpleMessage("Граммы"),
         "hereYouCanChangeYourCurrentWeight":
             MessageLookupByLibrary.simpleMessage(
@@ -230,6 +240,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "makeSureFractionalNumberIsCorrect":
             MessageLookupByLibrary.simpleMessage(
           "Убедитесь, что дробь написана правильно",
+        ),
+        "markAsCompleted": MessageLookupByLibrary.simpleMessage(
+          "Отметить как выполненное",
         ),
         "meal": MessageLookupByLibrary.simpleMessage("блюдо"),
         "mealAdded": MessageLookupByLibrary.simpleMessage("Блюдо добавлено!"),
@@ -335,6 +348,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "startTraining":
             MessageLookupByLibrary.simpleMessage("Начать тренировку"),
         "statisticsOfExercisetitle": m5,
+        "tapToOpenTimer": MessageLookupByLibrary.simpleMessage(
+          "Нажмите, чтобы открыть таймер",
+        ),
         "timer": MessageLookupByLibrary.simpleMessage("Таймер"),
         "totalIngredientsN": m6,
         "training": MessageLookupByLibrary.simpleMessage("Тренировка"),
