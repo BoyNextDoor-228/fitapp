@@ -77,6 +77,7 @@ class ExerciseStatisticsListItem extends StatelessWidget {
             child: Text(
               style: textStyle.bodyLarge,
               text.noStatisticsForThisExerciseYetntoMakeStatisticsOfThis,
+              textAlign: TextAlign.center,
             ),
           )
         else

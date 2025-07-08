@@ -54,7 +54,7 @@ class TrainingFullInfo extends StatelessWidget {
             child: ExerciseList(
               exercises: training.exercises,
               exercisesAbsenceTitle: text.noExercisesYet,
-              itemDimension: exerciseListHeight * 0.5,
+              itemDimension: exerciseListHeight * 0.7,
             ),
           ),
           if (training.exercises.isEmpty)

@@ -54,6 +54,8 @@ class MessageLookup extends MessageLookupByLibrary {
           "Carbohydrates amount",
         ),
         "changeWeight": MessageLookupByLibrary.simpleMessage("Change weight"),
+        "checkStatistics":
+            MessageLookupByLibrary.simpleMessage("Check statistics"),
         "couldNotAddExerciseInTraining": MessageLookupByLibrary.simpleMessage(
           "Could not add exercise in training.",
         ),
@@ -158,6 +160,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "exerciseAdded": MessageLookupByLibrary.simpleMessage("Exercise added"),
         "exerciseEditing":
             MessageLookupByLibrary.simpleMessage("Exercise editing"),
+        "exerciseInformation": MessageLookupByLibrary.simpleMessage(
+          "Exercise information",
+        ),
         "exercisesAreAbsent": MessageLookupByLibrary.simpleMessage(
           "Exercises are absent",
         ),
@@ -189,6 +194,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "finishTraining":
             MessageLookupByLibrary.simpleMessage("Finish training"),
         "goToProducts": MessageLookupByLibrary.simpleMessage("Go to products"),
+        "goodWorknYourTrainingProgressHasBeenUpdated":
+            MessageLookupByLibrary.simpleMessage(
+          "Good work!\nYour training progress has been updated!",
+        ),
         "grams": MessageLookupByLibrary.simpleMessage("Grams"),
         "hereYouCanChangeYourCurrentWeight":
             MessageLookupByLibrary.simpleMessage(
@@ -219,6 +228,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "makeSureFractionalNumberIsCorrect":
             MessageLookupByLibrary.simpleMessage(
           "Make sure fractional number is correct",
+        ),
+        "markAsCompleted": MessageLookupByLibrary.simpleMessage(
+          "Mark as completed",
         ),
         "meal": MessageLookupByLibrary.simpleMessage("meal"),
         "mealAdded": MessageLookupByLibrary.simpleMessage("Meal added!"),
@@ -313,6 +325,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "startTraining": MessageLookupByLibrary.simpleMessage("Start training"),
         "statisticsOfExercisetitle": m5,
+        "tapToOpenTimer":
+            MessageLookupByLibrary.simpleMessage("Tap to open timer"),
         "timer": MessageLookupByLibrary.simpleMessage("Timer"),
         "totalIngredientsN": m6,
         "training": MessageLookupByLibrary.simpleMessage("Training"),

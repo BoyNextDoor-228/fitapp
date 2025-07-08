@@ -150,5 +150,10 @@
   "ingredient": "ingredient",
   "meal": "meal",
   "product": "product",
-  "exercise": "exercise"
+  "exercise": "exercise",
+  "tapToOpenTimer": "Tap to open timer",
+  "markAsCompleted": "Mark as completed",
+  "exerciseInformation": "Exercise information",
+  "goodWorknYourTrainingProgressHasBeenUpdated": "Good work!\nYour training progress has been updated!",
+  "checkStatistics": "Check statistics"
 }

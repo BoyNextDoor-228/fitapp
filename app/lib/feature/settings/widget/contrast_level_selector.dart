@@ -30,9 +30,7 @@ class ContrastLevelSelector extends StatelessWidget {
       key: UniqueKey(),
       dropdownMenuEntries: _contrastLevels(text),
       initialSelection: initialContrastLevel,
-      onSelected: (value) async {
-        await onSelected(value);
-      },
+      onSelected: (value) async => onSelected(value),
     );
   }
 }

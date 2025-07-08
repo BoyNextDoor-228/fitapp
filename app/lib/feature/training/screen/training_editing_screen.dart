@@ -65,15 +65,13 @@ class _TrainingEditingForm extends StatelessWidget {
   Widget build(BuildContext context) {
     final text = S.of(context);
 
-    void editTrainingCallback(Training training) {
-      context.read<UserBloc>().add(
-            TrainingEdited(editedTraining: training),
-          );
+    void editTraining(Training training) {
+      context.read<UserBloc>().add(TrainingEdited(editedTraining: training));
     }
 
     return TrainingForm(
       initialTraining: oldTraining,
-      onFormApply: editTrainingCallback,
+      onFormApply: editTraining,
       actionButtonText: text.saveChanges,
     );
   }

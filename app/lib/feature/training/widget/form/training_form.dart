@@ -67,11 +67,12 @@ class _TrainingFormState extends State<TrainingForm> {
                 ),
                 TextFormField(
                   keyboardType: TextInputType.multiline,
-                  maxLines: null,
+                  maxLines: 2,
                   initialValue: _newTraining.description,
                   onSaved: _saveDescriptionField,
                   decoration: InputDecoration(
                     labelText: text.newTrainingDescriptionOptional,
+                    floatingLabelBehavior: FloatingLabelBehavior.auto,
                   ),
                 ),
               ],
@@ -130,7 +131,9 @@ class _TrainingFormState extends State<TrainingForm> {
       widget.onFormApply(_newTraining);
 
       if (widget.initialTraining == null) {
-        _newTraining = Training.empty();
+        setState(() {
+          _newTraining = Training.empty();
+        });
         _formKey.currentState?.reset();
       }
     }

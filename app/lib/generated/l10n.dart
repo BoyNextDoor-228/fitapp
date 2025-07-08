@@ -1358,6 +1358,56 @@ class S {
   String get exercise {
     return Intl.message('exercise', name: 'exercise', desc: '', args: []);
   }
+
+  /// `Tap to open timer`
+  String get tapToOpenTimer {
+    return Intl.message(
+      'Tap to open timer',
+      name: 'tapToOpenTimer',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Mark as completed`
+  String get markAsCompleted {
+    return Intl.message(
+      'Mark as completed',
+      name: 'markAsCompleted',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Exercise information`
+  String get exerciseInformation {
+    return Intl.message(
+      'Exercise information',
+      name: 'exerciseInformation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Good work!\nYour training progress has been updated!`
+  String get goodWorknYourTrainingProgressHasBeenUpdated {
+    return Intl.message(
+      'Good work!\nYour training progress has been updated!',
+      name: 'goodWorknYourTrainingProgressHasBeenUpdated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Check statistics`
+  String get checkStatistics {
+    return Intl.message(
+      'Check statistics',
+      name: 'checkStatistics',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
