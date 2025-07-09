@@ -30,9 +30,9 @@ class ChangingWeightScreen extends StatelessWidget {
         backRoute: const HomeRoute(),
       ),
       drawer: const FitAppDrawer(),
-      body: BlocListener<UserBloc, UserState>(
+      body: BlocConsumer<UserBloc, UserState>(
         listener: userStateListener,
-        child: Center(
+        builder: (_, state) => Center(
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -43,7 +43,10 @@ class ChangingWeightScreen extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: textTheme.titleMedium,
                 ),
-                WeightForm(onFormSaved: updateWeight),
+                WeightForm(
+                  onFormSaved: updateWeight,
+                  isLoading: state.status == UserStatus.loading,
+                ),
               ],
             ),
           ),

@@ -11,6 +11,7 @@ import '../../app/widget/fitapp_scaffold.dart';
 import '../../app/widget/full_info_displayable_list_item.dart';
 import '../../app/widget/navigation_floating_action_button.dart';
 import '../../app/widget/shared/empty_list_label.dart';
+import '../../app/widget/shared/shimmer_card.dart';
 import '../../navigation/app_router.dart';
 import '../../user/bloc/user_bloc.dart';
 import '../widget/meal_full_info.dart';
@@ -22,7 +23,7 @@ class MealListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.sizeOf(context).longestSide;
+    final itemHeight = MediaQuery.sizeOf(context).longestSide * 0.3;
 
     final userBloc = context.read<UserBloc>();
     final router = context.router;
@@ -38,9 +39,7 @@ class MealListScreen extends StatelessWidget {
         listener: userStateListener,
         bloc: userBloc,
         builder: (_, state) {
-          if (state.status == UserStatus.loading) {
-            return const Center(child: CircularProgressIndicator());
-          }
+          final isLoading = state.status == UserStatus.loading;
 
           final meals = state.user!.meals;
 
@@ -60,17 +59,19 @@ class MealListScreen extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             itemCount: meals.length,
             itemBuilder: (_, index) => FullInfoDisplayableListItem(
-              listItem: MealListItem(
-                meal: meals[index],
-                index: index + 1,
-                itemDimension: height * 0.3,
-                onDeletePressed: () =>
-                    userBloc.add(MealDeleted(mealId: meals[index].id)),
-                onEditPressed: () async => goToRoute(
-                  router: router,
-                  route: MealEditingRoute(meal: meals[index]),
-                ),
-              ),
+              listItem: isLoading
+                  ? ShimmerCard(cardHeight: itemHeight)
+                  : MealListItem(
+                      meal: meals[index],
+                      index: index + 1,
+                      itemDimension: itemHeight,
+                      onDeletePressed: () =>
+                          userBloc.add(MealDeleted(mealId: meals[index].id)),
+                      onEditPressed: () async => goToRoute(
+                        router: router,
+                        route: MealEditingRoute(meal: meals[index]),
+                      ),
+                    ),
               headerText: text.mealInformation,
               content: MealFullInfo(meal: meals[index]),
             ),

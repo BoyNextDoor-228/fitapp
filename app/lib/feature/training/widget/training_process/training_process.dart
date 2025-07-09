@@ -10,17 +10,17 @@ import 'training_process_complete.dart';
 class TrainingProcess extends StatelessWidget {
   const TrainingProcess({
     required this.training,
-    required this.startTraining,
-    required this.finishTraining,
-    required this.updateTrainingProgression,
+    required this.onTrainingStarted,
+    required this.onTrainingFinished,
+    required this.onTrainingProgressionUpdated,
     super.key,
   });
 
   final Training training;
-  final VoidCallback startTraining;
-  final VoidCallback finishTraining;
+  final VoidCallback onTrainingStarted;
+  final VoidCallback onTrainingFinished;
   final void Function(Map<Exercise, bool> progression)
-      updateTrainingProgression;
+      onTrainingProgressionUpdated;
 
   @override
   Widget build(BuildContext context) =>
@@ -29,15 +29,15 @@ class TrainingProcess extends StatelessWidget {
           if (state is TrainingProcessInitial) {
             return TrainingProcessInitialWidget(
               exercises: training.exercises,
-              startTraining: startTraining,
+              startTraining: onTrainingStarted,
             );
           }
           if (state is TrainingProcessInProgress) {
             return TrainingProcessInProgressWidget(
               exercisesProcess: state.exercisesProgress,
               canFinishTraining: state.canFinishTraining,
-              updateTrainingProgression: updateTrainingProgression,
-              finishTraining: finishTraining,
+              updateTrainingProgression: onTrainingProgressionUpdated,
+              finishTraining: onTrainingFinished,
             );
           }
           if (state is TrainingProcessComplete) {

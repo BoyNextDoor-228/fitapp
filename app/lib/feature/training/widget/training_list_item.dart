@@ -11,50 +11,48 @@ class TrainingListItem extends StatelessWidget {
   const TrainingListItem({
     required this.training,
     required this.index,
+    required this.cardHeight,
     required this.onDeletePressed,
     required this.onEditPressed,
     super.key,
   });
 
   final Training training;
+  final double cardHeight;
   final int index;
 
   final VoidCallback onDeletePressed;
   final VoidCallback onEditPressed;
 
   @override
-  Widget build(BuildContext context) {
-    final height = MediaQuery.sizeOf(context).longestSide;
-
-    return Card(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 5),
-        child: SizedBox(
-          width: double.infinity,
-          height: height / 3,
-          child: Column(
-            children: [
-              Expanded(
-                child: _Header(
-                  index: index,
-                  training: training,
-                  onDeletePressed: onDeletePressed,
-                  onEditPressed: onEditPressed,
+  Widget build(BuildContext context) => Card(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 5),
+          child: SizedBox(
+            width: double.infinity,
+            height: cardHeight,
+            child: Column(
+              children: [
+                Expanded(
+                  child: _Header(
+                    index: index,
+                    training: training,
+                    onDeletePressed: onDeletePressed,
+                    onEditPressed: onEditPressed,
+                  ),
                 ),
-              ),
-              Expanded(
-                flex: 3,
-                child: _Content(
-                  training: training,
-                  exerciseCardDimension: height * 0.2,
+                Expanded(
+                  flex: 3,
+                  child: _Content(
+                    training: training,
+                    exerciseCardDimension: cardHeight,
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
-    );
-  }
+      );
 }
 
 class _Header extends StatelessWidget {

@@ -4,10 +4,16 @@ import '../../../../generated/l10n.dart';
 import '../../../../tool/input_validator.dart';
 
 class WeightForm extends StatelessWidget {
-  WeightForm({required this.onFormSaved, super.key});
+  WeightForm({
+    required this.onFormSaved,
+    this.isLoading = false,
+    super.key,
+  });
 
   final _formKey = GlobalKey<FormState>();
   final void Function(double userWeight) onFormSaved;
+
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -32,15 +38,18 @@ class WeightForm extends StatelessWidget {
               ),
             ),
           ),
-          OutlinedButton(
-            onPressed: _applyWeight,
-            child: Text(
-              text.apply,
-              style: textTheme.titleMedium,
-              maxLines: 1,
-              overflow: TextOverflow.ellipsis,
+          if (isLoading)
+            const CircularProgressIndicator()
+          else
+            OutlinedButton(
+              onPressed: _applyWeight,
+              child: Text(
+                text.apply,
+                style: textTheme.titleMedium,
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
-          ),
         ],
       ),
     );

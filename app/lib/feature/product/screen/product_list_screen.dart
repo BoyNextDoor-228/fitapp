@@ -10,6 +10,7 @@ import '../../app/widget/fitapp_drawer.dart';
 import '../../app/widget/fitapp_scaffold.dart';
 import '../../app/widget/navigation_floating_action_button.dart';
 import '../../app/widget/shared/empty_list_label.dart';
+import '../../app/widget/shared/shimmer_card.dart';
 import '../../navigation/app_router.dart';
 import '../../user/bloc/user_bloc.dart';
 import '../widget/product_list_item.dart';
@@ -35,10 +36,7 @@ class ProductListScreen extends StatelessWidget {
         listener: userStateListener,
         bloc: userBloc,
         builder: (_, state) {
-          if (state.status == UserStatus.loading) {
-            return const Center(child: CircularProgressIndicator());
-          }
-
+          final isLoading = state.status == UserStatus.loading;
           final products = state.user!.products;
 
           if (products.isEmpty) {
@@ -54,18 +52,21 @@ class ProductListScreen extends StatelessWidget {
             );
           }
           return ListView.builder(
+            physics: const BouncingScrollPhysics(),
             itemCount: products.length,
-            itemBuilder: (_, index) => ProductListItem.editable(
-              product: products[index],
-              index: index + 1,
-              onDeletePressed: () =>
-                  userBloc.add(ProductDeleted(productId: products[index].id)),
-              onEditPressed: () async => goToRoute(
-                router: router,
-                route: ProductEditingRoute(product: products[index]),
-              ),
-              itemDimension: height / 4,
-            ),
+            itemBuilder: (_, index) => isLoading
+                ? ShimmerCard(cardHeight: height / 4)
+                : ProductListItem.editable(
+                    product: products[index],
+                    index: index + 1,
+                    onDeletePressed: () => userBloc
+                        .add(ProductDeleted(productId: products[index].id)),
+                    onEditPressed: () async => goToRoute(
+                      router: router,
+                      route: ProductEditingRoute(product: products[index]),
+                    ),
+                    itemDimension: height / 4,
+                  ),
           );
         },
       ),
