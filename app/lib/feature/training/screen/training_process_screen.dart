@@ -57,11 +57,20 @@ class TrainingProcessScreen extends StatelessWidget {
       drawer: const FitAppDrawer(),
       body: BlocProvider.value(
         value: _trainingProcessBloc,
-        child: TrainingProcess(
-          training: training,
-          startTraining: startTraining,
-          updateTrainingProgression: updateTrainingProgression,
-          finishTraining: finishTraining,
+        child: BlocBuilder<UserBloc, UserState>(
+          bloc: userBloc,
+          builder: (_, state) {
+            if (state.status == UserStatus.loading) {
+              return const Center(child: CircularProgressIndicator());
+            }
+
+            return TrainingProcess(
+              training: training,
+              onTrainingStarted: startTraining,
+              onTrainingProgressionUpdated: updateTrainingProgression,
+              onTrainingFinished: finishTraining,
+            );
+          },
         ),
       ),
     );

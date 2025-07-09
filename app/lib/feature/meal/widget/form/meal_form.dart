@@ -92,39 +92,52 @@ class _MealFormState extends State<MealForm> {
               ),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: buttonsPadding,
-                  child: OutlinedButton(
-                    onPressed: () async {
-                      final newIngredient =
-                          await _openIngredientCreationModal(context);
-                      if (newIngredient == null) {
-                        return;
-                      }
+          BlocBuilder<UserBloc, UserState>(
+            builder: (_, state) {
+              if (state.status == UserStatus.loading) {
+                return const CircularProgressIndicator();
+              }
 
-                      _addIngredient(newIngredient);
-                    },
-                    child: Text(
-                      text.addIngredient,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: buttonsPadding,
+                      child: OutlinedButton(
+                        onPressed: () async {
+                          final newIngredient =
+                              await _openIngredientCreationModal(context);
+                          if (newIngredient == null) {
+                            return;
+                          }
+
+                          _addIngredient(newIngredient);
+                        },
+                        child: Text(
+                          text.addIngredient,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: buttonsPadding,
-                  child: BlocBuilder<UserBloc, UserState>(
-                    builder: _applyButtonBuilder,
+                  Expanded(
+                    child: Padding(
+                      padding: buttonsPadding,
+                      child: OutlinedButton(
+                        onPressed: _applyChanges,
+                        child: Text(
+                          widget.actionButtonText,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ],
+                ],
+              );
+            },
           ),
         ],
       ),
@@ -206,19 +219,5 @@ class _MealFormState extends State<MealForm> {
     setState(() {
       _newMeal = _newMeal.copyWith(ingredients: currentIngredients);
     });
-  }
-
-  Widget _applyButtonBuilder(BuildContext context, UserState state) {
-    if (state.status == UserStatus.loading) {
-      return const CircularProgressIndicator();
-    }
-    return OutlinedButton(
-      onPressed: _applyChanges,
-      child: Text(
-        widget.actionButtonText,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-      ),
-    );
   }
 }

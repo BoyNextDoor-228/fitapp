@@ -93,31 +93,44 @@ class _TrainingFormState extends State<TrainingForm> {
               ),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Expanded(
-                child: Padding(
-                  padding: buttonsPadding,
-                  child: OutlinedButton(
-                    onPressed: () async => _openExerciseCreationModal(),
-                    child: Text(
-                      text.addExercise,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+          BlocBuilder<UserBloc, UserState>(
+            builder: (_, state) {
+              if (state.status == UserStatus.loading) {
+                return const CircularProgressIndicator();
+              }
+
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: Padding(
+                      padding: buttonsPadding,
+                      child: OutlinedButton(
+                        onPressed: () async => _openExerciseCreationModal(),
+                        child: Text(
+                          text.addExercise,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: buttonsPadding,
-                  child: BlocBuilder<UserBloc, UserState>(
-                    builder: _applyButtonBuilder,
+                  Expanded(
+                    child: Padding(
+                      padding: buttonsPadding,
+                      child: OutlinedButton(
+                        onPressed: _applyChanges,
+                        child: Text(
+                          widget.actionButtonText,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ],
+                ],
+              );
+            },
           ),
         ],
       ),
@@ -197,19 +210,5 @@ class _TrainingFormState extends State<TrainingForm> {
     setState(() {
       _newTraining = _newTraining.copyWith(exercises: currentExercises);
     });
-  }
-
-  Widget _applyButtonBuilder(BuildContext context, UserState state) {
-    if (state.status == UserStatus.loading) {
-      return const CircularProgressIndicator();
-    }
-    return OutlinedButton(
-      onPressed: _applyChanges,
-      child: Text(
-        widget.actionButtonText,
-        maxLines: 1,
-        overflow: TextOverflow.ellipsis,
-      ),
-    );
   }
 }
