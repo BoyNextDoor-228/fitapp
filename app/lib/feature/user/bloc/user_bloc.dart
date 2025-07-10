@@ -38,7 +38,6 @@ class UserBloc extends Bloc<UserEvent, UserState> {
     try {
       emit(UserState.loading(user: null));
       final user = _userService.user;
-
       emit(UserState.calm(user: user));
     } on Exception {
       _handleUserException(emit, UserError.cantInitUser);

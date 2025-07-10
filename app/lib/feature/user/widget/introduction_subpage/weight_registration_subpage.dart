@@ -30,11 +30,12 @@ class WeightRegistrationSubpage extends StatelessWidget {
               size: 200,
               color: iconColor,
             ),
-            BlocListener<UserBloc, UserState>(
+            BlocConsumer<UserBloc, UserState>(
               listenWhen: _userAppears,
               listener: _listener,
-              child: WeightForm(
+              builder: (_, state) => WeightForm(
                 onFormSaved: createUser,
+                isLoading: state.status == UserStatus.loading,
               ),
             ),
           ],
