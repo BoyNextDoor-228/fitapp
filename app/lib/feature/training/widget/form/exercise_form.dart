@@ -40,54 +40,52 @@ class _ExerciseFormState extends State<ExerciseForm> {
   Widget build(BuildContext context) {
     final text = S.of(context);
 
-    return Center(
-      child: SingleChildScrollView(
-        child: Form(
-          key: _formKey,
-          child: Column(
-            spacing: 10,
-            children: [
-              ExerciseLoadTypeSelector(
-                initialLoadType: _newExercise.load.type,
-                onChanged: (loadType) {
-                  setState(() {
-                    _updateLoadType(loadType);
-                  });
-                },
+    return SingleChildScrollView(
+      child: Form(
+        key: _formKey,
+        child: Column(
+          spacing: 10,
+          children: [
+            ExerciseLoadTypeSelector(
+              initialLoadType: _newExercise.load.type,
+              onChanged: (loadType) {
+                setState(() {
+                  _updateLoadType(loadType);
+                });
+              },
+            ),
+            TextFormField(
+              initialValue: _newExercise.title,
+              onSaved: _saveTitleField,
+              validator: InputValidator(s: text).titleValidator,
+              decoration: InputDecoration(
+                labelText: text.newExerciseTitle,
               ),
-              TextFormField(
-                initialValue: _newExercise.title,
-                onSaved: _saveTitleField,
-                validator: InputValidator(s: text).titleValidator,
-                decoration: InputDecoration(
-                  labelText: text.newExerciseTitle,
-                ),
+            ),
+            TextFormField(
+              initialValue: _newExercise.description,
+              onSaved: _saveDescriptionField,
+              decoration: InputDecoration(
+                labelText: text.newExerciseDescriptionOptional,
               ),
-              TextFormField(
-                initialValue: _newExercise.description,
-                onSaved: _saveDescriptionField,
-                decoration: InputDecoration(
-                  labelText: text.newExerciseDescriptionOptional,
-                ),
+            ),
+            CountPicker(
+              initialValue: _newExercise.sets,
+              labelText: text.enterSetsCount,
+              onChanged: (sets) {
+                _newExercise = _newExercise.copyWith(
+                  sets: sets,
+                );
+              },
+            ),
+            _exerciseLoadSelector(text),
+            Center(
+              child: OutlinedButton(
+                onPressed: _applyForm,
+                child: Text(widget.actionButtonText),
               ),
-              CountPicker(
-                initialValue: _newExercise.sets,
-                labelText: text.enterSetsCount,
-                onChanged: (sets) {
-                  _newExercise = _newExercise.copyWith(
-                    sets: sets,
-                  );
-                },
-              ),
-              _exerciseLoadSelector(text),
-              Center(
-                child: OutlinedButton(
-                  onPressed: _applyForm,
-                  child: Text(widget.actionButtonText),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

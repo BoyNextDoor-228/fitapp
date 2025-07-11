@@ -23,7 +23,10 @@ class MealListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final itemHeight = MediaQuery.sizeOf(context).longestSide * 0.3;
+    final size = MediaQuery.sizeOf(context);
+
+    final bottomSheetHeight = size.height * 0.7;
+    final itemHeight = size.longestSide * 0.3;
 
     final userBloc = context.read<UserBloc>();
     final router = context.router;
@@ -74,6 +77,7 @@ class MealListScreen extends StatelessWidget {
                     ),
               headerText: text.mealInformation,
               content: MealFullInfo(meal: meals[index]),
+              height: bottomSheetHeight,
             ),
           );
         },

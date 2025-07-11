@@ -20,16 +20,19 @@ class FullInfoDisplayableListItem extends StatelessWidget {
     required this.listItem,
     required this.headerText,
     required this.content,
+    this.height,
     super.key,
   });
 
   final Widget listItem;
   final String headerText;
   final Widget content;
+  final double? height;
 
   @override
   Widget build(BuildContext context) => InkWell(
         onTap: () async => showVoidModalBottomSheet(
+          height: height,
           context: context,
           headerText: headerText,
           content: content,

@@ -116,22 +116,12 @@ class _Content extends StatelessWidget {
   Widget build(BuildContext context) {
     final text = S.of(context);
 
-    return Column(
-      children: [
-        Text(
-          text.totalIngredientsN(meal.ingredients.length),
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-        ),
-        Expanded(
-          child: NutritionFactsTable(
-            proteins: meal.nutritionFacts.proteins,
-            fats: meal.nutritionFacts.fats,
-            carbohydrates: meal.nutritionFacts.carbohydrates,
-            kilocalories: meal.nutritionFacts.kilocalories,
-          ),
-        ),
-      ],
+    return NutritionFactsTable(
+      caption: text.totalIngredientsN(meal.ingredients.length),
+      proteins: meal.nutritionFacts.proteins,
+      fats: meal.nutritionFacts.fats,
+      carbohydrates: meal.nutritionFacts.carbohydrates,
+      kilocalories: meal.nutritionFacts.kilocalories,
     );
   }
 }

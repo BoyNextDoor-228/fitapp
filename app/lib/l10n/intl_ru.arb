@@ -155,5 +155,8 @@
   "markAsCompleted": "Отметить как выполненное",
   "exerciseInformation": "Информация об упражнении",
   "goodWorknYourTrainingProgressHasBeenUpdated": "Хорошая работа!\nВаш тренировочный прогресс был обновлён!",
-  "checkStatistics": "Перейти к статистике"
+  "checkStatistics": "Перейти к статистике",
+  "hundredMeasurementContain": "100 {measurement} содержат:",
+  "millilitersShort": "мл.",
+  "gramsShort": "гр."
 }

@@ -22,19 +22,21 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(object) => "Are you sure you want to delete this ${object}?";
 
-  static String m1(ingredientAmount) => "${ingredientAmount} gr.";
+  static String m1(measurement) => "100 ${measurement} contain:";
 
-  static String m2(ingredientAmount) => "${ingredientAmount} ml.";
+  static String m2(ingredientAmount) => "${ingredientAmount} gr.";
 
-  static String m3(sets, duration) => "${sets} set(s) of ${duration}";
+  static String m3(ingredientAmount) => "${ingredientAmount} ml.";
 
-  static String m4(sets, N) => "${sets} set(s) of ${N} rep(s)";
+  static String m4(sets, duration) => "${sets} set(s) of ${duration}";
 
-  static String m5(exerciseTitle) => "Statistics of ${exerciseTitle}";
+  static String m5(sets, N) => "${sets} set(s) of ${N} rep(s)";
 
-  static String m6(N) => "Total ingredients: ${N}";
+  static String m6(exerciseTitle) => "Statistics of ${exerciseTitle}";
 
-  static String m7(userWeight) => "Your current weight: ${userWeight}";
+  static String m7(N) => "Total ingredients: ${N}";
+
+  static String m8(userWeight) => "Your current weight: ${userWeight}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -199,18 +201,20 @@ class MessageLookup extends MessageLookupByLibrary {
           "Good work!\nYour training progress has been updated!",
         ),
         "grams": MessageLookupByLibrary.simpleMessage("Grams"),
+        "gramsShort": MessageLookupByLibrary.simpleMessage("gr."),
         "hereYouCanChangeYourCurrentWeight":
             MessageLookupByLibrary.simpleMessage(
           "Here you can change your current weight",
         ),
         "high": MessageLookupByLibrary.simpleMessage("High"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "hundredMeasurementContain": m1,
         "ingredient": MessageLookupByLibrary.simpleMessage("ingredient"),
         "ingredientEditing": MessageLookupByLibrary.simpleMessage(
           "Ingredient editing",
         ),
-        "ingredientamountGr": m1,
-        "ingredientamountMl": m2,
+        "ingredientamountGr": m2,
+        "ingredientamountMl": m3,
         "interfaceContrastLevel": MessageLookupByLibrary.simpleMessage(
           "Interface contrast level",
         ),
@@ -245,6 +249,7 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
         "medium": MessageLookupByLibrary.simpleMessage("Medium"),
         "milliliters": MessageLookupByLibrary.simpleMessage("Milliliters"),
+        "millilitersShort": MessageLookupByLibrary.simpleMessage("ml."),
         "newExerciseDescriptionOptional": MessageLookupByLibrary.simpleMessage(
           "New exercise description (optional)",
         ),
@@ -320,15 +325,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectLanguage":
             MessageLookupByLibrary.simpleMessage("Select language"),
         "selectProduct": MessageLookupByLibrary.simpleMessage("Select product"),
-        "setsSetsOfDuration": m3,
-        "setsSetsOfNReps": m4,
+        "setsSetsOfDuration": m4,
+        "setsSetsOfNReps": m5,
         "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "startTraining": MessageLookupByLibrary.simpleMessage("Start training"),
-        "statisticsOfExercisetitle": m5,
+        "statisticsOfExercisetitle": m6,
         "tapToOpenTimer":
             MessageLookupByLibrary.simpleMessage("Tap to open timer"),
         "timer": MessageLookupByLibrary.simpleMessage("Timer"),
-        "totalIngredientsN": m6,
+        "totalIngredientsN": m7,
         "training": MessageLookupByLibrary.simpleMessage("Training"),
         "trainingAdded":
             MessageLookupByLibrary.simpleMessage("Training added!"),
@@ -353,6 +358,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "yourCurrentWeightIs": MessageLookupByLibrary.simpleMessage(
           "Your current weight is:",
         ),
-        "yourCurrentWeightN": m7,
+        "yourCurrentWeightN": m8,
       };
 }

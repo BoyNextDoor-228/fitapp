@@ -87,7 +87,7 @@ class _Header extends StatelessWidget {
           Expanded(
             flex: 8,
             child: Text(
-              ingredient.product.name * 100,
+              ingredient.product.name,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
               style: Theme.of(context)

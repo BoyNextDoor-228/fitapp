@@ -8,8 +8,19 @@ class NutritionFactsTable extends StatelessWidget {
     required this.fats,
     required this.carbohydrates,
     required this.kilocalories,
+    this.caption,
     super.key,
   });
+
+  const NutritionFactsTable.empty({
+    this.caption,
+    super.key,
+  })  : proteins = 0,
+        fats = 0,
+        carbohydrates = 0,
+        kilocalories = 0;
+
+  final String? caption;
 
   final num proteins;
   final num fats;
@@ -20,23 +31,36 @@ class NutritionFactsTable extends StatelessWidget {
   Widget build(BuildContext context) {
     final text = S.of(context);
 
-    return Table(
+    return Column(
       children: [
-        TableRow(
+        if (caption != null)
+          Text(
+            caption!,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+        Table(
           children: [
-            _TableCell(title: text.proteins, value: proteins.toString()),
-            _TableCell(title: text.fats, value: proteins.toString()),
-          ],
-        ),
-        TableRow(
-          children: [
-            _TableCell(
-              title: text.carbohydrates,
-              value: carbohydrates.toString(),
+            TableRow(
+              children: [
+                _TableCell(
+                  title: text.proteins,
+                  value: proteins.toStringAsFixed(2),
+                ),
+                _TableCell(title: text.fats, value: fats.toStringAsFixed(2)),
+              ],
             ),
-            _TableCell(
-              title: text.kilocalories,
-              value: kilocalories.toString(),
+            TableRow(
+              children: [
+                _TableCell(
+                  title: text.carbohydrates,
+                  value: carbohydrates.toStringAsFixed(2),
+                ),
+                _TableCell(
+                  title: text.kilocalories,
+                  value: kilocalories.toStringAsFixed(2),
+                ),
+              ],
             ),
           ],
         ),

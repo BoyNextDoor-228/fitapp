@@ -67,7 +67,7 @@ class _MealFormState extends State<MealForm> {
                 ),
                 TextFormField(
                   keyboardType: TextInputType.multiline,
-                  maxLines: null,
+                  maxLines: 2,
                   initialValue: _newMeal.recipe,
                   onSaved: _saveRecipeField,
                   decoration: InputDecoration(
@@ -163,10 +163,12 @@ class _MealFormState extends State<MealForm> {
     BuildContext modalContext,
   ) async {
     final text = S.of(context);
+    final height = MediaQuery.sizeOf(context).height * 0.6;
 
     return showBottomSheetWithResultOf<Ingredient>(
       context: modalContext,
       headerText: text.createANewIngredient,
+      height: height,
       content: IngredientForm(
         onFormApply: _addIngredient,
         actionButtonText: text.addIngredient,

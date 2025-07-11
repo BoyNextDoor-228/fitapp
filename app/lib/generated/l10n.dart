@@ -1408,6 +1408,26 @@ class S {
       args: [],
     );
   }
+
+  /// `100 {measurement} contain:`
+  String hundredMeasurementContain(Object measurement) {
+    return Intl.message(
+      '100 $measurement contain:',
+      name: 'hundredMeasurementContain',
+      desc: '',
+      args: [measurement],
+    );
+  }
+
+  /// `ml.`
+  String get millilitersShort {
+    return Intl.message('ml.', name: 'millilitersShort', desc: '', args: []);
+  }
+
+  /// `gr.`
+  String get gramsShort {
+    return Intl.message('gr.', name: 'gramsShort', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

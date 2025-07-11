@@ -7,6 +7,7 @@ import '../../../../generated/l10n.dart';
 import '../../../../tool/input_validator.dart';
 import '../../../../tool/route_provider.dart';
 import '../../../app/widget/shared/empty_list_label.dart';
+import '../../../app/widget/shared/nutrition_facts_table.dart';
 import '../../../navigation/app_router.dart';
 import '../../../user/bloc/user_bloc.dart';
 
@@ -29,14 +30,14 @@ class IngredientForm extends StatefulWidget {
 class _IngredientFormState extends State<IngredientForm> {
   final _formKey = GlobalKey<FormState>();
 
-  late Ingredient _newIngredient;
+  late Ingredient? _newIngredient;
   late List<DropdownMenuEntry<Product>> _productsEntries;
 
   @override
   void initState() {
     super.initState();
 
-    _newIngredient = widget.initialIngredient ?? Ingredient.empty();
+    _newIngredient = widget.initialIngredient; //Ingredient.empty();
 
     _productsEntries = context
         .read<UserBloc>()
@@ -53,6 +54,14 @@ class _IngredientFormState extends State<IngredientForm> {
   Widget build(BuildContext context) {
     final router = context.router;
     final text = S.of(context);
+
+    final isLandscape =
+        MediaQuery.orientationOf(context) == Orientation.landscape;
+    final height = MediaQuery.sizeOf(context).height;
+
+    final dropdownMenuHeight = isLandscape ? height * 0.6 : height / 3;
+
+    final textTheme = Theme.of(context).textTheme;
 
     Future<void> redirectToProductCreatingForm() async => goToRoute(
           router: router,
@@ -80,43 +89,77 @@ class _IngredientFormState extends State<IngredientForm> {
       );
     }
 
-    return Form(
-      key: _formKey,
-      child: Column(
-        children: [
-          DropdownMenu(
-            label: Text(text.selectProduct),
-            width: double.infinity,
-            dropdownMenuEntries: _productsEntries,
-            initialSelection: _newIngredient.product,
-            onSelected: (product) {
-              setState(() {
-                _newIngredient = _newIngredient.copyWith(product: product!);
-              });
-            },
-          ),
-          TextFormField(
-            keyboardType: TextInputType.number,
-            onSaved: _saveAmountField,
-            validator: InputValidator(s: text).fractionalNumberValidator,
-            decoration: InputDecoration(
-              labelText: text.enterIngredientAmount,
+    return SingleChildScrollView(
+      child: Form(
+        key: _formKey,
+        child: Column(
+          children: [
+            // if CREATING a new ingredient.
+            if (widget.initialIngredient == null)
+              DropdownMenu(
+                label: Text(text.selectProduct),
+                width: double.infinity,
+                menuHeight: dropdownMenuHeight,
+                dropdownMenuEntries: _productsEntries,
+                initialSelection: _newIngredient?.product,
+                onSelected: _updateIngredient,
+              )
+            else // else EDITING an ingredient.
+              Text(
+                widget.initialIngredient!.product.name,
+                style: textTheme.headlineMedium,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+              ),
+
+            // if ingredient is null, it can not have a product, so product's
+            // nutrition facts are zeros.
+            if (_newIngredient == null)
+              const NutritionFactsTable.empty()
+            else // else display ingredient product's info.
+              NutritionFactsTable(
+                proteins: _newIngredient!.product.nutritionFacts.proteins,
+                fats: _newIngredient!.product.nutritionFacts.fats,
+                carbohydrates:
+                    _newIngredient!.product.nutritionFacts.carbohydrates,
+                kilocalories:
+                    _newIngredient!.product.nutritionFacts.kilocalories,
+              ),
+
+            TextFormField(
+              initialValue: _newIngredient?.amount.toString(),
+              keyboardType: TextInputType.number,
+              onSaved: _saveAmountField,
+              validator: InputValidator(s: text).fractionalNumberValidator,
+              decoration: InputDecoration(
+                labelText: text.enterIngredientAmount,
+              ),
             ),
-          ),
-          TextButton(
-            onPressed: _applyForm,
-            child: Text(widget.actionButtonText),
-          ),
-        ],
+            TextButton(
+              onPressed: _newIngredient == null ? null : _applyForm,
+              child: Text(widget.actionButtonText),
+            ),
+          ],
+        ),
       ),
     );
+  }
+
+  void _updateIngredient(Product? product) {
+    setState(() {
+      if (_newIngredient == null) {
+        _newIngredient = Ingredient.empty().copyWith(product: product!);
+      } else {
+        _newIngredient = _newIngredient!.copyWith(product: product!);
+      }
+    });
   }
 
   void _applyForm() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState?.save();
 
-      widget.onFormApply(_newIngredient);
+      widget.onFormApply(_newIngredient!);
 
       if (widget.initialIngredient == null) {
         _newIngredient = Ingredient.empty();
@@ -126,6 +169,6 @@ class _IngredientFormState extends State<IngredientForm> {
   }
 
   void _saveAmountField(String? input) {
-    _newIngredient = _newIngredient.copyWith(amount: double.parse(input!));
+    _newIngredient = _newIngredient!.copyWith(amount: double.parse(input!));
   }
 }

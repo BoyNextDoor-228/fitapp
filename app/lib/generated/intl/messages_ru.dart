@@ -22,19 +22,21 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static String m0(object) => "Вы уверены, что хотите удалить ${object}?";
 
-  static String m1(ingredientAmount) => "${ingredientAmount} гр.";
+  static String m1(measurement) => "100 ${measurement} содержат:";
 
-  static String m2(ingredientAmount) => "${ingredientAmount} мл.";
+  static String m2(ingredientAmount) => "${ingredientAmount} гр.";
 
-  static String m3(sets, duration) => "${sets} подход(-а/-ов) по ${duration}";
+  static String m3(ingredientAmount) => "${ingredientAmount} мл.";
 
-  static String m4(sets, N) => "${sets} повтор(-а/-ов) по ${N} повторен.";
+  static String m4(sets, duration) => "${sets} подход(-а/-ов) по ${duration}";
 
-  static String m5(exerciseTitle) => "Статистика ${exerciseTitle}";
+  static String m5(sets, N) => "${sets} повтор(-а/-ов) по ${N} повторен.";
 
-  static String m6(N) => "Всего ингредиентов: ${N}";
+  static String m6(exerciseTitle) => "Статистика ${exerciseTitle}";
 
-  static String m7(userWeight) => "Ваш вес: ${userWeight}";
+  static String m7(N) => "Всего ингредиентов: ${N}";
+
+  static String m8(userWeight) => "Ваш вес: ${userWeight}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
@@ -211,18 +213,20 @@ class MessageLookup extends MessageLookupByLibrary {
           "Хорошая работа!\nВаш тренировочный прогресс был обновлён!",
         ),
         "grams": MessageLookupByLibrary.simpleMessage("Граммы"),
+        "gramsShort": MessageLookupByLibrary.simpleMessage("гр."),
         "hereYouCanChangeYourCurrentWeight":
             MessageLookupByLibrary.simpleMessage(
           "Здесь вы можете изменить свой вес",
         ),
         "high": MessageLookupByLibrary.simpleMessage("Высокий"),
         "home": MessageLookupByLibrary.simpleMessage("Домой"),
+        "hundredMeasurementContain": m1,
         "ingredient": MessageLookupByLibrary.simpleMessage("ингредиент"),
         "ingredientEditing": MessageLookupByLibrary.simpleMessage(
           "Изменение ингредиента",
         ),
-        "ingredientamountGr": m1,
-        "ingredientamountMl": m2,
+        "ingredientamountGr": m2,
+        "ingredientamountMl": m3,
         "interfaceContrastLevel": MessageLookupByLibrary.simpleMessage(
           "Уровень контраста интерфейса",
         ),
@@ -258,6 +262,7 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
         "medium": MessageLookupByLibrary.simpleMessage("Средний"),
         "milliliters": MessageLookupByLibrary.simpleMessage("Миллилитры"),
+        "millilitersShort": MessageLookupByLibrary.simpleMessage("мл."),
         "newExerciseDescriptionOptional": MessageLookupByLibrary.simpleMessage(
           "Описание нового упражнения (необязательно)",
         ),
@@ -342,17 +347,17 @@ class MessageLookup extends MessageLookupByLibrary {
         "selectLanguage": MessageLookupByLibrary.simpleMessage("Выберите язык"),
         "selectProduct":
             MessageLookupByLibrary.simpleMessage("Выберите продукт"),
-        "setsSetsOfDuration": m3,
-        "setsSetsOfNReps": m4,
+        "setsSetsOfDuration": m4,
+        "setsSetsOfNReps": m5,
         "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
         "startTraining":
             MessageLookupByLibrary.simpleMessage("Начать тренировку"),
-        "statisticsOfExercisetitle": m5,
+        "statisticsOfExercisetitle": m6,
         "tapToOpenTimer": MessageLookupByLibrary.simpleMessage(
           "Нажмите, чтобы открыть таймер",
         ),
         "timer": MessageLookupByLibrary.simpleMessage("Таймер"),
-        "totalIngredientsN": m6,
+        "totalIngredientsN": m7,
         "training": MessageLookupByLibrary.simpleMessage("Тренировка"),
         "trainingAdded": MessageLookupByLibrary.simpleMessage(
           "Тренировка добавлена!",
@@ -378,6 +383,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "weightUpdated": MessageLookupByLibrary.simpleMessage("Вес изменён!"),
         "yes": MessageLookupByLibrary.simpleMessage("Да"),
         "yourCurrentWeightIs": MessageLookupByLibrary.simpleMessage("Ваш вес:"),
-        "yourCurrentWeightN": m7,
+        "yourCurrentWeightN": m8,
       };
 }

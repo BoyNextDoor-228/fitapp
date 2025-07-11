@@ -23,7 +23,7 @@ class ProductListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final userBloc = context.read<UserBloc>();
     final router = context.router;
-    final height = MediaQuery.sizeOf(context).longestSide;
+    final cardHeight = MediaQuery.sizeOf(context).longestSide * 0.3;
     final text = S.of(context);
 
     return FitAppScaffold(
@@ -55,7 +55,7 @@ class ProductListScreen extends StatelessWidget {
             physics: const BouncingScrollPhysics(),
             itemCount: products.length,
             itemBuilder: (_, index) => isLoading
-                ? ShimmerCard(cardHeight: height / 4)
+                ? ShimmerCard(cardHeight: cardHeight)
                 : ProductListItem.editable(
                     product: products[index],
                     index: index + 1,
@@ -65,7 +65,7 @@ class ProductListScreen extends StatelessWidget {
                       router: router,
                       route: ProductEditingRoute(product: products[index]),
                     ),
-                    itemDimension: height / 4,
+                    itemDimension: cardHeight,
                   ),
           );
         },
