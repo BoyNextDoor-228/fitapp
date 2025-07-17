@@ -4,6 +4,14 @@ import 'appbar_back_button.dart';
 import 'appbar_burger_menu_button.dart';
 
 class FitappAppbar extends StatelessWidget implements PreferredSizeWidget {
+  /// Creates a Material [AppBar], which takes place in a inner pages.
+  ///
+  /// 'Inner page' means it is a secondary page relating to another page.
+  /// [AppBar] of an 'inner page' has a leading button, which redirects to
+  /// [backRoute] on tap action.
+  ///
+  /// [title] is a text, which is displayed as [AppBar] title.
+  /// [trailing] is a [Widget], which is displayed after [AppBar]'s title.
   FitappAppbar.innerPage({
     required String title,
     required PageRouteInfo backRoute,
@@ -13,6 +21,14 @@ class FitappAppbar extends StatelessWidget implements PreferredSizeWidget {
         _leading = AppbarBackButton(route: backRoute),
         _trailing = trailing;
 
+  /// Creates a Material [AppBar], which takes place in a regular pages.
+  ///
+  /// 'Regular page' means it is a primary page of a feature.
+  /// [AppBar] of an 'regular page' has a leading button, which opens [Drawer]
+  /// on tap action.
+  ///
+  /// [title] is a text, which is displayed as [AppBar] title.
+  /// [trailing] is a [Widget], which is displayed after [AppBar]'s title.
   const FitappAppbar.regularPage({
     required String title,
     Widget? trailing,

@@ -5,6 +5,10 @@ import '../../bloc/user_bloc.dart';
 import '../form/weight_form.dart';
 
 class WeightRegistrationSubpage extends StatelessWidget {
+  /// Creates a widget, which is used to let IRL user set his initial weight.
+  ///
+  /// [onUserAppears] is a callback, which is called, when user applies
+  /// weight registration form.
   const WeightRegistrationSubpage({
     required this.onUserAppears,
     super.key,
@@ -22,6 +26,7 @@ class WeightRegistrationSubpage extends StatelessWidget {
 
     return Center(
       child: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           spacing: 10,
           children: [

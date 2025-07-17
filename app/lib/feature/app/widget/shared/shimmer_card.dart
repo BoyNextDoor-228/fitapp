@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
 
 class ShimmerCard extends StatefulWidget {
+  /// Creates a card with shimmer effect as it's content. Designed to be shown
+  /// during a loading.
+  ///
+  /// [cardHeight] is a height of card.
+  ///
+  /// [animationDuration] is a [Duration], during which shimmer animation is
+  /// running. Default is [Durations.extralong4].
+  ///
+  /// [animationCurve] is a [Curve] to apply on animation. Default is
+  /// [Curves.bounceInOut].
   const ShimmerCard({
     required this.cardHeight,
+    this.animationDuration = Durations.extralong4,
+    this.animationCurve = Curves.bounceInOut,
     super.key,
   });
 
   final double cardHeight;
+  final Duration animationDuration;
+  final Curve animationCurve;
 
   @override
   State<ShimmerCard> createState() => _ShimmerCardState();
@@ -18,20 +32,18 @@ class _ShimmerCardState extends State<ShimmerCard>
 
   late final Animation<double> _backgroundOpacity;
 
-  final _animationDuration = Durations.extralong4;
-
   @override
   void initState() {
     super.initState();
 
     _animationController = AnimationController(
-      duration: _animationDuration,
+      duration: widget.animationDuration,
       vsync: this,
     );
 
     final curvedAnimation = CurvedAnimation(
       parent: _animationController,
-      curve: Curves.bounceInOut,
+      curve: widget.animationCurve,
     );
 
     _backgroundOpacity = Tween<double>(

@@ -1,6 +1,15 @@
 import 'package:flutter/material.dart';
 
 class FitAppBottomSheet extends StatelessWidget {
+  /// Creates a content to be placed in a [BottomSheet].
+  ///
+  /// [headerText] is a text, which describes what this [BottomSheet] content
+  /// is about.
+  ///
+  /// [content] is a [Widget] to be shown as [BottomSheet] content.
+  ///
+  /// [height] is a height of [BottomSheet]. Default is 75% of current screen
+  /// height (corresponding to screen orientation).
   const FitAppBottomSheet({
     required this.headerText,
     required this.content,
@@ -13,24 +22,27 @@ class FitAppBottomSheet extends StatelessWidget {
   final double? height;
 
   @override
-  Widget build(BuildContext context) => SizedBox(
-        width: double.infinity,
-        height: height ?? MediaQuery.sizeOf(context).height * 0.75,
-        child: Padding(
-          padding: const EdgeInsets.all(8),
-          child: Column(
-            children: [
-              _Header(
-                headerText: headerText,
-              ),
-              Expanded(
-                //flex: 9,
-                child: content,
-              ),
-            ],
-          ),
+  Widget build(BuildContext context) {
+    final defaultHeight = MediaQuery.sizeOf(context).height * 0.75;
+
+    return SizedBox(
+      width: double.infinity,
+      height: height ?? defaultHeight,
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Column(
+          children: [
+            _Header(
+              headerText: headerText,
+            ),
+            Expanded(
+              child: content,
+            ),
+          ],
         ),
-      );
+      ),
+    );
+  }
 }
 
 class _Header extends StatelessWidget {
@@ -57,27 +69,4 @@ class _Header extends StatelessWidget {
           ),
         ],
       );
-
-  // @override
-  // Widget build(BuildContext context) => Stack(
-  //       alignment: AlignmentDirectional.topCenter,
-  //       children: [
-  //         Positioned(
-  //           top: 15,
-  //           child: Text(
-  //               headerText* 100,
-  //               maxLines: 1,
-  //             overflow: TextOverflow.ellipsis,
-  //           ),
-  //         ),
-  //         Positioned.directional(
-  //           textDirection: TextDirection.ltr,
-  //           end: 0,
-  //           child: IconButton(
-  //             icon: const Icon(Icons.close),
-  //             onPressed: () => Navigator.pop(context),
-  //           ),
-  //         ),
-  //       ],
-  //     );
 }

@@ -5,6 +5,11 @@ import '../../../../generated/l10n.dart';
 import '../exercise_list.dart';
 
 class TrainingProcessInitialWidget extends StatelessWidget {
+  /// Creates a widget, which is shown before training process just to show
+  /// [exercises] user will do.
+  ///
+  /// [startTraining] is a callback, which is called, when user taps
+  /// 'start training' button.
   const TrainingProcessInitialWidget({
     required this.exercises,
     required this.startTraining,

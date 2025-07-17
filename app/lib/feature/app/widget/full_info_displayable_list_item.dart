@@ -5,17 +5,19 @@ import '../../../tool/bottom_sheet_provider.dart';
 class FullInfoDisplayableListItem extends StatelessWidget {
   /// Displays a [listItem] in a list this widget was called from.
   ///
-  /// On tap action opens a ModalBottomSheet, which contains full information
+  /// On tap action opens a [BottomSheet], which contains full information
   /// about subject of this list item.
   ///
-  /// [listItem] is a widget, which will be displayed as item of a list,
+  /// [listItem] is a [Widget], which will be displayed as item of a list,
   /// such as [ListTile], [Card], etc.
   ///
   /// [headerText] is a text, which will be displayed as header text in
-  /// BottomSheetModal.
+  /// [BottomSheet].
   ///
-  /// [content] is a widget, which will be displayed in BottomSheetModal as main
+  /// [content] is a [Widget], which will be displayed in [BottomSheet] as main
   /// content.
+  ///
+  /// [height] is a height of [BottomSheet].
   const FullInfoDisplayableListItem({
     required this.listItem,
     required this.headerText,

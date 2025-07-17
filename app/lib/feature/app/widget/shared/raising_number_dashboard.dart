@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 
 class RaisingNumberDashboard extends StatefulWidget {
+  /// Creates a [Text] widget, which displays an animated raising number.
+  ///
+  /// [startNumber] is a number, where animation starts from. Default is 0.
+  /// [endNumber] is a number, where animation ends.
+  /// [countingDuration] is a [Duration], during which animation will be running.
+  /// [animationCurve] is a [Curve] to apply on animation. Default is
+  /// [Curves.linear].
+  /// [textStyle] is style for [Text] widget.
   const RaisingNumberDashboard({
     required this.endNumber,
     required this.countingDuration,
@@ -34,8 +42,11 @@ class _RaisingNumberDashboardState extends State<RaisingNumberDashboard>
     );
     final curvedAnimation =
         CurvedAnimation(parent: _controller, curve: widget.animationCurve);
-    _animation = Tween<double>(begin: widget.startNumber, end: widget.endNumber)
-        .animate(curvedAnimation);
+
+    _animation = Tween<double>(
+      begin: widget.startNumber,
+      end: widget.endNumber,
+    ).animate(curvedAnimation);
     _controller.forward();
   }
 
@@ -48,6 +59,8 @@ class _RaisingNumberDashboardState extends State<RaisingNumberDashboard>
   @override
   Widget build(BuildContext context) => Center(
         child: _AnimatedText(
+          // This widget needs key as we need this widget to start it's
+          // animation each time this widget appears on the screen.
           key: UniqueKey(),
           animation: _animation,
           textStyle: widget.textStyle,

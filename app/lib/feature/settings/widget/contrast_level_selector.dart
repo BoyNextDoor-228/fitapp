@@ -4,6 +4,12 @@ import '../../../generated/l10n.dart';
 import '../domain/settings_values.dart';
 
 class ContrastLevelSelector extends StatelessWidget {
+  /// Creates a [DropdownMenu], which allows to select one of [ContrastLevels].
+  ///
+  /// [initialContrastLevel] is a contrast level, which will be shown as
+  /// pre-selected in [DropdownMenu].
+  /// [onSelected] is a callback, which is called on [DropdownMenuEntry] tap
+  /// action.
   const ContrastLevelSelector({
     required this.initialContrastLevel,
     required this.onSelected,

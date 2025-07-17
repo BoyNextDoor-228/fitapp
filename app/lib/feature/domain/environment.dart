@@ -3,6 +3,7 @@
 import 'app_config.dart';
 import 'hive_config.dart';
 
+/// Describes environment, which is needed by Application.
 class Environment {
   Environment._({
     required this.name,
@@ -16,6 +17,7 @@ class Environment {
   final String name;
   final AppConfig appConfig;
 
+  /// Initialization procedure. Collecting all required data from environment.
   static Future<void> init() async {
     final hiveConfig = await HiveConfig.fromEnvironment();
     const environmentName = String.fromEnvironment('fitapp_environmentName');

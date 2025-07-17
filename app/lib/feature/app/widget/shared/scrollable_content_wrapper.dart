@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ScrollableContentWrapper extends StatelessWidget {
+  /// Creates a vertically scrollable wrapper for content, passed as [child].
   const ScrollableContentWrapper({
     required this.child,
     super.key,
@@ -15,6 +16,7 @@ class ScrollableContentWrapper extends StatelessWidget {
         kBottomNavigationBarHeight;
 
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: SizedBox(
         height: height,
         child: child,

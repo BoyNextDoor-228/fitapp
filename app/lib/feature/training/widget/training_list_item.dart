@@ -8,12 +8,18 @@ import '../../../tool/show_deletion_dialog.dart';
 import 'exercise_icon.dart';
 
 class TrainingListItem extends StatelessWidget {
+  /// Creates a representation of a [training] list item.
+  ///
+  /// [index] is an order number of the training list item.
+  /// [cardHeight] is a height of the item ([Card]).
+  /// [onEdit] is a callback, which implements editing of a training.
+  /// [onDelete] is a callback, which implements deletion of a training.
   const TrainingListItem({
     required this.training,
     required this.index,
     required this.cardHeight,
-    required this.onDeletePressed,
-    required this.onEditPressed,
+    required this.onDelete,
+    required this.onEdit,
     super.key,
   });
 
@@ -21,8 +27,8 @@ class TrainingListItem extends StatelessWidget {
   final double cardHeight;
   final int index;
 
-  final VoidCallback onDeletePressed;
-  final VoidCallback onEditPressed;
+  final VoidCallback onDelete;
+  final VoidCallback onEdit;
 
   @override
   Widget build(BuildContext context) => Card(
@@ -37,8 +43,8 @@ class TrainingListItem extends StatelessWidget {
                   child: _Header(
                     index: index,
                     training: training,
-                    onDeletePressed: onDeletePressed,
-                    onEditPressed: onEditPressed,
+                    onDeletePressed: onDelete,
+                    onEditPressed: onEdit,
                   ),
                 ),
                 Expanded(

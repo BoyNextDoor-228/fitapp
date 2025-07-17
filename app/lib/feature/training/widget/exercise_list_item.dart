@@ -11,26 +11,35 @@ import 'exercise_icon.dart';
 import 'form/exercise_form.dart';
 
 class ExerciseListItem extends StatelessWidget {
+  /// Creates a representation of an [exercise] list item.
+  ///
+  /// [itemDimension] is a dimension of the item ([Card]).
   const ExerciseListItem({
     required this.exercise,
     required this.itemDimension,
     super.key,
   })  : _isEditable = false,
-        onEditPressed = null,
-        onDeletePressed = null;
+        onEdit = null,
+        onDelete = null;
 
+  /// Creates a representation of an [exercise]. Has 'Edit' and 'Delete'
+  /// buttons.
+  ///
+  /// [onEdit] is a callback, which implements editing of an exercise.
+  /// [onDelete] is a callback, which implements deletion of an exercise.
+  /// [itemDimension] is a dimension of the item ([Card]).
   const ExerciseListItem.editable({
     required this.exercise,
-    required this.onDeletePressed,
-    required this.onEditPressed,
+    required this.onDelete,
+    required this.onEdit,
     required this.itemDimension,
     super.key,
   }) : _isEditable = true;
 
   final Exercise exercise;
 
-  final VoidCallback? onDeletePressed;
-  final void Function(Exercise newExercise)? onEditPressed;
+  final VoidCallback? onDelete;
+  final void Function(Exercise newExercise)? onEdit;
 
   final bool _isEditable;
   final double itemDimension;
@@ -51,8 +60,8 @@ class ExerciseListItem extends StatelessWidget {
                     child: _Header(
                       exercise: exercise,
                       isEditable: _isEditable,
-                      onDeletePressed: onDeletePressed,
-                      onEditPressed: onEditPressed,
+                      onDeletePressed: onDelete,
+                      onEditPressed: onEdit,
                     ),
                   ),
                   Expanded(

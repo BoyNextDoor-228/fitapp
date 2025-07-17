@@ -5,6 +5,8 @@ import '../feature/user/bloc/user_bloc.dart';
 import '../generated/l10n.dart';
 import 'user_status_to_string.dart';
 
+/// Reacts on [UserState] changes and shows corresponding [SnackBar]s
+/// [state] is [UserState] to react on.
 void userStateListener(BuildContext context, UserState state) {
   final text = S.current;
 

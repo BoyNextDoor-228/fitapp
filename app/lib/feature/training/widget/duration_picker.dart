@@ -4,6 +4,12 @@ import 'package:flutter/material.dart';
 import '../../../generated/l10n.dart';
 
 class DurationPicker extends StatefulWidget {
+  /// Creates a duration picker field.
+  ///
+  /// On field tap shows iOS-styled duration picked dialog.
+  /// If [initialDuration] is passed, form field will be filled with this
+  /// duration.
+  /// [onChanged] is a callback, which is called on duration picked.
   const DurationPicker({
     required this.initialDuration,
     required this.onChanged,
@@ -27,25 +33,12 @@ class _DurationPickerState extends State<DurationPicker> {
     _editedDuration = widget.initialDuration;
   }
 
-  Future<void> _showDialog(Widget child) async {
-    await showCupertinoModalPopup<void>(
-      context: context,
-      builder: (BuildContext context) => Container(
-        height: 216,
-        padding: const EdgeInsets.only(top: 6),
-        margin:
-            EdgeInsets.only(bottom: MediaQuery.viewInsetsOf(context).bottom),
-        color: CupertinoColors.systemBackground.resolveFrom(context),
-        child: SafeArea(top: false, child: child),
-      ),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     final text = S.of(context);
 
-    return _TimerPickerItem(
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(text.timer),
         CupertinoButton(
@@ -70,16 +63,21 @@ class _DurationPickerState extends State<DurationPicker> {
       ],
     );
   }
-}
 
-class _TimerPickerItem extends StatelessWidget {
-  const _TimerPickerItem({required this.children});
+  Future<void> _showDialog(Widget child) async {
+    await showCupertinoModalPopup<void>(
+      context: context,
+      builder: (BuildContext context) {
+        final height = MediaQuery.sizeOf(context).height * 0.5;
+        final backgroundColor =
+            Theme.of(context).colorScheme.onSecondaryContainer;
 
-  final List<Widget> children;
-
-  @override
-  Widget build(BuildContext context) => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: children,
-      );
+        return Container(
+          height: height,
+          color: backgroundColor,
+          child: SafeArea(top: false, child: child),
+        );
+      },
+    );
+  }
 }

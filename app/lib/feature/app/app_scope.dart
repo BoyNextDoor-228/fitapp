@@ -15,6 +15,7 @@ import '../navigation/app_router.dart';
 import '../navigation/route_guard/user_presence_guard.dart';
 import '../settings/domain/settings/settings.dart';
 
+/// Implementation for [IAppScope].
 class AppScope implements IAppScope {
   AppScope();
 
@@ -23,6 +24,7 @@ class AppScope implements IAppScope {
 
   late final AppRouter _router;
 
+  /// Application configuration.
   late final AppConfig _appConfig;
 
   @override
@@ -61,6 +63,7 @@ class AppScope implements IAppScope {
     );
   }
 
+  /// Initializes services, which Application consumes.
   Future<void> _initServices() async {
     final userRepository = await _createUserRepository();
 
@@ -95,18 +98,26 @@ class AppScope implements IAppScope {
       );
 }
 
+/// Describes, what dependencies are needed for FitApp application.
 abstract class IAppScope {
+  /// Service for managing actions on a user.
   UserService get userService;
 
+  /// Service for managing actions on app settings.
   SettingsService get settingsService;
 
+  /// Name of application.
   String get applicationName;
 
+  /// Application router.
   AppRouter get router;
 
+  /// Localizations delegates.
   List<LocalizationsDelegate<dynamic>> get localizationsDelegates;
 
+  /// Application's supported locales.
   List<Locale> get supportedLocales;
 
+  /// All application dependencies initialization procedure.
   Future<void> init();
 }

@@ -8,12 +8,18 @@ import '../../../tool/show_deletion_dialog.dart';
 import '../../app/widget/shared/nutrition_facts_table.dart';
 
 class MealListItem extends StatelessWidget {
+  /// Creates a representation of a [meal] list item.
+  ///
+  /// [index] is an order number of the meal list item.
+  /// [itemDimension] is a dimension of the item ([Card]).
+  /// [onEdit] is a callback, which implements editing of a meal.
+  /// [onDelete] is a callback, which implements deletion of a meal.
   const MealListItem({
     required this.meal,
     required this.index,
     required this.itemDimension,
-    required this.onDeletePressed,
-    required this.onEditPressed,
+    required this.onDelete,
+    required this.onEdit,
     super.key,
   });
 
@@ -21,8 +27,8 @@ class MealListItem extends StatelessWidget {
 
   final int index;
 
-  final VoidCallback onDeletePressed;
-  final VoidCallback onEditPressed;
+  final VoidCallback onDelete;
+  final VoidCallback onEdit;
 
   final double itemDimension;
 
@@ -39,8 +45,8 @@ class MealListItem extends StatelessWidget {
                   child: _Header(
                     index: index,
                     meal: meal,
-                    onEditPressed: onEditPressed,
-                    onDeletePressed: onDeletePressed,
+                    onEditPressed: onEdit,
+                    onDeletePressed: onDelete,
                   ),
                 ),
                 const Divider(

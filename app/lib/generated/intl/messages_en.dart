@@ -132,6 +132,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "delete": MessageLookupByLibrary.simpleMessage("Delete"),
         "deletion": MessageLookupByLibrary.simpleMessage("Deletion"),
+        "dragLeftSideRightToOpenMenu": MessageLookupByLibrary.simpleMessage(
+          "Drag left side right to open menu.",
+        ),
         "edit": MessageLookupByLibrary.simpleMessage("Edit"),
         "editMeal": MessageLookupByLibrary.simpleMessage("Edit Meal"),
         "editProduct": MessageLookupByLibrary.simpleMessage("Edit Product"),

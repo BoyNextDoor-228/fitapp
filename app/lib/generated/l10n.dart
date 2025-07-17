@@ -1428,6 +1428,16 @@ class S {
   String get gramsShort {
     return Intl.message('gr.', name: 'gramsShort', desc: '', args: []);
   }
+
+  /// `Drag left side right to open menu.`
+  String get dragLeftSideRightToOpenMenu {
+    return Intl.message(
+      'Drag left side right to open menu.',
+      name: 'dragLeftSideRightToOpenMenu',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

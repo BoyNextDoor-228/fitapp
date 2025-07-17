@@ -8,7 +8,6 @@ import '../../../tool/user_state_listener.dart';
 import '../../app/widget/fitapp_appbar.dart';
 import '../../app/widget/fitapp_drawer.dart';
 import '../../app/widget/fitapp_scaffold.dart';
-import '../../app/widget/shared/scrollable_content_wrapper.dart';
 import '../../navigation/app_router.dart';
 import '../../user/bloc/user_bloc.dart';
 import '../widget/form/product_form.dart';
@@ -33,22 +32,22 @@ class ProductCreatingScreen extends StatelessWidget {
       ),
       body: BlocListener<UserBloc, UserState>(
         listener: userStateListener,
-        child: ScrollableContentWrapper(
-          child: Column(
-            children: [
-              Text(
-                text.fillTheFormToCreateANewProduct,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-              Expanded(
+        child: Column(
+          children: [
+            Text(
+              text.fillTheFormToCreateANewProduct,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+            Expanded(
+              child: SingleChildScrollView(
                 child: ProductForm(
                   onFormApply: addProduct,
                   actionButtonText: text.createProduct,
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

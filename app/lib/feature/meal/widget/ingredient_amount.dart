@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import '../../../generated/l10n.dart';
 
 class IngredientAmount extends StatelessWidget {
+  /// Creates [Text] widget, displaying amount of [ingredient] and it's
+  /// measurement unit.
   const IngredientAmount({
     required this.ingredient,
     super.key,
@@ -15,10 +17,11 @@ class IngredientAmount extends StatelessWidget {
   Widget build(BuildContext context) {
     final text = S.of(context);
 
-    if (ingredient.product.measurementUnit == MeasurementUnit.milliliters) {
-      return Text(text.ingredientamountMl(ingredient.amount));
+    switch (ingredient.product.measurementUnit) {
+      case MeasurementUnit.milliliters:
+        return Text(text.ingredientamountMl(ingredient.amount));
+      case MeasurementUnit.grams:
+        return Text(text.ingredientamountGr(ingredient.amount));
     }
-
-    return Text(text.ingredientamountGr(ingredient.amount));
   }
 }

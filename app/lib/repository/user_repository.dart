@@ -2,8 +2,8 @@ import 'dart:developer';
 
 import 'package:fitapp_domain/domain.dart';
 
-/// Implements User Repository for managing user actions.
 class UserRepository implements IUserRepository {
+  /// Implements User Repository for managing user actions.
   UserRepository._({required IStorageRepository<User> storageRepository})
       : _storageRepository = storageRepository;
 

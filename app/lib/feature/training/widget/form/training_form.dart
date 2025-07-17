@@ -11,6 +11,12 @@ import '../exercise_list.dart';
 import 'exercise_form.dart';
 
 class TrainingForm extends StatefulWidget {
+  /// Creates a [Form], which produces a [Training].
+  ///
+  /// [onFormApply] is a callback, which is called on this form successful apply.
+  /// [actionButtonText] is a text to be displayed on form applying button.
+  /// If [initialTraining] is passed, form fields will be filled with this
+  /// training data.
   const TrainingForm({
     required this.onFormApply,
     required this.actionButtonText,
@@ -86,7 +92,7 @@ class _TrainingFormState extends State<TrainingForm> {
               decoration: exerciseListContainerDecoration,
               child: ExerciseList.editable(
                 exercises: _newTraining.exercises,
-                onDeletePressed: _deleteExerciseFromList,
+                onDelete: _deleteExerciseFromList,
                 onEdited: _editExercise,
                 exercisesAbsenceTitle: text.noExercisesYetPress,
                 itemDimension: exerciseListHeight * 0.8,

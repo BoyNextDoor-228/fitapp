@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 class FitAppSnackBarContent extends StatelessWidget {
+  /// Creates a content to be shown in a [SnackBar].
+  ///
+  /// [snackBarText] is a message to be shown in [SnackBar].
+  /// Depending on [messageType], different icons will be shown before
+  /// [snackBarText].
   const FitAppSnackBarContent({
     required this.snackBarText,
     required this.messageType,

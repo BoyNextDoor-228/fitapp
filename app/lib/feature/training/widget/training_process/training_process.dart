@@ -8,6 +8,14 @@ import './training_process_initial.dart';
 import 'training_process_complete.dart';
 
 class TrainingProcess extends StatelessWidget {
+  /// Creates a widget, which represents current state of [TrainingProcessBloc].
+  ///
+  /// [training] is a training to work with.
+  /// [onTrainingStarted] is a callback, which is called, when training starts.
+  /// [onTrainingFinished] is a callback, which is called, when training gets
+  /// completed.
+  /// [onTrainingProgressionUpdated] is a callback, which is called, when an
+  /// exercise of training becomes completed/uncompleted.
   const TrainingProcess({
     required this.training,
     required this.onTrainingStarted,

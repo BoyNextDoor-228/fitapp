@@ -4,6 +4,11 @@ import '../../../../generated/l10n.dart';
 import '../../../../tool/input_validator.dart';
 
 class WeightForm extends StatelessWidget {
+  /// Creates a [Form], which produces a new user weight data..
+  ///
+  /// [onFormSaved] is a callback, which is called on this form successful apply.
+  /// [isLoading] is a flag, which determines, if a loading process is in
+  /// progress, so 'apply' button should be inactive. Default is False.
   WeightForm({
     required this.onFormSaved,
     this.isLoading = false,

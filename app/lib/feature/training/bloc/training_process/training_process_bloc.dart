@@ -7,6 +7,12 @@ part 'training_process_state.dart';
 
 class TrainingProcessBloc
     extends Bloc<TrainingProcessEvent, TrainingProcessState> {
+  /// [Bloc], which implements training process logic.
+  ///
+  /// This [Bloc] allows:
+  /// - start training,
+  /// - update training progression by completing training exercises,
+  /// - complete training, when all exercises are completed.
   TrainingProcessBloc({
     required this.training,
   }) : super(const TrainingProcessInitial()) {
@@ -15,7 +21,6 @@ class TrainingProcessBloc
     on<TrainingProcessCompleted>(_onTrainingProcessCompleted);
   }
 
-  //final UserService _userService = GetIt.I<IAppScope>().userService;
   final Training training;
 
   void _onTrainingStarted(
@@ -45,11 +50,6 @@ class TrainingProcessBloc
     TrainingProcessCompleted event,
     Emitter<TrainingProcessState> emit,
   ) async {
-    // await _userService.completeTraining(
-    //   trainingId: training.id,
-    //   completedAt: DateTime.now(),
-    // );
-
     emit(const TrainingProcessComplete());
     await close();
   }

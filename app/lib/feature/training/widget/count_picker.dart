@@ -4,6 +4,11 @@ import 'package:flutter/services.dart';
 import '../../../generated/l10n.dart';
 
 class CountPicker extends StatefulWidget {
+  /// Creates a TextField, that receives non-negative integer number.
+  ///
+  /// If [initialValue] is passed, form field will be filled with this value.
+  /// [labelText] is description for this form field.
+  /// [onChanged] is a callback, which is called on form field data changed.
   const CountPicker({
     required this.initialValue,
     required this.labelText,

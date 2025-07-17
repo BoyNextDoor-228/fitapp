@@ -7,6 +7,15 @@ import '../domain/settings/settings.dart';
 import '../domain/settings_values.dart';
 
 class LanguageSelector extends StatelessWidget {
+  /// Creates a selector, which allows to select a language.
+  ///
+  /// Represents a box with selected language flag image. By tap action opens
+  /// [BottomSheet] menu with different language flags to select.
+  ///
+  /// [captionText] is a text, which is displayed on top of [BottomSheet].
+  /// [onLanguageSelected] is a callback, which is called on selected language
+  /// tap action.
+  /// [initialLanguage] is a language, which will be shown as pre-selected.
   LanguageSelector({
     required this.captionText,
     required this.onLanguageSelected,

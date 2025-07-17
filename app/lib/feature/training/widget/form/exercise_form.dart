@@ -9,6 +9,12 @@ import '../count_picker.dart';
 import '../duration_picker.dart';
 
 class ExerciseForm extends StatefulWidget {
+  /// Creates a [Form], which produces an [Exercise].
+  ///
+  /// [onFormApply] is a callback, which is called on this form successful apply.
+  /// [actionButtonText] is a text to be displayed on form applying button.
+  /// If [initialExercise] is passed, form fields will be filled with this
+  /// exercise data.
   const ExerciseForm({
     required this.onFormApply,
     required this.actionButtonText,
@@ -41,6 +47,7 @@ class _ExerciseFormState extends State<ExerciseForm> {
     final text = S.of(context);
 
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Form(
         key: _formKey,
         child: Column(

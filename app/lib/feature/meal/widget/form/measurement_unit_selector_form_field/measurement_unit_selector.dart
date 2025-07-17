@@ -4,13 +4,19 @@ import 'package:flutter/material.dart';
 import '../../../../../generated/l10n.dart';
 
 class MeasurementUnitSelector extends StatefulWidget {
+  /// Creates a [SegmentedButton], which allows to select [MeasurementUnit].
+  ///
+  /// [onChanged] is called, whenever user selects a [ButtonSegment], returns
+  /// selected [MeasurementUnit].
+  ///
+  /// [initialMeasurementUnit] sets [ButtonSegment] corresponding value.
   const MeasurementUnitSelector({
     required this.onChanged,
-    this.initialMeasurementUnit,
+    required this.initialMeasurementUnit,
     super.key,
   });
 
-  final MeasurementUnit? initialMeasurementUnit;
+  final MeasurementUnit initialMeasurementUnit;
   final void Function(MeasurementUnit newMeasurementUnit) onChanged;
 
   @override
@@ -25,8 +31,7 @@ class _MeasurementUnitSelectorState extends State<MeasurementUnitSelector> {
   void initState() {
     super.initState();
 
-    _selectedMeasurementUnit =
-        widget.initialMeasurementUnit ?? MeasurementUnit.grams;
+    _selectedMeasurementUnit = widget.initialMeasurementUnit;
   }
 
   @override

@@ -4,6 +4,16 @@ import 'package:flutter/material.dart';
 import '../../../tool/bottom_sheet_provider.dart';
 
 class ColorSelector extends StatelessWidget {
+  /// Creates a selector, which allows to select a color.
+  ///
+  /// Represents a box with selected color. By tap action opens [BottomSheet]
+  /// menu with different colors to select.
+  ///
+  /// [captionText] is a text, which is displayed on top of [BottomSheet].
+  /// [onColorSelected] is a callback, which is called on selected color tap
+  /// action.
+  /// [initialColor] is a color, which will be shown as pre-selected.
+  /// [colors] are all colors available to be selected.
   const ColorSelector({
     required this.captionText,
     required this.onColorSelected,

@@ -11,6 +11,7 @@ import 'feature/user/bloc/user_bloc.dart';
 import 'util/theme.dart';
 
 class FitApp extends StatefulWidget {
+  /// Creates application root widget.
   const FitApp({super.key});
 
   @override
@@ -18,12 +19,15 @@ class FitApp extends StatefulWidget {
 }
 
 class _FitAppState extends State<FitApp> {
+  /// Scope with all application dependencies.
   late IAppScope _appScope;
-  late Future<void> _scopeFuture;
+
+  /// App scope initialization procedure, which will be finished in [Future].
+  late Future<void> _appScopeInitialization;
 
   void _initScope() {
     _appScope = AppScope();
-    _scopeFuture = _appScope.init();
+    _appScopeInitialization = _appScope.init();
   }
 
   @override
@@ -34,7 +38,7 @@ class _FitAppState extends State<FitApp> {
 
   @override
   Widget build(BuildContext context) => FutureBuilder(
-        future: _scopeFuture,
+        future: _appScopeInitialization,
         builder: (_, snapshot) {
           if (snapshot.connectionState != ConnectionState.done) {
             return const SafeArea(

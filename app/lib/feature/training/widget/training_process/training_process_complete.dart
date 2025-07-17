@@ -9,6 +9,9 @@ import '../../../navigation/app_router.dart';
 import '../../../user/bloc/user_bloc.dart';
 
 class TrainingProcessCompleteWidget extends StatefulWidget {
+  /// Creates a widget, which is shown, when training process is completed.
+  ///
+  /// [trainingId] is identifier of completed training.
   const TrainingProcessCompleteWidget({
     required this.trainingId,
     super.key,

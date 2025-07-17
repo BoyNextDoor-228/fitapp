@@ -10,6 +10,13 @@ part 'timer_event.dart';
 part 'timer_state.dart';
 
 class TimerBloc extends Bloc<TimerEvent, TimerState> {
+  /// [Bloc], which implements countdown timer logic.
+  ///
+  /// Timer may be:
+  /// - started from specified time ([duration]),
+  /// - paused,
+  /// - resumed,
+  /// - reset being on pause or counting down.
   TimerBloc({required Duration duration})
       : _initialDuration = duration,
         super(TimerInitial(duration: duration)) {

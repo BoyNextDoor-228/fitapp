@@ -4,6 +4,13 @@ import 'package:flutter/material.dart';
 import '../../../../generated/l10n.dart';
 
 class ExerciseLoadTypeSelector extends StatefulWidget {
+  /// Creates a [SegmentedButton], which allows to select [ExerciseLoadType]
+  ///
+  /// [onChanged] is called, whenever user selects a [ButtonSegment], returns
+  /// selected [ExerciseLoadType].
+  ///
+  /// If [initialLoadType] is provided, [ButtonSegment] with corresponding value
+  /// will be selected. Else [ExerciseLoadType.repetition] selected as default.
   const ExerciseLoadTypeSelector({
     required this.onChanged,
     this.initialLoadType,

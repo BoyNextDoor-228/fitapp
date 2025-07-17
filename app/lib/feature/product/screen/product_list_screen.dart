@@ -23,7 +23,7 @@ class ProductListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final userBloc = context.read<UserBloc>();
     final router = context.router;
-    final cardHeight = MediaQuery.sizeOf(context).longestSide * 0.3;
+    final cardHeight = MediaQuery.sizeOf(context).longestSide * 0.4;
     final text = S.of(context);
 
     return FitAppScaffold(
@@ -59,9 +59,9 @@ class ProductListScreen extends StatelessWidget {
                 : ProductListItem.editable(
                     product: products[index],
                     index: index + 1,
-                    onDeletePressed: () => userBloc
+                    onDelete: () => userBloc
                         .add(ProductDeleted(productId: products[index].id)),
-                    onEditPressed: () async => goToRoute(
+                    onEdit: () async => goToRoute(
                       router: router,
                       route: ProductEditingRoute(product: products[index]),
                     ),

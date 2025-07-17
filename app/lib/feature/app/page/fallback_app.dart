@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../widget/fitapp_scaffold.dart';
 
+/// Used whenever application's primary [MaterialApp] widget is not
+/// initialized yet.
 class FallbackApp extends StatelessWidget {
   const FallbackApp({
     required this.child,

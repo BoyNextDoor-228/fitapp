@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import '../../../../generated/l10n.dart';
 
 class NutritionFactsTable extends StatelessWidget {
+  /// Creates a 2x2 table, which displays number of [proteins], [fats],
+  /// [carbohydrates] and [kilocalories].
+  ///
+  /// If [caption] is provided, it will be displayed above the table.
   const NutritionFactsTable({
     required this.proteins,
     required this.fats,
@@ -12,6 +16,9 @@ class NutritionFactsTable extends StatelessWidget {
     super.key,
   });
 
+  /// Creates a 2x2 table, which displays nutrition facts with zero values.
+  ///
+  /// If [caption] is provided, it will be displayed above the table.
   const NutritionFactsTable.empty({
     this.caption,
     super.key,
@@ -39,30 +46,32 @@ class NutritionFactsTable extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
-        Table(
-          children: [
-            TableRow(
-              children: [
-                _TableCell(
-                  title: text.proteins,
-                  value: proteins.toStringAsFixed(2),
-                ),
-                _TableCell(title: text.fats, value: fats.toStringAsFixed(2)),
-              ],
-            ),
-            TableRow(
-              children: [
-                _TableCell(
-                  title: text.carbohydrates,
-                  value: carbohydrates.toStringAsFixed(2),
-                ),
-                _TableCell(
-                  title: text.kilocalories,
-                  value: kilocalories.toStringAsFixed(2),
-                ),
-              ],
-            ),
-          ],
+        Expanded(
+          child: Table(
+            children: [
+              TableRow(
+                children: [
+                  _TableCell(
+                    title: text.proteins,
+                    value: proteins.toStringAsFixed(2),
+                  ),
+                  _TableCell(title: text.fats, value: fats.toStringAsFixed(2)),
+                ],
+              ),
+              TableRow(
+                children: [
+                  _TableCell(
+                    title: text.carbohydrates,
+                    value: carbohydrates.toStringAsFixed(2),
+                  ),
+                  _TableCell(
+                    title: text.kilocalories,
+                    value: kilocalories.toStringAsFixed(2),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ],
     );

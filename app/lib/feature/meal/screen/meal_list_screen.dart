@@ -26,7 +26,7 @@ class MealListScreen extends StatelessWidget {
     final size = MediaQuery.sizeOf(context);
 
     final bottomSheetHeight = size.height * 0.7;
-    final itemHeight = size.longestSide * 0.3;
+    final itemHeight = size.longestSide * 0.4;
 
     final userBloc = context.read<UserBloc>();
     final router = context.router;
@@ -68,9 +68,9 @@ class MealListScreen extends StatelessWidget {
                       meal: meals[index],
                       index: index + 1,
                       itemDimension: itemHeight,
-                      onDeletePressed: () =>
+                      onDelete: () =>
                           userBloc.add(MealDeleted(mealId: meals[index].id)),
-                      onEditPressed: () async => goToRoute(
+                      onEdit: () async => goToRoute(
                         router: router,
                         route: MealEditingRoute(meal: meals[index]),
                       ),

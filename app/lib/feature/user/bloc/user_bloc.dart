@@ -10,6 +10,24 @@ part 'user_event.dart';
 part 'user_state.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
+  /// [Bloc], which handles actions of User.
+  ///
+  /// This [Bloc] allows:
+  /// - create user,
+  /// - update user weight,
+  ///
+  /// - create new training in user trainings list,
+  /// - edit training in user trainings list,
+  /// - delete training from user trainings list,
+  /// - update user training statistics,
+  ///
+  /// - create new meal in user meals list,
+  /// - edit meal in user meals list,
+  /// - delete meal from user meals list,
+  ///
+  /// - create new product in user products list,
+  /// - edit product in user products list,
+  /// - delete product from user products list,
   UserBloc({required UserService userService})
       : _userService = userService,
         super(UserState.initial()) {

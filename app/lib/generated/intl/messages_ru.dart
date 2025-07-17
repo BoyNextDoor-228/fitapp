@@ -137,6 +137,9 @@ class MessageLookup extends MessageLookupByLibrary {
         "date": MessageLookupByLibrary.simpleMessage("Дата"),
         "delete": MessageLookupByLibrary.simpleMessage("Удалить"),
         "deletion": MessageLookupByLibrary.simpleMessage("Удаление"),
+        "dragLeftSideRightToOpenMenu": MessageLookupByLibrary.simpleMessage(
+          "Потяните левую часть направо, чтобы отрыть меню.",
+        ),
         "edit": MessageLookupByLibrary.simpleMessage("Изменить"),
         "editMeal": MessageLookupByLibrary.simpleMessage("Изменить Блюдо"),
         "editProduct": MessageLookupByLibrary.simpleMessage("Изменить Продукт"),

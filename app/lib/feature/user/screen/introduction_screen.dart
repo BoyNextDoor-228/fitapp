@@ -15,6 +15,10 @@ import '../widget/introduction_subpage/weight_registration_subpage.dart';
 
 @RoutePage()
 class IntroductionScreen extends StatefulWidget {
+  /// Screen to be shown on very first application run.
+  ///
+  /// [onUserAppears] is a callback, which is called when application creates
+  /// virtual user.
   const IntroductionScreen({
     required VoidCallback onUserAppears,
     super.key,
@@ -105,16 +109,20 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                     Icons.arrow_back,
                     size: 40,
                   ),
-                  onTap: () async => _goToPreviousPage(),
-                  isActive: _currentPageIndex != 0,
+                  // If first subpage is shown, 'previous subpage button' can
+                  // not be active.
+                  onTap: _currentPageIndex != 0 ? _goToPreviousPage : null,
                 ),
                 PageViewControlButton(
                   icon: const Icon(
                     Icons.arrow_forward,
                     size: 40,
                   ),
-                  onTap: () async => _goToNextPage(),
-                  isActive: _currentPageIndex != subpages.length - 1,
+                  // If last subpage is shown, 'next subpage button' can
+                  // not be active.
+                  onTap: _currentPageIndex != subpages.length - 1
+                      ? _goToNextPage
+                      : null,
                 ),
               ],
             ),
