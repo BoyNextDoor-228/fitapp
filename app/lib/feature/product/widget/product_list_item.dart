@@ -9,20 +9,32 @@ import '../../../tool/show_deletion_dialog.dart';
 import '../../app/widget/shared/nutrition_facts_table.dart';
 
 class ProductListItem extends StatelessWidget {
+  /// Creates a representation of a [product] list item.
+  ///
+  /// [index] is an order number of the product list item.
+  /// [itemDimension] is a dimension of the item ([Card]).
+  /// [onEdit] is a callback, which implements editing of a product.
+  /// [onDelete] is a callback, which implements deletion of a product.
   const ProductListItem({
     required this.product,
     required this.index,
     required this.itemDimension,
     super.key,
   })  : _isEditable = false,
-        onEditPressed = null,
-        onDeletePressed = null;
+        onEdit = null,
+        onDelete = null;
 
+  /// Creates a representation of a [product]. Has 'Edit' and 'Delete'
+  /// buttons.
+  ///
+  /// [onEdit] is a callback, which implements editing of an ingredient.
+  /// [onDelete] is a callback, which implements deletion of an ingredient.
+  /// [itemDimension] is a dimension of the item ([Card]).
   const ProductListItem.editable({
     required this.product,
     required this.index,
-    required this.onDeletePressed,
-    required this.onEditPressed,
+    required this.onDelete,
+    required this.onEdit,
     required this.itemDimension,
     super.key,
   }) : _isEditable = true;
@@ -30,8 +42,8 @@ class ProductListItem extends StatelessWidget {
   final Product product;
   final int index;
 
-  final VoidCallback? onDeletePressed;
-  final VoidCallback? onEditPressed;
+  final VoidCallback? onDelete;
+  final VoidCallback? onEdit;
 
   final bool _isEditable;
 
@@ -54,8 +66,8 @@ class ProductListItem extends StatelessWidget {
                   index: index,
                   product: product,
                   isEditable: _isEditable,
-                  onEditPressed: onEditPressed,
-                  onDeletePressed: onDeletePressed,
+                  onEditPressed: onEdit,
+                  onDeletePressed: onDelete,
                 ),
               ),
               const Divider(
@@ -64,19 +76,17 @@ class ProductListItem extends StatelessWidget {
               ),
               Expanded(
                 flex: 2,
-                child: Center(
-                  child: NutritionFactsTable(
-                    caption: text.hundredMeasurementContain(
-                      measurementUnitToText(
-                        product.measurementUnit,
-                        text,
-                      ),
+                child: NutritionFactsTable(
+                  caption: text.hundredMeasurementContain(
+                    measurementUnitToText(
+                      product.measurementUnit,
+                      text,
                     ),
-                    proteins: product.nutritionFacts.proteins,
-                    fats: product.nutritionFacts.fats,
-                    carbohydrates: product.nutritionFacts.carbohydrates,
-                    kilocalories: product.nutritionFacts.kilocalories,
                   ),
+                  proteins: product.nutritionFacts.proteins,
+                  fats: product.nutritionFacts.fats,
+                  carbohydrates: product.nutritionFacts.carbohydrates,
+                  kilocalories: product.nutritionFacts.kilocalories,
                 ),
               ),
             ],

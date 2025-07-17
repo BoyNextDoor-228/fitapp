@@ -7,6 +7,7 @@ import '../domain/settings_values.dart';
 part 'settings_state.dart';
 
 class SettingsCubit extends Cubit<SettingsState> {
+  /// [Cubit] for performing actions with application settings.
   SettingsCubit({required SettingsService settingsService})
       : _settingsService = settingsService,
         super(SettingsState(settings: settingsService.settings));

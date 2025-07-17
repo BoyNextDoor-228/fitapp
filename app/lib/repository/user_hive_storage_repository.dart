@@ -6,8 +6,8 @@ import 'package:hive/hive.dart';
 
 import '../tool/delete_hive_box_by_name.dart';
 
-/// Implements Hive Storage Repository for storing user information.
 class UserHiveStorageRepository implements IStorageRepository<User> {
+  /// Implements [Hive] Storage Repository for storing user information.
   UserHiveStorageRepository({
     required this.userStorageBoxName,
     required this.userKey,

@@ -32,6 +32,7 @@ class ExerciseStatisticsScreen extends StatelessWidget {
               child: Text(text.exercisesAreAbsent),
             )
           : ListView.separated(
+              physics: const BouncingScrollPhysics(),
               itemCount: exercises.length,
               separatorBuilder: (_, __) => const SizedBox(
                 height: 20,

@@ -1,6 +1,8 @@
 import '../generated/l10n.dart';
 
 class InputValidator {
+  /// Contains forms input validators, which support localization passed in
+  /// [s].
   InputValidator({required S s}) {
     _enterAmount = s.enterAmount;
     _enterTitle = s.enterTitle;
@@ -16,6 +18,7 @@ class InputValidator {
 
   late final String _enterTitle;
 
+  /// Validates only correct non-negative fractional numbers.
   String? fractionalNumberValidator(String? input) {
     if (input == null || input.trim().isEmpty) {
       return _enterAmount;
@@ -37,6 +40,7 @@ class InputValidator {
     return null;
   }
 
+  /// Validates non-empty strings.
   String? titleValidator(String? input) {
     if (input == null || input.trim().isEmpty) {
       return _enterTitle;

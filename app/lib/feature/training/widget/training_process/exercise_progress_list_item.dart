@@ -9,6 +9,14 @@ import '../../../timer/countdown_timer.dart';
 import '../exercise_icon.dart';
 
 class ExercisesProgressListItem extends StatelessWidget {
+  /// Creates a representation of an [exercise] list item.
+  ///
+  /// [index] is an order number of the exercise in list.
+  /// [isCompleted] flag determines if current exercise is completed or not.
+  /// [onToggle] is a callback, which is called on exercise completion checkbox
+  /// tap action.
+  /// [isLandscape] flag determines if list item should be displayed in
+  /// landscape mode. Default is false.
   const ExercisesProgressListItem({
     required this.exercise,
     required this.index,

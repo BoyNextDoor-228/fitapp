@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 
 class EmptyListLabel extends StatelessWidget {
+  /// Creates a label, which warns user, that a list, he's trying to view,
+  /// has no elements.
+  ///
+  /// [elementsAbsenceText] is a message, which will be displayed as label.
+  /// [icon] is an icon, which will be displayed above [elementsAbsenceText].
+  /// If [icon] is omitted, default icon will be shown.
   const EmptyListLabel({
     required this.elementsAbsenceText,
     this.icon,

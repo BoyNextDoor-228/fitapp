@@ -158,5 +158,6 @@
   "checkStatistics": "Перейти к статистике",
   "hundredMeasurementContain": "100 {measurement} содержат:",
   "millilitersShort": "мл.",
-  "gramsShort": "гр."
+  "gramsShort": "гр.",
+  "dragLeftSideRightToOpenMenu": "Потяните левую часть направо, чтобы отрыть меню."
 }

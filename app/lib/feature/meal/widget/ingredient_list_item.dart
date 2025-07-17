@@ -11,26 +11,35 @@ import 'form/ingredient_form.dart';
 import 'ingredient_amount.dart';
 
 class IngredientListItem extends StatelessWidget {
+  /// Creates a representation of an [ingredient] list item.
+  ///
+  /// [itemDimension] is a dimension of the item ([Card]).
   const IngredientListItem({
     required this.ingredient,
     required this.itemDimension,
     super.key,
   })  : _isEditable = false,
-        onEditPressed = null,
-        onDeletePressed = null;
+        onEdit = null,
+        onDelete = null;
 
+  /// Creates a representation of an [ingredient]. Has 'Edit' and 'Delete'
+  /// buttons.
+  ///
+  /// [onEdit] is a callback, which implements editing of an ingredient.
+  /// [onDelete] is a callback, which implements deletion of an ingredient.
+  /// [itemDimension] is a dimension of the item ([Card]).
   const IngredientListItem.editable({
     required this.ingredient,
-    required this.onDeletePressed,
-    required this.onEditPressed,
+    required this.onDelete,
+    required this.onEdit,
     required this.itemDimension,
     super.key,
   }) : _isEditable = true;
 
   final Ingredient ingredient;
 
-  final VoidCallback? onDeletePressed;
-  final void Function(Ingredient newIngredient)? onEditPressed;
+  final VoidCallback? onDelete;
+  final void Function(Ingredient newIngredient)? onEdit;
 
   final bool _isEditable;
   final double itemDimension;
@@ -50,8 +59,8 @@ class IngredientListItem extends StatelessWidget {
                     child: _Header(
                       ingredient: ingredient,
                       isEditable: _isEditable,
-                      onDeletePressed: onDeletePressed,
-                      onEditPressed: onEditPressed,
+                      onDelete: onDelete,
+                      onEdit: onEdit,
                     ),
                   ),
                   Expanded(
@@ -70,22 +79,21 @@ class _Header extends StatelessWidget {
   const _Header({
     required this.ingredient,
     required this.isEditable,
-    required this.onDeletePressed,
-    required this.onEditPressed,
+    required this.onDelete,
+    required this.onEdit,
   });
 
   final Ingredient ingredient;
   final bool isEditable;
 
-  final VoidCallback? onDeletePressed;
-  final void Function(Ingredient newIngredient)? onEditPressed;
+  final VoidCallback? onDelete;
+  final void Function(Ingredient newIngredient)? onEdit;
 
   @override
   Widget build(BuildContext context) => Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Expanded(
-            flex: 8,
             child: Text(
               ingredient.product.name,
               maxLines: 1,
@@ -99,8 +107,8 @@ class _Header extends StatelessWidget {
           if (isEditable)
             _CardMenuButtons(
               ingredient: ingredient,
-              onDeletePressed: onDeletePressed!,
-              onEditPressed: onEditPressed!,
+              onDelete: onDelete!,
+              onEdit: onEdit!,
             ),
         ],
       );
@@ -132,14 +140,14 @@ class _Content extends StatelessWidget {
 class _CardMenuButtons extends StatelessWidget {
   const _CardMenuButtons({
     required this.ingredient,
-    required this.onDeletePressed,
-    required this.onEditPressed,
+    required this.onDelete,
+    required this.onEdit,
   });
 
   final Ingredient ingredient;
 
-  final VoidCallback onDeletePressed;
-  final void Function(Ingredient newIngredient) onEditPressed;
+  final VoidCallback onDelete;
+  final void Function(Ingredient newIngredient) onEdit;
 
   @override
   Widget build(BuildContext context) {
@@ -157,7 +165,7 @@ class _CardMenuButtons extends StatelessWidget {
           child: Text(text.delete),
           onTap: () async => showDeletionDialog(
             context: context,
-            onConfirmed: onDeletePressed,
+            onConfirmed: onDelete,
             deleteWhat: text.ingredient,
           ),
         ),
@@ -173,7 +181,7 @@ class _CardMenuButtons extends StatelessWidget {
       headerText: text.ingredientEditing,
       content: IngredientForm(
         initialIngredient: ingredient,
-        onFormApply: onEditPressed,
+        onFormApply: onEdit,
         actionButtonText: text.saveChanges,
       ),
     );

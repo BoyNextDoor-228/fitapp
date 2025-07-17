@@ -4,6 +4,7 @@ import '../feature/settings/domain/settings_values.dart';
 import '../feature/settings/domain/theme_settings/theme_settings.dart';
 
 class FitAppTheme {
+  /// Creates application visual theme, depending on data from [themeSettings].
   FitAppTheme({required ThemeSettings themeSettings}) {
     _themeSettings = themeSettings;
     _init();
@@ -91,6 +92,8 @@ class FitAppTheme {
           ? Brightness.light
           : Brightness.dark;
 
+  /// Returns [ThemeData] according to theme brightness, which set in
+  /// [_themeSettings].
   ThemeData getThemeData() {
     switch (_themeSettings.brightness) {
       case ThemeBrightness.light:

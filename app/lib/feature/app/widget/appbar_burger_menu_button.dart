@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class AppbarBurgerMenuButton extends StatelessWidget {
+  /// Creates a button, which takes place in appbar and opens [Drawer] by tap
+  /// action.
   const AppbarBurgerMenuButton({super.key});
 
   @override

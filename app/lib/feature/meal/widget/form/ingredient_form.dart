@@ -12,6 +12,12 @@ import '../../../navigation/app_router.dart';
 import '../../../user/bloc/user_bloc.dart';
 
 class IngredientForm extends StatefulWidget {
+  /// Creates a [Form], which produces an [Ingredient].
+  ///
+  /// [onFormApply] is a callback, which is called on this form successful apply.
+  /// [actionButtonText] is a text to be displayed on form applying button.
+  /// If [initialIngredient] is passed, form fields will be filled with this
+  /// ingredient data.
   const IngredientForm({
     required this.onFormApply,
     required this.actionButtonText,
@@ -30,14 +36,18 @@ class IngredientForm extends StatefulWidget {
 class _IngredientFormState extends State<IngredientForm> {
   final _formKey = GlobalKey<FormState>();
 
+  /// A ingredient, which this form eventually produces.
   late Ingredient? _newIngredient;
+
+  /// Entries for dropdown menu, which describe products, that are available to
+  /// be used for creating an ingredient.
   late List<DropdownMenuEntry<Product>> _productsEntries;
 
   @override
   void initState() {
     super.initState();
 
-    _newIngredient = widget.initialIngredient; //Ingredient.empty();
+    _newIngredient = widget.initialIngredient;
 
     _productsEntries = context
         .read<UserBloc>()
@@ -90,6 +100,7 @@ class _IngredientFormState extends State<IngredientForm> {
     }
 
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Form(
         key: _formKey,
         child: Column(

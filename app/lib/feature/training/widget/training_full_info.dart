@@ -8,6 +8,10 @@ import '../../navigation/app_router.dart';
 import 'exercise_list.dart';
 
 class TrainingFullInfo extends StatelessWidget {
+  /// Creates a widget, that displays full information about [training].
+  ///
+  /// Displays training title, description (if present), list of exercises,
+  /// 'Show statistics' and 'Start training' buttons.
   const TrainingFullInfo({
     required this.training,
     super.key,
@@ -34,6 +38,7 @@ class TrainingFullInfo extends StatelessWidget {
         );
 
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Column(
         spacing: 20,
         crossAxisAlignment: CrossAxisAlignment.start,

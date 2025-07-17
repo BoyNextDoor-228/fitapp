@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import '../../../tool/route_provider.dart';
 
 class AppbarBackButton extends StatelessWidget {
+  /// Creates a button, which takes place in appbar and implements
+  /// 'back button' behaviour.
+  ///
+  /// On button tap, user gets redirected to route, passed as [route].
   const AppbarBackButton({
     required this.route,
     super.key,

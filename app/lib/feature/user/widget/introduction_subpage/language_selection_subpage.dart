@@ -7,6 +7,10 @@ import '../../../app/widget/shared/flag_image.dart';
 import '../../../settings/domain/settings_values.dart';
 
 class LanguageSelectionSubpage extends StatelessWidget {
+  /// Creates a widget, which is used to let IRL user select language.
+  ///
+  /// [onLanguageSelected] is a callback, which is called, when user selects
+  /// language from languages list.
   const LanguageSelectionSubpage({
     required this.onLanguageSelected,
     super.key,
@@ -179,22 +183,3 @@ class _LanguageSelectionButton extends StatelessWidget {
     }
   }
 }
-
-// class _FlagImage extends StatelessWidget {
-//   const _FlagImage({
-//     required this.imagePath,
-//     required this.imageSize,
-//   });
-//
-//   final String imagePath;
-//   final double imageSize;
-//
-//   @override
-//   Widget build(BuildContext context) => ClipRRect(
-//         borderRadius: const BorderRadius.all(Radius.circular(5)),
-//         child: SizedBox(
-//           width: imageSize,
-//           child: Image.asset(imagePath),
-//         ),
-//       );
-// }

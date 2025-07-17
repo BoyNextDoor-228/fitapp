@@ -5,6 +5,9 @@ import '../../../generated/l10n.dart';
 import 'ingredient_list.dart';
 
 class MealFullInfo extends StatelessWidget {
+  /// Creates a widget, that displays full information about [meal].
+  ///
+  /// Displays meal title, recipe (if present), list of ingredients.
   const MealFullInfo({
     required this.meal,
     super.key,
@@ -21,6 +24,7 @@ class MealFullInfo extends StatelessWidget {
     final text = S.of(context);
 
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
       child: Column(
         spacing: 10,
         crossAxisAlignment: CrossAxisAlignment.start,

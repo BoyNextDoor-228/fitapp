@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../generated/l10n.dart';
 
+/// Shows dialog, which asks to confirm deletion.
+///
+/// [deleteWhat] is the subject of deletion.
+/// [onConfirmed] is a callback, which is called, when confirmation button
+/// tapped.
 Future<void> showDeletionDialog({
   required BuildContext context,
   required String deleteWhat,

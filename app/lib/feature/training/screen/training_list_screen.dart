@@ -58,10 +58,10 @@ class TrainingListScreen extends StatelessWidget {
                       training: trainings[index],
                       index: index + 1,
                       cardHeight: cardHeight,
-                      onDeletePressed: () => context.read<UserBloc>().add(
+                      onDelete: () => context.read<UserBloc>().add(
                             TrainingDeleted(trainingId: trainings[index].id),
                           ),
-                      onEditPressed: () async => goToRoute(
+                      onEdit: () async => goToRoute(
                         router: router,
                         route: TrainingEditingRoute(training: trainings[index]),
                       ),

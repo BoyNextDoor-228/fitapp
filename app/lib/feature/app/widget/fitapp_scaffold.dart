@@ -4,6 +4,9 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 class FitAppScaffold extends StatelessWidget {
+  /// Wrapper of a [Scaffold]. Creates a [Scaffold] with a fancy background.
+  ///
+  /// All parameters are identical to original [Scaffold].
   const FitAppScaffold({
     super.key,
     this.appBar,

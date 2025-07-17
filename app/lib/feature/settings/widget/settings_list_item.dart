@@ -1,6 +1,18 @@
 import 'package:flutter/material.dart';
 
+import 'color_selector.dart';
+
 class SettingsListItem extends StatelessWidget {
+  /// Creates a visual scope, which represents a single setting.
+  ///
+  /// [description] is a text, that will be shown as description to current
+  /// setting.
+  /// [handler] is a [Widget], that represents a handler of setting:
+  /// [DropdownMenu], [ColorSelector], etc.
+  /// [descriptionFlex] is a flex factor for [description] widget to occupy.
+  /// Default is 2.
+  /// [handlerFlex] is a flex factor for [handler] widget to occupy.
+  /// Default is 1.
   const SettingsListItem({
     required this.description,
     required this.handler,

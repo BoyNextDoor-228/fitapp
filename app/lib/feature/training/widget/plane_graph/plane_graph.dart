@@ -283,7 +283,7 @@ class _PlaneGraphPainter extends CustomPainter {
   void _drawYScaleValues(Canvas canvas) {
     const fontSize = 20.0;
     final text = yValueAsDuration
-        ? Duration(seconds: yValues.reduce(max)).toHHMMSS()
+        ? Duration(seconds: yValues.reduce(max)).toHhMmSs()
         : yValues.reduce(max).toString();
 
     TextPainter(
@@ -307,7 +307,7 @@ class _PlaneGraphPainter extends CustomPainter {
   void _drawDotsInfo(Canvas canvas) {
     for (var i = 0; i < _dotsCoordinates.length; i++) {
       final text = yValueAsDuration
-          ? Duration(seconds: yValues[i]).toHHMMSS()
+          ? Duration(seconds: yValues[i]).toHhMmSs()
           : yValues[i].toString();
 
       TextPainter(

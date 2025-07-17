@@ -8,6 +8,12 @@ import '../../../meal/widget/form/measurement_unit_selector_form_field/measureme
 import '../../../user/bloc/user_bloc.dart';
 
 class ProductForm extends StatefulWidget {
+  /// Creates a [Form], which produces a [Product].
+  ///
+  /// [onFormApply] is a callback, which is called on this form successful apply.
+  /// [actionButtonText] is a text to be displayed on form applying button.
+  /// If [initialProduct] is passed, form fields will be filled with this
+  /// product data.
   const ProductForm({
     required this.onFormApply,
     required this.actionButtonText,

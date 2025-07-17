@@ -11,6 +11,11 @@ import '../ingredient_list.dart';
 import 'ingredient_form.dart';
 
 class MealForm extends StatefulWidget {
+  /// Creates a [Form], which produces a [Meal].
+  ///
+  /// [onFormApply] is a callback, which is called on this form successful apply.
+  /// [actionButtonText] is a text to be displayed on form applying button.
+  /// If [initialMeal] is passed, form fields will be filled with this meal data.
   const MealForm({
     required this.onFormApply,
     required this.actionButtonText,
@@ -85,7 +90,7 @@ class _MealFormState extends State<MealForm> {
               decoration: ingredientListContainerDecoration,
               child: IngredientList.editable(
                 ingredients: _newMeal.ingredients,
-                onDeletePressed: _deleteIngredientFromList,
+                onDelete: _deleteIngredientFromList,
                 onEdited: _editIngredient,
                 ingredientAbsenceTitle: text.noIngredientsYet,
                 itemDimension: ingredientListHeight * 0.8,
@@ -157,8 +162,6 @@ class _MealFormState extends State<MealForm> {
     }
   }
 
-  void _closeIngredientCreationModal() => Navigator.pop(context);
-
   Future<Ingredient?> _openIngredientCreationModal(
     BuildContext modalContext,
   ) async {
@@ -222,4 +225,6 @@ class _MealFormState extends State<MealForm> {
       _newMeal = _newMeal.copyWith(ingredients: currentIngredients);
     });
   }
+
+  void _closeIngredientCreationModal() => Navigator.pop(context);
 }

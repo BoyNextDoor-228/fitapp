@@ -158,5 +158,6 @@
   "checkStatistics": "Check statistics",
   "hundredMeasurementContain": "100 {measurement} contain:",
   "millilitersShort": "ml.",
-  "gramsShort": "gr."
+  "gramsShort": "gr.",
+  "dragLeftSideRightToOpenMenu": "Drag left side right to open menu."
 }

@@ -10,39 +10,37 @@ import '../../navigation/app_router.dart';
 import '../../user/bloc/user_bloc.dart';
 
 class FitAppDrawer extends StatelessWidget {
+  /// Creates a [Drawer], designed for FitApp application.
   const FitAppDrawer({super.key});
 
-  List<DrawerNavigationItemInfo> _drawerNavigationItems(BuildContext context) {
-    final text = S.of(context);
-
-    return [
-      DrawerNavigationItemInfo(
-        itemName: text.home,
-        itemImage: const Icon(Icons.home),
-        itemRoute: const HomeRootRoute(),
-      ),
-      DrawerNavigationItemInfo(
-        itemName: text.trainings,
-        itemImage: const Icon(Icons.abc),
-        itemRoute: const TrainingRootRoute(),
-      ),
-      DrawerNavigationItemInfo(
-        itemName: text.meals,
-        itemImage: const Icon(Icons.abc),
-        itemRoute: const MealRootRoute(),
-      ),
-      DrawerNavigationItemInfo(
-        itemName: text.products,
-        itemImage: const Icon(Icons.fastfood_sharp),
-        itemRoute: const ProductRootRoute(),
-      ),
-      DrawerNavigationItemInfo(
-        itemName: text.settings,
-        itemImage: const Icon(Icons.settings),
-        itemRoute: const SettingsRootRoute(),
-      ),
-    ];
-  }
+  /// Items to be displayed in [Drawer]'s navigation list;
+  List<DrawerNavigationItemInfo> _drawerNavigationItems(S text) => [
+        DrawerNavigationItemInfo(
+          itemName: text.home,
+          itemImage: const Icon(Icons.home),
+          itemRoute: const HomeRootRoute(),
+        ),
+        DrawerNavigationItemInfo(
+          itemName: text.trainings,
+          itemImage: const Icon(Icons.abc),
+          itemRoute: const TrainingRootRoute(),
+        ),
+        DrawerNavigationItemInfo(
+          itemName: text.meals,
+          itemImage: const Icon(Icons.abc),
+          itemRoute: const MealRootRoute(),
+        ),
+        DrawerNavigationItemInfo(
+          itemName: text.products,
+          itemImage: const Icon(Icons.fastfood_sharp),
+          itemRoute: const ProductRootRoute(),
+        ),
+        DrawerNavigationItemInfo(
+          itemName: text.settings,
+          itemImage: const Icon(Icons.settings),
+          itemRoute: const SettingsRootRoute(),
+        ),
+      ];
 
   @override
   Widget build(BuildContext context) {
@@ -80,13 +78,11 @@ class FitAppDrawer extends StatelessWidget {
               Expanded(
                 child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
-                  itemCount: _drawerNavigationItems(context).length,
+                  itemCount: _drawerNavigationItems(text).length,
                   itemBuilder: (context, index) => DrawerNavigationItem(
-                    info: _drawerNavigationItems(context)[index],
+                    info: _drawerNavigationItems(text)[index],
                     isSelected: context.router.current.parent?.name ==
-                        _drawerNavigationItems(context)[index]
-                            .itemRoute
-                            .routeName,
+                        _drawerNavigationItems(text)[index].itemRoute.routeName,
                   ),
                 ),
               ),
@@ -105,36 +101,36 @@ class FitAppDrawer extends StatelessWidget {
 }
 
 class DrawerNavigationItemInfo {
+  /// Information of a [Drawer] navigation item.
+  ///
+  /// [itemName] is a text which will be displayed in drawer item.
+  /// [itemImage] is an image, which will be displayed in drawer item.
+  /// If [Null], default image will be applied.
+  /// [itemRoute] is a navigation route, which user will be directed to.
   const DrawerNavigationItemInfo({
     required this.itemName,
     required this.itemImage,
     required this.itemRoute,
   });
 
-  /// Text which will be displayed in drawer item.
   final String itemName;
-
-  /// Image which will be displayed in drawer item.
-  ///
-  /// If [Null], default image will be applied.
   final Widget? itemImage;
-
-  /// Navigation route, which user will be directed to, when this drawer image
-  /// selected.
   final PageRouteInfo itemRoute;
 }
 
 class DrawerNavigationItem extends StatelessWidget {
+  /// Creates an item to be displayed in [Drawer] navigation.
+  ///
+  /// [info] is a full information about current drawer item.
+  /// [isSelected] determines, if current drawer item is the selected one among
+  /// other items.
   const DrawerNavigationItem({
     required this.info,
     required this.isSelected,
     super.key,
   });
 
-  /// Full information about current drawer item.
   final DrawerNavigationItemInfo info;
-
-  /// Determines, if current drawer item is the selected one among other items.
   final bool isSelected;
 
   @override

@@ -1,6 +1,7 @@
 import '../feature/user/bloc/user_bloc.dart';
 import '../generated/l10n.dart';
 
+/// Turns [UserError], passed in [errorCase] into a localized [String].
 String userErrorToLocalizedText(S text, UserError errorCase) {
   switch (errorCase) {
     case UserError.cantInitUser:
@@ -44,6 +45,7 @@ String userErrorToLocalizedText(S text, UserError errorCase) {
   }
 }
 
+/// Turns [UserSuccess], passed in [successCase] into a localized [String].
 String userSuccessToLocalizedText(S text, UserSuccess successCase) {
   switch (successCase) {
     case UserSuccess.mealAdded:

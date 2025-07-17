@@ -1,6 +1,7 @@
 // ignore_for_file: do_not_use_environment
 import 'package:path_provider/path_provider.dart';
 
+/// Configuration for Hive.
 class HiveConfig {
   const HiveConfig._({
     required this.hiveStoragePath,
@@ -10,6 +11,7 @@ class HiveConfig {
     required this.settingsKeyName,
   });
 
+  /// Returns [HiveConfig] based on data from environment.
   static Future<HiveConfig> fromEnvironment() async {
     final storageDirectory = await getApplicationDocumentsDirectory();
 
@@ -28,11 +30,18 @@ class HiveConfig {
     );
   }
 
+  /// Path to Hive storage file.
   final String hiveStoragePath;
 
+  /// Name of Hive box, where user's data is stored.
   final String userBoxName;
+
+  /// Name of Hive box, where settings' data is stored.
   final String settingsBoxName;
 
+  /// Name of key, which is used to get access to user data.
   final String userKeyName;
+
+  /// Name of key, which is used to get access to settings data.
   final String settingsKeyName;
 }

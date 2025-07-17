@@ -5,6 +5,9 @@ import '../app/extension/duration_to_hhmmss_string.dart';
 import 'bloc/timer_bloc.dart';
 
 class CountdownTimer extends StatelessWidget {
+  /// Creates a widget, that represents countdown timer.
+  ///
+  /// [duration] is a time, which timer starts counting down from.
   CountdownTimer({
     required Duration duration,
     super.key,
@@ -33,7 +36,7 @@ class CountdownTimer extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              state.duration.toHHMMSS(),
+              state.duration.toHhMmSs(),
               style: Theme.of(context).textTheme.displaySmall,
             ),
             Row(

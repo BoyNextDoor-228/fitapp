@@ -8,6 +8,7 @@ import '../feature/settings/domain/settings/settings.dart';
 import '../tool/delete_hive_box_by_name.dart';
 
 class SettingsHiveStorageRepository implements IStorageRepository<Settings> {
+  /// Implements [Hive] Storage Repository for storing settings information.
   SettingsHiveStorageRepository({
     required this.settingsStorageBoxName,
     required this.settingsKey,
@@ -28,9 +29,13 @@ class SettingsHiveStorageRepository implements IStorageRepository<Settings> {
   Future<void> clearStorage() =>
       deleteHiveBox(boxName: settingsStorageBoxName, boxPath: storagePath);
 
+  /// Reads and returns [Settings] from a storage.
+  ///
+  /// Returns [Null], if no settings presented in storage.
   @override
   Future<Settings?> read() => _readSettingsFromHive();
 
+  /// Saves settings, passed in [loadToSave] parameter, in a storage.
   @override
   Future<void> save(Settings loadToSave) async =>
       _saveSettingsInHive(settings: loadToSave);

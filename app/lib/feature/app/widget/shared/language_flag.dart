@@ -4,6 +4,11 @@ import '../../../settings/domain/settings_values.dart';
 import 'flag_image.dart';
 
 class LanguageFlag extends StatelessWidget {
+  /// Creates a picture of a country flag and native caption below.
+  ///
+  /// [imagePath] is a path to country flag image asset.
+  /// [language] is a corresponding language of country flag.
+  /// [onSelected] is a callback, which will be called on widget tap.
   const LanguageFlag({
     required this.imagePath,
     required this.language,

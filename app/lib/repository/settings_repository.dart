@@ -4,8 +4,8 @@ import 'package:fitapp_domain/domain.dart';
 
 import '../feature/settings/domain/settings/settings.dart';
 
-/// Implements Settings Repository for managing actions on settings.
 class SettingsRepository implements ISettingsRepository {
+  /// Implements Settings Repository for managing actions on settings.
   SettingsRepository._({
     required IStorageRepository<Settings> storageRepository,
   }) : _storageRepository = storageRepository;

@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 
 class FlagImage extends StatelessWidget {
+  /// Creates a sized [Image].
+  ///
+  /// [imagePath] is a path to image asset.
+  /// [imageSize] is a desired image's size.
   const FlagImage({
     required this.imagePath,
     required this.imageSize,

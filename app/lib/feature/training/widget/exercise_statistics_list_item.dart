@@ -7,6 +7,7 @@ import '../../app/extension/date_to_ddmmyy_hhmm_string.dart';
 import 'plane_graph/plane_graph.dart';
 
 class ExerciseStatisticsListItem extends StatelessWidget {
+  /// Creates a visual view of [ExerciseStatistic] of [exercise].
   ExerciseStatisticsListItem({
     required this.exercise,
     super.key,
@@ -33,7 +34,10 @@ class ExerciseStatisticsListItem extends StatelessWidget {
 
   final Exercise exercise;
 
+  /// Dates, when exercises were done.
   late final List<String> _dates;
+
+  /// Loads of exercises.
   late final List<int> _load;
 
   @override
@@ -46,6 +50,7 @@ class ExerciseStatisticsListItem extends StatelessWidget {
 
     const textPadding = 10.0;
 
+    /// Label, describing Y-axis scale.
     final yScaleText =
         exercise.load.type == ExerciseLoadType.timer ? text.timer : text.reps;
 

@@ -9,6 +9,16 @@ import '../../../user/bloc/user_bloc.dart';
 import 'exercise_progress_list_item.dart';
 
 class TrainingProcessInProgressWidget extends StatefulWidget {
+  /// Creates a widget, which is shown on training process gets updated
+  /// (training exercise becomes completed/uncompleted).
+  ///
+  /// [exercisesProcess] is current training process progression.
+  /// [canFinishTraining] is a flag, which determines if this training can be
+  /// completed.
+  /// [updateTrainingProgression] is a callback, which is called, when training
+  /// exercise becomes completed/uncompleted.
+  /// [finishTraining] is a callback, which gets called, when user taps
+  /// 'finish training' button.
   const TrainingProcessInProgressWidget({
     required this.exercisesProcess,
     required this.canFinishTraining,
@@ -89,8 +99,7 @@ class TrainingProcessInProgressWidgetState
             children: [
               PageViewControlButton(
                 icon: const Icon(Icons.chevron_left),
-                onTap: _goToPreviousPage,
-                isActive: _currentPageIndex != 0,
+                onTap: _currentPageIndex != 0 ? _goToPreviousPage : null,
               ),
               Expanded(
                 child: TextButton(
@@ -101,9 +110,9 @@ class TrainingProcessInProgressWidgetState
               ),
               PageViewControlButton(
                 icon: const Icon(Icons.chevron_right),
-                onTap: _goToNextPage,
-                isActive:
-                    _currentPageIndex != widget.exercisesProcess.length - 1,
+                onTap: _currentPageIndex != widget.exercisesProcess.length - 1
+                    ? _goToNextPage
+                    : null,
               ),
             ],
           ),
