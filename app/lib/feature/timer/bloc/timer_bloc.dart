@@ -31,8 +31,8 @@ class TimerBloc extends Bloc<TimerEvent, TimerState> {
   StreamSubscription<Duration>? _tickerSubscription;
 
   @override
-  Future<void> close() {
-    _tickerSubscription?.cancel();
+  Future<void> close() async {
+    await _tickerSubscription?.cancel();
     return super.close();
   }
 

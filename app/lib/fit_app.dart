@@ -39,10 +39,16 @@ class _FitAppState extends State<FitApp> {
   @override
   Widget build(BuildContext context) => FutureBuilder(
         future: _appScopeInitialization,
-        builder: (_, snapshot) {
+        builder: (context, snapshot) {
           if (snapshot.connectionState != ConnectionState.done) {
             return const SafeArea(
-              child: FallbackApp(child: CircularProgressIndicator()),
+              child: FallbackApp(
+                child: Center(
+                  child: CircularProgressIndicator(
+                    strokeWidth: 5,
+                  ),
+                ),
+              ),
             );
           }
 

@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../generated/l10n.dart';
@@ -22,17 +23,17 @@ class FitAppDrawer extends StatelessWidget {
         ),
         DrawerNavigationItemInfo(
           itemName: text.trainings,
-          itemImage: const Icon(Icons.abc),
+          itemImage: const Icon(Icons.sports),
           itemRoute: const TrainingRootRoute(),
         ),
         DrawerNavigationItemInfo(
           itemName: text.meals,
-          itemImage: const Icon(Icons.abc),
+          itemImage: const Icon(Icons.fastfood),
           itemRoute: const MealRootRoute(),
         ),
         DrawerNavigationItemInfo(
           itemName: text.products,
-          itemImage: const Icon(Icons.fastfood_sharp),
+          itemImage: const Icon(Icons.cookie),
           itemRoute: const ProductRootRoute(),
         ),
         DrawerNavigationItemInfo(
@@ -59,21 +60,7 @@ class FitAppDrawer extends StatelessWidget {
               DrawerHeader(
                 margin: EdgeInsets.zero,
                 padding: EdgeInsets.zero,
-                child: Stack(
-                  children: [
-                    const Positioned(
-                      left: 25,
-                      top: 25,
-                      child: Icon(Icons.ac_unit_sharp),
-                    ),
-                    Positioned.directional(
-                      bottom: 25,
-                      end: 25,
-                      textDirection: TextDirection.ltr,
-                      child: Text(text.yourCurrentWeightN(userWeight)),
-                    ),
-                  ],
-                ),
+                child: Center(child: Text(text.yourCurrentWeightN(userWeight))),
               ),
               Expanded(
                 child: ListView.builder(
@@ -90,7 +77,7 @@ class FitAppDrawer extends StatelessWidget {
               ListTile(
                 title: Text(text.exit),
                 leading: const Icon(Icons.close),
-                onTap: () {},
+                onTap: _closeApplication,
               ),
             ],
           ),
@@ -98,6 +85,9 @@ class FitAppDrawer extends StatelessWidget {
       ),
     );
   }
+
+  Future<void> _closeApplication() async =>
+      SystemChannels.platform.invokeMethod('SystemNavigator.pop');
 }
 
 class DrawerNavigationItemInfo {

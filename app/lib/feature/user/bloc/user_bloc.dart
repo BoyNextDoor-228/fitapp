@@ -52,7 +52,10 @@ class UserBloc extends Bloc<UserEvent, UserState> {
 
   final UserService _userService;
 
-  void _onUserInitializationRequested(_, Emitter<UserState> emit) {
+  void _onUserInitializationRequested(
+    UserInitializationRequested _,
+    Emitter<UserState> emit,
+  ) {
     try {
       emit(UserState.loading(user: null));
       final user = _userService.user;

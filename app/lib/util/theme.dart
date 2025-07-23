@@ -25,7 +25,7 @@ class FitAppTheme {
       borderRadius: BorderRadius.circular(10),
     );
 
-    final cardTheme = CardTheme(
+    final cardTheme = CardThemeData(
       margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
       color: _colorScheme.onPrimaryContainer.withValues(alpha: 0.5),
       elevation: 1,

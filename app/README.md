@@ -1,16 +1,30 @@
-# app
+# App
 
-Fitapp mobile application
+FitApp is a mobile application, which helps user to organize training process and nutrition.
+
+## Features
+
+With FitApp user can
+- Create a training, which may include exercises, such as repetitions exercise, or exercise with timer,
+- Complete a creating training exercise by exercise,
+- Watch training progression with exercise statistics chart,
+- Create a meals with different products and watch it's nutrition facts.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+Before you start this application, make sure you have a JSON configuration file in app level path.
+It's structure is presented below:
+```json
+{
+  "fitapp_environmentName": "dev",
+  "fitapp_applicationName": "FitApp",
 
-A few resources to get you started if this is your first Flutter project:
+  "fitapp_user_box_name": "dev_user_box",
+  "fitapp_user_key_name": "dev_user_key",
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+  "fitapp_settings_box_name": "dev_settings_box",
+  "fitapp_settings_key_name": "dev_settings_key"
+}
+```
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Also don't forget to mention this file in run script with flag `--dart-define-from-file=fitapp_dev.env.json`

@@ -37,7 +37,6 @@ class _MeasurementUnitSelectorState extends State<MeasurementUnitSelector> {
   @override
   Widget build(BuildContext context) => Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        spacing: 10,
         children: [
           Expanded(
             child: Text(
