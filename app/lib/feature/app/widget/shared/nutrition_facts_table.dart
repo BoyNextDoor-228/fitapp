@@ -46,32 +46,30 @@ class NutritionFactsTable extends StatelessWidget {
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
-        Expanded(
-          child: Table(
-            children: [
-              TableRow(
-                children: [
-                  _TableCell(
-                    title: text.proteins,
-                    value: proteins.toStringAsFixed(2),
-                  ),
-                  _TableCell(title: text.fats, value: fats.toStringAsFixed(2)),
-                ],
-              ),
-              TableRow(
-                children: [
-                  _TableCell(
-                    title: text.carbohydrates,
-                    value: carbohydrates.toStringAsFixed(2),
-                  ),
-                  _TableCell(
-                    title: text.kilocalories,
-                    value: kilocalories.toStringAsFixed(2),
-                  ),
-                ],
-              ),
-            ],
-          ),
+        Table(
+          children: [
+            TableRow(
+              children: [
+                _TableCell(
+                  title: text.proteins,
+                  value: proteins.toStringAsFixed(2),
+                ),
+                _TableCell(title: text.fats, value: fats.toStringAsFixed(2)),
+              ],
+            ),
+            TableRow(
+              children: [
+                _TableCell(
+                  title: text.carbohydrates,
+                  value: carbohydrates.toStringAsFixed(2),
+                ),
+                _TableCell(
+                  title: text.kilocalories,
+                  value: kilocalories.toStringAsFixed(2),
+                ),
+              ],
+            ),
+          ],
         ),
       ],
     );

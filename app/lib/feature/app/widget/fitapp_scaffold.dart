@@ -102,7 +102,10 @@ class FitAppScaffold extends StatelessWidget {
       bottomNavigationBar: bottomNavigationBar,
       bottomSheet: bottomSheet,
       backgroundColor: backgroundColor,
-      resizeToAvoidBottomInset: resizeToAvoidBottomInset,
+      // False set as default to prevent a keyboard 'lift' [BackdropFilter] with
+      // itself. Overwise keyboard removes [BackdropFilter] under itself and
+      // makes FitAppScaffold look obviously ugly.
+      resizeToAvoidBottomInset: resizeToAvoidBottomInset ?? false,
       primary: primary,
       drawerDragStartBehavior: drawerDragStartBehavior,
       extendBody: extendBody,

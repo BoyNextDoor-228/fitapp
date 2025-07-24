@@ -195,8 +195,10 @@ class _CardMenuButtons extends StatelessWidget {
 
   Future<void> _openExerciseEditingModal(BuildContext context) async {
     final text = S.of(context);
+    final modalHeight = MediaQuery.sizeOf(context).height * 0.9;
 
     await showVoidModalBottomSheet(
+      height: modalHeight,
       context: context,
       headerText: text.exerciseEditing,
       content: ExerciseForm(

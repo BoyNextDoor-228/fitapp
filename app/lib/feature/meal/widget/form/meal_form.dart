@@ -166,7 +166,7 @@ class _MealFormState extends State<MealForm> {
     BuildContext modalContext,
   ) async {
     final text = S.of(context);
-    final height = MediaQuery.sizeOf(context).height * 0.6;
+    final height = MediaQuery.sizeOf(context).height * 0.9;
 
     return showBottomSheetWithResultOf<Ingredient>(
       context: modalContext,

@@ -160,8 +160,10 @@ class _TrainingFormState extends State<TrainingForm> {
 
   Future<void> _openExerciseCreationModal() async {
     final text = S.of(context);
+    final modalHeight = MediaQuery.sizeOf(context).height * 0.9;
 
     await showVoidModalBottomSheet(
+      height: modalHeight,
       context: context,
       headerText: text.createANewExercise,
       content: ExerciseForm(

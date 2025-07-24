@@ -94,11 +94,13 @@ class ExercisesProgressListItem extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Icon(Icons.timer),
-          Text(
-            text.tapToOpenTimer,
-            maxLines: 1,
-            overflow: TextOverflow.ellipsis,
-            style: textTheme,
+          Expanded(
+            child: Text(
+              text.tapToOpenTimer,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: textTheme,
+            ),
           ),
         ],
       ),
@@ -116,12 +118,14 @@ class ExercisesProgressListItem extends StatelessWidget {
             );
           },
         ),
-        Text(
-          textAlign: TextAlign.center,
-          text.markAsCompleted,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: textTheme,
+        Expanded(
+          child: Text(
+            textAlign: TextAlign.center,
+            text.markAsCompleted,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: textTheme,
+          ),
         ),
       ],
     );

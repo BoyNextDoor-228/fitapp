@@ -23,7 +23,7 @@ class FitAppBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final defaultHeight = MediaQuery.sizeOf(context).height * 0.75;
+    final defaultHeight = MediaQuery.sizeOf(context).height * 0.9;
 
     return SizedBox(
       width: double.infinity,

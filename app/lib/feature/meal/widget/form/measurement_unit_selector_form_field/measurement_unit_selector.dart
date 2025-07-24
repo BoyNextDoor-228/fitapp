@@ -47,7 +47,7 @@ class _MeasurementUnitSelectorState extends State<MeasurementUnitSelector> {
             ),
           ),
           Expanded(
-            flex: 2,
+            flex: 3,
             child: SegmentedButton<MeasurementUnit>(
               selected: {_selectedMeasurementUnit},
               onSelectionChanged: _changeSelection,
