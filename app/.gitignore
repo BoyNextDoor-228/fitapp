@@ -12,7 +12,7 @@
 .swiftpm/
 migrate_working_dir/
 *.hive
-fitapp_dev.env.json
+*.env.json
 
 # IntelliJ related
 *.iml
@@ -34,6 +34,7 @@ fitapp_dev.env.json
 .pub-cache/
 .pub/
 /build/
+**/failures/*.png
 
 # Symbolication related
 app.*.symbols

@@ -8,11 +8,11 @@ With FitApp user can
 - Create a training, which may include exercises, such as repetitions exercise, or exercise with timer,
 - Complete a creating training exercise by exercise,
 - Watch training progression with exercise statistics chart,
-- Create a meals with different products and watch it's nutrition facts.
+- Create meals with different products and watch it's nutrition facts.
 
 ## Getting Started
 
-Before you start this application, make sure you have a JSON configuration file in app level path.
+Before you start this application, make sure you have a JSON configuration file in root.
 It's structure is presented below:
 ```json
 {
