@@ -4,8 +4,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 
 import '../../generated/l10n.dart';
 import '../../repository/settings_hive_storage_repository.dart';
+import '../../repository/settings_mock_storage_repository.dart';
 import '../../repository/settings_repository.dart';
 import '../../repository/user_hive_storage_repository.dart';
+import '../../repository/user_mock_storage_repository.dart';
 import '../../repository/user_repository.dart';
 import '../../service/settings_service.dart';
 import '../../service/user_service.dart';
@@ -73,29 +75,43 @@ class AppScope implements IAppScope {
     _userService = UserService(userRepository: userRepository);
   }
 
-  IStorageRepository<User> _createUserStorageRepository() =>
+  IStorageRepository<User> _createHiveUserStorageRepository() =>
       UserHiveStorageRepository(
-        userStorageBoxName: _appConfig.hiveConfig.userBoxName,
-        userKey: _appConfig.hiveConfig.userKeyName,
-        storagePath: _appConfig.hiveConfig.hiveStoragePath,
+        userStorageBoxName: _appConfig.hiveConfig!.userBoxName,
+        userKey: _appConfig.hiveConfig!.userKeyName,
+        storagePath: _appConfig.hiveConfig!.hiveStoragePath,
       );
 
   IStorageRepository<Settings> _createSettingsStorageRepository() =>
       SettingsHiveStorageRepository(
-        settingsStorageBoxName: _appConfig.hiveConfig.settingsBoxName,
-        settingsKey: _appConfig.hiveConfig.settingsKeyName,
-        storagePath: _appConfig.hiveConfig.hiveStoragePath,
+        settingsStorageBoxName: _appConfig.hiveConfig!.settingsBoxName,
+        settingsKey: _appConfig.hiveConfig!.settingsKeyName,
+        storagePath: _appConfig.hiveConfig!.hiveStoragePath,
       );
 
-  Future<IUserRepository> _createUserRepository() async =>
-      UserRepository.instance(
-        storageRepository: _createUserStorageRepository(),
+  Future<IUserRepository> _createUserRepository() async {
+    if (_appConfig.hiveConfig == null) {
+      return UserRepository.instance(
+        storageRepository: UserMockStorageRepository(),
       );
+    }
 
-  Future<ISettingsRepository> _createSettingsRepository() async =>
-      SettingsRepository.instance(
-        storageRepository: _createSettingsStorageRepository(),
+    return UserRepository.instance(
+      storageRepository: _createHiveUserStorageRepository(),
+    );
+  }
+
+  Future<ISettingsRepository> _createSettingsRepository() async {
+    if (_appConfig.hiveConfig == null) {
+      return SettingsRepository.instance(
+        storageRepository: SettingsMockStorageRepository(),
       );
+    }
+
+    return SettingsRepository.instance(
+      storageRepository: _createSettingsStorageRepository(),
+    );
+  }
 }
 
 /// Describes, what dependencies are needed for FitApp application.

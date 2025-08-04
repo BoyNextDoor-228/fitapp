@@ -10,6 +10,6 @@ class AppConfig {
     required this.appName,
   });
 
-  final HiveConfig hiveConfig;
+  final HiveConfig? hiveConfig;
   final String appName;
 }
