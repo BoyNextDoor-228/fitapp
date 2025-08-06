@@ -20,7 +20,8 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en';
 
-  static String m0(object) => "Are you sure you want to delete this ${object}?";
+  static String m0(thisObject) =>
+      "Are you sure you want to delete ${thisObject}?";
 
   static String m1(measurement) => "100 ${measurement} contain:";
 
@@ -50,7 +51,7 @@ class MessageLookup extends MessageLookupByLibrary {
           "An error occurred",
         ),
         "apply": MessageLookupByLibrary.simpleMessage("Apply"),
-        "areYouSureYouWantToDeleteThisObject": m0,
+        "areYouSureYouWantToDelete": m0,
         "carbohydrates": MessageLookupByLibrary.simpleMessage("Carbohydrates"),
         "carbohydratesAmount": MessageLookupByLibrary.simpleMessage(
           "Carbohydrates amount",
@@ -335,6 +336,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "statisticsOfExercisetitle": m6,
         "tapToOpenTimer":
             MessageLookupByLibrary.simpleMessage("Tap to open timer"),
+        "thisExercise": MessageLookupByLibrary.simpleMessage("this exercise"),
+        "thisIngredient":
+            MessageLookupByLibrary.simpleMessage("this ingredient"),
+        "thisMeal": MessageLookupByLibrary.simpleMessage("this meal"),
+        "thisProduct": MessageLookupByLibrary.simpleMessage("this product"),
+        "thisTraining": MessageLookupByLibrary.simpleMessage("this training"),
         "timer": MessageLookupByLibrary.simpleMessage("Timer"),
         "totalIngredientsN": m7,
         "training": MessageLookupByLibrary.simpleMessage("Training"),

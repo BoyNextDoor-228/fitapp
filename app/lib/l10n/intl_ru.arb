@@ -44,7 +44,7 @@
   "enterTitle": "Введите название",
   "ingredientamountMl": "{ingredientAmount} мл.",
   "ingredientamountGr": "{ingredientAmount} гр.",
-  "areYouSureYouWantToDeleteThisObject": "Вы уверены, что хотите удалить {object}?",
+  "areYouSureYouWantToDeletet": "Вы уверены, что хотите удалить {thisObject}?",
   "ingredientEditing": "Изменение ингредиента",
   "noRecipe": "Рецепт отсутствует",
   "totalIngredientsN": "Всего ингредиентов: {N}",
@@ -159,5 +159,10 @@
   "hundredMeasurementContain": "100 {measurement} содержат:",
   "millilitersShort": "мл.",
   "gramsShort": "гр.",
-  "dragLeftSideRightToOpenMenu": "Потяните левую часть направо, чтобы отрыть меню."
+  "dragLeftSideRightToOpenMenu": "Потяните левую часть направо, чтобы отрыть меню.",
+  "thisTraining": "эту тренировку",
+  "thisMeal": "это блюдо",
+  "thisIngredient": "этот ингредиент",
+  "thisExercise": "это упражнение",
+  "thisProduct": "этот продукт"
 }

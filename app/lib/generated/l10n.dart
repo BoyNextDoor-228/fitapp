@@ -379,13 +379,13 @@ class S {
     );
   }
 
-  /// `Are you sure you want to delete this {object}?`
-  String areYouSureYouWantToDeleteThisObject(Object object) {
+  /// `Are you sure you want to delete {thisObject}?`
+  String areYouSureYouWantToDelete(Object thisObject) {
     return Intl.message(
-      'Are you sure you want to delete this $object?',
-      name: 'areYouSureYouWantToDeleteThisObject',
+      'Are you sure you want to delete $thisObject?',
+      name: 'areYouSureYouWantToDelete',
       desc: '',
-      args: [object],
+      args: [thisObject],
     );
   }
 
@@ -1434,6 +1434,51 @@ class S {
     return Intl.message(
       'Drag left side right to open menu.',
       name: 'dragLeftSideRightToOpenMenu',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `this training`
+  String get thisTraining {
+    return Intl.message(
+      'this training',
+      name: 'thisTraining',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `this meal`
+  String get thisMeal {
+    return Intl.message('this meal', name: 'thisMeal', desc: '', args: []);
+  }
+
+  /// `this ingredient`
+  String get thisIngredient {
+    return Intl.message(
+      'this ingredient',
+      name: 'thisIngredient',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `this exercise`
+  String get thisExercise {
+    return Intl.message(
+      'this exercise',
+      name: 'thisExercise',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `this product`
+  String get thisProduct {
+    return Intl.message(
+      'this product',
+      name: 'thisProduct',
       desc: '',
       args: [],
     );

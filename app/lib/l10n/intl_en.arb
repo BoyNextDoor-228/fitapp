@@ -44,7 +44,7 @@
   "enterTitle": "Enter title",
   "ingredientamountMl": "{ingredientAmount} ml.",
   "ingredientamountGr": "{ingredientAmount} gr.",
-  "areYouSureYouWantToDeleteThisObject": "Are you sure you want to delete this {object}?",
+  "areYouSureYouWantToDelete": "Are you sure you want to delete {thisObject}?",
   "ingredientEditing": "Ingredient editing",
   "noRecipe": "No recipe",
   "totalIngredientsN": "Total ingredients: {N}",
@@ -159,5 +159,10 @@
   "hundredMeasurementContain": "100 {measurement} contain:",
   "millilitersShort": "ml.",
   "gramsShort": "gr.",
-  "dragLeftSideRightToOpenMenu": "Drag left side right to open menu."
+  "dragLeftSideRightToOpenMenu": "Drag left side right to open menu.",
+  "thisTraining": "this training",
+  "thisMeal": "this meal",
+  "thisIngredient": "this ingredient",
+  "thisExercise": "this exercise",
+  "thisProduct": "this product"
 }
