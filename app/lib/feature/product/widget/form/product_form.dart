@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../tool/input_validator.dart';
+import '../../../../tool/measurement_unit_to_text.dart';
 import '../../../meal/widget/form/measurement_unit_selector_form_field/measurement_unit_selector_form_field.dart';
 import '../../../user/bloc/user_bloc.dart';
 
@@ -45,6 +46,8 @@ class _ProductFormState extends State<ProductForm> {
   Widget build(BuildContext context) {
     final text = S.of(context);
 
+    final textStyle = Theme.of(context).textTheme;
+
     final validator = InputValidator(s: text);
     final titleValidator = validator.titleValidator;
     final fractionalNumberValidator = validator.fractionalNumberValidator;
@@ -56,6 +59,14 @@ class _ProductFormState extends State<ProductForm> {
         child: Column(
           spacing: 10,
           children: [
+            MeasurementUnitSelectorFormField(
+              initialMeasurementUnit: _newProduct.measurementUnit,
+              onChanged: (unit) {
+                setState(() {
+                  _newProduct = _newProduct.copyWith(measurementUnit: unit);
+                });
+              },
+            ),
             TextFormField(
               initialValue: _newProduct.name,
               onSaved: _saveTitleField,
@@ -63,6 +74,15 @@ class _ProductFormState extends State<ProductForm> {
               decoration: InputDecoration(
                 labelText: text.newProductName,
               ),
+            ),
+            Text(
+              text.hundredMeasurementContain(
+                measurementUnitToText(
+                  _newProduct.measurementUnit,
+                  text,
+                ),
+              ),
+              style: textStyle.headlineSmall,
             ),
             TextFormField(
               initialValue: _newProduct.nutritionFacts.proteins.toString(),
@@ -99,14 +119,6 @@ class _ProductFormState extends State<ProductForm> {
               decoration: InputDecoration(
                 labelText: text.kilocaloriesAmount,
               ),
-            ),
-            MeasurementUnitSelectorFormField(
-              initialMeasurementUnit: _newProduct.measurementUnit,
-              onChanged: (unit) {
-                setState(() {
-                  _newProduct = _newProduct.copyWith(measurementUnit: unit);
-                });
-              },
             ),
             BlocBuilder<UserBloc, UserState>(
               builder: _applyButtonBuilder,

@@ -186,7 +186,7 @@ class _CardMenuButtons extends StatelessWidget {
           onTap: () async => showDeletionDialog(
             context: context,
             onConfirmed: onDeletePressed,
-            deleteWhat: S.of(context).exercise,
+            deleteWhat: text.thisExercise,
           ),
         ),
       ],

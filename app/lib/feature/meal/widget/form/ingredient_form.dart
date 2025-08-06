@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../generated/l10n.dart';
 import '../../../../tool/input_validator.dart';
+import '../../../../tool/measurement_unit_to_text.dart';
 import '../../../../tool/route_provider.dart';
 import '../../../app/widget/shared/empty_list_label.dart';
 import '../../../app/widget/shared/nutrition_facts_table.dart';
@@ -71,7 +72,7 @@ class _IngredientFormState extends State<IngredientForm> {
 
     final dropdownMenuHeight = isLandscape ? height * 0.6 : height / 3;
 
-    final textTheme = Theme.of(context).textTheme;
+    final textStyle = Theme.of(context).textTheme;
 
     Future<void> redirectToProductCreatingForm() async => goToRoute(
           router: router,
@@ -118,7 +119,7 @@ class _IngredientFormState extends State<IngredientForm> {
             else // else EDITING an ingredient.
               Text(
                 widget.initialIngredient!.product.name,
-                style: textTheme.headlineMedium,
+                style: textStyle.headlineMedium,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
               ),
@@ -128,13 +129,26 @@ class _IngredientFormState extends State<IngredientForm> {
             if (_newIngredient == null)
               const NutritionFactsTable.empty()
             else // else display ingredient product's info.
-              NutritionFactsTable(
-                proteins: _newIngredient!.product.nutritionFacts.proteins,
-                fats: _newIngredient!.product.nutritionFacts.fats,
-                carbohydrates:
-                    _newIngredient!.product.nutritionFacts.carbohydrates,
-                kilocalories:
-                    _newIngredient!.product.nutritionFacts.kilocalories,
+              Column(
+                children: [
+                  Text(
+                    text.hundredMeasurementContain(
+                      measurementUnitToText(
+                        _newIngredient!.product.measurementUnit,
+                        text,
+                      ),
+                    ),
+                    style: textStyle.headlineSmall,
+                  ),
+                  NutritionFactsTable(
+                    proteins: _newIngredient!.product.nutritionFacts.proteins,
+                    fats: _newIngredient!.product.nutritionFacts.fats,
+                    carbohydrates:
+                        _newIngredient!.product.nutritionFacts.carbohydrates,
+                    kilocalories:
+                        _newIngredient!.product.nutritionFacts.kilocalories,
+                  ),
+                ],
               ),
 
             TextFormField(

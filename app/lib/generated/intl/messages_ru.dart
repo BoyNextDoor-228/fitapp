@@ -20,8 +20,6 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'ru';
 
-  static String m0(object) => "Вы уверены, что хотите удалить ${object}?";
-
   static String m1(measurement) => "100 ${measurement} содержат:";
 
   static String m2(ingredientAmount) => "${ingredientAmount} гр.";
@@ -52,7 +50,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "anErrorOccurred":
             MessageLookupByLibrary.simpleMessage("Произошла ошибка"),
         "apply": MessageLookupByLibrary.simpleMessage("Подтвердить"),
-        "areYouSureYouWantToDeleteThisObject": m0,
         "carbohydrates": MessageLookupByLibrary.simpleMessage("Углеводы"),
         "carbohydratesAmount": MessageLookupByLibrary.simpleMessage(
           "Количество углеводов",
@@ -359,6 +356,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "tapToOpenTimer": MessageLookupByLibrary.simpleMessage(
           "Нажмите, чтобы открыть таймер",
         ),
+        "thisExercise": MessageLookupByLibrary.simpleMessage("это упражнение"),
+        "thisIngredient":
+            MessageLookupByLibrary.simpleMessage("этот ингредиент"),
+        "thisMeal": MessageLookupByLibrary.simpleMessage("это блюдо"),
+        "thisProduct": MessageLookupByLibrary.simpleMessage("этот продукт"),
+        "thisTraining": MessageLookupByLibrary.simpleMessage("эту тренировку"),
         "timer": MessageLookupByLibrary.simpleMessage("Таймер"),
         "totalIngredientsN": m7,
         "training": MessageLookupByLibrary.simpleMessage("Тренировка"),

@@ -18,7 +18,7 @@ Future<void> showDeletionDialog({
     context: context,
     builder: (BuildContext context) => AlertDialog(
       title: Text(text.deletion),
-      content: Text(text.areYouSureYouWantToDeleteThisObject(deleteWhat)),
+      content: Text(text.areYouSureYouWantToDelete(deleteWhat)),
       actions: [
         TextButton(
           onPressed: () {

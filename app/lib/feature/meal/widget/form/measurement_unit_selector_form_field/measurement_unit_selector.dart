@@ -35,24 +35,19 @@ class _MeasurementUnitSelectorState extends State<MeasurementUnitSelector> {
   }
 
   @override
-  Widget build(BuildContext context) => Row(
+  Widget build(BuildContext context) => Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Expanded(
-            child: Text(
-              S.of(context).measurementUnit,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.center,
-            ),
+          Text(
+            S.of(context).measurementUnit,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
           ),
-          Expanded(
-            flex: 3,
-            child: SegmentedButton<MeasurementUnit>(
-              selected: {_selectedMeasurementUnit},
-              onSelectionChanged: _changeSelection,
-              segments: _buttonSegments(context),
-            ),
+          SegmentedButton<MeasurementUnit>(
+            selected: {_selectedMeasurementUnit},
+            onSelectionChanged: _changeSelection,
+            segments: _buttonSegments(context),
           ),
         ],
       );
