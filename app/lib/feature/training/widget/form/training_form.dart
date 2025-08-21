@@ -57,34 +57,40 @@ class _TrainingFormState extends State<TrainingForm> {
     return Form(
       key: _formKey,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Column(
-              children: [
-                TextFormField(
-                  initialValue: _newTraining.title,
-                  onSaved: _saveTitleField,
-                  validator: InputValidator(s: text).titleValidator,
-                  decoration: InputDecoration(
-                    labelText: text.newTrainingTitle,
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                children: [
+                  Flexible(
+                    child: TextFormField(
+                      initialValue: _newTraining.title,
+                      onSaved: _saveTitleField,
+                      validator: InputValidator(s: text).titleValidator,
+                      decoration: InputDecoration(
+                        labelText: text.newTrainingTitle,
+                      ),
+                    ),
                   ),
-                ),
-                TextFormField(
-                  keyboardType: TextInputType.multiline,
-                  maxLines: 2,
-                  initialValue: _newTraining.description,
-                  onSaved: _saveDescriptionField,
-                  decoration: InputDecoration(
-                    labelText: text.newTrainingDescriptionOptional,
-                    floatingLabelBehavior: FloatingLabelBehavior.auto,
+                  Flexible(
+                    child: TextFormField(
+                      keyboardType: TextInputType.multiline,
+                      maxLines: 2,
+                      initialValue: _newTraining.description,
+                      onSaved: _saveDescriptionField,
+                      decoration: InputDecoration(
+                        labelText: text.newTrainingDescriptionOptional,
+                        floatingLabelBehavior: FloatingLabelBehavior.auto,
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Expanded(
+            flex: 3,
             child: Container(
               margin: const EdgeInsets.symmetric(vertical: 10),
               width: double.infinity,
@@ -99,44 +105,46 @@ class _TrainingFormState extends State<TrainingForm> {
               ),
             ),
           ),
-          BlocBuilder<UserBloc, UserState>(
-            builder: (_, state) {
-              if (state.status == UserStatus.loading) {
-                return const CircularProgressIndicator();
-              }
+          Flexible(
+            child: BlocBuilder<UserBloc, UserState>(
+              builder: (_, state) {
+                if (state.status == UserStatus.loading) {
+                  return const CircularProgressIndicator();
+                }
 
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: buttonsPadding,
-                      child: OutlinedButton(
-                        onPressed: () async => _openExerciseCreationModal(),
-                        child: Text(
-                          text.addExercise,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Flexible(
+                      child: Padding(
+                        padding: buttonsPadding,
+                        child: OutlinedButton(
+                          onPressed: () async => _openExerciseCreationModal(),
+                          child: Text(
+                            text.addExercise,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: buttonsPadding,
-                      child: OutlinedButton(
-                        onPressed: _applyChanges,
-                        child: Text(
-                          widget.actionButtonText,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
+                    Flexible(
+                      child: Padding(
+                        padding: buttonsPadding,
+                        child: OutlinedButton(
+                          onPressed: _applyChanges,
+                          child: Text(
+                            widget.actionButtonText,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              );
-            },
+                  ],
+                );
+              },
+            ),
           ),
         ],
       ),
