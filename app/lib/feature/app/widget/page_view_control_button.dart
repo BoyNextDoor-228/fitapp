@@ -10,15 +10,38 @@ class PageViewControlButton extends StatelessWidget {
   const PageViewControlButton({
     required this.icon,
     required this.onTap,
+    this.caption,
     super.key,
   });
 
+  final String? caption;
   final Icon icon;
-  final Future<void> Function()? onTap;
+  final VoidCallback? onTap;
 
   @override
-  Widget build(BuildContext context) => IconButton(
-        icon: icon,
-        onPressed: onTap,
-      );
+  Widget build(BuildContext context) {
+    // onTap == null means button is disabled, so it's text color must match
+    // disabled button color.
+    final textStyle = onTap == null
+        ? TextStyle(color: Theme.of(context).disabledColor)
+        : null;
+
+    return Column(
+      children: [
+        Flexible(
+          child: IconButton(
+            icon: icon,
+            onPressed: onTap,
+          ),
+        ),
+        if (caption != null)
+          Flexible(
+            child: Text(
+              caption!,
+              style: textStyle,
+            ),
+          ),
+      ],
+    );
+  }
 }

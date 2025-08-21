@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "anErrorOccurred":
             MessageLookupByLibrary.simpleMessage("Произошла ошибка"),
         "apply": MessageLookupByLibrary.simpleMessage("Подтвердить"),
+        "back": MessageLookupByLibrary.simpleMessage("назад"),
         "carbohydrates": MessageLookupByLibrary.simpleMessage("Углеводы"),
         "carbohydratesAmount": MessageLookupByLibrary.simpleMessage(
           "Количество углеводов",
@@ -287,6 +288,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "newTrainingTitle": MessageLookupByLibrary.simpleMessage(
           "Название новой тренировки",
         ),
+        "next": MessageLookupByLibrary.simpleMessage("далее"),
         "no": MessageLookupByLibrary.simpleMessage("Нет"),
         "noDescription": MessageLookupByLibrary.simpleMessage(
           "Описание отсутствует",

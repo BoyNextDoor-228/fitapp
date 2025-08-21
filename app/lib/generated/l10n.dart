@@ -1483,6 +1483,16 @@ class S {
       args: [],
     );
   }
+
+  /// `back`
+  String get back {
+    return Intl.message('back', name: 'back', desc: '', args: []);
+  }
+
+  /// `next`
+  String get next {
+    return Intl.message('next', name: 'next', desc: '', args: []);
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -164,5 +164,7 @@
   "thisMeal": "это блюдо",
   "thisIngredient": "этот ингредиент",
   "thisExercise": "это упражнение",
-  "thisProduct": "этот продукт"
+  "thisProduct": "этот продукт",
+  "back": "назад",
+  "next": "далее"
 }

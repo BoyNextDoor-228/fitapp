@@ -164,5 +164,7 @@
   "thisMeal": "this meal",
   "thisIngredient": "this ingredient",
   "thisExercise": "this exercise",
-  "thisProduct": "this product"
+  "thisProduct": "this product",
+  "back": "back",
+  "next": "next"
 }

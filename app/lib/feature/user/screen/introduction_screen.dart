@@ -32,6 +32,7 @@ class IntroductionScreen extends StatefulWidget {
 
 class _IntroductionScreenState extends State<IntroductionScreen> {
   late final SettingsCubit _settingsCubit;
+  late final List<Widget> _subpages;
 
   final _pageViewController = PageController();
 
@@ -63,18 +64,18 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
   void initState() {
     super.initState();
     _settingsCubit = context.read<SettingsCubit>();
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    final text = S.of(context);
-
-    final subpages = [
+    _subpages = [
       LanguageSelectionSubpage(
         onLanguageSelected: _onLanguageSelected,
       ),
       WeightRegistrationSubpage(onUserAppears: widget._onUserAppears),
     ];
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final text = S.of(context);
 
     void userErrorListener(BuildContext context, UserState state) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -94,41 +95,51 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
         child: Column(
           children: [
             Expanded(
+              flex: 4,
               child: PageView(
-                physics: const NeverScrollableScrollPhysics(),
+                physics: const BouncingScrollPhysics(),
                 controller: _pageViewController,
                 onPageChanged: _setPageCurrentIndex,
-                children: subpages,
+                children: _subpages,
               ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                PageViewControlButton(
-                  icon: const Icon(
-                    Icons.arrow_back,
-                    size: 40,
-                  ),
-                  // If first subpage is shown, 'previous subpage button' can
-                  // not be active.
-                  onTap: _currentPageIndex != 0 ? _goToPreviousPage : null,
+            Flexible(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    PageViewControlButton(
+                      caption: text.back,
+                      icon: const Icon(
+                        Icons.arrow_back,
+                        size: 40,
+                      ),
+                      onTap: _maybeGoToPreviousPage(),
+                    ),
+                    PageViewControlButton(
+                      caption: text.next,
+                      icon: const Icon(
+                        Icons.arrow_forward,
+                        size: 40,
+                      ),
+                      onTap: _maybeGoToNextPage(),
+                    ),
+                  ],
                 ),
-                PageViewControlButton(
-                  icon: const Icon(
-                    Icons.arrow_forward,
-                    size: 40,
-                  ),
-                  // If last subpage is shown, 'next subpage button' can
-                  // not be active.
-                  onTap: _currentPageIndex != subpages.length - 1
-                      ? _goToNextPage
-                      : null,
-                ),
-              ],
+              ),
             ),
           ],
         ),
       ),
     );
   }
+
+  VoidCallback? _maybeGoToPreviousPage() =>
+      // If  it is the first subpage, 'previous subpage button' can not be active.
+      _currentPageIndex != 0 ? _goToPreviousPage : null;
+
+  VoidCallback? _maybeGoToNextPage() =>
+      // If it is the last subpage, 'next subpage button' can not be active.
+      _currentPageIndex != _subpages.length - 1 ? _goToNextPage : null;
 }

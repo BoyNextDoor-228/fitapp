@@ -52,6 +52,7 @@ class MessageLookup extends MessageLookupByLibrary {
         ),
         "apply": MessageLookupByLibrary.simpleMessage("Apply"),
         "areYouSureYouWantToDelete": m0,
+        "back": MessageLookupByLibrary.simpleMessage("back"),
         "carbohydrates": MessageLookupByLibrary.simpleMessage("Carbohydrates"),
         "carbohydratesAmount": MessageLookupByLibrary.simpleMessage(
           "Carbohydrates amount",
@@ -275,6 +276,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "newTrainingTitle": MessageLookupByLibrary.simpleMessage(
           "New training title",
         ),
+        "next": MessageLookupByLibrary.simpleMessage("next"),
         "no": MessageLookupByLibrary.simpleMessage("No"),
         "noDescription": MessageLookupByLibrary.simpleMessage("No description"),
         "noExercisesYet":
