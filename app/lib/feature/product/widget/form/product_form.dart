@@ -136,9 +136,12 @@ class _ProductFormState extends State<ProductForm> {
     if (state.status == UserStatus.loading) {
       return const CircularProgressIndicator();
     }
-    return OutlinedButton(
-      onPressed: _applyChanges,
-      child: Text(widget.actionButtonText),
+    return Align(
+      alignment: Alignment.bottomRight,
+      child: OutlinedButton(
+        onPressed: _applyChanges,
+        child: Text(widget.actionButtonText),
+      ),
     );
   }
 

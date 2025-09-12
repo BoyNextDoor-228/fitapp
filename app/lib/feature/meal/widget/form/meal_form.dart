@@ -56,33 +56,39 @@ class _MealFormState extends State<MealForm> {
     return Form(
       key: _formKey,
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            child: Column(
-              children: [
-                TextFormField(
-                  initialValue: _newMeal.title,
-                  onSaved: _saveTitleField,
-                  validator: InputValidator(s: text).titleValidator,
-                  decoration: InputDecoration(
-                    labelText: text.newMealTitle,
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                children: [
+                  Flexible(
+                    child: TextFormField(
+                      initialValue: _newMeal.title,
+                      onSaved: _saveTitleField,
+                      validator: InputValidator(s: text).titleValidator,
+                      decoration: InputDecoration(
+                        labelText: text.newMealTitle,
+                      ),
+                    ),
                   ),
-                ),
-                TextFormField(
-                  keyboardType: TextInputType.multiline,
-                  maxLines: 2,
-                  initialValue: _newMeal.recipe,
-                  onSaved: _saveRecipeField,
-                  decoration: InputDecoration(
-                    labelText: text.newMealRecipeOptional,
+                  Flexible(
+                    child: TextFormField(
+                      keyboardType: TextInputType.multiline,
+                      maxLines: 2,
+                      initialValue: _newMeal.recipe,
+                      onSaved: _saveRecipeField,
+                      decoration: InputDecoration(
+                        labelText: text.newMealRecipeOptional,
+                      ),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           Expanded(
+            flex: 3,
             child: Container(
               width: double.infinity,
               height: ingredientListHeight,
@@ -97,52 +103,54 @@ class _MealFormState extends State<MealForm> {
               ),
             ),
           ),
-          BlocBuilder<UserBloc, UserState>(
-            builder: (_, state) {
-              if (state.status == UserStatus.loading) {
-                return const CircularProgressIndicator();
-              }
+          Flexible(
+            child: BlocBuilder<UserBloc, UserState>(
+              builder: (_, state) {
+                if (state.status == UserStatus.loading) {
+                  return const CircularProgressIndicator();
+                }
 
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Expanded(
-                    child: Padding(
-                      padding: buttonsPadding,
-                      child: OutlinedButton(
-                        onPressed: () async {
-                          final newIngredient =
-                              await _openIngredientCreationModal(context);
-                          if (newIngredient == null) {
-                            return;
-                          }
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Flexible(
+                      child: Padding(
+                        padding: buttonsPadding,
+                        child: OutlinedButton(
+                          onPressed: () async {
+                            final newIngredient =
+                                await _openIngredientCreationModal(context);
+                            if (newIngredient == null) {
+                              return;
+                            }
 
-                          _addIngredient(newIngredient);
-                        },
-                        child: Text(
-                          text.addIngredient,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
+                            _addIngredient(newIngredient);
+                          },
+                          child: Text(
+                            text.addIngredient,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: buttonsPadding,
-                      child: OutlinedButton(
-                        onPressed: _applyChanges,
-                        child: Text(
-                          widget.actionButtonText,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
+                    Flexible(
+                      child: Padding(
+                        padding: buttonsPadding,
+                        child: OutlinedButton(
+                          onPressed: _applyChanges,
+                          child: Text(
+                            widget.actionButtonText,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
-              );
-            },
+                  ],
+                );
+              },
+            ),
           ),
         ],
       ),
