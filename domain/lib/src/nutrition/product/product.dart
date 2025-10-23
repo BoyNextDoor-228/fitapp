@@ -17,6 +17,8 @@ abstract class Product with _$Product {
     required NutritionFacts nutritionFacts,
   }) = _Product;
 
+  /// Creates empty [Product] with empty [name] and [nutritionFacts].
+  /// [measurementUnit] is [MeasurementUnit.grams] by default.
   factory Product.empty() => Product._(
         id: UuidValue.fromString(const Uuid().v1()),
         measurementUnit: MeasurementUnit.grams,
@@ -24,6 +26,8 @@ abstract class Product with _$Product {
         nutritionFacts: NutritionFacts.empty(),
       );
 
+  /// Creates [Product] with specified [name], [nutritionFacts] and
+  /// [measurementUnit].
   factory Product.create({
     required String name,
     required NutritionFacts nutritionFacts,

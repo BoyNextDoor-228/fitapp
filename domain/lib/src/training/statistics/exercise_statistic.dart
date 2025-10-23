@@ -8,6 +8,8 @@ part 'exercise_statistic.freezed.dart';
 
 @freezed
 abstract class ExerciseStatistic with _$ExerciseStatistic {
+  /// Returns statistics record, which represents what [load] was done on a
+  /// specific [date].
   const factory ExerciseStatistic({
     @ExerciseLoadConverter() required ExerciseLoad load,
     required DateTime date,

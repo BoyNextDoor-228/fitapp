@@ -10,6 +10,7 @@ enum ExerciseLoadType {
   timer
 }
 
+/// Describes abstract load of an Exercise.
 abstract class ExerciseLoad {
   const ExerciseLoad();
 
@@ -28,19 +29,3 @@ abstract class ExerciseLoad {
 
   ExerciseLoadType get type;
 }
-
-// @JsonSerializable(constructor: 'timer')
-// abstract class ExerciseLoad {
-//   const factory ExerciseLoad.timer({ required int load }) = Timer;
-//   const factory ExerciseLoad.repetition({ required int load }) = Repetition;
-//
-//   /// Constructor for nested classes
-//   const ExerciseLoad.create();
-//
-//   /// FromJson constructor.
-//   factory ExerciseLoad.fromJson(Map<String, dynamic> json) => _$ExerciseLoadFromJson(json);
-//
-//   Map<String, dynamic> toJson() => _$ExerciseLoadToJson(this);
-//
-//   int get load;
-// }

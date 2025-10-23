@@ -1,5 +1,6 @@
 import '../../domain.dart';
 
+/// Abstract repository to handle actions on a [User].
 abstract class IUserRepository {
   User? get user;
 

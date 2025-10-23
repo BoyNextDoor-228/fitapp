@@ -4,6 +4,7 @@ import '../training/statistics/exercise_statistic.dart';
 
 typedef Statistics = List<ExerciseStatistic>;
 
+/// Helps [JsonSerializable] to convert [ExerciseStatistic] type
 class ExerciseStatisticsConverter
     implements JsonConverter<Statistics, Map<String, dynamic>> {
   const ExerciseStatisticsConverter();

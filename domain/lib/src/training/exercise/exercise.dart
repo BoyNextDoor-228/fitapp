@@ -10,6 +10,10 @@ part 'exercise.g.dart';
 
 @freezed
 abstract class Exercise with _$Exercise {
+  /// Creates [Exercise] with specified [title], numbers of [sets],
+  /// [load], [statistics], optional [description] and [id].
+  ///
+  /// If [id] was not passed, it assigns automatically.
   factory Exercise({
     required String title,
     required String? description,
@@ -27,6 +31,15 @@ abstract class Exercise with _$Exercise {
         statistics: statistics,
       );
 
+  /// Creates an empty [Exercise], based on passed [loadType], with empty
+  /// [title], [description], [statistics] and zero [sets].
+  ///
+  /// If [loadType] is [ExerciseLoadType.repetition] or [loadType] is not passed,
+  /// [loadType] of created empty [Exercise] will be [Repetition] with zero
+  /// repsAmount.
+  ///
+  /// If [loadType] is [ExerciseLoadType.timer], [loadType] of created empty
+  /// [Exercise] will be [Timer] with zero [Duration].
   factory Exercise.empty({
     ExerciseLoadType? loadType,
   }) {

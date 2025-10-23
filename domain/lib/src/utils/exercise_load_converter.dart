@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 import '../training/exercise_load/exercise_load.dart';
 
-/// Helps [JsonSerializable] to convert ExerciseLoad type
+/// Helps [JsonSerializable] to convert [ExerciseLoad] type.
 class ExerciseLoadConverter
     implements JsonConverter<ExerciseLoad, Map<String, dynamic>> {
   const ExerciseLoadConverter();

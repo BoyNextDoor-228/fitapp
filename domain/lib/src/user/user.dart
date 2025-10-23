@@ -20,6 +20,8 @@ abstract class User with _$User {
     required List<Product> products,
   }) = _User;
 
+  /// Creates a [User] with specified [weight] and empty lists of [trainings],
+  /// [meals] and [products].
   factory User.create({required double weight}) => User._(
         id: UuidValue.fromString(const Uuid().v1()),
         weight: weight,

@@ -1,6 +1,7 @@
 import '../../domain.dart';
 import '../nutrition/nutrition.dart';
 
+/// Abstract repository to handle actions on [Product]s.
 abstract class IProductRepository {
   List<Product> get products;
 

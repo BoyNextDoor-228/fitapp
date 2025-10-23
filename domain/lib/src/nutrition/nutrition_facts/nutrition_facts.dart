@@ -5,6 +5,8 @@ part 'nutrition_facts.freezed.dart';
 
 @freezed
 abstract class NutritionFacts with _$NutritionFacts {
+  /// creates [NutritionFacts] with specified [proteins], [fats],
+  /// [carbohydrates], [kilocalories] values.
   const factory NutritionFacts({
     required double proteins,
     required double fats,
@@ -14,6 +16,7 @@ abstract class NutritionFacts with _$NutritionFacts {
 
   const NutritionFacts._();
 
+  /// Creates [NutritionFacts] with zero values.
   factory NutritionFacts.empty() => const NutritionFacts(
         proteins: 0,
         fats: 0,

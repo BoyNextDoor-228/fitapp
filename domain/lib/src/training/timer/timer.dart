@@ -5,12 +5,14 @@ import '../exercise_load/exercise_load.dart';
 part 'timer.g.dart';
 part 'timer.freezed.dart';
 
+/// Describes [Timer] as a concrete ancestor of [ExerciseLoad].
 @freezed
 abstract class Timer extends ExerciseLoad with _$Timer {
   const factory Timer({required Duration duration}) = _Timer;
 
   factory Timer.fromJson(Map<String, dynamic> json) => _$TimerFromJson(json);
 
+  /// Returns [Timer] with zero [duration].
   factory Timer.empty() => const Timer(duration: Duration.zero);
 
   const Timer._() : super();

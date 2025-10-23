@@ -18,6 +18,8 @@ abstract class Meal with _$Meal {
     required String? recipe,
   }) = _Meal;
 
+  /// Creates empty [Meal] with empty [title], empty [ingredients] list and
+  /// no [recipe].
   factory Meal.empty() => Meal.__(
         id: UuidValue.fromString(const Uuid().v1()),
         title: '',
@@ -25,6 +27,8 @@ abstract class Meal with _$Meal {
         recipe: null,
       );
 
+  /// Creates a [Meal] with specified [title] and optional [recipe].
+  /// Initially [ingredients] list is empty.
   factory Meal.create({
     required String title,
     required String? recipe,
@@ -40,8 +44,10 @@ abstract class Meal with _$Meal {
 
   factory Meal.fromJson(Map<String, dynamic> json) => _$MealFromJson(json);
 
+  /// Returns [NutritionFacts] of this [Meal].
   NutritionFacts get nutritionFacts => _countNutritionFacts();
 
+  /// Counts nutrition facts of this [Meal] and returns it.
   NutritionFacts _countNutritionFacts() {
     const initialNutritionFacts = NutritionFacts(
       proteins: 0,

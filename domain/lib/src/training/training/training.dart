@@ -16,6 +16,8 @@ abstract class Training with _$Training {
     required List<Exercise> exercises,
   }) = _Training;
 
+  /// Creates an empty [Training] with empty [title], [description] and
+  /// [exercises] list.
   factory Training.empty() => Training._(
         id: UuidValue.fromString(const Uuid().v1()),
         title: '',
@@ -23,6 +25,8 @@ abstract class Training with _$Training {
         exercises: [],
       );
 
+  /// Creates a [Training] with specified [title] and optional [description].
+  /// Initially [exercises] list is empty.
   factory Training.create({
     required String title,
     required String? description,
