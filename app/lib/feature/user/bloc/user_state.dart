@@ -6,6 +6,7 @@ class UserState extends Equatable {
         user: null,
       );
 
+  /// Means casual state, when nothing happens.
   factory UserState.calm({required User? user}) => UserState._(
         status: UserStatus.calm,
         user: user,
@@ -57,6 +58,7 @@ class UserState extends Equatable {
 
 enum UserStatus { initial, loading, success, error, calm }
 
+/// All possible successful cases.
 enum UserSuccess {
   mealAdded,
   mealEdited,
@@ -71,6 +73,7 @@ enum UserSuccess {
   weightUpdated,
 }
 
+/// All possible error cases.
 enum UserError {
   cantInitUser,
   cantCreateUser,
